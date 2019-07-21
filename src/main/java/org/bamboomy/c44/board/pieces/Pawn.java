@@ -25,4 +25,10 @@ public class Pawn extends Piece {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void unselect() {
+		// TODO Auto-generated method stub
+		
+	}
 }

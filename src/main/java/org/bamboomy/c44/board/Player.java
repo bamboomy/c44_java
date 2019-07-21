@@ -14,6 +14,8 @@ public class Player {
 
 	private ArrayList<Piece> piecez = new ArrayList<Piece>();
 
+	private Piece selectedPiece;
+
 	public Player(int color, Board board) {
 
 		if (color != RED && color != BLUE && color != GREEN && color != YELLOW) {
@@ -45,12 +47,22 @@ public class Player {
 
 		for (Piece piece : piecez) {
 
-			if(md5.equalsIgnoreCase(piece.getMd5())) {
-				
+			if (md5.equalsIgnoreCase(piece.getMd5())) {
+
 				System.out.println(piece.getPieceName());
-				
+
 				piece.click();
 			}
 		}
+	}
+
+	public void setSelected(Piece piece) {
+
+		if (selectedPiece != null ) {
+
+			selectedPiece.unselect();
+		}
+
+		selectedPiece = piece;
 	}
 }

@@ -25,13 +25,25 @@ public class Tower extends Piece {
 
 		if (!selected) {
 
+			place.getBoard().getPlayerz()[color].setSelected(this);
+
 			for (int i = 0; i < 12; i++) {
 
 				Place otherPlace = place.getBoard().getPlacez()[i][place.getY()];
 
 				if (otherPlace != null && otherPlace != place) {
 
-					otherPlace.attack(color);
+					if (otherPlace.getPiece() != null) {
+
+						if (otherPlace.getPiece().getColor() != color) {
+
+							otherPlace.attack(color);
+						}
+
+					} else {
+
+						otherPlace.attack(color);
+					}
 				}
 			}
 
@@ -41,7 +53,17 @@ public class Tower extends Piece {
 
 				if (otherPlace != null && otherPlace != place) {
 
-					otherPlace.attack(color);
+					if (otherPlace.getPiece() != null) {
+
+						if (otherPlace.getPiece().getColor() != color) {
+
+							otherPlace.attack(color);
+						}
+
+					} else {
+
+						otherPlace.attack(color);
+					}
 				}
 			}
 
@@ -49,8 +71,34 @@ public class Tower extends Piece {
 
 		} else {
 
-			selected = false;
+			unselect();
 		}
+	}
+
+	@Override
+	public void unselect() {
+
+		for (int i = 0; i < 12; i++) {
+
+			Place otherPlace = place.getBoard().getPlacez()[i][place.getY()];
+
+			if (otherPlace != null && otherPlace != place) {
+
+				otherPlace.stopAttack();
+			}
+		}
+
+		for (int i = 0; i < 12; i++) {
+
+			Place otherPlace = place.getBoard().getPlacez()[place.getX()][i];
+
+			if (otherPlace != null && otherPlace != place) {
+
+				otherPlace.stopAttack();
+			}
+		}
+
+		selected = false;
 	}
 
 }

@@ -7,6 +7,7 @@ public class Board {
 	@Getter
 	private Place[][] placez = new Place[12][12];
 
+	@Getter
 	private Player[] playerz = new Player[4];
 
 	public Board() {

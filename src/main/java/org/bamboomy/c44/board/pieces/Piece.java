@@ -14,11 +14,12 @@ public abstract class Piece {
 
 	protected Place place;
 
+	@Getter
 	protected int color;
 
 	@Getter
 	private String md5;
-	
+
 	protected boolean selected = false;
 
 	public Piece(Place place, int color) {
@@ -59,4 +60,6 @@ public abstract class Piece {
 	public abstract String getPieceName();
 
 	public abstract void click();
+
+	public abstract void unselect();
 }
