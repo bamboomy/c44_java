@@ -38,9 +38,9 @@ public class Tower extends Piece {
 						if (otherPlace.getPiece().getColor() != color) {
 
 							otherPlace.attack(color);
-							
-							break;
 						}
+						
+						break;
 
 					} else {
 
@@ -60,9 +60,9 @@ public class Tower extends Piece {
 						if (otherPlace.getPiece().getColor() != color) {
 
 							otherPlace.attack(color);
-							
-							break;
 						}
+						
+						break;
 
 					} else {
 
@@ -82,9 +82,9 @@ public class Tower extends Piece {
 						if (otherPlace.getPiece().getColor() != color) {
 
 							otherPlace.attack(color);
-							
-							break;
 						}
+						
+						break;
 
 					} else {
 
@@ -104,9 +104,9 @@ public class Tower extends Piece {
 						if (otherPlace.getPiece().getColor() != color) {
 
 							otherPlace.attack(color);
-							
-							break;
 						}
+						
+						break;
 
 					} else {
 
