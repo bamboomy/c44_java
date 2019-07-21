@@ -1,5 +1,7 @@
 package org.bamboomy.c44.board.pieces;
 
+import java.util.ArrayList;
+
 import org.bamboomy.c44.board.Place;
 import org.bamboomy.c44.board.Player;
 
@@ -123,6 +125,8 @@ public class Bisshop extends Piece {
 	@Override
 	protected void setAttackablePlaces() {
 
+		attackablePlaces = new ArrayList<Place>();
+		
 		int counter = 0;
 		
 		for (int i = place.getX(); i < 12; i++) {
@@ -140,14 +144,14 @@ public class Bisshop extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						otherPlace.attack(color);
+						attackablePlaces.add(otherPlace);
 					}
 
 					break;
 
 				} else {
 
-					otherPlace.attack(color);
+					attackablePlaces.add(otherPlace);
 				}
 			}
 
@@ -171,14 +175,14 @@ public class Bisshop extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						otherPlace.attack(color);
+						attackablePlaces.add(otherPlace);
 					}
 
 					break;
 
 				} else {
 
-					otherPlace.attack(color);
+					attackablePlaces.add(otherPlace);
 				}
 			}
 
@@ -202,14 +206,14 @@ public class Bisshop extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						otherPlace.attack(color);
+						attackablePlaces.add(otherPlace);
 					}
 
 					break;
 
 				} else {
 
-					otherPlace.attack(color);
+					attackablePlaces.add(otherPlace);
 				}
 			}
 
@@ -233,14 +237,14 @@ public class Bisshop extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						otherPlace.attack(color);
+						attackablePlaces.add(otherPlace);
 					}
 
 					break;
 
 				} else {
 
-					otherPlace.attack(color);
+					attackablePlaces.add(otherPlace);
 				}
 			}
 

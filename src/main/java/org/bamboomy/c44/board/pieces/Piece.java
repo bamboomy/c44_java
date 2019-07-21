@@ -62,7 +62,6 @@ public abstract class Piece {
 
 	public abstract String getPieceName();
 
-	@Override
 	public void click() {
 
 		if (!selected) {

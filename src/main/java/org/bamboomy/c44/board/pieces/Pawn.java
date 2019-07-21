@@ -1,5 +1,7 @@
 package org.bamboomy.c44.board.pieces;
 
+import java.util.ArrayList;
+
 import org.bamboomy.c44.board.Place;
 import org.bamboomy.c44.board.Player;
 
@@ -40,38 +42,6 @@ public class Pawn extends Piece {
 	}
 
 	@Override
-	public void click() {
-
-		if (!selected) {
-
-			place.getBoard().getPlayerz()[color].setSelected(this);
-
-			Place otherPlace = place.getBoard().getPlacez()[place.getX() + xDelta][place.getY() + yDelta];
-
-			if (otherPlace != null && !otherPlace.hasPiece()) {
-
-				otherPlace.attack(color);
-
-				if (neverMoved) {
-
-					otherPlace = place.getBoard().getPlacez()[place.getX() + (xDelta * 2)][place.getY() + (yDelta * 2)];
-
-					if (otherPlace != null && !otherPlace.hasPiece()) {
-
-						otherPlace.attack(color);
-					}
-				}
-			}
-
-			selected = true;
-
-		} else {
-
-			unselect();
-		}
-	}
-
-	@Override
 	public void unselect() {
 
 		Place otherPlace = place.getBoard().getPlacez()[place.getX() + xDelta][place.getY() + yDelta];
@@ -95,5 +65,28 @@ public class Pawn extends Piece {
 	public boolean canMove() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	protected void setAttackablePlaces() {
+
+		attackablePlaces = new ArrayList<Place>();
+
+		Place otherPlace = place.getBoard().getPlacez()[place.getX() + xDelta][place.getY() + yDelta];
+
+		if (otherPlace != null && !otherPlace.hasPiece()) {
+
+			attackablePlaces.add(otherPlace);
+
+			if (neverMoved) {
+
+				otherPlace = place.getBoard().getPlacez()[place.getX() + (xDelta * 2)][place.getY() + (yDelta * 2)];
+
+				if (otherPlace != null && !otherPlace.hasPiece()) {
+
+					attackablePlaces.add(otherPlace);
+				}
+			}
+		}
 	}
 }
