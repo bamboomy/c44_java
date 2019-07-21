@@ -15,6 +15,10 @@ public class Pawn extends Piece {
 		if(color == Player.RED) {
 			
 			return "../img/pawn_red.png";
+		
+		} else if(color == Player.YELLOW) {
+			
+			return "../img/pawn_yellow.png";
 		}
 		
 		return "../img/pawn.png";

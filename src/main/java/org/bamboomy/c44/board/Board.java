@@ -48,6 +48,8 @@ public class Board {
 		playerz[0] = new Player(0, this);
 
 		currentPlayer = playerz[0];
+		
+		playerz[1] = new Player(1, this);
 	}
 
 	public void click(String md5) {

@@ -27,7 +27,7 @@ public class Tower extends Piece {
 
 			place.getBoard().getPlayerz()[color].setSelected(this);
 
-			for (int i = 0; i < 12; i++) {
+			for (int i = place.getX(); i < 12; i++) {
 
 				Place otherPlace = place.getBoard().getPlacez()[i][place.getY()];
 
@@ -38,6 +38,8 @@ public class Tower extends Piece {
 						if (otherPlace.getPiece().getColor() != color) {
 
 							otherPlace.attack(color);
+							
+							break;
 						}
 
 					} else {
@@ -47,7 +49,7 @@ public class Tower extends Piece {
 				}
 			}
 
-			for (int i = 0; i < 12; i++) {
+			for (int i = place.getY(); i < 12; i++) {
 
 				Place otherPlace = place.getBoard().getPlacez()[place.getX()][i];
 
@@ -58,6 +60,52 @@ public class Tower extends Piece {
 						if (otherPlace.getPiece().getColor() != color) {
 
 							otherPlace.attack(color);
+							
+							break;
+						}
+
+					} else {
+
+						otherPlace.attack(color);
+					}
+				}
+			}
+
+			for (int i = place.getX(); i >= 0; i--) {
+
+				Place otherPlace = place.getBoard().getPlacez()[i][place.getY()];
+
+				if (otherPlace != null && otherPlace != place) {
+
+					if (otherPlace.getPiece() != null) {
+
+						if (otherPlace.getPiece().getColor() != color) {
+
+							otherPlace.attack(color);
+							
+							break;
+						}
+
+					} else {
+
+						otherPlace.attack(color);
+					}
+				}
+			}
+
+			for (int i = place.getY(); i >= 0; i--) {
+
+				Place otherPlace = place.getBoard().getPlacez()[place.getX()][i];
+
+				if (otherPlace != null && otherPlace != place) {
+
+					if (otherPlace.getPiece() != null) {
+
+						if (otherPlace.getPiece().getColor() != color) {
+
+							otherPlace.attack(color);
+							
+							break;
 						}
 
 					} else {

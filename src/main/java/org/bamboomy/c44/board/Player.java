@@ -12,7 +12,7 @@ public class Player {
 
 	private int color;
 
-	public static final int RED = 0, BLUE = 1, GREEN = 2, YELLOW = 3;
+	public static final int RED = 0, YELLOW = 1, GREEN = 2, BLUE = 3;
 
 	private ArrayList<Piece> piecez = new ArrayList<Piece>();
 
@@ -31,6 +31,10 @@ public class Player {
 		if (color == RED) {
 
 			initRed(board);
+		
+		} else if (color == YELLOW) {
+
+			initYellow(board);
 		}
 	}
 
@@ -44,6 +48,11 @@ public class Player {
 		piecez.add(new Tower(board.getPlacez()[0][2], color));
 
 		piecez.add(new Tower(board.getPlacez()[0][9], color));
+	}
+
+	private void initYellow(Board board) {
+
+		piecez.add(new Pawn(board.getPlacez()[6][6], color));
 	}
 
 	boolean click(String md5) {
