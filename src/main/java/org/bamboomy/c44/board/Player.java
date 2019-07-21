@@ -43,7 +43,7 @@ public class Player {
 		piecez.add(new Tower(board.getPlacez()[0][9], color));
 	}
 
-	void click(String md5) {
+	boolean click(String md5) {
 
 		for (Piece piece : piecez) {
 
@@ -52,8 +52,12 @@ public class Player {
 				System.out.println(piece.getPieceName());
 
 				piece.click();
+				
+				return true;
 			}
 		}
+		
+		return false;
 	}
 
 	public void setSelected(Piece piece) {

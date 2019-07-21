@@ -47,6 +47,20 @@ public class Board {
 
 	public void click(String md5) {
 
-		playerz[0].click(md5);
+		boolean piece = playerz[0].click(md5);
+
+		if (!piece) {
+
+			for (Place[] row : placez) {
+
+				for (Place place : row) {
+
+					if (place != null && place.getMd5() != null && place.getMd5().equalsIgnoreCase(md5)) {
+
+						place.click();
+					}
+				}
+			}
+		}
 	}
 }

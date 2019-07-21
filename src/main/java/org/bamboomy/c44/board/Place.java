@@ -29,9 +29,12 @@ public class Place {
 	private int x, y;
 
 	private String blackString = "piece_on_black", whiteString = "piece_on_white";
-	
+
 	@Getter
 	private String md5;
+
+	@Getter
+	private boolean attacked = false;
 
 	public Place(int color, Board board, int i, int j) {
 
@@ -48,7 +51,7 @@ public class Place {
 
 		y = j;
 	}
-	
+
 	private void calculateHash() {
 
 		String time = System.currentTimeMillis() + "6";
@@ -96,8 +99,10 @@ public class Place {
 	}
 
 	public void attack(int attackingColor) {
-		
+
 		calculateHash();
+
+		attacked = true;
 
 		if (attackingColor == Player.RED) {
 
@@ -108,7 +113,14 @@ public class Place {
 
 	public void stopAttack() {
 
+		attacked = false;
+
 		blackString = "piece_on_black";
 		whiteString = "piece_on_white";
+	}
+
+	public void click() {
+
+		System.out.println(getX() + ", " + getY() + ": " + getCssName());
 	}
 }
