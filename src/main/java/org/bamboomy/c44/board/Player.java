@@ -23,7 +23,12 @@ public class Player {
 	@Getter
 	private Piece selectedPiece;
 
-	public Player(int color, Board board) {
+	@Getter
+	private boolean robot;
+
+	private Board board;
+
+	public Player(int color, Board board, boolean isRobot) {
 
 		if (color != RED && color != BLUE && color != GREEN && color != YELLOW) {
 
@@ -48,6 +53,10 @@ public class Player {
 
 			initBlue(board);
 		}
+
+		robot = isRobot;
+
+		this.board = board;
 	}
 
 	private void initRed(Board board) {
@@ -103,7 +112,7 @@ public class Player {
 		piecez.add(new Horse(board.getPlacez()[11][8], color));
 		piecez.add(new Tower(board.getPlacez()[11][9], color));
 	}
-	
+
 	private void initBlue(Board board) {
 
 		for (int i = 0; i < 8; i++) {
@@ -148,5 +157,22 @@ public class Player {
 		}
 
 		selectedPiece = piece;
+	}
+
+	public void generateRandomMove() {
+
+		ArrayList<Piece> movable = new ArrayList<Piece>();
+		
+		for (Piece piece : piecez) {
+			
+			if(piece.canMove()) {
+				
+				movable.add(piece);
+			}
+		}
+		
+		movable.get((int)(Math.random() * movable.size()).doRandomMove();
+		
+board.next();		
 	}
 }

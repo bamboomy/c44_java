@@ -139,6 +139,8 @@ public class Place {
 		System.out.println(getX() + ", " + getY() + ": " + getCssName());
 
 		board.getCurrentPlayer().getSelectedPiece().moveTo(this);
+		
+		board.next();
 	}
 
 	public void remove(Piece oldPiece) {

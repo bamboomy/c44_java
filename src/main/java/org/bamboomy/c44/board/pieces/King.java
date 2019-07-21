@@ -332,4 +332,10 @@ public class King extends Piece {
 		selected = false;
 	}
 
+	@Override
+	public boolean canMove() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

@@ -3,6 +3,7 @@ package org.bamboomy.c44.board.pieces;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 
 import javax.xml.bind.DatatypeConverter;
 
@@ -21,6 +22,8 @@ public abstract class Piece {
 	private String md5;
 
 	protected boolean selected = false;
+
+	protected ArrayList<Place> attackablePlaces = new ArrayList<Place>();
 
 	public Piece(Place place, int color) {
 
@@ -59,7 +62,29 @@ public abstract class Piece {
 
 	public abstract String getPieceName();
 
-	public abstract void click();
+	@Override
+	public void click() {
+
+		if (!selected) {
+
+			place.getBoard().getPlayerz()[color].setSelected(this);
+
+			setAttackablePlaces();
+
+			for (Place place : attackablePlaces) {
+
+				place.attack(color);
+			}
+
+			selected = true;
+
+		} else {
+
+			unselect();
+		}
+	}
+
+	protected abstract void setAttackablePlaces();
 
 	public abstract void unselect();
 
@@ -73,4 +98,6 @@ public abstract class Piece {
 
 		place = otherPlace;
 	}
+
+	public abstract boolean canMove();
 }

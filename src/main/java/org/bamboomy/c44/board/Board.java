@@ -12,6 +12,8 @@ public class Board {
 
 	@Getter
 	private Player currentPlayer;
+	
+	private int turn = 2;
 
 	public Board() {
 
@@ -45,26 +47,20 @@ public class Board {
 			}
 		}
 
-		playerz[0] = new Player(0, this);
+		playerz[0] = new Player(0, this, true);
 
-		currentPlayer = playerz[0];
+		playerz[1] = new Player(1, this, true);
 
-		playerz[1] = new Player(1, this);
+		playerz[2] = new Player(2, this, false);
 
-		playerz[2] = new Player(2, this);
-
-		playerz[3] = new Player(3, this);
+		playerz[3] = new Player(3, this, true);
+		
+		currentPlayer = playerz[turn];
 	}
 
 	public void click(String md5) {
 
-		boolean piece = playerz[0].click(md5);
-
-		piece |= playerz[1].click(md5);
-
-		piece |= playerz[2].click(md5);
-
-		piece |= playerz[3].click(md5);
+		boolean piece = currentPlayer.click(md5);
 
 		if (!piece) {
 
@@ -78,6 +74,18 @@ public class Board {
 					}
 				}
 			}
+		}
+	}
+
+	public void next() {
+
+		turn = (turn + 1) % 4;
+		
+		currentPlayer = playerz[turn];
+		
+		if(currentPlayer.isRobot()) {
+
+			currentPlayer.generateRandomMove();
 		}
 	}
 }

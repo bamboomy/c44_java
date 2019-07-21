@@ -1,5 +1,7 @@
 package org.bamboomy.c44.board.pieces;
 
+import java.util.ArrayList;
+
 import org.bamboomy.c44.board.Place;
 import org.bamboomy.c44.board.Player;
 
@@ -32,107 +34,98 @@ public class Tower extends Piece {
 		throw new RuntimeException("invalid color in tower");
 	}
 
-	@Override
-	public void click() {
+	private void setAttackablePlaces() {
 
-		if (!selected) {
+		attackablePlaces = new ArrayList<Place>();
+		
+		for (int i = place.getX(); i < 12; i++) {
 
-			place.getBoard().getPlayerz()[color].setSelected(this);
+			Place otherPlace = place.getBoard().getPlacez()[i][place.getY()];
 
-			for (int i = place.getX(); i < 12; i++) {
+			if (otherPlace != null && otherPlace != place) {
 
-				Place otherPlace = place.getBoard().getPlacez()[i][place.getY()];
+				if (otherPlace.getPiece() != null) {
 
-				if (otherPlace != null && otherPlace != place) {
+					if (otherPlace.getPiece().getColor() != color) {
 
-					if (otherPlace.getPiece() != null) {
-
-						if (otherPlace.getPiece().getColor() != color) {
-
-							otherPlace.attack(color);
-						}
-
-						break;
-
-					} else {
-
-						otherPlace.attack(color);
+						attackablePlaces.add(otherPlace);
 					}
+
+					break;
+
+				} else {
+
+					attackablePlaces.add(otherPlace);
 				}
 			}
-
-			for (int i = place.getY(); i < 12; i++) {
-
-				Place otherPlace = place.getBoard().getPlacez()[place.getX()][i];
-
-				if (otherPlace != null && otherPlace != place) {
-
-					if (otherPlace.getPiece() != null) {
-
-						if (otherPlace.getPiece().getColor() != color) {
-
-							otherPlace.attack(color);
-						}
-
-						break;
-
-					} else {
-
-						otherPlace.attack(color);
-					}
-				}
-			}
-
-			for (int i = place.getX(); i >= 0; i--) {
-
-				Place otherPlace = place.getBoard().getPlacez()[i][place.getY()];
-
-				if (otherPlace != null && otherPlace != place) {
-
-					if (otherPlace.getPiece() != null) {
-
-						if (otherPlace.getPiece().getColor() != color) {
-
-							otherPlace.attack(color);
-						}
-
-						break;
-
-					} else {
-
-						otherPlace.attack(color);
-					}
-				}
-			}
-
-			for (int i = place.getY(); i >= 0; i--) {
-
-				Place otherPlace = place.getBoard().getPlacez()[place.getX()][i];
-
-				if (otherPlace != null && otherPlace != place) {
-
-					if (otherPlace.getPiece() != null) {
-
-						if (otherPlace.getPiece().getColor() != color) {
-
-							otherPlace.attack(color);
-						}
-
-						break;
-
-					} else {
-
-						otherPlace.attack(color);
-					}
-				}
-			}
-
-			selected = true;
-
-		} else {
-
-			unselect();
 		}
+
+		for (int i = place.getY(); i < 12; i++) {
+
+			Place otherPlace = place.getBoard().getPlacez()[place.getX()][i];
+
+			if (otherPlace != null && otherPlace != place) {
+
+				if (otherPlace.getPiece() != null) {
+
+					if (otherPlace.getPiece().getColor() != color) {
+
+						attackablePlaces.add(otherPlace);
+					}
+
+					break;
+
+				} else {
+
+					attackablePlaces.add(otherPlace);
+				}
+			}
+		}
+
+		for (int i = place.getX(); i >= 0; i--) {
+
+			Place otherPlace = place.getBoard().getPlacez()[i][place.getY()];
+
+			if (otherPlace != null && otherPlace != place) {
+
+				if (otherPlace.getPiece() != null) {
+
+					if (otherPlace.getPiece().getColor() != color) {
+
+						attackablePlaces.add(otherPlace);
+					}
+
+					break;
+
+				} else {
+
+					attackablePlaces.add(otherPlace);
+				}
+			}
+		}
+
+		for (int i = place.getY(); i >= 0; i--) {
+
+			Place otherPlace = place.getBoard().getPlacez()[place.getX()][i];
+
+			if (otherPlace != null && otherPlace != place) {
+
+				if (otherPlace.getPiece() != null) {
+
+					if (otherPlace.getPiece().getColor() != color) {
+
+						attackablePlaces.add(otherPlace);
+					}
+
+					break;
+
+				} else {
+
+					attackablePlaces.add(otherPlace);
+				}
+			}
+		}
+
 	}
 
 	@Override
@@ -159,6 +152,12 @@ public class Tower extends Piece {
 		}
 
 		selected = false;
+	}
+
+	@Override
+	public boolean canMove() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
