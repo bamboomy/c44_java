@@ -50,6 +50,10 @@ public class Board {
 		currentPlayer = playerz[0];
 		
 		playerz[1] = new Player(1, this);
+		
+		playerz[2] = new Player(2, this);
+		
+		playerz[3] = new Player(3, this);
 	}
 
 	public void click(String md5) {

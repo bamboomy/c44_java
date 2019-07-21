@@ -19,9 +19,17 @@ public class Pawn extends Piece {
 		} else if(color == Player.YELLOW) {
 			
 			return "../img/pawn_yellow.png";
+
+		} else if (color == Player.GREEN) {
+
+			return "../img/pawn_green.png";
+
+		} else if (color == Player.BLUE) {
+
+			return "../img/pawn_blue.png";
 		}
-		
-		return "../img/pawn.png";
+
+		throw new RuntimeException("invalid color in pawn");
 	}
 
 	@Override

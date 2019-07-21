@@ -15,13 +15,21 @@ public class Bisshop extends Piece {
 		if (color == Player.RED) {
 
 			return "../img/bisshop_red.png";
-		
-		} else if(color == Player.YELLOW) {
-			
+
+		} else if (color == Player.YELLOW) {
+
 			return "../img/bisshop_yellow.png";
+
+		} else if (color == Player.GREEN) {
+
+			return "../img/bisshop_green.png";
+
+		} else if (color == Player.BLUE) {
+
+			return "../img/bisshop_blue.png";
 		}
 
-		return "../img/bisshop.png";
+		throw new RuntimeException("invalid color in bishop");
 	}
 
 	@Override
