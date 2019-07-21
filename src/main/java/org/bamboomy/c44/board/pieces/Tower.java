@@ -15,6 +15,10 @@ public class Tower extends Piece {
 		if (color == Player.RED) {
 
 			return "../img/tower_red.png";
+
+		} else if (color == Player.YELLOW) {
+
+			return "../img/tower_yellow.png";
 		}
 
 		return "../img/tower.png";
@@ -39,7 +43,7 @@ public class Tower extends Piece {
 
 							otherPlace.attack(color);
 						}
-						
+
 						break;
 
 					} else {
@@ -61,7 +65,7 @@ public class Tower extends Piece {
 
 							otherPlace.attack(color);
 						}
-						
+
 						break;
 
 					} else {
@@ -83,7 +87,7 @@ public class Tower extends Piece {
 
 							otherPlace.attack(color);
 						}
-						
+
 						break;
 
 					} else {
@@ -105,7 +109,7 @@ public class Tower extends Piece {
 
 							otherPlace.attack(color);
 						}
-						
+
 						break;
 
 					} else {

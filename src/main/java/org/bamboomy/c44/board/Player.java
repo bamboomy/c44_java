@@ -62,7 +62,20 @@ public class Player {
 
 	private void initYellow(Board board) {
 
-		piecez.add(new Pawn(board.getPlacez()[6][6], color));
+		for (int i = 0; i < 8; i++) {
+			piecez.add(new Pawn(board.getPlacez()[i + 2][10], color));
+		}
+
+		piecez.add(new Tower(board.getPlacez()[2][11], color));
+		piecez.add(new Horse(board.getPlacez()[3][11], color));
+		piecez.add(new Bisshop(board.getPlacez()[4][11], color));
+
+		piecez.add(new King(board.getPlacez()[5][11], color));
+		piecez.add(new Queen(board.getPlacez()[6][11], color));
+
+		piecez.add(new Bisshop(board.getPlacez()[7][11], color));
+		piecez.add(new Horse(board.getPlacez()[8][11], color));
+		piecez.add(new Tower(board.getPlacez()[9][11], color));
 	}
 
 	boolean click(String md5) {
