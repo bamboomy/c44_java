@@ -1,3 +1,26 @@
-.hello-title{
-    color: darkgreen;
+
+.square {
+  float: left;
+}
+
+.row{
+	width: 480px;
+}
+
+.piece_on_black{
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+  position: absolute;
+  float: left;
+  background-image: url(../img/black.png);
+}
+
+.piece_on_white{
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+  position: absolute;
+  float: left;
+  background-image: url(../img/white.png);
 }

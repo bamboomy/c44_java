@@ -1,6 +1,9 @@
 package org.bamboomy.c44.board;
 
+import org.bamboomy.c44.board.pieces.Piece;
+
 import lombok.Getter;
+import lombok.Setter;
 
 public class Place {
 
@@ -8,6 +11,10 @@ public class Place {
 	private final int color;
 
 	public static int BLACK = 0, WHITE = 1;
+
+	@Getter
+	@Setter
+	private Piece piece;
 
 	public Place(int color) {
 
@@ -19,15 +26,20 @@ public class Place {
 		this.color = color;
 	}
 
-	public String getImageName() {
+	public String getCssName() {
 
 		if (color == BLACK) {
 
-			return "../img/black.png";
+			return "piece_on_black";
 
 		} else {
 
-			return "../img/white.png";
+			return "piece_on_white";
 		}
+	}
+
+	public boolean hasPiece() {
+
+		return piece != null;
 	}
 }

@@ -5,7 +5,9 @@ import lombok.Getter;
 public class Board {
 
 	@Getter
-	Place[][] placez = new Place[12][12];
+	private Place[][] placez = new Place[12][12];
+
+	private Player[] playerz = new Player[4];
 
 	public Board() {
 
@@ -38,5 +40,7 @@ public class Board {
 				color = 1 - color;
 			}
 		}
+
+		playerz[0] = new Player(0, this);
 	}
 }
