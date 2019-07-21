@@ -48,17 +48,23 @@ public class Board {
 		playerz[0] = new Player(0, this);
 
 		currentPlayer = playerz[0];
-		
+
 		playerz[1] = new Player(1, this);
-		
+
 		playerz[2] = new Player(2, this);
-		
+
 		playerz[3] = new Player(3, this);
 	}
 
 	public void click(String md5) {
 
 		boolean piece = playerz[0].click(md5);
+
+		piece |= playerz[1].click(md5);
+
+		piece |= playerz[2].click(md5);
+
+		piece |= playerz[3].click(md5);
 
 		if (!piece) {
 

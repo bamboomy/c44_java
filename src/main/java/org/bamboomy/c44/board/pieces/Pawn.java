@@ -80,15 +80,14 @@ public class Pawn extends Piece {
 
 			otherPlace.stopAttack();
 
-			if (neverMoved) {
+			otherPlace = place.getBoard().getPlacez()[place.getX() + (xDelta * 2)][place.getY() + (yDelta * 2)];
 
-				otherPlace = place.getBoard().getPlacez()[place.getX() + (xDelta * 2)][place.getY() + (yDelta * 2)];
+			if (otherPlace != null && !otherPlace.hasPiece()) {
 
-				if (otherPlace != null && !otherPlace.hasPiece()) {
-
-					otherPlace.stopAttack();
-				}
+				otherPlace.stopAttack();
 			}
 		}
+
+		selected = false;
 	}
 }
