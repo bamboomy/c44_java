@@ -35,7 +35,7 @@ public class Player {
 		if (color == RED) {
 
 			initRed(board);
-		
+
 		} else if (color == YELLOW) {
 
 			initYellow(board);
@@ -44,22 +44,20 @@ public class Player {
 
 	private void initRed(Board board) {
 
-		/*
-		 * for (int i = 0; i < 8; i++) { piecez.add(new Pawn(board.getPlacez()[1][i +
-		 * 2], color)); }
-		 */
+		for (int i = 0; i < 8; i++) {
+			piecez.add(new Pawn(board.getPlacez()[1][i + 2], color));
+		}
 
 		piecez.add(new Tower(board.getPlacez()[0][2], color));
+		piecez.add(new Horse(board.getPlacez()[0][3], color));
+		piecez.add(new Bisshop(board.getPlacez()[0][4], color));
 
+		piecez.add(new King(board.getPlacez()[0][5], color));
+		piecez.add(new Queen(board.getPlacez()[0][6], color));
+
+		piecez.add(new Bisshop(board.getPlacez()[0][7], color));
+		piecez.add(new Horse(board.getPlacez()[0][8], color));
 		piecez.add(new Tower(board.getPlacez()[0][9], color));
-		
-		piecez.add(new Bisshop(board.getPlacez()[3][3], color));
-		
-		piecez.add(new Queen(board.getPlacez()[5][3], color));
-		
-		piecez.add(new Horse(board.getPlacez()[3][5], color));
-		
-		piecez.add(new King(board.getPlacez()[8][8], color));
 	}
 
 	private void initYellow(Board board) {
@@ -76,17 +74,17 @@ public class Player {
 				System.out.println(piece.getPieceName());
 
 				piece.click();
-				
+
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
 
 	public void setSelected(Piece piece) {
 
-		if (selectedPiece != null ) {
+		if (selectedPiece != null) {
 
 			selectedPiece.unselect();
 		}
