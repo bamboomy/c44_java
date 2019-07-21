@@ -21,7 +21,7 @@ public class Board {
 
 				for (int j = 2; j < 10; j++) {
 
-					placez[i][j] = new Place(color);
+					placez[i][j] = new Place(color, this, i, j);
 
 					color = 1 - color;
 				}
@@ -32,7 +32,7 @@ public class Board {
 
 				for (int j = 0; j < 12; j++) {
 
-					placez[i][j] = new Place(color);
+					placez[i][j] = new Place(color, this, i, j);
 
 					color = 1 - color;
 				}

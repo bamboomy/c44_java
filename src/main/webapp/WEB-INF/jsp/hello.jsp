@@ -14,7 +14,7 @@
 				 'url': '/piece/' + md5,
 				 success : function(text)
 				 {
-					 alert(text);
+					 location.reload();
 				 }
 		});
 	}

@@ -19,4 +19,10 @@ public class Pawn extends Piece {
 		
 		return "../img/pawn.png";
 	}
+
+	@Override
+	public void click() {
+		// TODO Auto-generated method stub
+		
+	}
 }

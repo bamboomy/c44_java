@@ -24,3 +24,21 @@
   float: left;
   background-image: url(../img/white.png);
 }
+
+.piece_on_black_red{
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+  position: absolute;
+  float: left;
+  background-image: url(../img/black_red.png);
+}
+
+.piece_on_white_red{
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+  position: absolute;
+  float: left;
+  background-image: url(../img/white_red.png);
+}

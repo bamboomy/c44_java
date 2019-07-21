@@ -48,6 +48,8 @@ public class Player {
 			if(md5.equalsIgnoreCase(piece.getMd5())) {
 				
 				System.out.println(piece.getPieceName());
+				
+				piece.click();
 			}
 		}
 	}

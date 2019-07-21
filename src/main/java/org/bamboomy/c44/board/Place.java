@@ -16,7 +16,15 @@ public class Place {
 	@Setter
 	private Piece piece;
 
-	public Place(int color) {
+	@Getter
+	private Board board;
+
+	@Getter
+	private int x, y;
+
+	private String blackString = "piece_on_black", whiteString = "piece_on_white";
+
+	public Place(int color, Board board, int i, int j) {
 
 		if (color != BLACK && color != WHITE) {
 
@@ -24,22 +32,37 @@ public class Place {
 		}
 
 		this.color = color;
+
+		this.board = board;
+
+		x = i;
+
+		y = j;
 	}
 
 	public String getCssName() {
 
 		if (color == BLACK) {
 
-			return "piece_on_black";
+			return blackString;
 
 		} else {
 
-			return "piece_on_white";
+			return whiteString;
 		}
 	}
 
 	public boolean hasPiece() {
 
 		return piece != null;
+	}
+
+	public void attack(int attackingColor) {
+
+		if (attackingColor == Player.RED) {
+
+			blackString = "piece_on_black_red";
+			whiteString = "piece_on_white_red";
+		}
 	}
 }
