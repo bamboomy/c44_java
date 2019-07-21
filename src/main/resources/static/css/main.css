@@ -25,20 +25,56 @@
   background-image: url(../img/white.png);
 }
 
-.piece_on_black_red{
+.piece_on_black_yellow{
   width: 40px;
   height: 40px;
   z-index: 1;
   position: absolute;
   float: left;
-  background-image: url(../img/black_red.png);
+  background-image: url(../img/black_yellow.png);
 }
 
-.piece_on_white_red{
+.piece_on_white_yellow{
   width: 40px;
   height: 40px;
   z-index: 1;
   position: absolute;
   float: left;
-  background-image: url(../img/white_red.png);
+  background-image: url(../img/white_yellow.png);
+}
+
+.piece_on_black_blue{
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+  position: absolute;
+  float: left;
+  background-image: url(../img/black_blue.png);
+}
+
+.piece_on_white_blue{
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+  position: absolute;
+  float: left;
+  background-image: url(../img/white_blue.png);
+}
+
+.piece_on_black_green{
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+  position: absolute;
+  float: left;
+  background-image: url(../img/black_green.png);
+}
+
+.piece_on_white_green{
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+  position: absolute;
+  float: left;
+  background-image: url(../img/white_green.png);
 }

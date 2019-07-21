@@ -108,6 +108,21 @@ public class Place {
 
 			blackString = "piece_on_black_red";
 			whiteString = "piece_on_white_red";
+
+		} else if (attackingColor == Player.GREEN) {
+
+			blackString = "piece_on_black_red";
+			whiteString = "piece_on_white_red";
+
+		} else if (attackingColor == Player.YELLOW) {
+
+			blackString = "piece_on_black_red";
+			whiteString = "piece_on_white_red";
+
+		} else if (attackingColor == Player.BLUE) {
+
+			blackString = "piece_on_black_red";
+			whiteString = "piece_on_white_red";
 		}
 	}
 

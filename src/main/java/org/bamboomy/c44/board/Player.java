@@ -53,7 +53,7 @@ public class Player {
 	private void initRed(Board board) {
 
 		for (int i = 0; i < 8; i++) {
-			piecez.add(new Pawn(board.getPlacez()[1][i + 2], color));
+			piecez.add(new Pawn(board.getPlacez()[1][i + 2], color, 1, 0));
 		}
 
 		piecez.add(new Tower(board.getPlacez()[0][2], color));
@@ -71,7 +71,7 @@ public class Player {
 	private void initYellow(Board board) {
 
 		for (int i = 0; i < 8; i++) {
-			piecez.add(new Pawn(board.getPlacez()[i + 2][10], color));
+			piecez.add(new Pawn(board.getPlacez()[i + 2][10], color, 0, -1));
 		}
 
 		piecez.add(new Tower(board.getPlacez()[2][11], color));
@@ -89,7 +89,7 @@ public class Player {
 	private void initGreen(Board board) {
 
 		for (int i = 0; i < 8; i++) {
-			piecez.add(new Pawn(board.getPlacez()[10][i + 2], color));
+			piecez.add(new Pawn(board.getPlacez()[10][i + 2], color, -1, 0));
 		}
 
 		piecez.add(new Tower(board.getPlacez()[11][2], color));
@@ -107,7 +107,7 @@ public class Player {
 	private void initBlue(Board board) {
 
 		for (int i = 0; i < 8; i++) {
-			piecez.add(new Pawn(board.getPlacez()[i + 2][1], color));
+			piecez.add(new Pawn(board.getPlacez()[i + 2][1], color, 0, 1));
 		}
 
 		piecez.add(new Tower(board.getPlacez()[2][0], color));
