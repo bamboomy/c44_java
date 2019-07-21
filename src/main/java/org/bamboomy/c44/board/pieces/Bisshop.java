@@ -35,12 +35,6 @@ public class Bisshop extends Piece {
 	}
 
 	@Override
-	public boolean canMove() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	protected void setAttackablePlaces() {
 
 		attackablePlaces = new ArrayList<Place>();

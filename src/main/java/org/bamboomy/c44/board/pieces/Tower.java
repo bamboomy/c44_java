@@ -127,37 +127,4 @@ public class Tower extends Piece {
 		}
 
 	}
-
-	@Override
-	public void unselect() {
-
-		for (int i = 0; i < 12; i++) {
-
-			Place otherPlace = place.getBoard().getPlacez()[i][place.getY()];
-
-			if (otherPlace != null && otherPlace != place) {
-
-				otherPlace.stopAttack();
-			}
-		}
-
-		for (int i = 0; i < 12; i++) {
-
-			Place otherPlace = place.getBoard().getPlacez()[place.getX()][i];
-
-			if (otherPlace != null && otherPlace != place) {
-
-				otherPlace.stopAttack();
-			}
-		}
-
-		selected = false;
-	}
-
-	@Override
-	public boolean canMove() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

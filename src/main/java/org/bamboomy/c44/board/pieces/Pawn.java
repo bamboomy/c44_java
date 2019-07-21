@@ -42,32 +42,6 @@ public class Pawn extends Piece {
 	}
 
 	@Override
-	public void unselect() {
-
-		Place otherPlace = place.getBoard().getPlacez()[place.getX() + xDelta][place.getY() + yDelta];
-
-		if (otherPlace != null && !otherPlace.hasPiece()) {
-
-			otherPlace.stopAttack();
-
-			otherPlace = place.getBoard().getPlacez()[place.getX() + (xDelta * 2)][place.getY() + (yDelta * 2)];
-
-			if (otherPlace != null && !otherPlace.hasPiece()) {
-
-				otherPlace.stopAttack();
-			}
-		}
-
-		selected = false;
-	}
-
-	@Override
-	public boolean canMove() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	protected void setAttackablePlaces() {
 
 		attackablePlaces = new ArrayList<Place>();

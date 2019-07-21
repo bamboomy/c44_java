@@ -162,17 +162,17 @@ public class Player {
 	public void generateRandomMove() {
 
 		ArrayList<Piece> movable = new ArrayList<Piece>();
-		
+
 		for (Piece piece : piecez) {
-			
-			if(piece.canMove()) {
-				
+
+			if (piece.canMove()) {
+
 				movable.add(piece);
 			}
 		}
-		
-		movable.get((int)(Math.random() * movable.size()).doRandomMove();
-		
-board.next();		
+
+		movable.get((int) (Math.random() * movable.size())).doRandomMove();
+
+		board.next();
 	}
 }

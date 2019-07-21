@@ -87,8 +87,8 @@ public abstract class Piece {
 
 	public void unselect() {
 
-		for(Place place: attackablePlaces) {
-			
+		for (Place place : attackablePlaces) {
+
 			place.stopAttack();
 		}
 
@@ -106,5 +106,17 @@ public abstract class Piece {
 		place = otherPlace;
 	}
 
-	public abstract boolean canMove();
+	public boolean canMove() {
+
+		setAttackablePlaces();
+
+		return attackablePlaces.size() > 0;
+	}
+
+	public void doRandomMove() {
+
+		click();
+
+		attackablePlaces.get((int) (Math.random() * attackablePlaces.size())).click();
+	}
 }
