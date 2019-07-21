@@ -43,4 +43,9 @@ public class Board {
 
 		playerz[0] = new Player(0, this);
 	}
+
+	public void click(String md5) {
+
+		playerz[0].click(md5);
+	}
 }

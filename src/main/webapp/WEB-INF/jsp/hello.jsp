@@ -10,19 +10,13 @@
 
 	function clickPiece(md5){
 
-		jQuery.ajax({
-		    headers: { 
-		        'Accept': 'application/json',
-		        'Content-Type': 'application/json' 
-		    },
-		    'type': 'POST',
-		    'url': '/piece',
-		    'data': JSON.stringify({ md5: md5 }),
-		    'dataType': 'json',
-		    'success': function( data ) {
-							alert( "Data Loaded: " + data );
-						}
-		    });			
+		$.ajax({ type: "GET",   
+				 'url': '/piece/' + md5,
+				 success : function(text)
+				 {
+					 alert(text);
+				 }
+		});
 	}
 
 </script>

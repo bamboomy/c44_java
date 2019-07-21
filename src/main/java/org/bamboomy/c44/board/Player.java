@@ -32,13 +32,23 @@ public class Player {
 	private void initRed(Board board) {
 
 		/*
-		for (int i = 0; i < 8; i++) {
-			piecez.add(new Pawn(board.getPlacez()[1][i + 2], color));
-		}
-		*/
-		
+		 * for (int i = 0; i < 8; i++) { piecez.add(new Pawn(board.getPlacez()[1][i +
+		 * 2], color)); }
+		 */
+
 		piecez.add(new Tower(board.getPlacez()[0][2], color));
-		
+
 		piecez.add(new Tower(board.getPlacez()[0][9], color));
+	}
+
+	void click(String md5) {
+
+		for (Piece piece : piecez) {
+
+			if(md5.equalsIgnoreCase(piece.getMd5())) {
+				
+				System.out.println(piece.getPieceName());
+			}
+		}
 	}
 }
