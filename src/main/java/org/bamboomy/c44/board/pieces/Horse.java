@@ -72,170 +72,140 @@ public class Horse extends Piece {
 						}
 					}
 				}
+			}
 
-				if (place.getX() - 2 >= 0) {
+			if (place.getX() - 2 >= 0) {
 
-					if (place.getY() + 1 < 12) {
+				if (place.getY() + 1 < 12) {
 
-						Place otherPlace = place.getBoard().getPlacez()[place.getX() - 2][place.getY() + 1];
+					Place otherPlace = place.getBoard().getPlacez()[place.getX() - 2][place.getY() + 1];
 
-						if (otherPlace != null && otherPlace != place) {
+					if (otherPlace != null && otherPlace != place) {
 
-							if (otherPlace.getPiece() != null) {
+						if (otherPlace.getPiece() != null) {
 
-								if (otherPlace.getPiece().getColor() != color) {
-
-									otherPlace.attack(color);
-								}
-
-							} else {
+							if (otherPlace.getPiece().getColor() != color) {
 
 								otherPlace.attack(color);
 							}
-						}
 
-					}
+						} else {
 
-					if (place.getY() - 1 >= 0) {
-
-						Place otherPlace = place.getBoard().getPlacez()[place.getX() - 2][place.getY() - 1];
-
-						if (otherPlace != null && otherPlace != place) {
-
-							if (otherPlace.getPiece() != null) {
-
-								if (otherPlace.getPiece().getColor() != color) {
-
-									otherPlace.attack(color);
-								}
-
-							} else {
-
-								otherPlace.attack(color);
-							}
+							otherPlace.attack(color);
 						}
 					}
 				}
 
-				if (place.getY() + 2 < 12) {
+				if (place.getY() - 1 >= 0) {
 
-					if (place.getX() + 1 < 12) {
+					Place otherPlace = place.getBoard().getPlacez()[place.getX() - 2][place.getY() - 1];
 
-						Place otherPlace = place.getBoard().getPlacez()[place.getX() + 1][place.getY() + 2];
+					if (otherPlace != null && otherPlace != place) {
 
-						if (otherPlace != null && otherPlace != place) {
+						if (otherPlace.getPiece() != null) {
 
-							if (otherPlace.getPiece() != null) {
-
-								if (otherPlace.getPiece().getColor() != color) {
-
-									otherPlace.attack(color);
-								}
-
-							} else {
+							if (otherPlace.getPiece().getColor() != color) {
 
 								otherPlace.attack(color);
 							}
-						}
 
+						} else {
+
+							otherPlace.attack(color);
+						}
+					}
+				}
+			}
+
+			if (place.getY() + 2 < 12) {
+
+				if (place.getX() + 1 < 12) {
+
+					Place otherPlace = place.getBoard().getPlacez()[place.getX() + 1][place.getY() + 2];
+
+					if (otherPlace != null && otherPlace != place) {
+
+						if (otherPlace.getPiece() != null) {
+
+							if (otherPlace.getPiece().getColor() != color) {
+
+								otherPlace.attack(color);
+							}
+
+						} else {
+
+							otherPlace.attack(color);
+						}
 					}
 				}
 
-				/*
-				 * }
-				 * 
-				 * if(!board[i+1][j+2].blank){
-				 * 
-				 * if(board[i+1][j+2].piece == null){
-				 * 
-				 * this.placesToMove.push($(board[i+1][j+2].element));
-				 * prepareToMove($(board[i+1][j+2].element), this.color, i+1, j+2, this,
-				 * this.placesToMove, board[this.x][this.y]);
-				 * 
-				 * } else if(board[i+1][j+2].piece.player != null &&
-				 * board[i+1][j+2].piece.player != this.player){
-				 * 
-				 * this.placesToMove.push($(board[i+1][j+2].element));
-				 * prepareToMove($(board[i+1][j+2].element), this.color, i+1, j+2, this,
-				 * this.placesToMove, board[this.x][this.y]);
-				 * 
-				 * if(board[i+1][j+2].piece == currentKing){
-				 * 
-				 * currentKing.isCheck = true; } } } }
-				 * 
-				 * if(i-1 > 0){
-				 * 
-				 * if(!board[i-1][j+2].blank){
-				 * 
-				 * if(board[i-1][j+2].piece == null){
-				 * 
-				 * this.placesToMove.push($(board[i-1][j+2].element));
-				 * prepareToMove($(board[i-1][j+2].element), this.color, i-1, j+2, this,
-				 * this.placesToMove, board[this.x][this.y]);
-				 * 
-				 * } else if(board[i-1][j+2].piece.player != null &&
-				 * board[i-1][j+2].piece.player != this.player){
-				 * 
-				 * this.placesToMove.push($(board[i-1][j+2].element));
-				 * prepareToMove($(board[i-1][j+2].element), this.color, i-1, j+2, this,
-				 * this.placesToMove, board[this.x][this.y]);
-				 * 
-				 * if(board[i-1][j+2].piece == currentKing){
-				 * 
-				 * currentKing.isCheck = true; } } } } }
-				 * 
-				 * if(j-2 >= 0){
-				 * 
-				 * if(i+1 < 13){
-				 * 
-				 * if(!board[i+1][j-2].blank){
-				 * 
-				 * if(board[i+1][j-2].piece == null){
-				 * 
-				 * this.placesToMove.push($(board[i+1][j-2].element));
-				 * prepareToMove($(board[i+1][j-2].element), this.color, i+1, j-2, this,
-				 * this.placesToMove, board[this.x][this.y]);
-				 * 
-				 * } else if(board[i+1][j-2].piece.player != null &&
-				 * board[i+1][j-2].piece.player != this.player){
-				 * 
-				 * this.placesToMove.push($(board[i+1][j-2].element));
-				 * prepareToMove($(board[i+1][j-2].element), this.color, i+1, j-2, this,
-				 * this.placesToMove, board[this.x][this.y]);
-				 * 
-				 * if(board[i+1][j-2].piece == currentKing){
-				 * 
-				 * currentKing.isCheck = true; } } } }
-				 * 
-				 * if(i-1 > 0){
-				 * 
-				 * if(!board[i-1][j-2].blank){
-				 * 
-				 * if(board[i-1][j-2].piece == null){
-				 * 
-				 * this.placesToMove.push($(board[i-1][j-2].element));
-				 * prepareToMove($(board[i-1][j-2].element), this.color, i-1, j-2, this,
-				 * this.placesToMove, board[this.x][this.y]);
-				 * 
-				 * } else if(board[i-1][j-2].piece.player != null &&
-				 * board[i-1][j-2].piece.player != this.player){
-				 * 
-				 * this.placesToMove.push($(board[i-1][j-2].element));
-				 * prepareToMove($(board[i-1][j-2].element), this.color, i-1, j-2, this,
-				 * this.placesToMove, board[this.x][this.y]);
-				 * 
-				 * if(board[i-1][j-2].piece == currentKing){
-				 * 
-				 * currentKing.isCheck = true; } } }
-				 */
+				if (place.getX() - 1 >= 0) {
 
+					Place otherPlace = place.getBoard().getPlacez()[place.getX() - 1][place.getY() + 2];
+
+					if (otherPlace != null && otherPlace != place) {
+
+						if (otherPlace.getPiece() != null) {
+
+							if (otherPlace.getPiece().getColor() != color) {
+
+								otherPlace.attack(color);
+							}
+
+						} else {
+
+							otherPlace.attack(color);
+						}
+					}
+				}
+			}
+
+			if (place.getY() - 2 >= 0) {
+
+				if (place.getX() + 1 < 12) {
+
+					Place otherPlace = place.getBoard().getPlacez()[place.getX() + 1][place.getY() - 2];
+
+					if (otherPlace != null && otherPlace != place) {
+
+						if (otherPlace.getPiece() != null) {
+
+							if (otherPlace.getPiece().getColor() != color) {
+
+								otherPlace.attack(color);
+							}
+
+						} else {
+
+							otherPlace.attack(color);
+						}
+					}
+				}
+
+				if (place.getX() - 1 >= 0) {
+
+					Place otherPlace = place.getBoard().getPlacez()[place.getX() - 1][place.getY() - 2];
+
+					if (otherPlace != null && otherPlace != place) {
+
+						if (otherPlace.getPiece() != null) {
+
+							if (otherPlace.getPiece().getColor() != color) {
+
+								otherPlace.attack(color);
+							}
+
+						} else {
+
+							otherPlace.attack(color);
+						}
+					}
+				}
 			}
 
 			selected = true;
 
-		} else
-
-		{
+		} else {
 
 			unselect();
 		}
@@ -244,8 +214,100 @@ public class Horse extends Piece {
 
 	@Override
 	public void unselect() {
-		// TODO Auto-generated method stub
 
+		if (place.getX() + 2 < 12) {
+
+			if (place.getY() + 1 < 12) {
+
+				Place otherPlace = place.getBoard().getPlacez()[place.getX() + 2][place.getY() + 1];
+
+				if (otherPlace != null && otherPlace != place) {
+
+					otherPlace.stopAttack();
+				}
+			}
+
+			if (place.getY() - 1 >= 0) {
+
+				Place otherPlace = place.getBoard().getPlacez()[place.getX() + 2][place.getY() - 1];
+
+				if (otherPlace != null && otherPlace != place) {
+
+					otherPlace.stopAttack();
+				}
+			}
+		}
+
+		if (place.getX() - 2 >= 0) {
+
+			if (place.getY() + 1 < 12) {
+
+				Place otherPlace = place.getBoard().getPlacez()[place.getX() - 2][place.getY() + 1];
+
+				if (otherPlace != null && otherPlace != place) {
+
+					otherPlace.stopAttack();
+				}
+			}
+
+			if (place.getY() - 1 >= 0) {
+
+				Place otherPlace = place.getBoard().getPlacez()[place.getX() - 2][place.getY() - 1];
+
+				if (otherPlace != null && otherPlace != place) {
+
+					otherPlace.stopAttack();
+				}
+			}
+		}
+
+		if (place.getY() + 2 < 12) {
+
+			if (place.getX() + 1 < 12) {
+
+				Place otherPlace = place.getBoard().getPlacez()[place.getX() + 1][place.getY() + 2];
+
+				if (otherPlace != null && otherPlace != place) {
+
+					otherPlace.stopAttack();
+				}
+			}
+
+			if (place.getX() - 1 >= 0) {
+
+				Place otherPlace = place.getBoard().getPlacez()[place.getX() - 1][place.getY() + 2];
+
+				if (otherPlace != null && otherPlace != place) {
+
+					otherPlace.stopAttack();
+				}
+			}
+		}
+
+		if (place.getY() - 2 >= 0) {
+
+			if (place.getX() + 1 < 12) {
+
+				Place otherPlace = place.getBoard().getPlacez()[place.getX() + 1][place.getY() - 2];
+
+				if (otherPlace != null && otherPlace != place) {
+
+					otherPlace.stopAttack();
+				}
+			}
+
+			if (place.getX() - 1 >= 0) {
+
+				Place otherPlace = place.getBoard().getPlacez()[place.getX() - 1][place.getY() - 2];
+
+				if (otherPlace != null && otherPlace != place) {
+
+					otherPlace.stopAttack();
+				}
+			}
+		}
+
+		selected = false;
 	}
 
 }
