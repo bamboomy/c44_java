@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.bamboomy.c44.board.pieces.Bisshop;
 import org.bamboomy.c44.board.pieces.Horse;
+import org.bamboomy.c44.board.pieces.King;
 import org.bamboomy.c44.board.pieces.Pawn;
 import org.bamboomy.c44.board.pieces.Piece;
 import org.bamboomy.c44.board.pieces.Queen;
@@ -57,6 +58,8 @@ public class Player {
 		piecez.add(new Queen(board.getPlacez()[5][3], color));
 		
 		piecez.add(new Horse(board.getPlacez()[3][5], color));
+		
+		piecez.add(new King(board.getPlacez()[8][8], color));
 	}
 
 	private void initYellow(Board board) {
