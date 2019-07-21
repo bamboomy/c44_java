@@ -122,5 +122,17 @@ public class Place {
 	public void click() {
 
 		System.out.println(getX() + ", " + getY() + ": " + getCssName());
+
+		board.getCurrentPlayer().getSelectedPiece().moveTo(this);
+	}
+
+	public void remove(Piece oldPiece) {
+
+		if (oldPiece != piece) {
+
+			throw new RuntimeException("this piece wasn't here :-(");
+		}
+
+		piece = null;
 	}
 }

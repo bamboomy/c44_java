@@ -10,6 +10,9 @@ public class Board {
 	@Getter
 	private Player[] playerz = new Player[4];
 
+	@Getter
+	private Player currentPlayer;
+
 	public Board() {
 
 		int color = 0;
@@ -43,6 +46,8 @@ public class Board {
 		}
 
 		playerz[0] = new Player(0, this);
+
+		currentPlayer = playerz[0];
 	}
 
 	public void click(String md5) {

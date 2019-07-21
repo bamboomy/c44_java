@@ -62,4 +62,15 @@ public abstract class Piece {
 	public abstract void click();
 
 	public abstract void unselect();
+
+	public void moveTo(Place otherPlace) {
+
+		unselect();
+
+		place.remove(this);
+
+		otherPlace.setPiece(this);
+
+		place = otherPlace;
+	}
 }

@@ -6,6 +6,8 @@ import org.bamboomy.c44.board.pieces.Pawn;
 import org.bamboomy.c44.board.pieces.Piece;
 import org.bamboomy.c44.board.pieces.Tower;
 
+import lombok.Getter;
+
 public class Player {
 
 	private int color;
@@ -14,6 +16,7 @@ public class Player {
 
 	private ArrayList<Piece> piecez = new ArrayList<Piece>();
 
+	@Getter
 	private Piece selectedPiece;
 
 	public Player(int color, Board board) {
