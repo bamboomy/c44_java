@@ -172,7 +172,5 @@ public class Player {
 		}
 
 		movable.get((int) (Math.random() * movable.size())).doRandomMove();
-
-		board.next();
 	}
 }
