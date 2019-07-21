@@ -85,7 +85,15 @@ public abstract class Piece {
 
 	protected abstract void setAttackablePlaces();
 
-	public abstract void unselect();
+	public void unselect() {
+
+		for(Place place: attackablePlaces) {
+			
+			place.stopAttack();
+		}
+
+		selected = false;
+	}
 
 	public void moveTo(Place otherPlace) {
 

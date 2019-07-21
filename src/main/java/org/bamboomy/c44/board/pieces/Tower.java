@@ -34,7 +34,7 @@ public class Tower extends Piece {
 		throw new RuntimeException("invalid color in tower");
 	}
 
-	private void setAttackablePlaces() {
+	protected void setAttackablePlaces() {
 
 		attackablePlaces = new ArrayList<Place>();
 		

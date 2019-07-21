@@ -35,25 +35,6 @@ public class Queen extends Piece {
 	}
 
 	@Override
-	public void click() {
-
-		if (!selected) {
-
-			int counter = 0;
-
-			place.getBoard().getPlayerz()[color].setSelected(this);
-
-
-			selected = true;
-
-		} else {
-
-			unselect();
-		}
-
-	}
-
-	@Override
 	public void unselect() {
 
 		int counter = 0;
