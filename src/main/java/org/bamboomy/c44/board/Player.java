@@ -18,6 +18,7 @@ public class Player {
 
 	public static final int RED = 0, YELLOW = 1, GREEN = 2, BLUE = 3;
 
+	@Getter
 	private ArrayList<Piece> piecez = new ArrayList<Piece>();
 
 	@Getter

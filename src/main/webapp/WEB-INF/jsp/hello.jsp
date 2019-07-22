@@ -36,18 +36,28 @@
 									<img src="../img/blank.png" width="40px" height="40px" />
 
 									<c:choose>
-										<c:when test="${place.hasPiece()}">
-											<img class="${place.getCssName()}"
-												src="${place.getPiece().getPieceName()}" width="40px"
-												height="40px"
-												onclick="clickToServer('${place.getPiece().getMd5()}')" />
+										<c:when test="${place.isAttacked()}">
+											<c:choose>
+												<c:when test="${place.hasPiece()}">
+													<img class="${place.getCssName()}"
+														src="${place.getPiece().getPieceName()}" width="40px"
+														height="40px"
+														onclick="clickToServer('${place.getMd5()}')" />
+												</c:when>
+												<c:otherwise>
+													<img class="${place.getCssName()}"
+														src="../img/transparent.png" width="40px" height="40px"
+														onclick="clickToServer('${place.getMd5()}')" />
+												</c:otherwise>
+											</c:choose>
 										</c:when>
 										<c:otherwise>
 											<c:choose>
-												<c:when test="${place.isAttacked()}">
+												<c:when test="${place.hasPiece()}">
 													<img class="${place.getCssName()}"
-														src="../img/transparent.png" width="40px" height="40px" 
-														onclick="clickToServer('${place.getMd5()}')" />
+														src="${place.getPiece().getPieceName()}" width="40px"
+														height="40px"
+														onclick="clickToServer('${place.getPiece().getMd5()}')" />
 												</c:when>
 												<c:otherwise>
 													<img class="${place.getCssName()}"
@@ -55,7 +65,6 @@
 												</c:otherwise>
 											</c:choose>
 										</c:otherwise>
-
 									</c:choose>
 
 								</div>

@@ -138,8 +138,13 @@ public class Place {
 
 		System.out.println(getX() + ", " + getY() + ": " + getCssName());
 
+		if (piece != null) {
+
+			board.getPlayerz()[piece.getColor()].getPiecez().remove(piece);
+		}
+
 		board.getCurrentPlayer().getSelectedPiece().moveTo(this);
-		
+
 		board.next();
 	}
 
