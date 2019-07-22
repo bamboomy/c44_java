@@ -104,12 +104,16 @@ public class Pawn extends Piece {
 				attackablePlaces.add(otherPlace);
 			}
 		}
+		
+		//em passant
 
 		if (xDelta != 0 && place.getY() + 1 < 12) {
 
 			otherPlace = place.getBoard().getPlacez()[place.getX() + xDelta][place.getY() + 1];
 
 			if (otherPlace != null && otherPlace.isEnPassant()) {
+				
+				System.out.println("en passant detected");
 
 				attackablePlaces.add(otherPlace);
 			}
@@ -120,6 +124,8 @@ public class Pawn extends Piece {
 			otherPlace = place.getBoard().getPlacez()[place.getX() + xDelta][place.getY() - 1];
 
 			if (otherPlace != null && otherPlace.isEnPassant()) {
+				
+				System.out.println("en passant detected");
 
 				attackablePlaces.add(otherPlace);
 			}
@@ -130,6 +136,8 @@ public class Pawn extends Piece {
 			otherPlace = place.getBoard().getPlacez()[place.getX() + 1][place.getY() + yDelta];
 
 			if (otherPlace != null && otherPlace.isEnPassant()) {
+				
+				System.out.println("en passant detected");
 
 				attackablePlaces.add(otherPlace);
 			}
@@ -140,6 +148,8 @@ public class Pawn extends Piece {
 			otherPlace = place.getBoard().getPlacez()[place.getX() - 1][place.getY() + yDelta];
 
 			if (otherPlace != null && otherPlace.isEnPassant()) {
+				
+				System.out.println("en passant detected");
 
 				attackablePlaces.add(otherPlace);
 			}

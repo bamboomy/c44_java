@@ -150,6 +150,16 @@ public class Place {
 
 			board.getPlayerz()[piece.getColor()].getPiecez().remove(piece);
 		}
+		
+		if(enPassant) {
+			
+			for(Piece piece: enPassantPieces) {
+				
+				piece.getPlace().remove(piece);
+				
+				board.getPlayerz()[piece.getColor()].getPiecez().remove(piece);
+			}
+		}
 
 		board.getCurrentPlayer().getSelectedPiece().moveTo(this);
 
@@ -169,6 +179,8 @@ public class Place {
 	public void setEnPassant(boolean enPassant) {
 
 		if (this.enPassant) {
+			
+			System.out.println("enpassant unset (low)");
 
 			enPassantPieces = new ArrayList<Piece>();
 		}

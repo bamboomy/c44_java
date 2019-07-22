@@ -137,8 +137,6 @@ public class Player {
 
 	boolean click(String md5) {
 
-		unsetEnPassant();
-
 		for (Piece piece : piecez) {
 
 			if (md5.equalsIgnoreCase(piece.getMd5())) {
@@ -183,6 +181,8 @@ public class Player {
 
 	public void setEnPassant(Place otherPlace, Pawn pawn) {
 
+		System.out.println("en passant set");
+		
 		enPassant = otherPlace;
 
 		enPassant.setEnPassant(true);
@@ -190,7 +190,9 @@ public class Player {
 		enPassant.getEnPassantPieces().add(pawn);
 	}
 
-	private void unsetEnPassant() {
+	public void unsetEnPassant() {
+		
+		System.out.println("enpassant unset (high)");
 
 		if (enPassant != null) {
 

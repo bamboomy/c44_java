@@ -13,6 +13,7 @@ import lombok.Getter;
 
 public abstract class Piece {
 
+	@Getter
 	protected Place place;
 
 	@Getter
