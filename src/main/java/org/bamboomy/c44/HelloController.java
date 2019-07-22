@@ -22,7 +22,18 @@ public class HelloController {
         model.addAttribute("board", board);
         return "hello";
     }
-    
+
+    @GetMapping({"/newGame"})
+    public String newGame(Model model, @RequestParam(value="name", required=false, defaultValue="World") String name) {
+    	
+    	BoardController.getInstance().setBoard(new Board());
+    	
+    	board = BoardController.getInstance().getBoard();
+    	
+        model.addAttribute("board", board);
+        return "hello";
+    }
+
     /*
     @PostMapping(path = "/piece", consumes = "application/json", produces = "application/json")
     public @ResponseBody ResponseEntity<String> clickPiece(@RequestBody String md5) {

@@ -15,6 +15,8 @@ public class PieceController {
 	@RequestMapping(value = "/{md5}", method = RequestMethod.GET)
 	public synchronized String getData(@PathVariable("md5") String md5) {
 		
+		board = BoardController.getInstance().getBoard();
+		
 		System.out.println(md5);
 		
 		board.click(md5);
