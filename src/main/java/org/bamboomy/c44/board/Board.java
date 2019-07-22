@@ -85,6 +85,8 @@ public class Board {
 		
 		currentPlayer.unsetEnPassant();
 		
+		currentPlayer.checkCheck();
+		
 		if(currentPlayer.isRobot()) {
 
 			currentPlayer.generateRandomMove();

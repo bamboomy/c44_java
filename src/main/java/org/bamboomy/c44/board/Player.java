@@ -31,6 +31,8 @@ public class Player {
 
 	private Place enPassant = null;
 
+	private Piece king;
+
 	public Player(int color, Board board, boolean isRobot) {
 
 		if (color != RED && color != BLUE && color != GREEN && color != YELLOW) {
@@ -72,7 +74,9 @@ public class Player {
 		piecez.add(new Horse(board.getPlacez()[0][3], color));
 		piecez.add(new Bisshop(board.getPlacez()[0][4], color));
 
-		piecez.add(new King(board.getPlacez()[0][5], color));
+		king = new King(board.getPlacez()[0][5], color);
+
+		piecez.add(king);
 		piecez.add(new Queen(board.getPlacez()[0][6], color));
 
 		piecez.add(new Bisshop(board.getPlacez()[0][7], color));
@@ -90,7 +94,9 @@ public class Player {
 		piecez.add(new Horse(board.getPlacez()[3][11], color));
 		piecez.add(new Bisshop(board.getPlacez()[4][11], color));
 
-		piecez.add(new King(board.getPlacez()[5][11], color));
+		king = new King(board.getPlacez()[5][11], color);
+
+		piecez.add(king);
 		piecez.add(new Queen(board.getPlacez()[6][11], color));
 
 		piecez.add(new Bisshop(board.getPlacez()[7][11], color));
@@ -108,8 +114,10 @@ public class Player {
 		piecez.add(new Horse(board.getPlacez()[11][3], color));
 		piecez.add(new Bisshop(board.getPlacez()[11][4], color));
 
+		king = new King(board.getPlacez()[11][6], color);
+
 		piecez.add(new Queen(board.getPlacez()[11][5], color));
-		piecez.add(new King(board.getPlacez()[11][6], color));
+		piecez.add(king);
 
 		piecez.add(new Bisshop(board.getPlacez()[11][7], color));
 		piecez.add(new Horse(board.getPlacez()[11][8], color));
@@ -126,8 +134,10 @@ public class Player {
 		piecez.add(new Horse(board.getPlacez()[3][0], color));
 		piecez.add(new Bisshop(board.getPlacez()[4][0], color));
 
+		king = new King(board.getPlacez()[6][0], color);
+
 		piecez.add(new Queen(board.getPlacez()[5][0], color));
-		piecez.add(new King(board.getPlacez()[6][0], color));
+		piecez.add(king);
 
 		piecez.add(new Bisshop(board.getPlacez()[7][0], color));
 		piecez.add(new Horse(board.getPlacez()[8][0], color));
@@ -182,7 +192,7 @@ public class Player {
 	public void setEnPassant(Place otherPlace, Pawn pawn) {
 
 		System.out.println("en passant set");
-		
+
 		enPassant = otherPlace;
 
 		enPassant.setEnPassant(true);
@@ -191,7 +201,7 @@ public class Player {
 	}
 
 	public void unsetEnPassant() {
-		
+
 		System.out.println("enpassant unset (high)");
 
 		if (enPassant != null) {
@@ -200,5 +210,24 @@ public class Player {
 		}
 
 		enPassant = null;
+	}
+
+	public boolean checkCheck() {
+
+		for (Player player : board.getPlayerz()) {
+
+			if (player != this) {
+
+				for (Piece piece : player.getPiecez()) {
+
+					if (piece.checkCheck(king)) {
+						
+						return true;
+					}
+				}
+			}
+		}
+
+		return false;
 	}
 }

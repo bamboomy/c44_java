@@ -18,6 +18,15 @@
 		});
 	}
 </script>
+<c:choose>
+	<c:when test="${board.getCurrentPlayer().checkCheck()}">
+		<script type="text/javascript">
+		
+			alert('check!!!');
+			
+		</script>
+	</c:when>
+</c:choose>
 </head>
 <body>
 	<center>
@@ -41,8 +50,7 @@
 												<c:when test="${place.hasPiece()}">
 													<img class="${place.getCssName()}"
 														src="${place.getPiece().getPieceName()}" width="40px"
-														height="40px"
-														onclick="clickToServer('${place.getMd5()}')" />
+														height="40px" onclick="clickToServer('${place.getMd5()}')" />
 												</c:when>
 												<c:otherwise>
 													<img class="${place.getCssName()}"

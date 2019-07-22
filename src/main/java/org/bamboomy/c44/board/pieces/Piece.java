@@ -120,4 +120,19 @@ public abstract class Piece {
 
 		attackablePlaces.get((int) (Math.random() * attackablePlaces.size())).click();
 	}
+
+	public boolean checkCheck(Piece king) {
+
+		setAttackablePlaces();
+
+		for (Place place : attackablePlaces) {
+
+			if (place.equals(king.getPlace())) {
+
+				return true;
+			}
+		}
+
+		return false;
+	}
 }
