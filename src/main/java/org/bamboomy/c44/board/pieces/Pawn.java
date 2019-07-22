@@ -54,6 +54,8 @@ public class Pawn extends Piece {
 
 			if (neverMoved) {
 
+				place.getBoard().getCurrentPlayer().setEnPassant(otherPlace, this);
+
 				otherPlace = place.getBoard().getPlacez()[place.getX() + (xDelta * 2)][place.getY() + (yDelta * 2)];
 
 				if (otherPlace != null && !otherPlace.hasPiece()) {
@@ -98,6 +100,46 @@ public class Pawn extends Piece {
 			otherPlace = place.getBoard().getPlacez()[place.getX() - 1][place.getY() + yDelta];
 
 			if (otherPlace != null && otherPlace.getPiece() != null && otherPlace.getPiece().getColor() != color) {
+
+				attackablePlaces.add(otherPlace);
+			}
+		}
+
+		if (xDelta != 0 && place.getY() + 1 < 12) {
+
+			otherPlace = place.getBoard().getPlacez()[place.getX() + xDelta][place.getY() + 1];
+
+			if (otherPlace != null && otherPlace.isEnPassant()) {
+
+				attackablePlaces.add(otherPlace);
+			}
+		}
+
+		if (xDelta != 0 && place.getY() - 1 >= 0) {
+
+			otherPlace = place.getBoard().getPlacez()[place.getX() + xDelta][place.getY() - 1];
+
+			if (otherPlace != null && otherPlace.isEnPassant()) {
+
+				attackablePlaces.add(otherPlace);
+			}
+		}
+
+		if (yDelta != 0 && place.getX() + 1 < 12) {
+
+			otherPlace = place.getBoard().getPlacez()[place.getX() + 1][place.getY() + yDelta];
+
+			if (otherPlace != null && otherPlace.isEnPassant()) {
+
+				attackablePlaces.add(otherPlace);
+			}
+		}
+
+		if (yDelta != 0 && place.getX() - 1 >= 0) {
+
+			otherPlace = place.getBoard().getPlacez()[place.getX() - 1][place.getY() + yDelta];
+
+			if (otherPlace != null && otherPlace.isEnPassant()) {
 
 				attackablePlaces.add(otherPlace);
 			}

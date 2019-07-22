@@ -29,6 +29,8 @@ public class Player {
 
 	private Board board;
 
+	private Place enPassant = null;
+
 	public Player(int color, Board board, boolean isRobot) {
 
 		if (color != RED && color != BLUE && color != GREEN && color != YELLOW) {
@@ -135,6 +137,8 @@ public class Player {
 
 	boolean click(String md5) {
 
+		unsetEnPassant();
+
 		for (Piece piece : piecez) {
 
 			if (md5.equalsIgnoreCase(piece.getMd5())) {
@@ -162,6 +166,8 @@ public class Player {
 
 	public void generateRandomMove() {
 
+		unsetEnPassant();
+
 		ArrayList<Piece> movable = new ArrayList<Piece>();
 
 		for (Piece piece : piecez) {
@@ -173,5 +179,24 @@ public class Player {
 		}
 
 		movable.get((int) (Math.random() * movable.size())).doRandomMove();
+	}
+
+	public void setEnPassant(Place otherPlace, Pawn pawn) {
+
+		enPassant = otherPlace;
+
+		enPassant.setEnPassant(true);
+
+		enPassant.getEnPassantPieces().add(pawn);
+	}
+
+	private void unsetEnPassant() {
+
+		if (enPassant != null) {
+
+			enPassant.setEnPassant(false);
+		}
+
+		enPassant = null;
 	}
 }

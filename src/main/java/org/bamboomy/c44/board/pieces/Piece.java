@@ -35,7 +35,7 @@ public abstract class Piece {
 
 		String time = System.currentTimeMillis() + "6";
 
-		time += (Math.random() * 999);
+		time += (Math.random() * 777);
 
 		try {
 
