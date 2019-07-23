@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import javax.xml.bind.DatatypeConverter;
 
+import org.bamboomy.c44.board.pieces.Pawn;
 import org.bamboomy.c44.board.pieces.Piece;
 
 import lombok.Getter;
@@ -43,6 +44,10 @@ public class Place {
 	@Getter
 	@Setter
 	private ArrayList<Piece> enPassantPieces = new ArrayList<Piece>();
+
+	private Place attachedEnPassant;
+
+	private Pawn attachedPiece;
 
 	public Place(int color, Board board, int i, int j) {
 
@@ -146,17 +151,26 @@ public class Place {
 
 		System.out.println(getX() + ", " + getY() + ": " + getCssName());
 
+		if (attachedEnPassant != null && piece == null) {
+
+			attachedEnPassant.setEnPassant(true, attachedPiece);
+
+			board.getCurrentPlayer().setEnPassant(attachedEnPassant);
+
+			attachedEnPassant = null;
+		}
+
 		if (piece != null) {
 
 			board.getPlayerz()[piece.getColor()].getPiecez().remove(piece);
 		}
-		
-		if(enPassant) {
-			
-			for(Piece piece: enPassantPieces) {
-				
+
+		if (enPassant) {
+
+			for (Piece piece : enPassantPieces) {
+
 				piece.getPlace().remove(piece);
-				
+
 				board.getPlayerz()[piece.getColor()].getPiecez().remove(piece);
 			}
 		}
@@ -176,15 +190,30 @@ public class Place {
 		piece = null;
 	}
 
-	public void setEnPassant(boolean enPassant) {
+	public void setEnPassant(boolean enPassant, Pawn pawn) {
 
-		if (this.enPassant) {
-			
+		if (this.enPassant && enPassant) {
+
 			System.out.println("enpassant unset (low)");
+
+			enPassantPieces.add(pawn);
+
+		} else if (enPassant) {
 
 			enPassantPieces = new ArrayList<Piece>();
 		}
 
 		this.enPassant = enPassant;
+	}
+
+	public void attachEnPassant(Place enPassant, Pawn pawn) {
+
+		attachedEnPassant = enPassant;
+		attachedPiece = pawn;
+	}
+
+	public void unsetEnPassant() {
+
+		enPassant = false;
 	}
 }

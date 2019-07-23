@@ -53,14 +53,16 @@ public class Pawn extends Piece {
 			attackablePlaces.add(otherPlace);
 
 			if (neverMoved) {
-
-				place.getBoard().getCurrentPlayer().setEnPassant(otherPlace, this);
+				
+				Place enPassant = otherPlace;
 
 				otherPlace = place.getBoard().getPlacez()[place.getX() + (xDelta * 2)][place.getY() + (yDelta * 2)];
 
 				if (otherPlace != null && !otherPlace.hasPiece()) {
 
 					attackablePlaces.add(otherPlace);
+					
+					otherPlace.attachEnPassant(enPassant, this);
 				}
 			}
 		}

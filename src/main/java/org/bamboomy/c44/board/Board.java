@@ -16,7 +16,7 @@ public class Board {
 	private int turn = 2;
 
 	public Board() {
-
+		
 		int color = 0;
 
 		for (int i = 0; i < 12; i++) {
@@ -82,8 +82,6 @@ public class Board {
 		turn = (turn + 1) % 4;
 		
 		currentPlayer = playerz[turn];
-		
-		currentPlayer.unsetEnPassant();
 		
 		currentPlayer.checkCheck();
 		

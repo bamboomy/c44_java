@@ -29,9 +29,9 @@ public class Player {
 
 	private Board board;
 
-	private Place enPassant = null;
-
 	private Piece king;
+	
+	private Place enPassantPlace;
 
 	public Player(int color, Board board, boolean isRobot) {
 
@@ -174,8 +174,6 @@ public class Player {
 
 	public void generateRandomMove() {
 
-		unsetEnPassant();
-
 		ArrayList<Piece> movable = new ArrayList<Piece>();
 
 		for (Piece piece : piecez) {
@@ -187,29 +185,6 @@ public class Player {
 		}
 
 		movable.get((int) (Math.random() * movable.size())).doRandomMove();
-	}
-
-	public void setEnPassant(Place otherPlace, Pawn pawn) {
-
-		System.out.println("en passant set");
-
-		enPassant = otherPlace;
-
-		enPassant.setEnPassant(true);
-
-		enPassant.getEnPassantPieces().add(pawn);
-	}
-
-	public void unsetEnPassant() {
-
-		System.out.println("enpassant unset (high)");
-
-		if (enPassant != null) {
-
-			enPassant.setEnPassant(false);
-		}
-
-		enPassant = null;
 	}
 
 	public boolean checkCheck() {
@@ -229,5 +204,18 @@ public class Player {
 		}
 
 		return false;
+	}
+	
+	public void setEnPassant(Place piecePlace) {
+		
+		enPassantPlace = piecePlace;
+	}
+	
+	private void unsetEnPassant() {
+		
+		if(enPassantPlace!= null) {
+		
+			enPassantPlace.unsetEnPassant();
+		}
 	}
 }
