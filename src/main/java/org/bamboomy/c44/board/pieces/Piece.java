@@ -25,6 +25,8 @@ public abstract class Piece {
 	protected boolean selected = false;
 
 	protected ArrayList<Place> attackablePlaces = new ArrayList<Place>();
+	
+	protected ArrayList<Place> preventPlacez = new ArrayList<>();
 
 	public Piece(Place place, int color) {
 
@@ -64,6 +66,8 @@ public abstract class Piece {
 	public abstract String getPieceName();
 
 	public void click() {
+		
+		System.out.println(getPieceName());
 
 		if (!selected) {
 
@@ -96,7 +100,7 @@ public abstract class Piece {
 		selected = false;
 	}
 
-	public void moveTo(Place otherPlace) {
+	public boolean moveTo(Place otherPlace) {
 
 		unselect();
 
@@ -105,6 +109,8 @@ public abstract class Piece {
 		otherPlace.setPiece(this);
 
 		place = otherPlace;
+		
+		return false;
 	}
 
 	public boolean canMove() {
@@ -118,7 +124,7 @@ public abstract class Piece {
 
 		click();
 
-		attackablePlaces.get((int) (Math.random() * attackablePlaces.size())).click();
+		attackablePlaces.get((int) (Math.random() * attackablePlaces.size())).click(false);
 	}
 
 	public boolean checkCheck(Piece king) {
@@ -134,5 +140,41 @@ public abstract class Piece {
 		}
 
 		return false;
+	}
+
+	public boolean canPrevent() {
+
+		setAttackablePlaces();
+		
+		preventPlacez = new ArrayList<>();
+		
+		boolean result = false;
+
+		for (Place place : attackablePlaces) {
+			
+			click();
+
+			place.click(true);
+			
+			if(!place.getBoard().getCurrentPlayer().checkCheck()) {
+				
+				preventPlacez.add(place);
+				
+				result = true;
+			}
+			
+			place.rollBack();
+		}
+
+		return result;
+	}
+
+	public void rollBackMoveTo(Place oldPlace, boolean unused) {
+
+		place.remove(this);
+		
+		oldPlace.setPiece(this);
+		
+		place = oldPlace;		
 	}
 }

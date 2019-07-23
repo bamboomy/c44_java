@@ -18,15 +18,20 @@
 		});
 	}
 </script>
-<c:choose>
-	<c:when test="${board.getCurrentPlayer().checkCheck()}">
+<c:if test="${board.getCurrentPlayer().checkCheck()}">
 		<script type="text/javascript">
 		
 			alert('check!!!');
 			
 		</script>
-	</c:when>
-</c:choose>
+</c:if>
+<c:if test="${board.getCurrentPlayer().checkCheck() && board.getCurrentPlayer().canPrevent()}">
+		<script type="text/javascript">
+		
+			alert('... but you can prevent...');
+			
+		</script>
+</c:if>
 </head>
 <body>
 	<center>

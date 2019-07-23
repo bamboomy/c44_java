@@ -18,7 +18,7 @@ public class Place {
 	@Getter
 	private final int color;
 
-	public static int BLACK = 0, WHITE = 1; 
+	public static int BLACK = 0, WHITE = 1;
 
 	@Getter
 	@Setter
@@ -48,6 +48,12 @@ public class Place {
 	private Place attachedEnPassant;
 
 	private Pawn attachedPiece;
+
+	private Piece takenPiece = null, selectedPiece = null;
+
+	private Place oldPlace = null;
+	
+	private boolean neverMoved = false;
 
 	public Place(int color, Board board, int i, int j) {
 
@@ -147,37 +153,46 @@ public class Place {
 		whiteString = "piece_on_white";
 	}
 
-	public void click() {
+	public void click(boolean noNext) {
 
 		System.out.println(getX() + ", " + getY() + ": " + getCssName());
 
-		if (attachedEnPassant != null && piece == null) {
-
-			attachedEnPassant.setEnPassant(true, attachedPiece);
-
-			board.getCurrentPlayer().setEnPassant(attachedEnPassant);
-
-			attachedEnPassant = null;
-		}
+		/*
+		 * if (attachedEnPassant != null && piece == null) {
+		 * 
+		 * attachedEnPassant.setEnPassant(true, attachedPiece);
+		 * 
+		 * board.getCurrentPlayer().setEnPassant(attachedEnPassant);
+		 * 
+		 * attachedEnPassant = null; }
+		 */
 
 		if (piece != null) {
+
+			takenPiece = piece;
 
 			board.getPlayerz()[piece.getColor()].getPiecez().remove(piece);
 		}
 
-		if (enPassant) {
+		/*
+		 * if (enPassant) {
+		 * 
+		 * for (Piece piece : enPassantPieces) {
+		 * 
+		 * piece.getPlace().remove(piece);
+		 * 
+		 * board.getPlayerz()[piece.getColor()].getPiecez().remove(piece); } }
+		 */
 
-			for (Piece piece : enPassantPieces) {
+		selectedPiece = board.getCurrentPlayer().getSelectedPiece();
 
-				piece.getPlace().remove(piece);
+		oldPlace = board.getCurrentPlayer().getSelectedPiece().getPlace();
 
-				board.getPlayerz()[piece.getColor()].getPiecez().remove(piece);
-			}
+		neverMoved  = board.getCurrentPlayer().getSelectedPiece().moveTo(this);
+
+		if (!noNext) {
+			board.next();
 		}
-
-		board.getCurrentPlayer().getSelectedPiece().moveTo(this);
-
-		board.next();
 	}
 
 	public void remove(Piece oldPiece) {
@@ -215,5 +230,21 @@ public class Place {
 	public void unsetEnPassant() {
 
 		enPassant = false;
+	}
+
+	public void rollBack() {
+
+		if (takenPiece != null) {
+
+			board.getPlayerz()[takenPiece.getColor()].getPiecez().add(takenPiece);
+
+			piece = takenPiece;
+		}
+
+		selectedPiece.rollBackMoveTo(oldPlace, neverMoved);
+
+		takenPiece = null;
+		oldPlace = null;
+		selectedPiece = null;
 	}
 }

@@ -30,7 +30,7 @@ public class Player {
 	private Board board;
 
 	private Piece king;
-	
+
 	private Place enPassantPlace;
 
 	public Player(int color, Board board, boolean isRobot) {
@@ -196,7 +196,7 @@ public class Player {
 				for (Piece piece : player.getPiecez()) {
 
 					if (piece.checkCheck(king)) {
-						
+
 						return true;
 					}
 				}
@@ -205,17 +205,29 @@ public class Player {
 
 		return false;
 	}
-	
+
 	public void setEnPassant(Place piecePlace) {
-		
+
 		enPassantPlace = piecePlace;
 	}
-	
+
 	private void unsetEnPassant() {
-		
-		if(enPassantPlace!= null) {
-		
+
+		if (enPassantPlace != null) {
+
 			enPassantPlace.unsetEnPassant();
 		}
+	}
+
+	public boolean canPrevent() {
+
+		boolean result = false;
+
+		for (Piece piece : getPiecez()) {
+
+			result |= piece.canPrevent();
+		}
+
+		return result;
 	}
 }

@@ -12,11 +12,11 @@ public class Board {
 
 	@Getter
 	private Player currentPlayer;
-	
+
 	private int turn = 2;
 
 	public Board() {
-		
+
 		int color = 0;
 
 		for (int i = 0; i < 12; i++) {
@@ -54,7 +54,7 @@ public class Board {
 		playerz[2] = new Player(2, this, false);
 
 		playerz[3] = new Player(3, this, false);
-		
+
 		currentPlayer = playerz[turn];
 	}
 
@@ -70,7 +70,7 @@ public class Board {
 
 					if (place != null && place.getMd5() != null && place.getMd5().equalsIgnoreCase(md5)) {
 
-						place.click();
+						place.click(false);
 					}
 				}
 			}
@@ -80,12 +80,24 @@ public class Board {
 	public void next() {
 
 		turn = (turn + 1) % 4;
-		
+
 		currentPlayer = playerz[turn];
 		
-		currentPlayer.checkCheck();
-		
-		if(currentPlayer.isRobot()) {
+		/*
+		 * if(currentPlayer.canPrevent()) {
+		 * 
+		 * } /* if(currentPlayer.checkCheck()) {
+		 * 
+		 * if(currentPlayer.canPrevent()) {
+		 * 
+		 * 
+		 * } else {
+		 * 
+		 * 
+		 * } }
+		 */
+
+		if (currentPlayer.isRobot()) {
 
 			currentPlayer.generateRandomMove();
 		}
