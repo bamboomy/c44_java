@@ -159,6 +159,13 @@ public class Player {
 				board.setPlayerIsMoving(true);
 
 				piece.click();
+				
+				board.setWouldBeCheck(false);
+				
+				if(piece.checkCheck()) {
+					
+					board.setWouldBeCheck(true);
+				}
 
 				return true;
 			}

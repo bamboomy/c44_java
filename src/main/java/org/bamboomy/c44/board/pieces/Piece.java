@@ -142,14 +142,14 @@ public abstract class Piece {
 
 				index = (int) (Math.random() * attackablePlaces.size());
 			}
-			
+
 			click();
 
 			attackablePlaces.get(index).click(true);
 		}
-		
-		if(place.getBoard().getCurrentPlayer().checkCheck() ) {
-			
+
+		if (place.getBoard().getCurrentPlayer().checkCheck()) {
+
 			attackablePlaces.get(index).rollBack();
 		}
 
@@ -214,5 +214,28 @@ public abstract class Piece {
 		click();
 
 		preventPlacez.get((int) Math.random() * preventPlacez.size()).click(false);
+	}
+
+	public boolean checkCheck() {
+
+		ArrayList<Place> filtered = new ArrayList<>();
+
+		for (Place place : attackablePlaces) {
+
+			place.click(true);
+
+			if (!place.getBoard().getCurrentPlayer().checkCheck()) {
+
+				filtered.add(place);
+			}
+
+			Piece selectedPiece = place.getPiece();
+
+			place.rollBack();
+
+			selectedPiece.click();
+		}
+
+		return filtered.size() == 0;
 	}
 }

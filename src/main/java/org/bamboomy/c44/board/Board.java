@@ -23,6 +23,10 @@ public class Board {
 	@Getter
 	@Setter
 	private boolean playerIsMoving = false;
+	
+	@Getter
+	@Setter
+	private boolean wouldBeCheck = false;
 
 	public Board() {
 
