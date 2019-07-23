@@ -186,7 +186,35 @@ public class Player {
 			}
 		}
 
-		movable.get((int) (Math.random() * movable.size())).doRandomMove();
+		ArrayList<Integer> selectedPlaces = new ArrayList<>();
+
+		int index = (int) (Math.random() * movable.size());
+
+		while (!movable.get(index).doRandomMove() && selectedPlaces.size() < movable.size()) {
+
+			selectedPlaces.add(index);
+
+			index = (int) (Math.random() * movable.size());
+
+			while (movable.contains(index)) {
+
+				index = (int) (Math.random() * movable.size());
+			}
+		}
+
+		if (selectedPlaces.size() >= movable.size()) {
+
+			die();
+
+		} else {
+
+			board.next();
+		}
+	}
+
+	private void die() {
+
+		board.removeMe();
 	}
 
 	public boolean checkCheck() {
@@ -234,7 +262,7 @@ public class Player {
 			result |= canPrevent;
 
 			if (canPrevent) {
-				
+
 				preventPieces.add(piece);
 			}
 		}

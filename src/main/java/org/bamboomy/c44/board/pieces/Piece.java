@@ -120,11 +120,40 @@ public abstract class Piece {
 		return attackablePlaces.size() > 0;
 	}
 
-	public void doRandomMove() {
+	public boolean doRandomMove() {
 
 		click();
 
-		attackablePlaces.get((int) (Math.random() * attackablePlaces.size())).click(false);
+		ArrayList<Integer> moves = new ArrayList<>();
+
+		int index = (int) (Math.random() * attackablePlaces.size());
+
+		attackablePlaces.get(index).click(true);
+
+		while (place.getBoard().getCurrentPlayer().checkCheck() && moves.size() < attackablePlaces.size()) {
+
+			attackablePlaces.get(index).rollBack();
+
+			moves.add(index);
+
+			index = (int) (Math.random() * attackablePlaces.size());
+
+			while (moves.contains(index)) {
+
+				index = (int) (Math.random() * attackablePlaces.size());
+			}
+			
+			click();
+
+			attackablePlaces.get(index).click(true);
+		}
+		
+		if(place.getBoard().getCurrentPlayer().checkCheck() ) {
+			
+			attackablePlaces.get(index).rollBack();
+		}
+
+		return moves.size() < attackablePlaces.size();
 	}
 
 	public boolean checkCheck(Piece king) {

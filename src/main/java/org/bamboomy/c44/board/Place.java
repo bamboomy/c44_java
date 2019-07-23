@@ -171,7 +171,7 @@ public class Place {
 
 			takenPiece = piece;
 
-			board.getPlayerz()[piece.getColor()].getPiecez().remove(piece);
+			board.getPlayerz()[takenPiece.getColor()].getPiecez().remove(piece);
 		}
 
 		/*

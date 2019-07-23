@@ -1,5 +1,7 @@
 package org.bamboomy.c44.board;
 
+import java.util.ArrayList;
+
 import lombok.Getter;
 
 public class Board {
@@ -14,6 +16,8 @@ public class Board {
 	private Player currentPlayer;
 
 	private int turn = 2;
+
+	private ArrayList<Integer> deadPlayers = new ArrayList<>();
 
 	public Board() {
 
@@ -81,6 +85,18 @@ public class Board {
 
 		turn = (turn + 1) % 4;
 
+		if (deadPlayers.size() >= 3) {
+
+			System.out.println("Game ended...");
+
+			return;
+		}
+
+		while (deadPlayers.contains(turn)) {
+
+			turn = (turn + 1) % 4;
+		}
+
 		currentPlayer = playerz[turn];
 
 		if (currentPlayer.isRobot()) {
@@ -90,16 +106,23 @@ public class Board {
 				if (currentPlayer.canPrevent()) {
 
 					currentPlayer.prevent();
-					
+
 				} else {
 
 					currentPlayer.generateRandomMove();
 				}
-				
+
 			} else {
-			
+
 				currentPlayer.generateRandomMove();
 			}
 		}
+	}
+
+	public void removeMe() {
+
+		deadPlayers.add(turn);
+
+		next();
 	}
 }
