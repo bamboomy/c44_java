@@ -175,6 +175,8 @@ public abstract class Piece {
 		
 		oldPlace.setPiece(this);
 		
-		place = oldPlace;		
+		place = oldPlace;	
+		
+		unselect();
 	}
 }

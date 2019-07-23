@@ -187,5 +187,7 @@ public class Pawn extends Piece {
 		place = oldPlace;
 
 		this.neverMoved = neverMoved;
+		
+		unselect();
 	}
 }

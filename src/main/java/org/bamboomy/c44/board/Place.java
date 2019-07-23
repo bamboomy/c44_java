@@ -52,7 +52,7 @@ public class Place {
 	private Piece takenPiece = null, selectedPiece = null;
 
 	private Place oldPlace = null;
-	
+
 	private boolean neverMoved = false;
 
 	public Place(int color, Board board, int i, int j) {
@@ -188,7 +188,7 @@ public class Place {
 
 		oldPlace = board.getCurrentPlayer().getSelectedPiece().getPlace();
 
-		neverMoved  = board.getCurrentPlayer().getSelectedPiece().moveTo(this);
+		neverMoved = board.getCurrentPlayer().getSelectedPiece().moveTo(this);
 
 		if (!noNext) {
 			board.next();
@@ -199,7 +199,9 @@ public class Place {
 
 		if (oldPiece != piece) {
 
-			throw new RuntimeException("this piece wasn't here :-(");
+			throw new RuntimeException("this piece wasn't here :-( -> " + oldPiece.getPlace().getX() + ", "
+					+ oldPiece.getPlace().getY() + " == " + x + ", " + y + " != " + piece.getPlace().getX() + ", "
+					+ piece.getPlace().getY() );
 		}
 
 		piece = null;
@@ -237,11 +239,11 @@ public class Place {
 		if (takenPiece != null) {
 
 			board.getPlayerz()[takenPiece.getColor()].getPiecez().add(takenPiece);
-
-			piece = takenPiece;
 		}
 
 		selectedPiece.rollBackMoveTo(oldPlace, neverMoved);
+		
+		piece = takenPiece;
 
 		takenPiece = null;
 		oldPlace = null;
