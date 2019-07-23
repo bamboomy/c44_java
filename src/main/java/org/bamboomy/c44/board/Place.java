@@ -18,7 +18,7 @@ public class Place {
 	@Getter
 	private final int color;
 
-	public static int BLACK = 0, WHITE = 1;
+	public static int BLACK = 0, WHITE = 1; 
 
 	@Getter
 	@Setter
