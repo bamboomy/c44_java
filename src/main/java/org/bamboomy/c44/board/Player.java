@@ -33,6 +33,8 @@ public class Player {
 
 	private Place enPassantPlace;
 
+	private ArrayList<Piece> preventPieces = new ArrayList<>();
+
 	public Player(int color, Board board, boolean isRobot) {
 
 		if (color != RED && color != BLUE && color != GREEN && color != YELLOW) {
@@ -221,13 +223,27 @@ public class Player {
 
 	public boolean canPrevent() {
 
+		preventPieces = new ArrayList<>();
+
 		boolean result = false;
 
 		for (Piece piece : getPiecez()) {
 
-			result |= piece.canPrevent();
+			boolean canPrevent = piece.canPrevent();
+
+			result |= canPrevent;
+
+			if (canPrevent) {
+				
+				preventPieces.add(piece);
+			}
 		}
 
 		return result;
+	}
+
+	public void prevent() {
+
+		preventPieces.get((int) Math.random() * preventPieces.size()).prevent();
 	}
 }

@@ -49,11 +49,11 @@ public class Board {
 
 		playerz[0] = new Player(0, this, true);
 
-		playerz[1] = new Player(1, this, false);
+		playerz[1] = new Player(1, this, true);
 
 		playerz[2] = new Player(2, this, false);
 
-		playerz[3] = new Player(3, this, false);
+		playerz[3] = new Player(3, this, true);
 
 		currentPlayer = playerz[turn];
 	}
@@ -82,24 +82,24 @@ public class Board {
 		turn = (turn + 1) % 4;
 
 		currentPlayer = playerz[turn];
-		
-		/*
-		 * if(currentPlayer.canPrevent()) {
-		 * 
-		 * } /* if(currentPlayer.checkCheck()) {
-		 * 
-		 * if(currentPlayer.canPrevent()) {
-		 * 
-		 * 
-		 * } else {
-		 * 
-		 * 
-		 * } }
-		 */
 
 		if (currentPlayer.isRobot()) {
 
-			currentPlayer.generateRandomMove();
+			if (currentPlayer.checkCheck()) {
+
+				if (currentPlayer.canPrevent()) {
+
+					currentPlayer.prevent();
+					
+				} else {
+
+					currentPlayer.generateRandomMove();
+				}
+				
+			} else {
+			
+				currentPlayer.generateRandomMove();
+			}
 		}
 	}
 }
