@@ -138,7 +138,7 @@ public abstract class Piece {
 
 			index = (int) (Math.random() * attackablePlaces.size());
 
-			while (moves.contains(index)) {
+			while (moves.contains(index) && moves.size() < attackablePlaces.size()) {
 
 				index = (int) (Math.random() * attackablePlaces.size());
 			}

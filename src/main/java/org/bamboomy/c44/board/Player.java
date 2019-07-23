@@ -14,6 +14,7 @@ import lombok.Getter;
 
 public class Player {
 
+	@Getter
 	private int color;
 
 	public static final int RED = 0, YELLOW = 1, GREEN = 2, BLUE = 3;
@@ -155,6 +156,8 @@ public class Player {
 
 				System.out.println(piece.getPieceName());
 
+				board.setPlayerIsMoving(true);
+
 				piece.click();
 
 				return true;
@@ -196,7 +199,7 @@ public class Player {
 
 			index = (int) (Math.random() * movable.size());
 
-			while (movable.contains(index)) {
+			while (movable.contains(index) && selectedPlaces.size() < movable.size()) {
 
 				index = (int) (Math.random() * movable.size());
 			}
@@ -255,7 +258,14 @@ public class Player {
 
 		boolean result = false;
 
+		ArrayList<Piece> iDontUnderstandTheProblem = new ArrayList<>();
+
 		for (Piece piece : getPiecez()) {
+
+			iDontUnderstandTheProblem.add(piece);
+		}
+
+		for (Piece piece : iDontUnderstandTheProblem) {
 
 			boolean canPrevent = piece.canPrevent();
 

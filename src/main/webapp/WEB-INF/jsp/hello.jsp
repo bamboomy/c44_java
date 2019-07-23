@@ -18,14 +18,14 @@
 		});
 	}
 </script>
-<c:if test="${board.getCurrentPlayer().checkCheck()}">
+<c:if test="${!board.isPlayerIsMoving() && board.getCurrentPlayer().checkCheck() }">
 		<script type="text/javascript">
 		
 			alert('check!!!');
 			
 		</script>
 </c:if>
-<c:if test="${board.getCurrentPlayer().checkCheck() && board.getCurrentPlayer().canPrevent()}">
+<c:if test="${!board.isPlayerIsMoving() && board.getCurrentPlayer().checkCheck() && board.getCurrentPlayer().canPrevent()}">
 		<script type="text/javascript">
 		
 			alert('... but you can prevent...');

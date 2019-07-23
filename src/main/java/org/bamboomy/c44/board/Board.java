@@ -3,6 +3,7 @@ package org.bamboomy.c44.board;
 import java.util.ArrayList;
 
 import lombok.Getter;
+import lombok.Setter;
 
 public class Board {
 
@@ -18,6 +19,10 @@ public class Board {
 	private int turn = 2;
 
 	private ArrayList<Integer> deadPlayers = new ArrayList<>();
+	
+	@Getter
+	@Setter
+	private boolean playerIsMoving = false;
 
 	public Board() {
 
@@ -82,6 +87,8 @@ public class Board {
 	}
 
 	public void next() {
+		
+		playerIsMoving = false;
 
 		turn = (turn + 1) % 4;
 
@@ -98,6 +105,8 @@ public class Board {
 		}
 
 		currentPlayer = playerz[turn];
+
+		System.out.println("color: " + currentPlayer.getColor());
 
 		if (currentPlayer.isRobot()) {
 
