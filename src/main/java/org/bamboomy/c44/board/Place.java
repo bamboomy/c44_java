@@ -9,6 +9,7 @@ import javax.xml.bind.DatatypeConverter;
 
 import org.bamboomy.c44.board.pieces.Pawn;
 import org.bamboomy.c44.board.pieces.Piece;
+import org.bamboomy.c44.board.pieces.Roccade;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -54,6 +55,8 @@ public class Place {
 	private Place oldPlace = null;
 
 	private boolean neverMoved = false;
+
+	private Roccade roccade;
 
 	public Place(int color, Board board, int i, int j) {
 
@@ -156,6 +159,13 @@ public class Place {
 	public void click(boolean noNext) {
 
 		System.out.println(getX() + ", " + getY() + ": " + getCssName());
+
+		if (roccade != null) {
+
+			roccade.perform();
+
+			roccade = null;
+		}
 
 		/*
 		 * if (attachedEnPassant != null && piece == null) {
@@ -264,5 +274,10 @@ public class Place {
 		takenPiece = null;
 		oldPlace = null;
 		selectedPiece = null;
+	}
+
+	public void attachRocade(Roccade roccade) {
+
+		this.roccade = roccade;
 	}
 }

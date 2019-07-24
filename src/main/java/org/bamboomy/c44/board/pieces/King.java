@@ -271,11 +271,13 @@ public class King extends Piece {
 			result &= moveAndRollBack(towerPlace);
 
 			tower.uncheckedMoveTo(towerPlace);
-			
+
 			if (!result) {
 
 				return false;
 			}
+
+			place.getBoard().getPlacez()[place.getX()][place.getY() - (xDelta * 2)].attachRocade(new Roccade());
 
 			return true;
 		}
