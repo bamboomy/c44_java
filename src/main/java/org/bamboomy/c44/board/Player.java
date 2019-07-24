@@ -11,6 +11,7 @@ import org.bamboomy.c44.board.pieces.Queen;
 import org.bamboomy.c44.board.pieces.Tower;
 
 import lombok.Getter;
+import lombok.Setter;
 
 public class Player {
 
@@ -35,6 +36,10 @@ public class Player {
 	private Place enPassantPlace;
 
 	private ArrayList<Piece> preventPieces = new ArrayList<>();
+
+	@Setter
+	@Getter
+	private boolean chekcingCheck = false;
 
 	public Player(int color, Board board, boolean isRobot) {
 
@@ -159,11 +164,11 @@ public class Player {
 				board.setPlayerIsMoving(true);
 
 				piece.click();
-				
+
 				board.setWouldBeCheck(false);
-				
-				if(piece.checkCheck()) {
-					
+
+				if (piece.checkCheck()) {
+
 					board.setWouldBeCheck(true);
 				}
 
@@ -217,7 +222,7 @@ public class Player {
 			die();
 
 		} else {
-			
+
 			board.next();
 		}
 	}
@@ -233,13 +238,19 @@ public class Player {
 
 			if (player != this) {
 
+				player.setChekcingCheck(true);
+
 				for (Piece piece : player.getPiecez()) {
 
 					if (piece.checkCheck(king)) {
 
+						player.setChekcingCheck(false);
+
 						return true;
 					}
 				}
+
+				player.setChekcingCheck(false);
 			}
 		}
 

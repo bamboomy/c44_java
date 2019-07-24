@@ -73,6 +73,8 @@ public abstract class Piece {
 	public void click() {
 
 		System.out.println(getPieceName());
+		
+		recalculateHash();
 
 		if (!selected) {
 

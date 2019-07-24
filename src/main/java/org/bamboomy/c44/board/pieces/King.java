@@ -224,19 +224,59 @@ public class King extends Piece {
 		}
 
 		if (canRocadeRight()) {
-			
+
 			attackablePlaces.add(place.getBoard().getPlacez()[place.getX()][place.getY() - (xDelta * 2)]);
 		}
 	}
 
 	private boolean canRocadeRight() {
 
-		if (yDelta == 0 && place.getBoard().getPlacez()[place.getX()][place.getY() - xDelta].getPiece() == null
+		for (Player player : place.getBoard().getPlayerz()) {
+
+			if (player.isChekcingCheck()) {
+
+				return false;
+			}
+		}
+
+		if (yDelta == 0 && !place.getBoard().getCurrentPlayer().checkCheck()
+				&& place.getBoard().getPlacez()[place.getX()][place.getY() - xDelta].getPiece() == null
 				&& place.getBoard().getPlacez()[place.getX()][place.getY() - (xDelta * 2)].getPiece() == null) {
+
+			boolean result = true;
+
+			result &= moveAndRollBack(place.getBoard().getPlacez()[place.getX()][place.getY() - xDelta]);
+
+			if (!result) {
+
+				return false;
+			}
+
+			result &= moveAndRollBack(place.getBoard().getPlacez()[place.getX()][place.getY() - (xDelta * 2)]);
+
+			if (!result) {
+
+				return false;
+			}
 
 			return true;
 		}
 
 		return false;
+	}
+
+	private boolean moveAndRollBack(Place place) {
+
+		boolean result = true;
+
+		Place oldPlace = place;
+
+		moveTo(place);
+
+		result &= !place.getBoard().getCurrentPlayer().checkCheck();
+
+		rollBackMoveTo(oldPlace, true);
+
+		return result;
 	}
 }
