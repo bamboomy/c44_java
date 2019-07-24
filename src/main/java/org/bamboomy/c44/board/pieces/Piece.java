@@ -36,6 +36,11 @@ public abstract class Piece {
 
 		this.color = color;
 
+		recalculateHash();
+	}
+
+	private void recalculateHash() {
+
 		String time = System.currentTimeMillis() + "6";
 
 		time += (Math.random() * 777);
@@ -162,6 +167,8 @@ public abstract class Piece {
 
 	public boolean checkCheck(Piece king) {
 
+		recalculateHash();
+
 		setAttackablePlaces();
 
 		for (Place place : attackablePlaces) {
@@ -224,6 +231,8 @@ public abstract class Piece {
 
 		ArrayList<Place> filtered = new ArrayList<>();
 
+		ArrayList<Place> unsetList = new ArrayList<>();
+
 		for (Place place : attackablePlaces) {
 
 			place.click(true);
@@ -231,6 +240,10 @@ public abstract class Piece {
 			if (!place.getBoard().getCurrentPlayer().checkCheck()) {
 
 				filtered.add(place);
+
+			} else {
+
+				unsetList.add(place);
 			}
 
 			Piece selectedPiece = place.getPiece();
@@ -239,6 +252,13 @@ public abstract class Piece {
 
 			selectedPiece.click();
 		}
+
+		for (Place place : unsetList) {
+
+			place.stopAttack();
+		}
+
+		attackablePlaces = filtered;
 
 		return filtered.size() == 0;
 	}
