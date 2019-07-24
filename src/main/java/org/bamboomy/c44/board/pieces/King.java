@@ -270,9 +270,9 @@ public class King extends Piece {
 
 			result &= moveAndRollBack(towerPlace);
 
+			tower.uncheckedMoveTo(towerPlace);
+			
 			if (!result) {
-
-				tower.uncheckedMoveTo(towerPlace);
 
 				return false;
 			}
