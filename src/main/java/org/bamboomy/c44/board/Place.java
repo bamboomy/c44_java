@@ -162,9 +162,13 @@ public class Place {
 
 		if (roccade != null) {
 
-			roccade.perform();
+			Roccade aboutToPerform = roccade;
 
 			roccade = null;
+
+			aboutToPerform.perform(board, noNext, this);
+
+			return;
 		}
 
 		/*
