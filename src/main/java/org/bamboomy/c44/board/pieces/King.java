@@ -242,8 +242,9 @@ public class King extends Piece {
 		if (yDelta == 0 && !place.getBoard().getCurrentPlayer().checkCheck()
 				&& place.getBoard().getPlacez()[place.getX()][place.getY() - xDelta].getPiece() == null
 				&& place.getBoard().getPlacez()[place.getX()][place.getY() - (xDelta * 2)].getPiece() == null
-				&& place.getBoard().getPlacez()[place.getX()][place.getY() - (xDelta * 3)].getPiece().getPieceName()
-						.equalsIgnoreCase("tower")) {
+				&& place.getBoard().getPlacez()[place.getX()][place.getY() - (xDelta * 3)].getPiece() != null
+				&& place.getBoard().getPlacez()[place.getX()][place.getY() - (xDelta * 3)].getPiece()
+						.getPieceIdentifier().equalsIgnoreCase(Piece.TOWER)) {
 
 			boolean result = true;
 
@@ -257,6 +258,21 @@ public class King extends Piece {
 			result &= moveAndRollBack(place.getBoard().getPlacez()[place.getX()][place.getY() - (xDelta * 2)]);
 
 			if (!result) {
+
+				return false;
+			}
+
+			Place towerPlace = place.getBoard().getPlacez()[place.getX()][place.getY() - (xDelta * 3)];
+
+			Piece tower = towerPlace.getPiece();
+
+			towerPlace.remove(tower);
+
+			result &= moveAndRollBack(towerPlace);
+
+			if (!result) {
+
+				tower.uncheckedMoveTo(towerPlace);
 
 				return false;
 			}

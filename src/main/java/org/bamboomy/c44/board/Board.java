@@ -70,7 +70,7 @@ public class Board {
 
 		playerz[2] = new Player(2, this, false);
 
-		playerz[3] = new Player(3, this, false);
+		playerz[3] = new Player(3, this, true);
 
 		currentPlayer = playerz[turn];
 	}

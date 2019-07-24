@@ -129,6 +129,17 @@ public abstract class Piece {
 		return false;
 	}
 
+	public boolean uncheckedMoveTo(Place otherPlace) {
+
+		unselect();
+
+		otherPlace.setPiece(this);
+
+		place = otherPlace;
+
+		return false;
+	}
+
 	public boolean canMove() {
 
 		setAttackablePlaces();
