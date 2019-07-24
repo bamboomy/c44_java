@@ -7,8 +7,13 @@ import org.bamboomy.c44.board.Player;
 
 public class King extends Piece {
 
-	public King(Place place, int color) {
+	private int xDelta, yDelta;
+
+	public King(Place place, int color, int xDeltq, int yDelta) {
 		super(place, color);
+
+		this.xDelta = xDeltq;
+		this.yDelta = yDelta;
 	}
 
 	@Override
@@ -38,7 +43,7 @@ public class King extends Piece {
 	protected void setAttackablePlaces() {
 
 		attackablePlaces = new ArrayList<Place>();
-		
+
 		int k = place.getX() + 1;
 		int l = place.getY() + 1;
 
@@ -217,5 +222,21 @@ public class King extends Piece {
 				}
 			}
 		}
+
+		if (canRocadeRight()) {
+			
+			attackablePlaces.add(place.getBoard().getPlacez()[place.getX()][place.getY() - (xDelta * 2)]);
+		}
+	}
+
+	private boolean canRocadeRight() {
+
+		if (yDelta == 0 && place.getBoard().getPlacez()[place.getX()][place.getY() - xDelta].getPiece() == null
+				&& place.getBoard().getPlacez()[place.getX()][place.getY() - (xDelta * 2)].getPiece() == null) {
+
+			return true;
+		}
+
+		return false;
 	}
 }

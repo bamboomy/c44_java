@@ -66,7 +66,7 @@ public class Board {
 
 		playerz[0] = new Player(0, this, true);
 
-		playerz[1] = new Player(1, this, false);
+		playerz[1] = new Player(1, this, true);
 
 		playerz[2] = new Player(2, this, false);
 

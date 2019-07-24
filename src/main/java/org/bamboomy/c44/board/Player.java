@@ -77,7 +77,7 @@ public class Player {
 		piecez.add(new Horse(board.getPlacez()[0][3], color));
 		piecez.add(new Bisshop(board.getPlacez()[0][4], color));
 
-		king = new King(board.getPlacez()[0][5], color);
+		king = new King(board.getPlacez()[0][5], color, 1, 0);
 
 		piecez.add(king);
 		piecez.add(new Queen(board.getPlacez()[0][6], color));
@@ -97,7 +97,7 @@ public class Player {
 		piecez.add(new Horse(board.getPlacez()[3][11], color));
 		piecez.add(new Bisshop(board.getPlacez()[4][11], color));
 
-		king = new King(board.getPlacez()[5][11], color);
+		king = new King(board.getPlacez()[5][11], color, 0, -1);
 
 		piecez.add(king);
 		piecez.add(new Queen(board.getPlacez()[6][11], color));
@@ -117,7 +117,7 @@ public class Player {
 		piecez.add(new Horse(board.getPlacez()[11][3], color));
 		piecez.add(new Bisshop(board.getPlacez()[11][4], color));
 
-		king = new King(board.getPlacez()[11][6], color);
+		king = new King(board.getPlacez()[11][6], color, -1, 0);
 
 		piecez.add(new Queen(board.getPlacez()[11][5], color));
 		piecez.add(king);
@@ -137,7 +137,7 @@ public class Player {
 		piecez.add(new Horse(board.getPlacez()[3][0], color));
 		piecez.add(new Bisshop(board.getPlacez()[4][0], color));
 
-		king = new King(board.getPlacez()[6][0], color);
+		king = new King(board.getPlacez()[6][0], color, 0, 1);
 
 		piecez.add(new Queen(board.getPlacez()[5][0], color));
 		piecez.add(king);
@@ -206,7 +206,7 @@ public class Player {
 
 			index = (int) (Math.random() * movable.size());
 
-			while (movable.contains(index) && selectedPlaces.size() < movable.size()) {
+			while (selectedPlaces.contains(index) && selectedPlaces.size() < movable.size()) {
 
 				index = (int) (Math.random() * movable.size());
 			}
