@@ -190,4 +190,10 @@ public class Pawn extends Piece {
 		
 		unselect();
 	}
+
+	@Override
+	public String getPieceIdentifier() {
+
+		return PAWN;
+	}
 }

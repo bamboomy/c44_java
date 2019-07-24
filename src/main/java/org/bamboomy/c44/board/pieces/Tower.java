@@ -37,7 +37,7 @@ public class Tower extends Piece {
 	protected void setAttackablePlaces() {
 
 		attackablePlaces = new ArrayList<Place>();
-		
+
 		for (int i = place.getX(); i < 12; i++) {
 
 			Place otherPlace = place.getBoard().getPlacez()[i][place.getY()];
@@ -126,5 +126,11 @@ public class Tower extends Piece {
 			}
 		}
 
+	}
+
+	@Override
+	public String getPieceIdentifier() {
+
+		return TOWER;
 	}
 }

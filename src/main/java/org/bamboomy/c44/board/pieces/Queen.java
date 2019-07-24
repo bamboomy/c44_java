@@ -251,4 +251,10 @@ public class Queen extends Piece {
 			}
 		}
 	}
+
+	@Override
+	public String getPieceIdentifier() {
+
+		return QUEEN;
+	}
 }

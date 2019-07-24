@@ -163,4 +163,10 @@ public class Bisshop extends Piece {
 			counter++;
 		}
 	}
+
+	@Override
+	public String getPieceIdentifier() {
+
+		return BISSHOP;
+	}
 }

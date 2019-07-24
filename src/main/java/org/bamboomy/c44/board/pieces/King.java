@@ -241,7 +241,9 @@ public class King extends Piece {
 
 		if (yDelta == 0 && !place.getBoard().getCurrentPlayer().checkCheck()
 				&& place.getBoard().getPlacez()[place.getX()][place.getY() - xDelta].getPiece() == null
-				&& place.getBoard().getPlacez()[place.getX()][place.getY() - (xDelta * 2)].getPiece() == null) {
+				&& place.getBoard().getPlacez()[place.getX()][place.getY() - (xDelta * 2)].getPiece() == null
+				&& place.getBoard().getPlacez()[place.getX()][place.getY() - (xDelta * 3)].getPiece().getPieceName()
+						.equalsIgnoreCase("tower")) {
 
 			boolean result = true;
 
@@ -269,7 +271,7 @@ public class King extends Piece {
 
 		boolean result = true;
 
-		Place oldPlace = place;
+		Place oldPlace = this.place;
 
 		moveTo(place);
 
@@ -278,5 +280,11 @@ public class King extends Piece {
 		rollBackMoveTo(oldPlace, true);
 
 		return result;
+	}
+
+	@Override
+	public String getPieceIdentifier() {
+
+		return KING;
 	}
 }

@@ -211,4 +211,10 @@ public class Horse extends Piece {
 			}
 		}
 	}
+
+	@Override
+	public String getPieceIdentifier() {
+
+		return HORSE;
+	}
 }

@@ -22,6 +22,13 @@ public abstract class Piece {
 	@Getter
 	private String md5;
 
+	public static final String BISSHOP = "FCE41CFA81F3035C5A36C2DB0F04FF55";
+	public static final String HORSE = "955B55F2455675B715F50F14821C250D";
+	public static final String KING = "49357FE6D3EC4D9658996CDF440223E0";
+	public static final String PAWN = "50DE8CAA507BA8E8953CEEEC9570F88D";
+	public static final String QUEEN = "31C81D236FFFD16904FDAC93C9E68512";
+	public static final String TOWER = "6797E8118F1CF36B220C8AB05B8A6ADD";
+
 	protected boolean selected = false;
 
 	protected ArrayList<Place> attackablePlaces = new ArrayList<Place>();
@@ -70,10 +77,12 @@ public abstract class Piece {
 
 	public abstract String getPieceName();
 
+	public abstract String getPieceIdentifier();
+
 	public void click() {
 
 		System.out.println(getPieceName());
-		
+
 		recalculateHash();
 
 		if (!selected) {
