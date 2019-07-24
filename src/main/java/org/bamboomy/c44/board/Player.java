@@ -217,7 +217,7 @@ public class Player {
 			die();
 
 		} else {
-
+			
 			board.next();
 		}
 	}

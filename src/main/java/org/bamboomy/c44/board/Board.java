@@ -19,14 +19,18 @@ public class Board {
 	private int turn = 2;
 
 	private ArrayList<Integer> deadPlayers = new ArrayList<>();
-	
+
 	@Getter
 	@Setter
 	private boolean playerIsMoving = false;
-	
+
 	@Getter
 	@Setter
 	private boolean wouldBeCheck = false;
+
+	private int max = 100;
+
+	private int counter = 0;
 
 	public Board() {
 
@@ -64,7 +68,7 @@ public class Board {
 
 		playerz[1] = new Player(1, this, true);
 
-		playerz[2] = new Player(2, this, false);
+		playerz[2] = new Player(2, this, true);
 
 		playerz[3] = new Player(3, this, true);
 
@@ -84,6 +88,8 @@ public class Board {
 					if (place != null && place.getMd5() != null && place.getMd5().equalsIgnoreCase(md5)) {
 
 						place.click(false);
+
+						place.commit();
 					}
 				}
 			}
@@ -91,7 +97,12 @@ public class Board {
 	}
 
 	public void next() {
-		
+
+		if (counter++ > max) {
+
+			return;
+		}
+
 		playerIsMoving = false;
 
 		turn = (turn + 1) % 4;
@@ -136,6 +147,13 @@ public class Board {
 
 		deadPlayers.add(turn);
 
+		next();
+	}
+
+	public void generateMoves() {
+
+		counter = 0;
+		
 		next();
 	}
 }

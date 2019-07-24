@@ -191,6 +191,9 @@ public class Place {
 		neverMoved = board.getCurrentPlayer().getSelectedPiece().moveTo(this);
 
 		if (!noNext) {
+
+			commit();
+
 			board.next();
 		}
 	}
@@ -201,7 +204,7 @@ public class Place {
 
 			throw new RuntimeException("this piece wasn't here :-( -> " + oldPiece.getPlace().getX() + ", "
 					+ oldPiece.getPlace().getY() + " == " + x + ", " + y + " != " + piece.getPlace().getX() + ", "
-					+ piece.getPlace().getY() );
+					+ piece.getPlace().getY());
 		}
 
 		piece = null;
@@ -242,8 +245,13 @@ public class Place {
 		}
 
 		selectedPiece.rollBackMoveTo(oldPlace, neverMoved);
-		
+
 		piece = takenPiece;
+
+		commit();
+	}
+
+	public void commit() {
 
 		takenPiece = null;
 		oldPlace = null;

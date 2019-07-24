@@ -151,6 +151,10 @@ public abstract class Piece {
 		if (place.getBoard().getCurrentPlayer().checkCheck()) {
 
 			attackablePlaces.get(index).rollBack();
+
+		} else {
+
+			attackablePlaces.get(index).commit();
 		}
 
 		return moves.size() < attackablePlaces.size();

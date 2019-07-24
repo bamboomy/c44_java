@@ -17,6 +17,17 @@
 			}
 		});
 	}
+
+	function getMoves() {
+
+		$.ajax({
+			type : "GET",
+			'url' : '/piece/moves/',
+			success : function(text) {
+				location.reload();
+			}
+		});
+	}
 </script>
 <c:if
 	test="${!board.isPlayerIsMoving() && board.getCurrentPlayer().checkCheck() }">
@@ -37,7 +48,7 @@
 <c:if test="${board.isWouldBeCheck()}">
 	<script type="text/javascript">
 		
-			alert('You can't move that piece!!! (you would be check...)');
+			alert('You can\'t move that piece!!! (you would be check...)');
 			
 		</script>
 </c:if>
@@ -45,6 +56,7 @@
 
 </head>
 <body>
+<div style="top: 0px; left: 0px;"><button onclick="getMoves()">Next 10 moves</button></div>
 	<center>
 		<div>
 			<c:forEach items="${board.getPlacez()}" var="row">

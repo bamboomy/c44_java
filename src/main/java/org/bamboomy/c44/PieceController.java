@@ -24,4 +24,16 @@ public class PieceController {
 		return "succezzz";
 	}
 
+	@RequestMapping(value = "/moves/", method = RequestMethod.GET)
+	public synchronized String getMoves() {
+		
+		board = BoardController.getInstance().getBoard();
+		
+		System.out.println("moves");
+		
+		board.generateMoves();
+		
+		return "succezzz";
+	}
+
 }
