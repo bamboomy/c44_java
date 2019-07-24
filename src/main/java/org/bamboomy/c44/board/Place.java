@@ -160,7 +160,7 @@ public class Place {
 
 		System.out.println(getX() + ", " + getY() + ": " + getCssName());
 
-		if (roccade != null) {
+		if (!getBoard().isCheckingCheck() && roccade != null) {
 
 			Roccade aboutToPerform = roccade;
 

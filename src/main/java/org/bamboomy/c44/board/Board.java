@@ -2,6 +2,8 @@ package org.bamboomy.c44.board;
 
 import java.util.ArrayList;
 
+import org.eclipse.jdt.internal.compiler.ast.ReturnStatement;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -153,7 +155,20 @@ public class Board {
 	public void generateMoves() {
 
 		counter = 0;
-		
+
 		next();
+	}
+
+	public boolean isCheckingCheck() {
+
+		for (Player player : playerz) {
+
+			if (player.isChekcingCheck()) {
+
+				return true;
+			}
+		}
+
+		return false;
 	}
 }

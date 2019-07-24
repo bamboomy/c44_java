@@ -231,14 +231,11 @@ public class King extends Piece {
 
 	private boolean canRocadeRight() {
 
-		for (Player player : place.getBoard().getPlayerz()) {
-
-			if (player.isChekcingCheck()) {
-
-				return false;
-			}
+		if(place.getBoard().isCheckingCheck()) {
+			
+			return false;
 		}
-
+		
 		if (yDelta == 0 && !place.getBoard().getCurrentPlayer().checkCheck()
 				&& place.getBoard().getPlacez()[place.getX()][place.getY() - xDelta].getPiece() == null
 				&& place.getBoard().getPlacez()[place.getX()][place.getY() - (xDelta * 2)].getPiece() == null
