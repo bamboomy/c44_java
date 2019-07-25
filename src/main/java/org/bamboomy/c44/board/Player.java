@@ -257,19 +257,6 @@ public class Player {
 		return false;
 	}
 
-	public void setEnPassant(Place piecePlace) {
-
-		enPassantPlace = piecePlace;
-	}
-
-	private void unsetEnPassant() {
-
-		if (enPassantPlace != null) {
-
-			enPassantPlace.unsetEnPassant();
-		}
-	}
-
 	public boolean canPrevent() {
 
 		preventPieces = new ArrayList<>();

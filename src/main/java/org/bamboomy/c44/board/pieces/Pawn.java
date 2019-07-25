@@ -53,16 +53,18 @@ public class Pawn extends Piece {
 			attackablePlaces.add(otherPlace);
 
 			if (neverMoved) {
-
-				Place enPassant = otherPlace;
-
+				
+				Place enPassantPlace = otherPlace;
+				
 				otherPlace = place.getBoard().getPlacez()[place.getX() + (xDelta * 2)][place.getY() + (yDelta * 2)];
 
 				if (otherPlace != null && !otherPlace.hasPiece()) {
 
 					attackablePlaces.add(otherPlace);
+					
+					EnPassant enPassant = new EnPassant(this, otherPlace);
 
-					otherPlace.attachEnPassant(enPassant, this);
+					otherPlace.attachEnPassant(enPassant);
 				}
 			}
 		}
@@ -109,54 +111,53 @@ public class Pawn extends Piece {
 
 		// em passant
 
-		/*
-		 * 
-		 * 
-		 * if (xDelta != 0 && place.getY() + 1 < 12) {
-		 * 
-		 * otherPlace = place.getBoard().getPlacez()[place.getX() + xDelta][place.getY()
-		 * + 1];
-		 * 
-		 * if (otherPlace != null && otherPlace.isEnPassant()) {
-		 * 
-		 * System.out.println("en passant detected");
-		 * 
-		 * attackablePlaces.add(otherPlace); } }
-		 * 
-		 * if (xDelta != 0 && place.getY() - 1 >= 0) {
-		 * 
-		 * otherPlace = place.getBoard().getPlacez()[place.getX() + xDelta][place.getY()
-		 * - 1];
-		 * 
-		 * if (otherPlace != null && otherPlace.isEnPassant()) {
-		 * 
-		 * System.out.println("en passant detected");
-		 * 
-		 * attackablePlaces.add(otherPlace); } }
-		 * 
-		 * if (yDelta != 0 && place.getX() + 1 < 12) {
-		 * 
-		 * otherPlace = place.getBoard().getPlacez()[place.getX() + 1][place.getY() +
-		 * yDelta];
-		 * 
-		 * if (otherPlace != null && otherPlace.isEnPassant()) {
-		 * 
-		 * System.out.println("en passant detected");
-		 * 
-		 * attackablePlaces.add(otherPlace); } }
-		 * 
-		 * if (yDelta != 0 && place.getX() - 1 >= 0) {
-		 * 
-		 * otherPlace = place.getBoard().getPlacez()[place.getX() - 1][place.getY() +
-		 * yDelta];
-		 * 
-		 * if (otherPlace != null && otherPlace.isEnPassant()) {
-		 * 
-		 * System.out.println("en passant detected");
-		 * 
-		 * attackablePlaces.add(otherPlace); } }
-		 * 
-		 */
+		if (xDelta != 0 && place.getY() + 1 < 12) {
+
+			otherPlace = place.getBoard().getPlacez()[place.getX() + xDelta][place.getY() + 1];
+
+			if (otherPlace != null && otherPlace.getEnPassant() != null) {
+
+				System.out.println("en passant detected");
+
+				attackablePlaces.add(otherPlace);
+			}
+		}
+
+		if (xDelta != 0 && place.getY() - 1 >= 0) {
+
+			otherPlace = place.getBoard().getPlacez()[place.getX() + xDelta][place.getY() - 1];
+
+			if (otherPlace != null && otherPlace.getEnPassant() != null) {
+
+				System.out.println("en passant detected");
+
+				attackablePlaces.add(otherPlace);
+			}
+		}
+
+		if (yDelta != 0 && place.getX() + 1 < 12) {
+
+			otherPlace = place.getBoard().getPlacez()[place.getX() + 1][place.getY() + yDelta];
+
+			if (otherPlace != null && otherPlace.getEnPassant() != null) {
+
+				System.out.println("en passant detected");
+
+				attackablePlaces.add(otherPlace);
+			}
+		}
+
+		if (yDelta != 0 && place.getX() - 1 >= 0) {
+
+			otherPlace = place.getBoard().getPlacez()[place.getX() - 1][place.getY() + yDelta];
+
+			if (otherPlace != null && otherPlace.getEnPassant() != null) {
+
+				System.out.println("en passant detected");
+
+				attackablePlaces.add(otherPlace);
+			}
+		}
 	}
 
 	@Override
@@ -187,7 +188,7 @@ public class Pawn extends Piece {
 		place = oldPlace;
 
 		this.neverMoved = neverMoved;
-		
+
 		unselect();
 	}
 

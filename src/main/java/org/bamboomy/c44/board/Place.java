@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import javax.xml.bind.DatatypeConverter;
 
-import org.bamboomy.c44.board.pieces.Pawn;
+import org.bamboomy.c44.board.pieces.EnPassant;
 import org.bamboomy.c44.board.pieces.Piece;
 import org.bamboomy.c44.board.pieces.Roccade;
 
@@ -40,15 +40,11 @@ public class Place {
 	private boolean attacked = false;
 
 	@Getter
-	private boolean enPassant = false;
+	private EnPassant enPassant;
 
 	@Getter
 	@Setter
 	private ArrayList<Piece> enPassantPieces = new ArrayList<Piece>();
-
-	private Place attachedEnPassant;
-
-	private Pawn attachedPiece;
 
 	private Piece takenPiece = null, selectedPiece = null;
 
@@ -172,7 +168,21 @@ public class Place {
 			return;
 		}
 
+		if (!getBoard().isCheckingCheck() && enPassant != null) {
+
+			EnPassant aboutToPerform = enPassant;
+			
+			enPassant = null;
+			
+			aboutToPerform.perform(board, noNext, this);
+			
+			return;
+		}
+
 		/*
+		 * todo also remove enpassant and rocade...
+		 * 
+		 * 
 		 * if (attachedEnPassant != null && piece == null) {
 		 * 
 		 * attachedEnPassant.setEnPassant(true, attachedPiece);
@@ -233,31 +243,9 @@ public class Place {
 		piece = null;
 	}
 
-	public void setEnPassant(boolean enPassant, Pawn pawn) {
-
-		if (this.enPassant && enPassant) {
-
-			System.out.println("enpassant unset (low)");
-
-			enPassantPieces.add(pawn);
-
-		} else if (enPassant) {
-
-			enPassantPieces = new ArrayList<Piece>();
-		}
+	public void attachEnPassant(EnPassant enPassant) {
 
 		this.enPassant = enPassant;
-	}
-
-	public void attachEnPassant(Place enPassant, Pawn pawn) {
-
-		attachedEnPassant = enPassant;
-		attachedPiece = pawn;
-	}
-
-	public void unsetEnPassant() {
-
-		enPassant = false;
 	}
 
 	public void rollBack() {
