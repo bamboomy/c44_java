@@ -257,8 +257,8 @@ public abstract class Piece {
 
 		for (Place place : attackablePlaces) {
 
-			if (place.getRoccade() != null) {
-				
+			if (place.getRoccade() != null || place.getEnPassant() != null) {
+
 				continue;
 			}
 

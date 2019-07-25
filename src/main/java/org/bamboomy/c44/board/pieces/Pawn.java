@@ -53,15 +53,15 @@ public class Pawn extends Piece {
 			attackablePlaces.add(otherPlace);
 
 			if (neverMoved) {
-				
+
 				Place enPassantPlace = otherPlace;
-				
+
 				otherPlace = place.getBoard().getPlacez()[place.getX() + (xDelta * 2)][place.getY() + (yDelta * 2)];
 
 				if (otherPlace != null && !otherPlace.hasPiece()) {
 
 					attackablePlaces.add(otherPlace);
-					
+
 					EnPassant enPassant = new EnPassant(this, otherPlace);
 
 					otherPlace.attachEnPassant(enPassant);
@@ -110,6 +110,11 @@ public class Pawn extends Piece {
 		}
 
 		// em passant
+
+		if (place.getBoard().isCheckingCheck()) {
+
+			return;
+		}
 
 		if (xDelta != 0 && place.getY() + 1 < 12) {
 
