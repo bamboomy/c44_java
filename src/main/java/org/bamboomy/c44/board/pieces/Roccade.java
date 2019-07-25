@@ -31,6 +31,8 @@ public class Roccade {
 		if (!noNext) {
 
 			currentPlace.commit();
+			
+			towerPlace.commit();
 
 			board.next();
 		}

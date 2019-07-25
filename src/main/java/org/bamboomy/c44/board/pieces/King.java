@@ -275,7 +275,7 @@ public class King extends Piece {
 			}
 
 			place.getBoard().getPlacez()[place.getX()][place.getY() - (xDelta * 2)]
-					.attachRocade(new Roccade(towerPlace, tower));
+					.attachRocade(new Roccade(place.getBoard().getPlacez()[place.getX()][place.getY() - xDelta], tower));
 
 			return true;
 		}
