@@ -257,6 +257,11 @@ public abstract class Piece {
 
 		for (Place place : attackablePlaces) {
 
+			if (place.getRoccade() != null) {
+				
+				continue;
+			}
+
 			place.click(true);
 
 			if (!place.getBoard().getCurrentPlayer().checkCheck()) {

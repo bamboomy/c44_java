@@ -56,6 +56,7 @@ public class Place {
 
 	private boolean neverMoved = false;
 
+	@Getter
 	private Roccade roccade;
 
 	public Place(int color, Board board, int i, int j) {
