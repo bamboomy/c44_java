@@ -228,6 +228,12 @@ public class King extends Piece {
 			attackablePlaces
 					.add(place.getBoard().getPlacez()[place.getX() + (yDelta * 2)][place.getY() - (xDelta * 2)]);
 		}
+
+		if (canRocadeLeft()) {
+
+			attackablePlaces
+					.add(place.getBoard().getPlacez()[place.getX() - (yDelta * 2)][place.getY() + (xDelta * 2)]);
+		}
 	}
 
 	private boolean canRocadeRight() {
@@ -307,4 +313,72 @@ public class King extends Piece {
 
 		return KING;
 	}
+
+	private boolean canRocadeLeft() {
+
+		if (place.getBoard().isCheckingCheck()) {
+
+			return false;
+		}
+
+		if (!place.getBoard().getCurrentPlayer().checkCheck()
+				&& place.getBoard().getPlacez()[place.getX() - yDelta][place.getY() + xDelta].getPiece() == null
+				&& place.getBoard().getPlacez()[place.getX() - (yDelta * 2)][place.getY() + (xDelta * 2)]
+						.getPiece() == null
+				&& place.getBoard().getPlacez()[place.getX() - (yDelta * 3)][place.getY() + (xDelta * 3)]
+						.getPiece() == null
+				&& place.getBoard().getPlacez()[place.getX() - (yDelta * 4)][place.getY() + (xDelta * 4)]
+						.getPiece() != null
+				&& place.getBoard().getPlacez()[place.getX() - (yDelta * 4)][place.getY() + (xDelta * 4)].getPiece()
+						.getPieceIdentifier().equalsIgnoreCase(Piece.TOWER)) {
+
+			boolean result = true;
+
+			result &= moveAndRollBack(place.getBoard().getPlacez()[place.getX() - yDelta][place.getY() + xDelta]);
+
+			if (!result) {
+
+				return false;
+			}
+
+			result &= moveAndRollBack(
+					place.getBoard().getPlacez()[place.getX() - (yDelta * 2)][place.getY() + (xDelta * 2)]);
+
+			if (!result) {
+
+				return false;
+			}
+
+			result &= moveAndRollBack(
+					place.getBoard().getPlacez()[place.getX() - (yDelta * 3)][place.getY() + (xDelta * 3)]);
+
+			if (!result) {
+
+				return false;
+			}
+
+			Place towerPlace = place.getBoard().getPlacez()[place.getX() - (yDelta * 4)][place.getY() + (xDelta * 4)];
+
+			Piece tower = towerPlace.getPiece();
+
+			towerPlace.remove(tower);
+
+			result &= moveAndRollBack(towerPlace);
+
+			tower.uncheckedMoveTo(towerPlace);
+
+			if (!result) {
+
+				return false;
+			}
+
+			place.getBoard().getPlacez()[place.getX() - (yDelta * 2)][place.getY() + (xDelta * 2)].attachRocade(
+					new Roccade(place.getBoard().getPlacez()[place.getX() - yDelta][place.getY() + xDelta], tower));
+
+			return true;
+		}
+
+		return false;
+	}
+
 }
