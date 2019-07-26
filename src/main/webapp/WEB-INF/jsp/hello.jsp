@@ -11,18 +11,7 @@
 
 		$.ajax({
 			type : "GET",
-			'url' : '/piece/' + md5,
-			success : function(text) {
-				location.reload();
-			}
-		});
-	}
-
-	function getMoves() {
-
-		$.ajax({
-			type : "GET",
-			'url' : '/piece/moves/',
+			'url' : '/peace/' + md5,
 			success : function(text) {
 				location.reload();
 			}
@@ -56,7 +45,6 @@
 
 </head>
 <body>
-<div style="top: 0px; left: 0px;"><button onclick="getMoves()">Next 10 moves</button></div>
 	<center>
 		<div>
 			<c:forEach items="${board.getPlacez()}" var="row">
