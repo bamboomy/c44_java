@@ -7,6 +7,12 @@
 <link href="/css/main.css" rel="stylesheet">
 <script src="/js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
+	var myId;
+
+	$(document).ready(function() {
+		myId = $('form').attr('myattribute');
+	});
+
 	function clickToServer(md5) {
 
 		$.ajax({
@@ -21,25 +27,19 @@
 <c:if
 	test="${!board.isPlayerIsMoving() && board.getCurrentPlayer().checkCheck() }">
 	<script type="text/javascript">
-		
-			alert('check!!!');
-			
-		</script>
+		alert('check!!!');
+	</script>
 </c:if>
 <c:if
 	test="${!board.isPlayerIsMoving() && board.getCurrentPlayer().checkCheck() && board.getCurrentPlayer().canPrevent()}">
 	<script type="text/javascript">
-		
-			alert('... but you can prevent...');
-			
-		</script>
+		alert('... but you can prevent...');
+	</script>
 </c:if>
 <c:if test="${board.isWouldBeCheck()}">
 	<script type="text/javascript">
-		
-			alert('You can\'t move that piece!!! (you would be check...)');
-			
-		</script>
+		alert('You can\'t move that piece!!! (you would be check...)');
+	</script>
 </c:if>
 
 
@@ -66,12 +66,12 @@
 												<c:when test="${place.hasPiece()}">
 													<img class="${place.getCssName()}"
 														src="${place.getPiece().getPieceName()}" width="40px"
-														height="40px" onclick="clickToServer('${place.getMd5()}')" />
+														height="40px" onclick="clickToServer('${place.getMd5WithBoard()}')" />
 												</c:when>
 												<c:otherwise>
 													<img class="${place.getCssName()}"
 														src="../img/transparent.png" width="40px" height="40px"
-														onclick="clickToServer('${place.getMd5()}')" />
+														onclick="clickToServer('${place.getMd5WithBoard()}')" />
 												</c:otherwise>
 											</c:choose>
 										</c:when>
@@ -81,7 +81,7 @@
 													<img class="${place.getCssName()}"
 														src="${place.getPiece().getPieceName()}" width="40px"
 														height="40px"
-														onclick="clickToServer('${place.getPiece().getMd5()}')" />
+														onclick="clickToServer('${place.getPiece().getMd5WithBoard()}')" />
 												</c:when>
 												<c:otherwise>
 													<img class="${place.getCssName()}"

@@ -9,18 +9,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/peace")
 public class PieceController {
-	
-	private Board board = BoardController.getInstance().getBoard();
 
-	@RequestMapping(value = "/{md5}", method = RequestMethod.GET)
-	public synchronized String getData(@PathVariable("md5") String md5) {
-		
-		board = BoardController.getInstance().getBoard();
-		
+	@RequestMapping(value = "/{md5}/{hash}", method = RequestMethod.GET)
+	public synchronized String getData(@PathVariable("md5") String md5, @PathVariable("hash") String hash) {
+
 		System.out.println(md5);
-		
+
+		System.out.println(hash);
+
+		Board board = BoardController.getInstance().getBoard(hash);
+
 		board.click(md5);
-		
+
 		return "succezzz";
 	}
 }

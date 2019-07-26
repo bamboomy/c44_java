@@ -1,17 +1,38 @@
 package org.bamboomy.c44;
 
-import org.bamboomy.c44.board.Board;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
-import lombok.Getter;
-import lombok.Setter;
+import org.bamboomy.c44.board.Board;
 
 public class BoardController {
 
 	private static BoardController single_instance = null;
 
-	@Getter
-	@Setter
-	private Board board = new Board();
+	static final Map<String, Board> GAMEZ;
+
+	private static final int MAX_ENTRIES = 20000;
+
+	static {
+
+		Map<String, Board> innerCache = new LinkedHashMap<String, Board>(MAX_ENTRIES + 1, .75F, true) {
+
+			private static final long serialVersionUID = 1L;
+
+			// This method is called just after a new entry has been added
+			public boolean removeEldestEntry(Map.Entry eldest) {
+
+				System.out.println("cache removal?");
+
+				boolean remove = size() > MAX_ENTRIES;
+
+				return remove;
+			}
+		};
+
+		GAMEZ = (Map<String, Board>) Collections.synchronizedMap(innerCache);
+	}
 
 	private BoardController() {
 	}
@@ -23,5 +44,19 @@ public class BoardController {
 		}
 
 		return single_instance;
+	}
+
+	Board getBoard(String hash) {
+
+		Board result = GAMEZ.get(hash);
+
+		if (GAMEZ.get(hash) == null) {
+
+			result = new Board(hash);
+
+			GAMEZ.put(hash, result);
+		}
+
+		return result;
 	}
 }

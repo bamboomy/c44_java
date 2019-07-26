@@ -34,7 +34,12 @@ public class Board {
 
 	private int counter = 0;
 
-	public Board() {
+	@Getter
+	private String hash;
+
+	public Board(String hash) {
+		
+		System.out.println("board created...");
 
 		int color = 0;
 
@@ -75,13 +80,19 @@ public class Board {
 		playerz[3] = new Player(3, this, false);
 
 		currentPlayer = playerz[turn];
+
+		this.hash = hash;
 	}
 
 	public void click(String md5) {
+		
+		System.out.println(md5);
 
 		boolean piece = currentPlayer.click(md5);
 
 		if (!piece) {
+			
+			System.out.println("not piece");
 
 			for (Place[] row : placez) {
 
@@ -117,7 +128,7 @@ public class Board {
 		}
 
 		currentPlayer = playerz[turn];
-		
+
 		currentPlayer.removeEnPassant();
 
 		System.out.println("color: " + currentPlayer.getColor());

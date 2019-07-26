@@ -283,4 +283,9 @@ public class Place {
 
 		enPassant = null;
 	}
+
+	public String getMd5WithBoard() {
+
+		return md5 + "/" + board.getHash();
+	}
 }

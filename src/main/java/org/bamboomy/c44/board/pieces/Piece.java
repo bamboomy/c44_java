@@ -265,7 +265,7 @@ public abstract class Piece {
 			}
 
 			if (place.getRoccade() != null) {
-				
+
 				filtered.add(place);
 
 				continue;
@@ -297,5 +297,10 @@ public abstract class Piece {
 		attackablePlaces = filtered;
 
 		return filtered.size() == 0;
+	}
+
+	public String getMd5WithBoard() {
+
+		return md5 + "/" + place.getBoard().getHash();
 	}
 }
