@@ -3,6 +3,7 @@ package org.bamboomy.c44.board;
 import java.util.ArrayList;
 
 import org.bamboomy.c44.board.pieces.Bisshop;
+import org.bamboomy.c44.board.pieces.EnPassant;
 import org.bamboomy.c44.board.pieces.Horse;
 import org.bamboomy.c44.board.pieces.King;
 import org.bamboomy.c44.board.pieces.Pawn;
@@ -33,7 +34,7 @@ public class Player {
 
 	private Piece king;
 
-	private Place enPassantPlace;
+	private EnPassant enPassant;
 
 	private ArrayList<Piece> preventPieces = new ArrayList<>();
 
@@ -288,5 +289,17 @@ public class Player {
 	public void prevent() {
 
 		preventPieces.get((int) Math.random() * preventPieces.size()).prevent();
+	}
+
+	public void attachEnPassant(EnPassant enPassant) {
+
+		this.enPassant = enPassant;
+	}
+
+	public void removeEnPassant() {
+
+		if (enPassant != null) {
+			enPassant.destroy();
+		}
 	}
 }

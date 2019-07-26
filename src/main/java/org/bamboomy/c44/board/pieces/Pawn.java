@@ -64,9 +64,11 @@ public class Pawn extends Piece {
 
 					if (!place.getBoard().isCheckingCheck()) {
 
-						EnPassant enPassant = new EnPassant(this, otherPlace);
+						EnPassant enPassant = new EnPassant(this, otherPlace, enPassantPlace);
 
 						enPassantPlace.attachEnPassant(enPassant);
+						
+						place.getBoard().getCurrentPlayer().attachEnPassant(enPassant);
 					}
 				}
 			}

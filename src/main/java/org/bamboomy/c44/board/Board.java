@@ -100,11 +100,6 @@ public class Board {
 
 	public void next() {
 
-		if (counter++ > max) {
-
-			return;
-		}
-
 		playerIsMoving = false;
 
 		turn = (turn + 1) % 4;
@@ -122,6 +117,8 @@ public class Board {
 		}
 
 		currentPlayer = playerz[turn];
+		
+		currentPlayer.removeEnPassant();
 
 		System.out.println("color: " + currentPlayer.getColor());
 

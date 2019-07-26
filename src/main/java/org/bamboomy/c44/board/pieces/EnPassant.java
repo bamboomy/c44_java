@@ -6,12 +6,14 @@ import org.bamboomy.c44.board.Place;
 public class EnPassant {
 
 	private Pawn targetPawn;
-	private Place toBeRemovedPawnPlace;
+	private Place toBeRemovedPawnPlace, parent;
 
-	public EnPassant(Pawn targetPawn, Place toBeRemovedPawnPlace) {
+	public EnPassant(Pawn targetPawn, Place toBeRemovedPawnPlace, Place parent) {
 
 		this.targetPawn = targetPawn;
 		this.toBeRemovedPawnPlace = toBeRemovedPawnPlace;
+		
+		this.parent = parent;
 	}
 
 	public void perform(Board board, boolean noNext, Place currentPlace) {
@@ -28,5 +30,10 @@ public class EnPassant {
 
 			board.next();
 		}
+	}
+
+	public void destroy() {
+
+		parent.removeEnpassant();
 	}
 }

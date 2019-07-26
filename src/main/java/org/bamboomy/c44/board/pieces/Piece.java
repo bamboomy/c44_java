@@ -257,7 +257,16 @@ public abstract class Piece {
 
 		for (Place place : attackablePlaces) {
 
-			if (place.getRoccade() != null || place.getEnPassant() != null) {
+			if (place.getEnPassant() != null) {
+
+				filtered.add(place);
+
+				continue;
+			}
+
+			if (place.getRoccade() != null) {
+				
+				filtered.add(place);
 
 				continue;
 			}

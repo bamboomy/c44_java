@@ -171,11 +171,11 @@ public class Place {
 		if (!getBoard().isCheckingCheck() && enPassant != null) {
 
 			EnPassant aboutToPerform = enPassant;
-			
+
 			enPassant = null;
-			
+
 			aboutToPerform.perform(board, noNext, this);
-			
+
 			return;
 		}
 
@@ -272,5 +272,15 @@ public class Place {
 	public void attachRocade(Roccade roccade) {
 
 		this.roccade = roccade;
+	}
+
+	public void removeRocade() {
+
+		roccade = null;
+	}
+
+	public void removeEnpassant() {
+
+		enPassant = null;
 	}
 }

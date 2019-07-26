@@ -227,12 +227,20 @@ public class King extends Piece {
 
 			attackablePlaces
 					.add(place.getBoard().getPlacez()[place.getX() + (yDelta * 2)][place.getY() - (xDelta * 2)]);
+
+		} else {
+
+			place.getBoard().getPlacez()[place.getX() + (yDelta * 2)][place.getY() - (xDelta * 2)].removeRocade();
 		}
 
 		if (canRocadeLeft()) {
 
 			attackablePlaces
 					.add(place.getBoard().getPlacez()[place.getX() - (yDelta * 2)][place.getY() + (xDelta * 2)]);
+
+		} else {
+
+			place.getBoard().getPlacez()[place.getX() - (yDelta * 2)][place.getY() + (xDelta * 2)].removeRocade();
 		}
 	}
 
