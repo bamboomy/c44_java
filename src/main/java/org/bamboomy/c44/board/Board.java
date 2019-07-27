@@ -111,13 +111,25 @@ public class Board {
 	}
 
 	private void initYellowPlaces() {
-		// TODO Auto-generated method stub
 
+		for (int i = 0; i < 12; i++) {
+
+			for (int j = 0; j < 12; j++) {
+
+				yellozPlacez[i][j] = placez[11 - j][i];
+			}
+		}
 	}
 
 	private void initBluePlaces() {
-		// TODO Auto-generated method stub
 
+		for (int i = 0; i < 12; i++) {
+
+			for (int j = 0; j < 12; j++) {
+
+				bluePlacez[i][j] = placez[j][11 - i];
+			}
+		}
 	}
 
 	public void click(String md5) {
@@ -221,6 +233,16 @@ public class Board {
 		if (currentPlayer.getColor() == Player.RED) {
 
 			return getRedPlacez();
+		}
+
+		if (currentPlayer.getColor() == Player.YELLOW) {
+
+			return getYellozPlacez();
+		}
+
+		if (currentPlayer.getColor() == Player.BLUE) {
+
+			return getBluePlacez();
 		}
 
 		return placez;
