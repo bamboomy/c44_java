@@ -10,6 +10,7 @@ import javax.xml.bind.DatatypeConverter;
 import org.bamboomy.c44.board.Place;
 
 import lombok.Getter;
+import lombok.Setter;
 
 public abstract class Piece {
 
@@ -34,6 +35,9 @@ public abstract class Piece {
 	protected ArrayList<Place> attackablePlaces = new ArrayList<Place>();
 
 	protected ArrayList<Place> preventPlacez = new ArrayList<>();
+
+	@Setter
+	private EnPassant enPassant;
 
 	public Piece(Place place, int color) {
 
@@ -232,6 +236,11 @@ public abstract class Piece {
 	}
 
 	public void rollBackMoveTo(Place oldPlace, boolean unused) {
+
+		if (enPassant != null) {
+
+			enPassant.destroy();
+		}
 
 		place.remove(this);
 

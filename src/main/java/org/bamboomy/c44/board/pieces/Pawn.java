@@ -68,6 +68,8 @@ public class Pawn extends Piece {
 
 						enPassantPlace.attachEnPassant(enPassant);
 						
+						setEnPassant(enPassant);
+
 						place.getBoard().getCurrentPlayer().attachEnPassant(enPassant);
 					}
 				}
@@ -125,7 +127,8 @@ public class Pawn extends Piece {
 
 			otherPlace = place.getBoard().getPlacez()[place.getX() + xDelta][place.getY() + 1];
 
-			if (otherPlace != null && otherPlace.getEnPassant() != null) {
+			if (otherPlace != null && otherPlace.getEnPassant() != null
+					&& otherPlace.getEnPassant().getTargetPawn().getColor() != color) {
 
 				System.out.println("en passant detected");
 
@@ -137,7 +140,8 @@ public class Pawn extends Piece {
 
 			otherPlace = place.getBoard().getPlacez()[place.getX() + xDelta][place.getY() - 1];
 
-			if (otherPlace != null && otherPlace.getEnPassant() != null) {
+			if (otherPlace != null && otherPlace.getEnPassant() != null
+					&& otherPlace.getEnPassant().getTargetPawn().getColor() != color) {
 
 				System.out.println("en passant detected");
 
@@ -149,7 +153,8 @@ public class Pawn extends Piece {
 
 			otherPlace = place.getBoard().getPlacez()[place.getX() + 1][place.getY() + yDelta];
 
-			if (otherPlace != null && otherPlace.getEnPassant() != null) {
+			if (otherPlace != null && otherPlace.getEnPassant() != null
+					&& otherPlace.getEnPassant().getTargetPawn().getColor() != color) {
 
 				System.out.println("en passant detected");
 
@@ -161,7 +166,8 @@ public class Pawn extends Piece {
 
 			otherPlace = place.getBoard().getPlacez()[place.getX() - 1][place.getY() + yDelta];
 
-			if (otherPlace != null && otherPlace.getEnPassant() != null) {
+			if (otherPlace != null && otherPlace.getEnPassant() != null
+					&& otherPlace.getEnPassant().getTargetPawn().getColor() != color) {
 
 				System.out.println("en passant detected");
 

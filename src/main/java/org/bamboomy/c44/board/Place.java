@@ -179,35 +179,12 @@ public class Place {
 			return;
 		}
 
-		/*
-		 * todo also remove enpassant and rocade...
-		 * 
-		 * 
-		 * if (attachedEnPassant != null && piece == null) {
-		 * 
-		 * attachedEnPassant.setEnPassant(true, attachedPiece);
-		 * 
-		 * board.getCurrentPlayer().setEnPassant(attachedEnPassant);
-		 * 
-		 * attachedEnPassant = null; }
-		 */
-
 		if (piece != null) {
 
 			takenPiece = piece;
 
 			board.getPlayerz()[takenPiece.getColor()].getPiecez().remove(piece);
 		}
-
-		/*
-		 * if (enPassant) {
-		 * 
-		 * for (Piece piece : enPassantPieces) {
-		 * 
-		 * piece.getPlace().remove(piece);
-		 * 
-		 * board.getPlayerz()[piece.getColor()].getPiecez().remove(piece); } }
-		 */
 
 		selectedPiece = board.getCurrentPlayer().getSelectedPiece();
 
