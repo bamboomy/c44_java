@@ -47,7 +47,7 @@
 <body>
 	<center>
 		<div>
-			<c:forEach items="${board.getPlacez()}" var="row">
+			<c:forEach items="${board.getRotatedPlacez()}" var="row">
 
 				<div class="row">
 
@@ -66,7 +66,8 @@
 												<c:when test="${place.hasPiece()}">
 													<img class="${place.getCssName()}"
 														src="${place.getPiece().getPieceName()}" width="40px"
-														height="40px" onclick="clickToServer('${place.getMd5WithBoard()}')" />
+														height="40px"
+														onclick="clickToServer('${place.getMd5WithBoard()}')" />
 												</c:when>
 												<c:otherwise>
 													<img class="${place.getCssName()}"

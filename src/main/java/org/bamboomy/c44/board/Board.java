@@ -13,6 +13,15 @@ public class Board {
 	private Place[][] placez = new Place[12][12];
 
 	@Getter
+	private Place[][] redPlacez = new Place[12][12];
+
+	@Getter
+	private Place[][] yellozPlacez = new Place[12][12];
+
+	@Getter
+	private Place[][] bluePlacez = new Place[12][12];
+
+	@Getter
 	private Player[] playerz = new Player[4];
 
 	@Getter
@@ -38,7 +47,7 @@ public class Board {
 	private String hash;
 
 	public Board(String hash) {
-		
+
 		System.out.println("board created...");
 
 		int color = 0;
@@ -82,16 +91,43 @@ public class Board {
 		currentPlayer = playerz[turn];
 
 		this.hash = hash;
+
+		initRedPlaces();
+
+		initYellowPlaces();
+
+		initBluePlaces();
+	}
+
+	private void initRedPlaces() {
+
+		for (int i = 0; i < 12; i++) {
+
+			for (int j = 0; j < 12; j++) {
+
+				redPlacez[i][j] = placez[11 - i][11 - j];
+			}
+		}
+	}
+
+	private void initYellowPlaces() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void initBluePlaces() {
+		// TODO Auto-generated method stub
+
 	}
 
 	public void click(String md5) {
-		
+
 		System.out.println(md5);
 
 		boolean piece = currentPlayer.click(md5);
 
 		if (!piece) {
-			
+
 			System.out.println("not piece");
 
 			for (Place[] row : placez) {
@@ -178,5 +214,15 @@ public class Board {
 		}
 
 		return false;
+	}
+
+	public Place[][] getRotatedPlacez() {
+
+		if (currentPlayer.getColor() == Player.RED) {
+
+			return getRedPlacez();
+		}
+
+		return placez;
 	}
 }
