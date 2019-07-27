@@ -148,6 +148,11 @@ public abstract class Piece {
 
 		setAttackablePlaces();
 
+		if (enPassant != null) {
+
+			enPassant.destroy();
+		}
+
 		return attackablePlaces.size() > 0;
 	}
 
