@@ -228,7 +228,7 @@ public class King extends Piece {
 			attackablePlaces
 					.add(place.getBoard().getPlacez()[place.getX() + (yDelta * 2)][place.getY() - (xDelta * 2)]);
 
-		} else {
+		} else if (place.getBoard().getPlacez()[place.getX() + (yDelta * 2)][place.getY() - (xDelta * 2)] != null) {
 
 			place.getBoard().getPlacez()[place.getX() + (yDelta * 2)][place.getY() - (xDelta * 2)].removeRocade();
 		}
@@ -238,7 +238,7 @@ public class King extends Piece {
 			attackablePlaces
 					.add(place.getBoard().getPlacez()[place.getX() - (yDelta * 2)][place.getY() + (xDelta * 2)]);
 
-		} else {
+		} else if (place.getBoard().getPlacez()[place.getX() - (yDelta * 2)][place.getY() + (xDelta * 2)] != null) {
 
 			place.getBoard().getPlacez()[place.getX() - (yDelta * 2)][place.getY() + (xDelta * 2)].removeRocade();
 		}
@@ -246,7 +246,7 @@ public class King extends Piece {
 
 	private boolean canRocadeRight() {
 
-		if (place.getBoard().isCheckingCheck()) {
+		if (place.getBoard().isCheckingCheck() || isRocaded() || !neverMoved) {
 
 			return false;
 		}
@@ -324,7 +324,7 @@ public class King extends Piece {
 
 	private boolean canRocadeLeft() {
 
-		if (place.getBoard().isCheckingCheck()) {
+		if (place.getBoard().isCheckingCheck() || isRocaded() || !neverMoved) {
 
 			return false;
 		}
@@ -389,4 +389,29 @@ public class King extends Piece {
 		return false;
 	}
 
+	@Override
+	public boolean moveTo(Place otherPlace) {
+
+		boolean rememberedNeverMoved = neverMoved;
+
+		neverMoved = false;
+
+		super.moveTo(otherPlace);
+
+		return rememberedNeverMoved;
+	}
+	
+	@Override
+	public void rollBackMoveTo(Place oldPlace, boolean neverMoved) {
+
+		place.remove(this);
+
+		oldPlace.setPiece(this);
+
+		place = oldPlace;
+
+		this.neverMoved = neverMoved;
+
+		unselect();
+	}
 }

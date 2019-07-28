@@ -37,6 +37,12 @@ public abstract class Piece {
 	protected ArrayList<Place> preventPlacez = new ArrayList<>();
 
 	@Setter
+	@Getter
+	private boolean rocaded = false;
+	
+	protected boolean neverMoved = true;
+
+	@Setter
 	private EnPassant enPassant;
 
 	public Piece(Place place, int color) {

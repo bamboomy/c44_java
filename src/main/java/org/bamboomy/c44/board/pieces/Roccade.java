@@ -16,22 +16,16 @@ public class Roccade {
 
 	public void perform(Board board, boolean noNext, Place currentPlace) {
 
-		/*
-		 * in case we need to rollback
-		 * 
-		 * Piece selectedPiece = board.getCurrentPlayer().getSelectedPiece();
-		 * 
-		 * Place oldPlace = board.getCurrentPlayer().getSelectedPiece().getPlace();
-		 */
-
 		board.getCurrentPlayer().getSelectedPiece().moveTo(currentPlace);
+
+		board.getCurrentPlayer().getSelectedPiece().setRocaded(true);
 
 		tower.moveTo(towerPlace);
 
 		if (!noNext) {
 
 			currentPlace.commit();
-			
+
 			towerPlace.commit();
 
 			board.next();

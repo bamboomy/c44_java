@@ -9,8 +9,6 @@ public class Pawn extends Piece {
 
 	private int xDelta, yDelta;
 
-	private boolean neverMoved = true;
-
 	public Pawn(Place place, int color, int xDelta, int yDelta) {
 		super(place, color);
 
@@ -190,14 +188,8 @@ public class Pawn extends Piece {
 		boolean rememberedNeverMoved = neverMoved;
 
 		neverMoved = false;
-
-		unselect();
-
-		place.remove(this);
-
-		otherPlace.setPiece(this);
-
-		place = otherPlace;
+		
+		super.moveTo(otherPlace);
 
 		return rememberedNeverMoved;
 	}
