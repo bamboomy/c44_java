@@ -271,7 +271,7 @@ public abstract class Piece {
 
 		for (Place place : attackablePlaces) {
 
-			if (place.getEnPassant() != null) {
+			if (place.getEnPassant() != null && place.isEnPassantActivated()) {
 
 				filtered.add(place);
 
@@ -310,7 +310,7 @@ public abstract class Piece {
 
 		attackablePlaces = filtered;
 
-		return filtered.size() == 0;
+		return filtered.size() == 0 && unsetList.size() != 0;
 	}
 
 	public String getMd5WithBoard() {

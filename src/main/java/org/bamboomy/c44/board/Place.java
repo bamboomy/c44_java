@@ -51,6 +51,7 @@ public class Place {
 	private Roccade roccade;
 
 	@Setter
+	@Getter
 	private boolean enPassantActivated = false;
 
 	public Place(int color, Board board, int i, int j) {
