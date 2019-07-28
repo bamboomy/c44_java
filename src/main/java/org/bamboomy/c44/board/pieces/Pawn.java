@@ -131,6 +131,8 @@ public class Pawn extends Piece {
 					&& otherPlace.getEnPassant().getTargetPawn().getColor() != color) {
 
 				System.out.println("en passant detected");
+				
+				otherPlace.setEnPassantActivated(true);
 
 				attackablePlaces.add(otherPlace);
 			}
@@ -144,6 +146,8 @@ public class Pawn extends Piece {
 					&& otherPlace.getEnPassant().getTargetPawn().getColor() != color) {
 
 				System.out.println("en passant detected");
+				
+				otherPlace.setEnPassantActivated(true);
 
 				attackablePlaces.add(otherPlace);
 			}
@@ -157,6 +161,8 @@ public class Pawn extends Piece {
 					&& otherPlace.getEnPassant().getTargetPawn().getColor() != color) {
 
 				System.out.println("en passant detected");
+				
+				otherPlace.setEnPassantActivated(true);
 
 				attackablePlaces.add(otherPlace);
 			}
@@ -170,6 +176,8 @@ public class Pawn extends Piece {
 					&& otherPlace.getEnPassant().getTargetPawn().getColor() != color) {
 
 				System.out.println("en passant detected");
+				
+				otherPlace.setEnPassantActivated(true);
 
 				attackablePlaces.add(otherPlace);
 			}

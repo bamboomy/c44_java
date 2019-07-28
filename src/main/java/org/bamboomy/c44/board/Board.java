@@ -86,7 +86,7 @@ public class Board {
 
 		playerz[2] = new Player(2, this, false);
 
-		playerz[3] = new Player(3, this, true);
+		playerz[3] = new Player(3, this, false);
 
 		currentPlayer = playerz[turn];
 
@@ -230,20 +230,19 @@ public class Board {
 
 	public Place[][] getRotatedPlacez() {
 
-		if (currentPlayer.getColor() == Player.RED) {
-
-			return getRedPlacez();
-		}
-
-		if (currentPlayer.getColor() == Player.YELLOW) {
-
-			return getYellozPlacez();
-		}
-
-		if (currentPlayer.getColor() == Player.BLUE) {
-
-			return getBluePlacez();
-		}
+		/*
+		 * if (currentPlayer.getColor() == Player.RED) {
+		 * 
+		 * return getRedPlacez(); }
+		 * 
+		 * if (currentPlayer.getColor() == Player.YELLOW) {
+		 * 
+		 * return getYellozPlacez(); }
+		 * 
+		 * if (currentPlayer.getColor() == Player.BLUE) {
+		 * 
+		 * return getBluePlacez(); }
+		 */
 
 		return placez;
 	}
