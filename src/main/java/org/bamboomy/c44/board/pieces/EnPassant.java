@@ -39,6 +39,7 @@ public class EnPassant {
 
 		parent.removeEnpassant();
 		targetPawn.setEnPassant(null);
+		parent.setEnPassantActivated(false);
 
 		System.out.println("enPassant destroyed...");
 	}
