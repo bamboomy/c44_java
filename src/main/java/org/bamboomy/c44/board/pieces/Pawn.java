@@ -204,6 +204,8 @@ public class Pawn extends Piece {
 		place = oldPlace;
 
 		this.neverMoved = neverMoved;
+		
+		oldPlace.restoreEnpassant();
 
 		unselect();
 	}

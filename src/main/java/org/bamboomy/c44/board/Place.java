@@ -54,6 +54,8 @@ public class Place {
 	@Getter
 	private boolean enPassantActivated = false;
 
+	private EnPassant backupEnpassant = null;
+
 	public Place(int color, Board board, int i, int j) {
 
 		if (color != BLACK && color != WHITE) {
@@ -263,5 +265,17 @@ public class Place {
 	public String getMd5WithBoard() {
 
 		return md5 + "/" + board.getHash();
+	}
+
+	public void backupEnpassant() {
+
+		backupEnpassant = enPassant;
+
+		enPassant = null;
+	}
+
+	public void restoreEnpassant() {
+
+		enPassant = backupEnpassant;
 	}
 }

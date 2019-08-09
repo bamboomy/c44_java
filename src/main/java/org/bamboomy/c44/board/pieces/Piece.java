@@ -130,6 +130,11 @@ public abstract class Piece {
 
 	public boolean moveTo(Place otherPlace) {
 
+		if (otherPlace.getEnPassant() != null) {
+
+			otherPlace.backupEnpassant();
+		}
+
 		unselect();
 
 		place.remove(this);
@@ -166,6 +171,8 @@ public abstract class Piece {
 
 	public boolean doRandomMove(boolean kamikaze) {
 
+		unselect();
+
 		click();
 
 		ArrayList<Integer> moves = new ArrayList<>();
@@ -186,6 +193,8 @@ public abstract class Piece {
 
 				index = (int) (Math.random() * attackablePlaces.size());
 			}
+
+			unselect();
 
 			click();
 
