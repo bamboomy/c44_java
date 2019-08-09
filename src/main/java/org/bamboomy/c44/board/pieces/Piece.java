@@ -39,11 +39,13 @@ public abstract class Piece {
 	@Setter
 	@Getter
 	private boolean rocaded = false;
-	
+
 	protected boolean neverMoved = true;
 
 	@Setter
 	private EnPassant enPassant;
+
+	private ArrayList<Place> kingPlacez;
 
 	public Piece(Place place, int color) {
 
@@ -162,7 +164,7 @@ public abstract class Piece {
 		return attackablePlaces.size() > 0;
 	}
 
-	public boolean doRandomMove() {
+	public boolean doRandomMove(boolean kamikaze) {
 
 		click();
 
@@ -190,7 +192,7 @@ public abstract class Piece {
 			attackablePlaces.get(index).click(true);
 		}
 
-		if (place.getBoard().getCurrentPlayer().checkCheck()) {
+		if (place.getBoard().getCurrentPlayer().checkCheck() && !kamikaze) {
 
 			attackablePlaces.get(index).rollBack();
 
@@ -322,5 +324,34 @@ public abstract class Piece {
 	public String getMd5WithBoard() {
 
 		return md5 + "/" + place.getBoard().getHash();
+	}
+
+	public boolean canTakeKing() {
+
+		kingPlacez = new ArrayList<>();
+
+		if (canMove()) {
+
+			for (Place place : attackablePlaces) {
+
+				if (place.getPiece() != null && place.getPiece().getPieceIdentifier().equalsIgnoreCase(KING)) {
+
+					kingPlacez.add(place);
+				}
+			}
+
+			return kingPlacez.size() > 0;
+
+		} else {
+
+			return false;
+		}
+	}
+
+	public void takeKing() {
+
+		click();
+
+		kingPlacez.get((int) (Math.random() * kingPlacez.size())).click(false);
 	}
 }

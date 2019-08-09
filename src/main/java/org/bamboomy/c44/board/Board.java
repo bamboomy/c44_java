@@ -163,6 +163,11 @@ public class Board {
 
 		turn = (turn + 1) % 4;
 
+		for (Integer i : deadPlayers) {
+
+			System.out.print("dead:" + i);
+		}
+
 		if (deadPlayers.size() >= 3) {
 
 			System.out.println("Game ended...");
@@ -191,12 +196,19 @@ public class Board {
 
 				} else {
 
-					currentPlayer.generateRandomMove();
+					currentPlayer.kamikaze();
 				}
 
 			} else {
 
-				currentPlayer.generateRandomMove();
+				if (currentPlayer.canTakeKing()) {
+					
+					currentPlayer.takeAKing();
+
+				} else {
+
+					currentPlayer.generateRandomMove();
+				}
 			}
 		}
 	}

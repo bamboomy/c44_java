@@ -42,6 +42,8 @@ public class Player {
 	@Getter
 	private boolean chekcingCheck = false;
 
+	private ArrayList<Piece> kingTakerz;
+
 	public Player(int color, Board board, boolean isRobot) {
 
 		if (color != RED && color != BLUE && color != GREEN && color != YELLOW) {
@@ -155,7 +157,7 @@ public class Player {
 	}
 
 	boolean click(String md5) {
-		
+
 		System.out.println("player");
 
 		for (Piece piece : piecez) {
@@ -208,7 +210,7 @@ public class Player {
 
 		int index = (int) (Math.random() * movable.size());
 
-		while (!movable.get(index).doRandomMove() && selectedPlaces.size() < movable.size()) {
+		while (!movable.get(index).doRandomMove(false) && selectedPlaces.size() < movable.size()) {
 
 			selectedPlaces.add(index);
 
@@ -303,5 +305,40 @@ public class Player {
 		if (enPassant != null) {
 			enPassant.destroy();
 		}
+	}
+
+	public boolean canTakeKing() {
+
+		kingTakerz = new ArrayList<>();
+
+		for (Piece piece : piecez) {
+
+			if (piece.canTakeKing()) {
+
+				kingTakerz.add(piece);
+			}
+		}
+
+		return kingTakerz.size() > 0;
+	}
+
+	public void takeAKing() {
+
+		kingTakerz.get((int) (kingTakerz.size() * Math.random())).takeKing();
+	}
+
+	public void kamikaze() {
+
+		ArrayList<Piece> movable = new ArrayList<Piece>();
+
+		for (Piece piece : piecez) {
+
+			if (piece.canMove()) {
+
+				movable.add(piece);
+			}
+		}
+
+		movable.get((int) (Math.random() * movable.size())).doRandomMove(true);
 	}
 }
