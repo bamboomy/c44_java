@@ -171,11 +171,15 @@ public class Player {
 				piece.click();
 
 				board.setWouldBeCheck(false);
+				
+				board.getCurrentPlayer().setChekcingCheck(true);
 
 				if (piece.checkCheck()) {
 
 					board.setWouldBeCheck(true);
 				}
+				
+				board.getCurrentPlayer().setChekcingCheck(false);
 
 				return true;
 			}
