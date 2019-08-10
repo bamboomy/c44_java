@@ -197,6 +197,11 @@ public class Pawn extends Piece {
 	@Override
 	public void rollBackMoveTo(Place oldPlace, boolean neverMoved) {
 
+		if (enPassant != null) {
+
+			enPassant.destroy();
+		}
+
 		place.remove(this);
 
 		oldPlace.setPiece(this);

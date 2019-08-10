@@ -3,6 +3,7 @@ package org.bamboomy.c44.board;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 
 import javax.xml.bind.DatatypeConverter;
 
@@ -40,6 +41,7 @@ public class Place {
 
 	@Getter
 	private EnPassant enPassant;
+	// private ArrayList<EnPassant> enPassantz;
 
 	private Piece takenPiece = null, selectedPiece = null;
 
@@ -222,6 +224,8 @@ public class Place {
 	}
 
 	public void attachEnPassant(EnPassant enPassant) {
+
+		// enPassantz.add(enPassant);
 
 		this.enPassant = enPassant;
 	}

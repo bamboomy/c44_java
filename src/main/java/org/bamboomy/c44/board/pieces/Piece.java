@@ -43,7 +43,7 @@ public abstract class Piece {
 	protected boolean neverMoved = true;
 
 	@Setter
-	private EnPassant enPassant;
+	protected EnPassant enPassant;
 
 	private ArrayList<Place> kingPlacez;
 
@@ -258,11 +258,6 @@ public abstract class Piece {
 	}
 
 	public void rollBackMoveTo(Place oldPlace, boolean unused) {
-
-		if (enPassant != null) {
-
-			enPassant.destroy();
-		}
 
 		place.remove(this);
 
