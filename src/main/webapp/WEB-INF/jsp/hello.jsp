@@ -47,7 +47,7 @@
 <body>
 	<center>
 		<div>
-			<c:forEach items="${board.getRotatedPlacez()}" var="row">
+			<c:forEach items="${board.getPlacezFrom(playerHash)}" var="row">
 
 				<div class="row">
 

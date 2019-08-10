@@ -46,7 +46,7 @@ public class Board {
 	@Getter
 	private String hash;
 
-	public Board(String hash) {
+	public Board(String hash, String playerHash, String player2Hash, String player3Hash, String player4Hash) {
 
 		System.out.println("board created...");
 
@@ -80,13 +80,13 @@ public class Board {
 			}
 		}
 
-		playerz[0] = new Player(0, this, true);
+		playerz[0] = new Player(0, this, true, playerHash);
 
-		playerz[1] = new Player(1, this, true);
+		playerz[1] = new Player(1, this, true, player2Hash);
 
-		playerz[2] = new Player(2, this, false);
+		playerz[2] = new Player(2, this, false, player3Hash);
 
-		playerz[3] = new Player(3, this, true);
+		playerz[3] = new Player(3, this, true, player4Hash);
 
 		currentPlayer = playerz[turn];
 
@@ -202,7 +202,7 @@ public class Board {
 			} else {
 
 				if (currentPlayer.canTakeKing()) {
-					
+
 					currentPlayer.takeAKing();
 
 				} else {
@@ -240,22 +240,31 @@ public class Board {
 		return false;
 	}
 
-	public Place[][] getRotatedPlacez() {
+	public Place[][] getPlacezFrom(String playerHash) {
 
-		/*
-		 * if (currentPlayer.getColor() == Player.RED) {
-		 * 
-		 * return getRedPlacez(); }
-		 * 
-		 * if (currentPlayer.getColor() == Player.YELLOW) {
-		 * 
-		 * return getYellozPlacez(); }
-		 * 
-		 * if (currentPlayer.getColor() == Player.BLUE) {
-		 * 
-		 * return getBluePlacez(); }
-		 */
+		for (Player player : playerz) {
 
-		return placez;
+			if (player.getPlayerHash().equalsIgnoreCase(playerHash) && player.getColor() == Player.RED) {
+
+				return getRedPlacez();
+			}
+
+			if (player.getPlayerHash().equalsIgnoreCase(playerHash) && player.getColor() == Player.YELLOW) {
+
+				return getYellozPlacez();
+			}
+
+			if (player.getPlayerHash().equalsIgnoreCase(playerHash) && player.getColor() == Player.BLUE) {
+
+				return getBluePlacez();
+			}
+
+			if (player.getPlayerHash().equalsIgnoreCase(playerHash) && player.getColor() == Player.GREEN) {
+
+				return placez;
+			}
+		}
+
+		return null;
 	}
 }

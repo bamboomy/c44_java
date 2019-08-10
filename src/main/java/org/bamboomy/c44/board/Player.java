@@ -44,7 +44,10 @@ public class Player {
 
 	private ArrayList<Piece> kingTakerz;
 
-	public Player(int color, Board board, boolean isRobot) {
+	@Getter
+	private String playerHash;
+
+	public Player(int color, Board board, boolean isRobot, String playerHash) {
 
 		if (color != RED && color != BLUE && color != GREEN && color != YELLOW) {
 
@@ -73,6 +76,8 @@ public class Player {
 		robot = isRobot;
 
 		this.board = board;
+
+		this.playerHash = playerHash;
 	}
 
 	private void initRed(Board board) {
@@ -171,14 +176,14 @@ public class Player {
 				piece.click();
 
 				board.setWouldBeCheck(false);
-				
+
 				board.getCurrentPlayer().setChekcingCheck(true);
 
 				if (piece.checkCheck()) {
 
 					board.setWouldBeCheck(true);
 				}
-				
+
 				board.getCurrentPlayer().setChekcingCheck(false);
 
 				return true;

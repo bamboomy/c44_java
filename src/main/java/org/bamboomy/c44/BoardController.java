@@ -53,6 +53,6 @@ public class BoardController {
 
 	public void createBoard(String md5, String playerHash, String player2Hash, String player3Hash, String player4Hash) {
 
-		GAMEZ.put(md5, new Board(md5));
+		GAMEZ.put(md5, new Board(md5, playerHash, player2Hash, player3Hash, player4Hash));
 	}
 }
