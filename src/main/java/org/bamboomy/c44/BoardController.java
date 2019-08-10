@@ -48,15 +48,11 @@ public class BoardController {
 
 	Board getBoard(String hash) {
 
-		Board result = GAMEZ.get(hash);
+		return GAMEZ.get(hash);
+	}
 
-		if (GAMEZ.get(hash) == null) {
+	public void createBoard(String md5, String playerHash, String player2Hash, String player3Hash, String player4Hash) {
 
-			result = new Board(hash);
-
-			GAMEZ.put(hash, result);
-		}
-
-		return result;
+		GAMEZ.put(md5, new Board(md5));
 	}
 }
