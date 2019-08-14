@@ -34,7 +34,7 @@ public abstract class Piece {
 
 	protected ArrayList<Place> attackablePlaces = new ArrayList<Place>();
 
-	protected ArrayList<Place> preventPlacez = new ArrayList<>();
+	protected ArrayList<Place> preventPlacezOfPiece = new ArrayList<>();
 
 	@Setter
 	@Getter
@@ -99,7 +99,7 @@ public abstract class Piece {
 
 		if (!selected) {
 
-			place.getBoard().getPlayerz()[color].setSelected(this);
+			place.getBoard().getCurrentPlayer().setSelected(this);
 
 			setAttackablePlaces();
 
@@ -169,7 +169,7 @@ public abstract class Piece {
 		return attackablePlaces.size() > 0;
 	}
 
-	public boolean doRandomMove(boolean kamikaze) {
+	public boolean doRandomMove() {
 
 		unselect();
 
@@ -201,7 +201,7 @@ public abstract class Piece {
 			attackablePlaces.get(index).click(true);
 		}
 
-		if (place.getBoard().getCurrentPlayer().checkCheck() && !kamikaze) {
+		if (place.getBoard().getCurrentPlayer().checkCheck()) {
 
 			attackablePlaces.get(index).rollBack();
 
@@ -234,11 +234,13 @@ public abstract class Piece {
 
 		setAttackablePlaces();
 
-		preventPlacez = new ArrayList<>();
+		preventPlacezOfPiece = new ArrayList<>();
 
-		boolean result = false;
+		boolean canPrevent = false;
 
 		for (Place place : attackablePlaces) {
+
+			unselect();
 
 			click();
 
@@ -246,15 +248,15 @@ public abstract class Piece {
 
 			if (!place.getBoard().getCurrentPlayer().checkCheck()) {
 
-				preventPlacez.add(place);
+				preventPlacezOfPiece.add(place);
 
-				result = true;
+				canPrevent = true;
 			}
 
 			place.rollBack();
 		}
 
-		return result;
+		return canPrevent;
 	}
 
 	public void rollBackMoveTo(Place oldPlace, boolean unused) {
@@ -270,32 +272,20 @@ public abstract class Piece {
 
 	public void prevent() {
 
+		unselect();
+
 		click();
 
-		preventPlacez.get((int) Math.random() * preventPlacez.size()).click(false);
+		preventPlacezOfPiece.get((int) Math.random() * preventPlacezOfPiece.size()).click(false);
 	}
 
-	public boolean checkCheck() {
+	public boolean checkWouldBeCheck() {
 
 		ArrayList<Place> filtered = new ArrayList<>();
 
 		ArrayList<Place> unsetList = new ArrayList<>();
 
 		for (Place place : attackablePlaces) {
-
-			if (place.getEnPassant() != null && place.isEnPassantActivated()) {
-
-				filtered.add(place);
-
-				continue;
-			}
-
-			if (place.getRoccade() != null) {
-
-				filtered.add(place);
-
-				continue;
-			}
 
 			place.click(true);
 
@@ -357,5 +347,14 @@ public abstract class Piece {
 		click();
 
 		kingPlacez.get((int) (Math.random() * kingPlacez.size())).click(false);
+	}
+
+	public void kamikaze() {
+
+		unselect();
+
+		click();
+
+		attackablePlaces.get((int) (Math.random() * attackablePlaces.size())).click(true);
 	}
 }

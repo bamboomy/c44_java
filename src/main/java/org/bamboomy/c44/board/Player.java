@@ -171,15 +171,11 @@ public class Player {
 				piece.click();
 
 				board.setWouldBeCheck(false);
-				
-				board.getCurrentPlayer().setChekcingCheck(true);
 
-				if (piece.checkCheck()) {
+				if (piece.checkWouldBeCheck()) {
 
 					board.setWouldBeCheck(true);
 				}
-				
-				board.getCurrentPlayer().setChekcingCheck(false);
 
 				return true;
 			}
@@ -247,9 +243,9 @@ public class Player {
 
 			if (player != this) {
 
-				player.setChekcingCheck(true);
-
 				for (Piece piece : player.getPiecez()) {
+
+					player.setChekcingCheck(true);
 
 					if (piece.checkCheck(king)) {
 
@@ -258,8 +254,6 @@ public class Player {
 						return true;
 					}
 				}
-
-				player.setChekcingCheck(false);
 			}
 		}
 
@@ -270,28 +264,28 @@ public class Player {
 
 		preventPieces = new ArrayList<>();
 
-		boolean result = false;
+		boolean canPrevent = false;
 
-		ArrayList<Piece> iDontUnderstandTheProblem = new ArrayList<>();
+		ArrayList<Piece> copyOfPiecez = new ArrayList<>();
 
 		for (Piece piece : getPiecez()) {
 
-			iDontUnderstandTheProblem.add(piece);
+			copyOfPiecez.add(piece);
 		}
 
-		for (Piece piece : iDontUnderstandTheProblem) {
+		for (Piece piece : copyOfPiecez) {
 
-			boolean canPrevent = piece.canPrevent();
+			boolean pieceCanPrevent = piece.canPrevent();
 
-			result |= canPrevent;
+			canPrevent |= pieceCanPrevent;
 
-			if (canPrevent) {
+			if (pieceCanPrevent) {
 
 				preventPieces.add(piece);
 			}
 		}
 
-		return result;
+		return canPrevent;
 	}
 
 	public void prevent() {
@@ -343,6 +337,8 @@ public class Player {
 			}
 		}
 
-		movable.get((int) (Math.random() * movable.size())).doRandomMove(true);
+		movable.get((int) (Math.random() * movable.size())).kamikaze();
+
+		die();
 	}
 }

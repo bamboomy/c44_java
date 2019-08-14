@@ -136,9 +136,7 @@ public class Board {
 
 		System.out.println(md5);
 
-		boolean piece = currentPlayer.click(md5);
-
-		if (!piece) {
+		if (!currentPlayer.click(md5)) {
 
 			System.out.println("not piece");
 
@@ -149,8 +147,6 @@ public class Board {
 					if (place != null && place.getMd5() != null && place.getMd5().equalsIgnoreCase(md5)) {
 
 						place.click(false);
-
-						place.commit();
 					}
 				}
 			}

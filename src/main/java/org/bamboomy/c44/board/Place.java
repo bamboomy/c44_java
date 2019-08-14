@@ -186,7 +186,7 @@ public class Place {
 
 			takenPiece = piece;
 
-			board.getPlayerz()[takenPiece.getColor()].getPiecez().remove(piece);
+			board.getPlayerz()[takenPiece.getColor()].getPiecez().remove(takenPiece);
 		}
 
 		selectedPiece = board.getCurrentPlayer().getSelectedPiece();
