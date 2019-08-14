@@ -390,19 +390,7 @@ public class King extends Piece {
 	}
 
 	@Override
-	public boolean moveTo(Place otherPlace) {
-
-		boolean rememberedNeverMoved = neverMoved;
-
-		neverMoved = false;
-
-		super.moveTo(otherPlace);
-
-		return rememberedNeverMoved;
-	}
-	
-	@Override
-	public void rollBackMoveTo(Place oldPlace, boolean neverMoved) {
+	public void rollBackMoveTo(Place oldPlace) {
 
 		place.remove(this);
 
@@ -410,7 +398,7 @@ public class King extends Piece {
 
 		place = oldPlace;
 
-		this.neverMoved = neverMoved;
+		neverMoved = rememberNeverMoved;
 
 		unselect();
 	}

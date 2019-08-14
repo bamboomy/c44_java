@@ -65,7 +65,7 @@ public class Pawn extends Piece {
 						EnPassant enPassant = new EnPassant(this, otherPlace, enPassantPlace);
 
 						enPassantPlace.attachEnPassant(enPassant);
-						
+
 						setEnPassant(enPassant);
 
 						place.getBoard().getCurrentPlayer().attachEnPassant(enPassant);
@@ -129,7 +129,7 @@ public class Pawn extends Piece {
 					&& otherPlace.getEnPassant().getTargetPawn().getColor() != color) {
 
 				System.out.println("en passant detected");
-				
+
 				otherPlace.setEnPassantActivated(true);
 
 				attackablePlaces.add(otherPlace);
@@ -144,7 +144,7 @@ public class Pawn extends Piece {
 					&& otherPlace.getEnPassant().getTargetPawn().getColor() != color) {
 
 				System.out.println("en passant detected");
-				
+
 				otherPlace.setEnPassantActivated(true);
 
 				attackablePlaces.add(otherPlace);
@@ -159,7 +159,7 @@ public class Pawn extends Piece {
 					&& otherPlace.getEnPassant().getTargetPawn().getColor() != color) {
 
 				System.out.println("en passant detected");
-				
+
 				otherPlace.setEnPassantActivated(true);
 
 				attackablePlaces.add(otherPlace);
@@ -174,7 +174,7 @@ public class Pawn extends Piece {
 					&& otherPlace.getEnPassant().getTargetPawn().getColor() != color) {
 
 				System.out.println("en passant detected");
-				
+
 				otherPlace.setEnPassantActivated(true);
 
 				attackablePlaces.add(otherPlace);
@@ -183,19 +183,7 @@ public class Pawn extends Piece {
 	}
 
 	@Override
-	public boolean moveTo(Place otherPlace) {
-
-		boolean rememberedNeverMoved = neverMoved;
-
-		neverMoved = false;
-		
-		super.moveTo(otherPlace);
-
-		return rememberedNeverMoved;
-	}
-
-	@Override
-	public void rollBackMoveTo(Place oldPlace, boolean neverMoved) {
+	public void rollBackMoveTo(Place oldPlace) {
 
 		if (enPassant != null) {
 
@@ -208,8 +196,8 @@ public class Pawn extends Piece {
 
 		place = oldPlace;
 
-		this.neverMoved = neverMoved;
-		
+		neverMoved = rememberNeverMoved;
+
 		oldPlace.restoreEnpassant();
 
 		unselect();

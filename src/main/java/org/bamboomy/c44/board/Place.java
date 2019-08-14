@@ -47,8 +47,6 @@ public class Place {
 
 	private Place oldPlace = null;
 
-	private boolean neverMoved = false;
-
 	@Getter
 	private Roccade roccade;
 
@@ -193,7 +191,7 @@ public class Place {
 
 		oldPlace = board.getCurrentPlayer().getSelectedPiece().getPlace();
 
-		neverMoved = board.getCurrentPlayer().getSelectedPiece().moveTo(this);
+		board.getCurrentPlayer().getSelectedPiece().moveTo(this);
 
 		if (!noNext) {
 

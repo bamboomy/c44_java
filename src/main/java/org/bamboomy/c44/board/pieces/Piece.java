@@ -40,7 +40,7 @@ public abstract class Piece {
 	@Getter
 	private boolean rocaded = false;
 
-	protected boolean neverMoved = true;
+	protected boolean neverMoved = true, rememberNeverMoved = true;
 
 	@Setter
 	protected EnPassant enPassant;
@@ -128,7 +128,7 @@ public abstract class Piece {
 		selected = false;
 	}
 
-	public boolean moveTo(Place otherPlace) {
+	public void moveTo(Place otherPlace) {
 
 		if (otherPlace.getEnPassant() != null) {
 
@@ -142,8 +142,10 @@ public abstract class Piece {
 		otherPlace.setPiece(this);
 
 		place = otherPlace;
-
-		return false;
+		
+		rememberNeverMoved = neverMoved;
+		
+		neverMoved = false;
 	}
 
 	public boolean uncheckedMoveTo(Place otherPlace) {
@@ -259,7 +261,7 @@ public abstract class Piece {
 		return canPrevent;
 	}
 
-	public void rollBackMoveTo(Place oldPlace, boolean unused) {
+	public void rollBackMoveTo(Place oldPlace) {
 
 		place.remove(this);
 
@@ -343,6 +345,8 @@ public abstract class Piece {
 	}
 
 	public void takeKing() {
+
+		unselect();
 
 		click();
 

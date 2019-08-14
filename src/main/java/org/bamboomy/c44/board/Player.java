@@ -210,7 +210,7 @@ public class Player {
 
 		int index = (int) (Math.random() * movable.size());
 
-		while (!movable.get(index).doRandomMove(false) && selectedPlaces.size() < movable.size()) {
+		while (!movable.get(index).doRandomMove() && selectedPlaces.size() < movable.size()) {
 
 			selectedPlaces.add(index);
 
@@ -224,7 +224,7 @@ public class Player {
 
 		if (selectedPlaces.size() >= movable.size()) {
 
-			die();
+			throw new RuntimeException("this shouldn't be reachable");
 
 		} else {
 
