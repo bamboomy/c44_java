@@ -44,6 +44,8 @@ public class Player {
 
 	private ArrayList<Piece> kingTakerz;
 
+	private boolean pat = false;
+
 	public Player(int color, Board board, boolean isRobot) {
 
 		if (color != RED && color != BLUE && color != GREEN && color != YELLOW) {
@@ -224,7 +226,7 @@ public class Player {
 
 		if (selectedPlaces.size() >= movable.size()) {
 
-			throw new RuntimeException("this shouldn't be reachable");
+			die(true);
 
 		} else {
 
@@ -232,7 +234,9 @@ public class Player {
 		}
 	}
 
-	private void die() {
+	private void die(boolean pat) {
+
+		this.pat = pat;
 
 		board.removeMe();
 	}
@@ -253,6 +257,8 @@ public class Player {
 
 						return true;
 					}
+
+					player.setChekcingCheck(false);
 				}
 			}
 		}
@@ -344,7 +350,7 @@ public class Player {
 
 		movable.get((int) (Math.random() * movable.size())).kamikaze();
 
-		die();
+		die(false);
 	}
 
 	public void removeEnPassant(EnPassant enPassant) {

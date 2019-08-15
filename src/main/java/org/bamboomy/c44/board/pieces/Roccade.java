@@ -12,6 +12,8 @@ public class Roccade {
 
 		this.tower = tower;
 		this.towerPlace = towerPlace;
+
+		System.out.println("roccade created");
 	}
 
 	public void perform(Board board, boolean noNext, Place currentPlace) {
