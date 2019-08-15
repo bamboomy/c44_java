@@ -295,6 +295,11 @@ public class Player {
 
 	public void attachEnPassant(EnPassant enPassant) {
 
+		if (this.enPassant != null) {
+
+			throw new RuntimeException("en passant wasn't null");
+		}
+
 		this.enPassant = enPassant;
 	}
 
@@ -340,5 +345,15 @@ public class Player {
 		movable.get((int) (Math.random() * movable.size())).kamikaze();
 
 		die();
+	}
+
+	public void removeEnPassant(EnPassant enPassant) {
+
+		if (this.enPassant != enPassant) {
+
+			throw new RuntimeException("wrong enpassant");
+		}
+
+		enPassant = null;
 	}
 }

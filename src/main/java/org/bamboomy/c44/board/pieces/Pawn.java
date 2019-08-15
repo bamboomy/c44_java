@@ -62,7 +62,7 @@ public class Pawn extends Piece {
 
 					if (!place.getBoard().isCheckingCheck()) {
 
-						EnPassant enPassant = new EnPassant(this, otherPlace, enPassantPlace);
+						EnPassant enPassant = new EnPassant(this, otherPlace, enPassantPlace, place.getBoard().getCurrentPlayer());
 
 						enPassantPlace.attachEnPassant(enPassant);
 
@@ -115,11 +115,6 @@ public class Pawn extends Piece {
 		}
 
 		// em passant
-
-		if (place.getBoard().isCheckingCheck()) {
-
-			return;
-		}
 
 		if (xDelta != 0 && place.getY() + 1 < 12) {
 

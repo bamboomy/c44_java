@@ -311,7 +311,7 @@ public class King extends Piece {
 
 		result &= !place.getBoard().getCurrentPlayer().checkCheck();
 
-		rollBackMoveTo(oldPlace, true);
+		rollBackMoveTo(oldPlace);
 
 		return result;
 	}

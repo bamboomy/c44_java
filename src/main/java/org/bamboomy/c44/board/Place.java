@@ -235,7 +235,7 @@ public class Place {
 			board.getPlayerz()[takenPiece.getColor()].getPiecez().add(takenPiece);
 		}
 
-		selectedPiece.rollBackMoveTo(oldPlace, neverMoved);
+		selectedPiece.rollBackMoveTo(oldPlace);
 
 		piece = takenPiece;
 
