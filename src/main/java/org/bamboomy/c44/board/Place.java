@@ -3,11 +3,9 @@ package org.bamboomy.c44.board;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 
 import javax.xml.bind.DatatypeConverter;
 
-import org.bamboomy.c44.board.pieces.EnPassant;
 import org.bamboomy.c44.board.pieces.Piece;
 import org.bamboomy.c44.board.pieces.Roccade;
 
@@ -39,9 +37,10 @@ public class Place {
 	@Getter
 	private boolean attacked = false;
 
-	@Getter
-	private EnPassant enPassant;
-	// private ArrayList<EnPassant> enPassantz;
+	/*
+	 * @Getter private EnPassant enPassant; // private ArrayList<EnPassant>
+	 * enPassantz;
+	 */
 
 	private Piece takenPiece = null, selectedPiece = null;
 
@@ -50,11 +49,13 @@ public class Place {
 	@Getter
 	private Roccade roccade;
 
-	@Setter
-	@Getter
-	private boolean enPassantActivated = false;
+	/*
+	 * @Setter
+	 * 
+	 * @Getter private boolean enPassantActivated = false;
+	 */
 
-	private EnPassant backupEnpassant = null;
+	// private EnPassant backupEnpassant = null;
 
 	public Place(int color, Board board, int i, int j) {
 
@@ -169,16 +170,18 @@ public class Place {
 			return;
 		}
 
-		if (!getBoard().isCheckingCheck() && enPassant != null && enPassantActivated) {
-
-			EnPassant aboutToPerform = enPassant;
-
-			enPassant = null;
-
-			aboutToPerform.perform(board, noNext, this);
-
-			return;
-		}
+		/*
+		 * if (!getBoard().isCheckingCheck() && enPassant != null && enPassantActivated)
+		 * {
+		 * 
+		 * EnPassant aboutToPerform = enPassant;
+		 * 
+		 * enPassant = null;
+		 * 
+		 * aboutToPerform.perform(board, noNext, this);
+		 * 
+		 * return; }
+		 */
 
 		if (piece != null) {
 
@@ -221,12 +224,13 @@ public class Place {
 		piece = null;
 	}
 
-	public void attachEnPassant(EnPassant enPassant) {
-
-		// enPassantz.add(enPassant);
-
-		this.enPassant = enPassant;
-	}
+	/*
+	 * public void attachEnPassant(EnPassant enPassant) {
+	 * 
+	 * // enPassantz.add(enPassant);
+	 * 
+	 * this.enPassant = enPassant; }
+	 */
 
 	public void rollBack() {
 
@@ -259,25 +263,28 @@ public class Place {
 		roccade = null;
 	}
 
-	public void removeEnpassant() {
-
-		enPassant = null;
-	}
+	/*
+	 * public void removeEnpassant() {
+	 * 
+	 * enPassant = null; }
+	 */
 
 	public String getMd5WithBoard() {
 
 		return md5 + "/" + board.getHash();
 	}
 
-	public void backupEnpassant() {
+	/*
+	 * public void backupEnpassant() {
+	 * 
+	 * backupEnpassant = enPassant;
+	 * 
+	 * enPassant = null; }
+	 */
 
-		backupEnpassant = enPassant;
-
-		enPassant = null;
-	}
-
-	public void restoreEnpassant() {
-
-		enPassant = backupEnpassant;
-	}
+	/*
+	 * public void restoreEnpassant() {
+	 * 
+	 * enPassant = backupEnpassant; }
+	 */
 }

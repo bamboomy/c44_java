@@ -34,7 +34,7 @@ public class Player {
 
 	private Piece king;
 
-	private EnPassant enPassant;
+	// private EnPassant enPassant;
 
 	private ArrayList<Piece> preventPieces = new ArrayList<>();
 
@@ -299,22 +299,19 @@ public class Player {
 		preventPieces.get((int) Math.random() * preventPieces.size()).prevent();
 	}
 
-	public void attachEnPassant(EnPassant enPassant) {
-
-		if (this.enPassant != null) {
-
-			throw new RuntimeException("en passant wasn't null");
-		}
-
-		this.enPassant = enPassant;
-	}
-
-	public void removeEnPassant() {
-
-		if (enPassant != null) {
-			enPassant.destroy();
-		}
-	}
+	/*
+	 * public void attachEnPassant(EnPassant enPassant) {
+	 * 
+	 * if (this.enPassant != null) {
+	 * 
+	 * throw new RuntimeException("en passant wasn't null"); }
+	 * 
+	 * this.enPassant = enPassant; }
+	 * 
+	 * public void removeEnPassant() {
+	 * 
+	 * if (enPassant != null) { enPassant.destroy(); } }
+	 */
 
 	public boolean canTakeKing() {
 
@@ -353,13 +350,13 @@ public class Player {
 		die(false);
 	}
 
-	public void removeEnPassant(EnPassant enPassant) {
-
-		if (this.enPassant != enPassant) {
-
-			throw new RuntimeException("wrong enpassant");
-		}
-
-		enPassant = null;
-	}
+	/*
+	 * public void removeEnPassant(EnPassant enPassant) {
+	 * 
+	 * if (this.enPassant != enPassant) {
+	 * 
+	 * throw new RuntimeException("wrong enpassant"); }
+	 * 
+	 * enPassant = null; }
+	 */
 }

@@ -41,11 +41,11 @@ public class EnPassant {
 
 	public void destroy() {
 
-		parent.removeEnpassant();
-		targetPawn.setEnPassant(null);
-		parent.setEnPassantActivated(false);
+		//parent.removeEnpassant();
+		//targetPawn.setEnPassant(null);
+		//parent.setEnPassantActivated(false);
 		
-		player.removeEnPassant(this);
+		//player.removeEnPassant(this);
 
 		System.out.println("enPassant destroyed...");
 	}

@@ -42,8 +42,9 @@ public abstract class Piece {
 
 	protected boolean neverMoved = true, rememberNeverMoved = true;
 
-	@Setter
-	protected EnPassant enPassant;
+	/*
+	 * @Setter protected EnPassant enPassant;
+	 */
 
 	private ArrayList<Place> kingPlacez;
 
@@ -130,10 +131,11 @@ public abstract class Piece {
 
 	public void moveTo(Place otherPlace) {
 
-		if (otherPlace.getEnPassant() != null) {
-
-			otherPlace.backupEnpassant();
-		}
+		/*
+		 * if (otherPlace.getEnPassant() != null) {
+		 * 
+		 * otherPlace.backupEnpassant(); }
+		 */
 
 		unselect();
 
@@ -142,9 +144,9 @@ public abstract class Piece {
 		otherPlace.setPiece(this);
 
 		place = otherPlace;
-		
+
 		rememberNeverMoved = neverMoved;
-		
+
 		neverMoved = false;
 	}
 
@@ -163,10 +165,11 @@ public abstract class Piece {
 
 		setAttackablePlaces();
 
-		if (enPassant != null) {
-
-			enPassant.destroy();
-		}
+		/*
+		 * if (enPassant != null) {
+		 * 
+		 * enPassant.destroy(); }
+		 */
 
 		return attackablePlaces.size() > 0;
 	}

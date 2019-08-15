@@ -2,8 +2,6 @@ package org.bamboomy.c44.board;
 
 import java.util.ArrayList;
 
-import org.eclipse.jdt.internal.compiler.ast.ReturnStatement;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -178,7 +176,7 @@ public class Board {
 
 		currentPlayer = playerz[turn];
 
-		currentPlayer.removeEnPassant();
+		//currentPlayer.removeEnPassant();
 
 		System.out.println("color: " + currentPlayer.getColor());
 

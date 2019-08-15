@@ -52,7 +52,7 @@ public class Pawn extends Piece {
 
 			if (neverMoved) {
 
-				Place enPassantPlace = otherPlace;
+				// Place enPassantPlace = otherPlace;
 
 				otherPlace = place.getBoard().getPlacez()[place.getX() + (xDelta * 2)][place.getY() + (yDelta * 2)];
 
@@ -60,16 +60,18 @@ public class Pawn extends Piece {
 
 					attackablePlaces.add(otherPlace);
 
-					if (!place.getBoard().isCheckingCheck()) {
-
-						EnPassant enPassant = new EnPassant(this, otherPlace, enPassantPlace, place.getBoard().getCurrentPlayer());
-
-						enPassantPlace.attachEnPassant(enPassant);
-
-						setEnPassant(enPassant);
-
-						place.getBoard().getCurrentPlayer().attachEnPassant(enPassant);
-					}
+					/*
+					 * if (!place.getBoard().isCheckingCheck()) {
+					 * 
+					 * EnPassant enPassant = new EnPassant(this, otherPlace, enPassantPlace,
+					 * place.getBoard().getCurrentPlayer());
+					 * 
+					 * enPassantPlace.attachEnPassant(enPassant);
+					 * 
+					 * setEnPassant(enPassant);
+					 * 
+					 * place.getBoard().getCurrentPlayer().attachEnPassant(enPassant); }
+					 */
 				}
 			}
 		}
@@ -114,76 +116,78 @@ public class Pawn extends Piece {
 			}
 		}
 
-		// em passant
+		// em passant -> it doesn't work: we abandon it (for now)... (we're still in
+		// poc...)
 
-		if (xDelta != 0 && place.getY() + 1 < 12) {
-
-			otherPlace = place.getBoard().getPlacez()[place.getX() + xDelta][place.getY() + 1];
-
-			if (otherPlace != null && otherPlace.getEnPassant() != null
-					&& otherPlace.getEnPassant().getTargetPawn().getColor() != color) {
-
-				System.out.println("en passant detected");
-
-				otherPlace.setEnPassantActivated(true);
-
-				attackablePlaces.add(otherPlace);
-			}
-		}
-
-		if (xDelta != 0 && place.getY() - 1 >= 0) {
-
-			otherPlace = place.getBoard().getPlacez()[place.getX() + xDelta][place.getY() - 1];
-
-			if (otherPlace != null && otherPlace.getEnPassant() != null
-					&& otherPlace.getEnPassant().getTargetPawn().getColor() != color) {
-
-				System.out.println("en passant detected");
-
-				otherPlace.setEnPassantActivated(true);
-
-				attackablePlaces.add(otherPlace);
-			}
-		}
-
-		if (yDelta != 0 && place.getX() + 1 < 12) {
-
-			otherPlace = place.getBoard().getPlacez()[place.getX() + 1][place.getY() + yDelta];
-
-			if (otherPlace != null && otherPlace.getEnPassant() != null
-					&& otherPlace.getEnPassant().getTargetPawn().getColor() != color) {
-
-				System.out.println("en passant detected");
-
-				otherPlace.setEnPassantActivated(true);
-
-				attackablePlaces.add(otherPlace);
-			}
-		}
-
-		if (yDelta != 0 && place.getX() - 1 >= 0) {
-
-			otherPlace = place.getBoard().getPlacez()[place.getX() - 1][place.getY() + yDelta];
-
-			if (otherPlace != null && otherPlace.getEnPassant() != null
-					&& otherPlace.getEnPassant().getTargetPawn().getColor() != color) {
-
-				System.out.println("en passant detected");
-
-				otherPlace.setEnPassantActivated(true);
-
-				attackablePlaces.add(otherPlace);
-			}
-		}
+		/*
+		 * 
+		 * if (xDelta != 0 && place.getY() + 1 < 12) {
+		 * 
+		 * otherPlace = place.getBoard().getPlacez()[place.getX() + xDelta][place.getY()
+		 * + 1];
+		 * 
+		 * if (otherPlace != null && otherPlace.getEnPassant() != null &&
+		 * otherPlace.getEnPassant().getTargetPawn().getColor() != color) {
+		 * 
+		 * System.out.println("en passant detected");
+		 * 
+		 * otherPlace.setEnPassantActivated(true);
+		 * 
+		 * attackablePlaces.add(otherPlace); } }
+		 * 
+		 * if (xDelta != 0 && place.getY() - 1 >= 0) {
+		 * 
+		 * otherPlace = place.getBoard().getPlacez()[place.getX() + xDelta][place.getY()
+		 * - 1];
+		 * 
+		 * if (otherPlace != null && otherPlace.getEnPassant() != null &&
+		 * otherPlace.getEnPassant().getTargetPawn().getColor() != color) {
+		 * 
+		 * System.out.println("en passant detected");
+		 * 
+		 * otherPlace.setEnPassantActivated(true);
+		 * 
+		 * attackablePlaces.add(otherPlace); } }
+		 * 
+		 * if (yDelta != 0 && place.getX() + 1 < 12) {
+		 * 
+		 * otherPlace = place.getBoard().getPlacez()[place.getX() + 1][place.getY() +
+		 * yDelta];
+		 * 
+		 * if (otherPlace != null && otherPlace.getEnPassant() != null &&
+		 * otherPlace.getEnPassant().getTargetPawn().getColor() != color) {
+		 * 
+		 * System.out.println("en passant detected");
+		 * 
+		 * otherPlace.setEnPassantActivated(true);
+		 * 
+		 * attackablePlaces.add(otherPlace); } }
+		 * 
+		 * if (yDelta != 0 && place.getX() - 1 >= 0) {
+		 * 
+		 * otherPlace = place.getBoard().getPlacez()[place.getX() - 1][place.getY() +
+		 * yDelta];
+		 * 
+		 * if (otherPlace != null && otherPlace.getEnPassant() != null &&
+		 * otherPlace.getEnPassant().getTargetPawn().getColor() != color) {
+		 * 
+		 * System.out.println("en passant detected");
+		 * 
+		 * otherPlace.setEnPassantActivated(true);
+		 * 
+		 * attackablePlaces.add(otherPlace); } }
+		 * 
+		 */
 	}
 
 	@Override
 	public void rollBackMoveTo(Place oldPlace) {
 
-		if (enPassant != null) {
-
-			enPassant.destroy();
-		}
+		/*
+		 * if (enPassant != null) {
+		 * 
+		 * enPassant.destroy(); }
+		 */
 
 		place.remove(this);
 
@@ -193,7 +197,7 @@ public class Pawn extends Piece {
 
 		neverMoved = rememberNeverMoved;
 
-		oldPlace.restoreEnpassant();
+		// oldPlace.restoreEnpassant();
 
 		unselect();
 	}
