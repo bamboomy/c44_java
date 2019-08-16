@@ -159,6 +159,10 @@ public class Place {
 
 		System.out.println(getX() + ", " + getY() + ": " + getCssName());
 
+		selectedPiece = board.getCurrentPlayer().getSelectedPiece();
+
+		oldPlace = board.getCurrentPlayer().getSelectedPiece().getPlace();
+		
 		if (!getBoard().isCheckingCheck() && roccade != null) {
 
 			Roccade aboutToPerform = roccade;
@@ -189,10 +193,6 @@ public class Place {
 
 			board.getPlayerz()[takenPiece.getColor()].getPiecez().remove(takenPiece);
 		}
-
-		selectedPiece = board.getCurrentPlayer().getSelectedPiece();
-
-		oldPlace = board.getCurrentPlayer().getSelectedPiece().getPlace();
 
 		board.getCurrentPlayer().getSelectedPiece().moveTo(this);
 
