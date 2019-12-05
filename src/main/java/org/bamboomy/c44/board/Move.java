@@ -9,9 +9,17 @@ public class Move {
 
 	@Getter
 	@Setter
-	private Place from, to;
-	
+	protected Place from, to;
+
 	@Getter
 	@Setter
-	private Piece piece; 
+	protected Piece piece;
+
+	public Move(Place from, Place to, Piece piece) {
+
+		this.from = from;
+		this.to = to;
+
+		this.piece = piece;
+	}
 }

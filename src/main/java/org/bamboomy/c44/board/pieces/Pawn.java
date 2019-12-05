@@ -2,6 +2,7 @@ package org.bamboomy.c44.board.pieces;
 
 import java.util.ArrayList;
 
+import org.bamboomy.c44.board.Move;
 import org.bamboomy.c44.board.Place;
 import org.bamboomy.c44.board.Player;
 
@@ -42,23 +43,23 @@ public class Pawn extends Piece {
 	@Override
 	protected void setAttackablePlaces() {
 
-		attackablePlaces = new ArrayList<Place>();
+		attackablePlaces = new ArrayList<Move>();
 
-		Place otherPlace = place.getBoard().getPlacez()[place.getX() + xDelta][place.getY() + yDelta];
+		Place otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() + xDelta][currentPlace.getY() + yDelta];
 
 		if (otherPlace != null && !otherPlace.hasPiece()) {
 
-			attackablePlaces.add(otherPlace);
+			attackablePlaces.add(new Move(currentPlace, otherPlace, this));
 
 			if (neverMoved) {
 
 				// Place enPassantPlace = otherPlace;
 
-				otherPlace = place.getBoard().getPlacez()[place.getX() + (xDelta * 2)][place.getY() + (yDelta * 2)];
+				otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() + (xDelta * 2)][currentPlace.getY() + (yDelta * 2)];
 
 				if (otherPlace != null && !otherPlace.hasPiece()) {
 
-					attackablePlaces.add(otherPlace);
+					attackablePlaces.add(new Move(currentPlace, otherPlace, this));
 
 					/*
 					 * if (!place.getBoard().isCheckingCheck()) {
@@ -76,43 +77,43 @@ public class Pawn extends Piece {
 			}
 		}
 
-		if (xDelta != 0 && place.getY() + 1 < 12) {
+		if (xDelta != 0 && currentPlace.getY() + 1 < 12) {
 
-			otherPlace = place.getBoard().getPlacez()[place.getX() + xDelta][place.getY() + 1];
+			otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() + xDelta][currentPlace.getY() + 1];
 
 			if (otherPlace != null && otherPlace.getPiece() != null && otherPlace.getPiece().getColor() != color) {
 
-				attackablePlaces.add(otherPlace);
+				attackablePlaces.add(new Move(currentPlace, otherPlace, this));
 			}
 		}
 
-		if (xDelta != 0 && place.getY() - 1 >= 0) {
+		if (xDelta != 0 && currentPlace.getY() - 1 >= 0) {
 
-			otherPlace = place.getBoard().getPlacez()[place.getX() + xDelta][place.getY() - 1];
+			otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() + xDelta][currentPlace.getY() - 1];
 
 			if (otherPlace != null && otherPlace.getPiece() != null && otherPlace.getPiece().getColor() != color) {
 
-				attackablePlaces.add(otherPlace);
+				attackablePlaces.add(new Move(currentPlace, otherPlace, this));
 			}
 		}
 
-		if (yDelta != 0 && place.getX() + 1 < 12) {
+		if (yDelta != 0 && currentPlace.getX() + 1 < 12) {
 
-			otherPlace = place.getBoard().getPlacez()[place.getX() + 1][place.getY() + yDelta];
+			otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() + 1][currentPlace.getY() + yDelta];
 
 			if (otherPlace != null && otherPlace.getPiece() != null && otherPlace.getPiece().getColor() != color) {
 
-				attackablePlaces.add(otherPlace);
+				attackablePlaces.add(new Move(currentPlace, otherPlace, this));
 			}
 		}
 
-		if (yDelta != 0 && place.getX() - 1 >= 0) {
+		if (yDelta != 0 && currentPlace.getX() - 1 >= 0) {
 
-			otherPlace = place.getBoard().getPlacez()[place.getX() - 1][place.getY() + yDelta];
+			otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() - 1][currentPlace.getY() + yDelta];
 
 			if (otherPlace != null && otherPlace.getPiece() != null && otherPlace.getPiece().getColor() != color) {
 
-				attackablePlaces.add(otherPlace);
+				attackablePlaces.add(new Move(currentPlace, otherPlace, this));
 			}
 		}
 
@@ -189,11 +190,11 @@ public class Pawn extends Piece {
 		 * enPassant.destroy(); }
 		 */
 
-		place.remove(this);
+		currentPlace.remove(this);
 
 		oldPlace.setPiece(this);
 
-		place = oldPlace;
+		currentPlace = oldPlace;
 
 		neverMoved = rememberNeverMoved;
 

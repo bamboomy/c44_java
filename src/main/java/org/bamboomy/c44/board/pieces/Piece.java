@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import javax.xml.bind.DatatypeConverter;
 
+import org.bamboomy.c44.board.Move;
 import org.bamboomy.c44.board.Place;
 
 import lombok.Getter;
@@ -15,7 +16,7 @@ import lombok.Setter;
 public abstract class Piece {
 
 	@Getter
-	protected Place place;
+	protected Place currentPlace;
 
 	@Getter
 	protected int color;
@@ -32,7 +33,7 @@ public abstract class Piece {
 
 	protected boolean selected = false;
 
-	protected ArrayList<Place> attackablePlaces = new ArrayList<Place>();
+	protected ArrayList<Move> attackablePlaces = new ArrayList<>();
 
 	protected ArrayList<Place> preventPlacezOfPiece = new ArrayList<>();
 
@@ -50,7 +51,7 @@ public abstract class Piece {
 
 	public Piece(Place place, int color) {
 
-		this.place = place;
+		this.currentPlace = place;
 
 		place.setPiece(this);
 
@@ -100,7 +101,7 @@ public abstract class Piece {
 
 		if (!selected) {
 
-			place.getBoard().getCurrentPlayer().setSelected(this);
+			currentPlace.getBoard().getCurrentPlayer().setSelected(this);
 
 			setAttackablePlaces();
 
@@ -139,11 +140,11 @@ public abstract class Piece {
 
 		unselect();
 
-		place.remove(this);
+		currentPlace.remove(this);
 
 		otherPlace.setPiece(this);
 
-		place = otherPlace;
+		currentPlace = otherPlace;
 
 		rememberNeverMoved = neverMoved;
 
@@ -156,7 +157,7 @@ public abstract class Piece {
 
 		otherPlace.setPiece(this);
 
-		place = otherPlace;
+		currentPlace = otherPlace;
 
 		return false;
 	}
@@ -186,7 +187,7 @@ public abstract class Piece {
 
 		attackablePlaces.get(index).click(true);
 
-		while (place.getBoard().getCurrentPlayer().checkCheck() && moves.size() < attackablePlaces.size()) {
+		while (currentPlace.getBoard().getCurrentPlayer().checkCheck() && moves.size() < attackablePlaces.size()) {
 
 			attackablePlaces.get(index).rollBack();
 
@@ -206,7 +207,7 @@ public abstract class Piece {
 			attackablePlaces.get(index).click(true);
 		}
 
-		if (place.getBoard().getCurrentPlayer().checkCheck()) {
+		if (currentPlace.getBoard().getCurrentPlayer().checkCheck()) {
 
 			attackablePlaces.get(index).rollBack();
 
@@ -266,11 +267,11 @@ public abstract class Piece {
 
 	public void rollBackMoveTo(Place oldPlace) {
 
-		place.remove(this);
+		currentPlace.remove(this);
 
 		oldPlace.setPiece(this);
 
-		place = oldPlace;
+		currentPlace = oldPlace;
 
 		unselect();
 	}
@@ -329,7 +330,7 @@ public abstract class Piece {
 
 	public String getMd5WithBoard() {
 
-		return md5 + "/" + place.getBoard().getHash();
+		return md5 + "/" + currentPlace.getBoard().getHash();
 	}
 
 	public boolean canTakeKing() {

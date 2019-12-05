@@ -2,6 +2,7 @@ package org.bamboomy.c44.board.pieces;
 
 import java.util.ArrayList;
 
+import org.bamboomy.c44.board.Move;
 import org.bamboomy.c44.board.Place;
 import org.bamboomy.c44.board.Player;
 
@@ -37,175 +38,175 @@ public class Horse extends Piece {
 	@Override
 	protected void setAttackablePlaces() {
 		
-		attackablePlaces = new ArrayList<Place>();
+		attackablePlaces = new ArrayList<Move>();
 
-		if (place.getX() + 2 < 12) {
+		if (currentPlace.getX() + 2 < 12) {
 
-			if (place.getY() + 1 < 12) {
+			if (currentPlace.getY() + 1 < 12) {
 
-				Place otherPlace = place.getBoard().getPlacez()[place.getX() + 2][place.getY() + 1];
+				Place otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() + 2][currentPlace.getY() + 1];
 
-				if (otherPlace != null && otherPlace != place) {
+				if (otherPlace != null && otherPlace != currentPlace) {
 
 					if (otherPlace.getPiece() != null) {
 
 						if (otherPlace.getPiece().getColor() != color) {
 
-							attackablePlaces.add(otherPlace);
+							attackablePlaces.add(new Move(currentPlace, otherPlace, this));
 						}
 
 					} else {
 
-						attackablePlaces.add(otherPlace);
+						attackablePlaces.add(new Move(currentPlace, otherPlace, this));
 					}
 				}
 			}
 
-			if (place.getY() - 1 >= 0) {
+			if (currentPlace.getY() - 1 >= 0) {
 
-				Place otherPlace = place.getBoard().getPlacez()[place.getX() + 2][place.getY() - 1];
+				Place otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() + 2][currentPlace.getY() - 1];
 
-				if (otherPlace != null && otherPlace != place) {
-
-					if (otherPlace.getPiece() != null) {
-
-						if (otherPlace.getPiece().getColor() != color) {
-
-							attackablePlaces.add(otherPlace);
-						}
-
-					} else {
-
-						attackablePlaces.add(otherPlace);
-					}
-				}
-			}
-		}
-
-		if (place.getX() - 2 >= 0) {
-
-			if (place.getY() + 1 < 12) {
-
-				Place otherPlace = place.getBoard().getPlacez()[place.getX() - 2][place.getY() + 1];
-
-				if (otherPlace != null && otherPlace != place) {
+				if (otherPlace != null && otherPlace != currentPlace) {
 
 					if (otherPlace.getPiece() != null) {
 
 						if (otherPlace.getPiece().getColor() != color) {
 
-							attackablePlaces.add(otherPlace);
+							attackablePlaces.add(new Move(currentPlace, otherPlace, this));
 						}
 
 					} else {
 
-						attackablePlaces.add(otherPlace);
-					}
-				}
-			}
-
-			if (place.getY() - 1 >= 0) {
-
-				Place otherPlace = place.getBoard().getPlacez()[place.getX() - 2][place.getY() - 1];
-
-				if (otherPlace != null && otherPlace != place) {
-
-					if (otherPlace.getPiece() != null) {
-
-						if (otherPlace.getPiece().getColor() != color) {
-
-							attackablePlaces.add(otherPlace);
-						}
-
-					} else {
-
-						attackablePlaces.add(otherPlace);
+						attackablePlaces.add(new Move(currentPlace, otherPlace, this));
 					}
 				}
 			}
 		}
 
-		if (place.getY() + 2 < 12) {
+		if (currentPlace.getX() - 2 >= 0) {
 
-			if (place.getX() + 1 < 12) {
+			if (currentPlace.getY() + 1 < 12) {
 
-				Place otherPlace = place.getBoard().getPlacez()[place.getX() + 1][place.getY() + 2];
+				Place otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() - 2][currentPlace.getY() + 1];
 
-				if (otherPlace != null && otherPlace != place) {
+				if (otherPlace != null && otherPlace != currentPlace) {
 
 					if (otherPlace.getPiece() != null) {
 
 						if (otherPlace.getPiece().getColor() != color) {
 
-							attackablePlaces.add(otherPlace);
+							attackablePlaces.add(new Move(currentPlace, otherPlace, this));
 						}
 
 					} else {
 
-						attackablePlaces.add(otherPlace);
+						attackablePlaces.add(new Move(currentPlace, otherPlace, this));
 					}
 				}
 			}
 
-			if (place.getX() - 1 >= 0) {
+			if (currentPlace.getY() - 1 >= 0) {
 
-				Place otherPlace = place.getBoard().getPlacez()[place.getX() - 1][place.getY() + 2];
+				Place otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() - 2][currentPlace.getY() - 1];
 
-				if (otherPlace != null && otherPlace != place) {
+				if (otherPlace != null && otherPlace != currentPlace) {
 
 					if (otherPlace.getPiece() != null) {
 
 						if (otherPlace.getPiece().getColor() != color) {
 
-							attackablePlaces.add(otherPlace);
+							attackablePlaces.add(new Move(currentPlace, otherPlace, this));
 						}
 
 					} else {
 
-						attackablePlaces.add(otherPlace);
+						attackablePlaces.add(new Move(currentPlace, otherPlace, this));
 					}
 				}
 			}
 		}
 
-		if (place.getY() - 2 >= 0) {
+		if (currentPlace.getY() + 2 < 12) {
 
-			if (place.getX() + 1 < 12) {
+			if (currentPlace.getX() + 1 < 12) {
 
-				Place otherPlace = place.getBoard().getPlacez()[place.getX() + 1][place.getY() - 2];
+				Place otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() + 1][currentPlace.getY() + 2];
 
-				if (otherPlace != null && otherPlace != place) {
+				if (otherPlace != null && otherPlace != currentPlace) {
 
 					if (otherPlace.getPiece() != null) {
 
 						if (otherPlace.getPiece().getColor() != color) {
 
-							attackablePlaces.add(otherPlace);
+							attackablePlaces.add(new Move(currentPlace, otherPlace, this));
 						}
 
 					} else {
 
-						attackablePlaces.add(otherPlace);
+						attackablePlaces.add(new Move(currentPlace, otherPlace, this));
 					}
 				}
 			}
 
-			if (place.getX() - 1 >= 0) {
+			if (currentPlace.getX() - 1 >= 0) {
 
-				Place otherPlace = place.getBoard().getPlacez()[place.getX() - 1][place.getY() - 2];
+				Place otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() - 1][currentPlace.getY() + 2];
 
-				if (otherPlace != null && otherPlace != place) {
+				if (otherPlace != null && otherPlace != currentPlace) {
 
 					if (otherPlace.getPiece() != null) {
 
 						if (otherPlace.getPiece().getColor() != color) {
 
-							attackablePlaces.add(otherPlace);
+							attackablePlaces.add(new Move(currentPlace, otherPlace, this));
 						}
 
 					} else {
 
-						attackablePlaces.add(otherPlace);
+						attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+					}
+				}
+			}
+		}
+
+		if (currentPlace.getY() - 2 >= 0) {
+
+			if (currentPlace.getX() + 1 < 12) {
+
+				Place otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() + 1][currentPlace.getY() - 2];
+
+				if (otherPlace != null && otherPlace != currentPlace) {
+
+					if (otherPlace.getPiece() != null) {
+
+						if (otherPlace.getPiece().getColor() != color) {
+
+							attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+						}
+
+					} else {
+
+						attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+					}
+				}
+			}
+
+			if (currentPlace.getX() - 1 >= 0) {
+
+				Place otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() - 1][currentPlace.getY() - 2];
+
+				if (otherPlace != null && otherPlace != currentPlace) {
+
+					if (otherPlace.getPiece() != null) {
+
+						if (otherPlace.getPiece().getColor() != color) {
+
+							attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+						}
+
+					} else {
+
+						attackablePlaces.add(new Move(currentPlace, otherPlace, this));
 					}
 				}
 			}

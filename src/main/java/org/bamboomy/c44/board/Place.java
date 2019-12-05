@@ -161,7 +161,7 @@ public class Place {
 
 		selectedPiece = board.getCurrentPlayer().getSelectedPiece();
 
-		oldPlace = board.getCurrentPlayer().getSelectedPiece().getPlace();
+		oldPlace = board.getCurrentPlayer().getSelectedPiece().getCurrentPlace();
 		
 		if (!getBoard().isCheckingCheck() && roccade != null) {
 
@@ -210,14 +210,14 @@ public class Place {
 
 			if (piece != null) {
 
-				throw new RuntimeException("this piece wasn't here :-( -> " + oldPiece.getPlace().getX() + ", "
-						+ oldPiece.getPlace().getY() + " == " + x + ", " + y + " != " + piece.getPlace().getX() + ", "
-						+ piece.getPlace().getY());
+				throw new RuntimeException("this piece wasn't here :-( -> " + oldPiece.getCurrentPlace().getX() + ", "
+						+ oldPiece.getCurrentPlace().getY() + " == " + x + ", " + y + " != " + piece.getCurrentPlace().getX() + ", "
+						+ piece.getCurrentPlace().getY());
 
 			} else {
 
-				throw new RuntimeException("this piece wasn't here :-( -> " + oldPiece.getPlace().getX() + ", "
-						+ oldPiece.getPlace().getY() + " == " + x + ", " + y);
+				throw new RuntimeException("this piece wasn't here :-( -> " + oldPiece.getCurrentPlace().getX() + ", "
+						+ oldPiece.getCurrentPlace().getY() + " == " + x + ", " + y);
 			}
 		}
 
