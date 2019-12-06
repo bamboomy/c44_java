@@ -190,22 +190,22 @@ public class Board {
 
 				if (currentPlayer.canPrevent()) {
 
-					currentPlayer.prevent();
+					currentPlayer.prevent(performedMoves);
 
 				} else {
 
-					currentPlayer.kamikaze();
+					currentPlayer.kamikaze(performedMoves);
 				}
 
 			} else {
 
 				if (currentPlayer.canTakeKing()) {
 
-					currentPlayer.takeAKing();
+					currentPlayer.takeAKing(performedMoves);
 
 				} else {
 
-					currentPlayer.generateRandomMove();
+					currentPlayer.generateRandomMove(performedMoves);
 				}
 			}
 		}

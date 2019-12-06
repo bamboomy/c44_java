@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import javax.xml.bind.DatatypeConverter;
 
 import org.bamboomy.c44.board.pieces.Piece;
-import org.bamboomy.c44.board.pieces.Roccade;
 
 import lombok.Getter;
 import lombok.Setter;

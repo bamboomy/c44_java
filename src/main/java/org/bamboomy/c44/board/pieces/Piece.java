@@ -365,21 +365,21 @@ public abstract class Piece {
 		}
 	}
 
-	public void takeKing() {
+	public void takeKing(ArrayList<Move> performedMoves) {
 
 		unselect();
 
 		click();
 
-		kingMovez.get((int) (Math.random() * kingMovez.size())).click(false);
+		kingMovez.get((int) (Math.random() * kingMovez.size())).execute(performedMoves);
 	}
 
-	public void kamikaze() {
+	public void kamikaze(ArrayList<Move> performedMoves) {
 
 		unselect();
 
 		click();
 
-		attackableMoves.get((int) (Math.random() * attackableMoves.size())).click(true);
+		attackableMoves.get((int) (Math.random() * attackableMoves.size())).execute(performedMoves);
 	}
 }

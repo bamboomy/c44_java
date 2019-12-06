@@ -196,39 +196,45 @@ public class Player {
 		selectedPiece = piece;
 	}
 
-	public void generateRandomMove() {
+	public void generateRandomMove(ArrayList<Move> performedMoves) {
 
-		ArrayList<Piece> movable = new ArrayList<Piece>();
+		ArrayList<Move> moves = new ArrayList<>();
 
 		for (Piece piece : piecez) {
 
 			if (piece.canMove()) {
 
-				movable.add(piece);
+				moves.addAll(piece.getAttackableMoves());
 			}
 		}
 
-		ArrayList<Integer> selectedPlaces = new ArrayList<>();
+		/*
+		 * ArrayList<Integer> selectedPlaces = new ArrayList<>();
+		 * 
+		 * int index = (int) (Math.random() * movable.size());
+		 * 
+		 * while (!movable.get(index).doRandomMove() && selectedPlaces.size() <
+		 * movable.size()) {
+		 * 
+		 * selectedPlaces.add(index);
+		 * 
+		 * index = (int) (Math.random() * movable.size());
+		 * 
+		 * while (selectedPlaces.contains(index) && selectedPlaces.size() <
+		 * movable.size()) {
+		 * 
+		 * index = (int) (Math.random() * movable.size()); } }
+		 */
 
-		int index = (int) (Math.random() * movable.size());
-
-		while (!movable.get(index).doRandomMove() && selectedPlaces.size() < movable.size()) {
-
-			selectedPlaces.add(index);
-
-			index = (int) (Math.random() * movable.size());
-
-			while (selectedPlaces.contains(index) && selectedPlaces.size() < movable.size()) {
-
-				index = (int) (Math.random() * movable.size());
-			}
-		}
-
-		if (selectedPlaces.size() >= movable.size()) {
+		if (moves.size() == 0) {
 
 			die(true);
 
 		} else {
+			
+			int index = (int) (Math.random() * moves.size());
+			
+			moves.get(index).execute(performedMoves);
 
 			board.next();
 		}
@@ -328,12 +334,12 @@ public class Player {
 		return kingTakerz.size() > 0;
 	}
 
-	public void takeAKing() {
+	public void takeAKing(ArrayList<Move> performedMoves) {
 
-		kingTakerz.get((int) (kingTakerz.size() * Math.random())).takeKing();
+		kingTakerz.get((int) (kingTakerz.size() * Math.random())).takeKing(performedMoves);
 	}
 
-	public void kamikaze() {
+	public void kamikaze(ArrayList<Move> performedMoves) {
 
 		ArrayList<Piece> movable = new ArrayList<Piece>();
 
@@ -345,7 +351,7 @@ public class Player {
 			}
 		}
 
-		movable.get((int) (Math.random() * movable.size())).kamikaze();
+		movable.get((int) (Math.random() * movable.size())).kamikaze(performedMoves);
 
 		die(false);
 	}
