@@ -36,9 +36,9 @@ public class Bisshop extends Piece {
 	}
 
 	@Override
-	protected void setAttackablePlaces() {
+	public void setAttackablePlaces(boolean unused) {
 
-		attackablePlaces = new ArrayList<Move>();
+		attackableMoves = new ArrayList<Move>();
 
 		int counter = 0;
 
@@ -57,14 +57,14 @@ public class Bisshop extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this));
 					}
 
 					break;
 
 				} else {
 
-					attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this));
 				}
 			}
 
@@ -88,14 +88,14 @@ public class Bisshop extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this));
 					}
 
 					break;
 
 				} else {
 
-					attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this));
 				}
 			}
 
@@ -119,14 +119,14 @@ public class Bisshop extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this));
 					}
 
 					break;
 
 				} else {
 
-					attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this));
 				}
 			}
 
@@ -150,14 +150,14 @@ public class Bisshop extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this));
 					}
 
 					break;
 
 				} else {
 
-					attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this));
 				}
 			}
 

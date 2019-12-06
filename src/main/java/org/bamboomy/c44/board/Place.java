@@ -35,6 +35,10 @@ public class Place {
 	private String md5;
 
 	@Getter
+	private boolean visuallyAttacked = false;
+	
+	@Getter
+	@Setter
 	private boolean attacked = false;
 
 	/*
@@ -123,7 +127,7 @@ public class Place {
 
 		calculateHash();
 
-		attacked = true;
+		visuallyAttacked = true;
 
 		if (attackingColor == Player.RED) {
 
@@ -149,7 +153,7 @@ public class Place {
 
 	public void stopAttack() {
 
-		attacked = false;
+		visuallyAttacked = false;
 
 		blackString = "piece_on_black";
 		whiteString = "piece_on_white";

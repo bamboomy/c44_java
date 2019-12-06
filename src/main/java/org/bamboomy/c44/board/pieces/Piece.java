@@ -33,7 +33,8 @@ public abstract class Piece {
 
 	protected boolean selected = false;
 
-	protected ArrayList<Move> attackablePlaces = new ArrayList<>();
+	@Getter
+	protected ArrayList<Move> attackableMoves = new ArrayList<>();
 
 	protected ArrayList<Place> preventPlacezOfPiece = new ArrayList<>();
 
@@ -103,11 +104,11 @@ public abstract class Piece {
 
 			currentPlace.getBoard().getCurrentPlayer().setSelected(this);
 
-			setAttackablePlaces();
+			setAttackablePlaces(true);
 
-			for (Place place : attackablePlaces) {
+			for (Move move : attackableMoves) {
 
-				place.attack(color);
+				move.getTo().attack(color);
 			}
 
 			selected = true;
@@ -118,53 +119,53 @@ public abstract class Piece {
 		}
 	}
 
-	protected abstract void setAttackablePlaces();
+	public abstract void setAttackablePlaces(boolean checkRocade);
 
 	public void unselect() {
 
-		for (Place place : attackablePlaces) {
+		for (Move move : attackableMoves) {
 
-			place.stopAttack();
+			move.getTo().stopAttack();
 		}
 
 		selected = false;
 	}
 
-	public void moveTo(Place otherPlace) {
+	/*
+	 * public void moveTo(Place otherPlace) {
+	 * 
+	 * /* if (otherPlace.getEnPassant() != null) {
+	 * 
+	 * otherPlace.backupEnpassant(); }
+	 * 
+	 * unselect();
+	 * 
+	 * currentPlace.remove(this);
+	 * 
+	 * otherPlace.setPiece(this);
+	 * 
+	 * currentPlace = otherPlace;
+	 * 
+	 * rememberNeverMoved = neverMoved;
+	 * 
+	 * neverMoved = false; }
+	 */
 
-		/*
-		 * if (otherPlace.getEnPassant() != null) {
-		 * 
-		 * otherPlace.backupEnpassant(); }
-		 */
-
-		unselect();
-
-		currentPlace.remove(this);
-
-		otherPlace.setPiece(this);
-
-		currentPlace = otherPlace;
-
-		rememberNeverMoved = neverMoved;
-
-		neverMoved = false;
-	}
-
-	public boolean uncheckedMoveTo(Place otherPlace) {
-
-		unselect();
-
-		otherPlace.setPiece(this);
-
-		currentPlace = otherPlace;
-
-		return false;
-	}
+	/*
+	 * public boolean uncheckedMoveTo(Place otherPlace) {
+	 * 
+	 * unselect();
+	 * 
+	 * otherPlace.setPiece(this);
+	 * 
+	 * currentPlace = otherPlace;
+	 * 
+	 * return false; }
+	 */
 
 	public boolean canMove() {
 
-		setAttackablePlaces();
+		setAttackablePlaces(true);
 
 		/*
 		 * if (enPassant != null) {
@@ -172,62 +173,61 @@ public abstract class Piece {
 		 * enPassant.destroy(); }
 		 */
 
-		return attackablePlaces.size() > 0;
+		return attackableMoves.size() > 0;
 	}
 
-	public boolean doRandomMove() {
-
-		unselect();
-
-		click();
-
-		ArrayList<Integer> moves = new ArrayList<>();
-
-		int index = (int) (Math.random() * attackablePlaces.size());
-
-		attackablePlaces.get(index).click(true);
-
-		while (currentPlace.getBoard().getCurrentPlayer().checkCheck() && moves.size() < attackablePlaces.size()) {
-
-			attackablePlaces.get(index).rollBack();
-
-			moves.add(index);
-
-			index = (int) (Math.random() * attackablePlaces.size());
-
-			while (moves.contains(index) && moves.size() < attackablePlaces.size()) {
-
-				index = (int) (Math.random() * attackablePlaces.size());
-			}
-
-			unselect();
-
-			click();
-
-			attackablePlaces.get(index).click(true);
-		}
-
-		if (currentPlace.getBoard().getCurrentPlayer().checkCheck()) {
-
-			attackablePlaces.get(index).rollBack();
-
-		} else {
-
-			attackablePlaces.get(index).commit();
-		}
-
-		return moves.size() < attackablePlaces.size();
-	}
+	/*
+	 * public boolean doRandomMove() {
+	 * 
+	 * unselect();
+	 * 
+	 * click();
+	 * 
+	 * ArrayList<Integer> moves = new ArrayList<>();
+	 * 
+	 * int index = (int) (Math.random() * attackableMoves.size());
+	 * 
+	 * attackableMoves.get(index).click(true);
+	 * 
+	 * while (currentPlace.getBoard().getCurrentPlayer().checkCheck() &&
+	 * moves.size() < attackableMoves.size()) {
+	 * 
+	 * attackableMoves.get(index).rollBack();
+	 * 
+	 * moves.add(index);
+	 * 
+	 * index = (int) (Math.random() * attackableMoves.size());
+	 * 
+	 * while (moves.contains(index) && moves.size() < attackableMoves.size()) {
+	 * 
+	 * index = (int) (Math.random() * attackableMoves.size()); }
+	 * 
+	 * unselect();
+	 * 
+	 * click();
+	 * 
+	 * attackableMoves.get(index).click(true); }
+	 * 
+	 * if (currentPlace.getBoard().getCurrentPlayer().checkCheck()) {
+	 * 
+	 * attackableMoves.get(index).rollBack();
+	 * 
+	 * } else {
+	 * 
+	 * attackableMoves.get(index).commit(); }
+	 * 
+	 * return moves.size() < attackableMoves.size(); }
+	 */
 
 	public boolean checkCheck(Piece king) {
 
 		recalculateHash();
 
-		setAttackablePlaces();
+		setAttackablePlaces(false);
 
-		for (Place place : attackablePlaces) {
+		for (Move move : attackableMoves) {
 
-			if (place.equals(king.getPlace())) {
+			if (move.getTo().equals(king.getCurrentPlace())) {
 
 				return true;
 			}
@@ -238,43 +238,50 @@ public abstract class Piece {
 
 	public boolean canPrevent() {
 
-		setAttackablePlaces();
+		setAttackablePlaces(true);
 
 		preventPlacezOfPiece = new ArrayList<>();
 
 		boolean canPrevent = false;
 
-		for (Place place : attackablePlaces) {
+		for (Move move : attackableMoves) {
 
-			unselect();
+			// TODO: untested code
 
-			click();
+			/*
+			 * unselect();
+			 * 
+			 * click();
+			 * 
+			 * move.getTo().click(true);
+			 */
 
-			place.click(true);
+			move.execute();
 
-			if (!place.getBoard().getCurrentPlayer().checkCheck()) {
+			if (!move.getTo().getBoard().getCurrentPlayer().checkCheck()) {
 
-				preventPlacezOfPiece.add(place);
+				preventPlacezOfPiece.add(move.getTo());
 
 				canPrevent = true;
 			}
 
-			place.rollBack();
+			move.rollBack();
 		}
 
 		return canPrevent;
 	}
 
-	public void rollBackMoveTo(Place oldPlace) {
-
-		currentPlace.remove(this);
-
-		oldPlace.setPiece(this);
-
-		currentPlace = oldPlace;
-
-		unselect();
-	}
+	/*
+	 * public void rollBackMoveTo(Place oldPlace) {
+	 * 
+	 * currentPlace.remove(this);
+	 * 
+	 * oldPlace.setPiece(this);
+	 * 
+	 * currentPlace = oldPlace;
+	 * 
+	 * unselect(); }
+	 */
 
 	public void prevent() {
 
@@ -291,10 +298,10 @@ public abstract class Piece {
 
 		ArrayList<Place> unsetList = new ArrayList<>();
 
-		for (Place place : attackablePlaces) {
+		for (Place place : attackableMoves) {
 
 			if (place.getRoccade() != null) {
-				
+
 				continue;
 			}
 
@@ -323,7 +330,7 @@ public abstract class Piece {
 			place.stopAttack();
 		}
 
-		attackablePlaces = filtered;
+		attackableMoves = filtered;
 
 		return filtered.size() == 0 && unsetList.size() != 0;
 	}
@@ -339,7 +346,7 @@ public abstract class Piece {
 
 		if (canMove()) {
 
-			for (Place place : attackablePlaces) {
+			for (Place place : attackableMoves) {
 
 				if (place.getPiece() != null && place.getPiece().getPieceIdentifier().equalsIgnoreCase(KING)) {
 
@@ -370,6 +377,6 @@ public abstract class Piece {
 
 		click();
 
-		attackablePlaces.get((int) (Math.random() * attackablePlaces.size())).click(true);
+		attackableMoves.get((int) (Math.random() * attackableMoves.size())).click(true);
 	}
 }

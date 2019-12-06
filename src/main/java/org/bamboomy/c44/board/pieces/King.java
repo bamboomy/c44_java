@@ -17,7 +17,7 @@ public class King extends Piece {
 		this.xDelta = xDeltq;
 		this.yDelta = yDelta;
 	}
-	
+
 	private Rocade rocade;
 
 	@Override
@@ -44,9 +44,9 @@ public class King extends Piece {
 	}
 
 	@Override
-	protected void setAttackablePlaces() {
+	public void setAttackablePlaces(boolean checkRocade) {
 
-		attackablePlaces = new ArrayList<Move>();
+		attackableMoves = new ArrayList<Move>();
 
 		int k = currentPlace.getX() + 1;
 		int l = currentPlace.getY() + 1;
@@ -61,12 +61,12 @@ public class King extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this));
 					}
 
 				} else {
 
-					attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this));
 				}
 			}
 		}
@@ -83,12 +83,12 @@ public class King extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this));
 					}
 
 				} else {
 
-					attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this));
 				}
 			}
 		}
@@ -105,12 +105,12 @@ public class King extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this));
 					}
 
 				} else {
 
-					attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this));
 				}
 			}
 		}
@@ -128,12 +128,12 @@ public class King extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this));
 					}
 
 				} else {
 
-					attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this));
 				}
 			}
 		}
@@ -150,12 +150,12 @@ public class King extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this));
 					}
 
 				} else {
 
-					attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this));
 				}
 			}
 		}
@@ -173,12 +173,12 @@ public class King extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this));
 					}
 
 				} else {
 
-					attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this));
 				}
 			}
 		}
@@ -195,12 +195,12 @@ public class King extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this));
 					}
 
 				} else {
 
-					attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this));
 				}
 			}
 		}
@@ -217,34 +217,29 @@ public class King extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this));
 					}
 
 				} else {
 
-					attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this));
 				}
 			}
 		}
 
+		if (!checkRocade) {
+
+			return;
+		}
+
 		if (canRocadeRight()) {
 
-			attackablePlaces
-					.add(currentPlace.getBoard().getPlacez()[currentPlace.getX() + (yDelta * 2)][currentPlace.getY() - (xDelta * 2)]);
-
-		} else if (currentPlace.getBoard().getPlacez()[currentPlace.getX() + (yDelta * 2)][currentPlace.getY() - (xDelta * 2)] != null) {
-
-			currentPlace.getBoard().getPlacez()[currentPlace.getX() + (yDelta * 2)][currentPlace.getY() - (xDelta * 2)].removeRocade();
+			attackableMoves.add(rocade);
 		}
 
 		if (canRocadeLeft()) {
 
-			attackablePlaces
-					.add(currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta * 2)][currentPlace.getY() + (xDelta * 2)]);
-
-		} else if (currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta * 2)][currentPlace.getY() + (xDelta * 2)] != null) {
-
-			currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta * 2)][currentPlace.getY() + (xDelta * 2)].removeRocade();
+			attackableMoves.add(rocade);
 		}
 	}
 
@@ -256,69 +251,108 @@ public class King extends Piece {
 		}
 
 		if (!currentPlace.getBoard().getCurrentPlayer().checkCheck()
-				&& currentPlace.getBoard().getPlacez()[currentPlace.getX() + yDelta][currentPlace.getY() - xDelta].getPiece() == null
-				&& currentPlace.getBoard().getPlacez()[currentPlace.getX() + (yDelta * 2)][currentPlace.getY() - (xDelta * 2)]
+				&& currentPlace.getBoard().getPlacez()[currentPlace.getX() + yDelta][currentPlace.getY() - xDelta]
 						.getPiece() == null
-				&& currentPlace.getBoard().getPlacez()[currentPlace.getX() + (yDelta * 3)][currentPlace.getY() - (xDelta * 3)]
-						.getPiece() != null
-				&& currentPlace.getBoard().getPlacez()[currentPlace.getX() + (yDelta * 3)][currentPlace.getY() - (xDelta * 3)].getPiece()
-						.getPieceIdentifier().equalsIgnoreCase(Piece.TOWER)) {
+				&& currentPlace.getBoard().getPlacez()[currentPlace.getX() + (yDelta * 2)][currentPlace.getY()
+						- (xDelta * 2)].getPiece() == null
+				&& currentPlace.getBoard().getPlacez()[currentPlace.getX() + (yDelta * 3)][currentPlace.getY()
+						- (xDelta * 3)].getPiece() != null
+				&& currentPlace.getBoard().getPlacez()[currentPlace.getX() + (yDelta * 3)][currentPlace.getY()
+						- (xDelta * 3)].getPiece().getPieceIdentifier().equalsIgnoreCase(Piece.TOWER)) {
 
-			boolean result = true;
+			ArrayList<Place> placesToBeChecked = new ArrayList<>();
 
-			result &= moveAndRollBack(currentPlace.getBoard().getPlacez()[currentPlace.getX() + yDelta][currentPlace.getY() - xDelta]);
+			placesToBeChecked.add(
+					currentPlace.getBoard().getPlacez()[currentPlace.getX() + yDelta][currentPlace.getY() - xDelta]);
+			placesToBeChecked
+					.add(currentPlace.getBoard().getPlacez()[currentPlace.getX() + (yDelta * 2)][currentPlace.getY()
+							- (xDelta * 2)]);
+			placesToBeChecked
+					.add(currentPlace.getBoard().getPlacez()[currentPlace.getX() + (yDelta * 3)][currentPlace.getY()
+							- (xDelta * 3)]);
 
-			if (!result) {
+			currentPlace.getBoard().setAttackedPlaces(color);
 
-				return false;
+			for (Place toBeCheckedPlace : placesToBeChecked) {
+
+				if (toBeCheckedPlace.isAttacked()) {
+
+					return false;
+				}
 			}
 
-			result &= moveAndRollBack(
-					currentPlace.getBoard().getPlacez()[currentPlace.getX() + (yDelta * 2)][currentPlace.getY() - (xDelta * 2)]);
-
-			if (!result) {
-
-				return false;
-			}
-
-			Place towerPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() + (yDelta * 3)][currentPlace.getY() - (xDelta * 3)];
-
-			Piece tower = towerPlace.getPiece();
-
-			towerPlace.remove(tower);
-
-			result &= moveAndRollBack(towerPlace);
-
-			tower.uncheckedMoveTo(towerPlace);
-
-			if (!result) {
-
-				return false;
-			}
-
-			currentPlace.getBoard().getPlacez()[currentPlace.getX() + (yDelta * 2)][currentPlace.getY() - (xDelta * 2)].attachRocade(
-					new Roccade(currentPlace.getBoard().getPlacez()[currentPlace.getX() + yDelta][currentPlace.getY() - xDelta], tower));
+			rocade = new Rocade(currentPlace, currentPlace
+					.getBoard().getPlacez()[currentPlace.getX() + (yDelta * 2)][currentPlace.getY() - (xDelta * 2)],
+					this,
+					(Tower) currentPlace.getBoard().getPlacez()[currentPlace.getX() + (yDelta * 3)][currentPlace.getY()
+							- (xDelta * 3)].getPiece(),
+					currentPlace.getBoard().getPlacez()[currentPlace.getX() + yDelta][currentPlace.getY() - xDelta]);
 
 			return true;
+
+		} else {
+
+			return false;
 		}
 
-		return false;
+		/*
+		 * boolean result = true;
+		 * 
+		 * result &=
+		 * moveAndRollBack(currentPlace.getBoard().getPlacez()[currentPlace.getX() +
+		 * yDelta][currentPlace.getY() - xDelta]);
+		 * 
+		 * if (!result) {
+		 * 
+		 * return false; }
+		 * 
+		 * result &= moveAndRollBack(
+		 * currentPlace.getBoard().getPlacez()[currentPlace.getX() + (yDelta *
+		 * 2)][currentPlace.getY() - (xDelta * 2)]);
+		 * 
+		 * if (!result) {
+		 * 
+		 * return false; }
+		 * 
+		 * Place towerPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() +
+		 * (yDelta * 3)][currentPlace.getY() - (xDelta * 3)];
+		 * 
+		 * Piece tower = towerPlace.getPiece();
+		 * 
+		 * towerPlace.remove(tower);
+		 * 
+		 * result &= moveAndRollBack(towerPlace);
+		 * 
+		 * tower.uncheckedMoveTo(towerPlace);
+		 * 
+		 * if (!result) {
+		 * 
+		 * return false; }
+		 * 
+		 * currentPlace.getBoard().getPlacez()[currentPlace.getX() + (yDelta *
+		 * 2)][currentPlace.getY() - (xDelta * 2)].attachRocade( new
+		 * Roccade(currentPlace.getBoard().getPlacez()[currentPlace.getX() +
+		 * yDelta][currentPlace.getY() - xDelta], tower));
+		 * 
+		 * return true;
+		 */
 	}
 
-	private boolean moveAndRollBack(Place place) {
-
-		boolean result = true;
-
-		Place oldPlace = this.currentPlace;
-
-		moveTo(place);
-
-		result &= !place.getBoard().getCurrentPlayer().checkCheck();
-
-		rollBackMoveTo(oldPlace);
-
-		return result;
-	}
+	/*
+	 * private boolean moveAndRollBack(Place place) {
+	 * 
+	 * boolean result = true;
+	 * 
+	 * Place oldPlace = this.currentPlace;
+	 * 
+	 * moveTo(place);
+	 * 
+	 * result &= !place.getBoard().getCurrentPlayer().checkCheck();
+	 * 
+	 * rollBackMoveTo(oldPlace);
+	 * 
+	 * return result; }
+	 */
 
 	@Override
 	public String getPieceIdentifier() {
@@ -334,76 +368,120 @@ public class King extends Piece {
 		}
 
 		if (!currentPlace.getBoard().getCurrentPlayer().checkCheck()
-				&& currentPlace.getBoard().getPlacez()[currentPlace.getX() - yDelta][currentPlace.getY() + xDelta].getPiece() == null
-				&& currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta * 2)][currentPlace.getY() + (xDelta * 2)]
+				&& currentPlace.getBoard().getPlacez()[currentPlace.getX() - yDelta][currentPlace.getY() + xDelta]
 						.getPiece() == null
-				&& currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta * 3)][currentPlace.getY() + (xDelta * 3)]
-						.getPiece() == null
-				&& currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta * 4)][currentPlace.getY() + (xDelta * 4)]
-						.getPiece() != null
-				&& currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta * 4)][currentPlace.getY() + (xDelta * 4)].getPiece()
-						.getPieceIdentifier().equalsIgnoreCase(Piece.TOWER)) {
+				&& currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta * 2)][currentPlace.getY()
+						+ (xDelta * 2)].getPiece() == null
+				&& currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta * 3)][currentPlace.getY()
+						+ (xDelta * 3)].getPiece() == null
+				&& currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta * 4)][currentPlace.getY()
+						+ (xDelta * 4)].getPiece() != null
+				&& currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta * 4)][currentPlace.getY()
+						+ (xDelta * 4)].getPiece().getPieceIdentifier().equalsIgnoreCase(Piece.TOWER)) {
 
-			boolean result = true;
+			ArrayList<Place> placesToBeChecked = new ArrayList<>();
 
-			result &= moveAndRollBack(currentPlace.getBoard().getPlacez()[currentPlace.getX() - yDelta][currentPlace.getY() + xDelta]);
+			placesToBeChecked.add(
+					currentPlace.getBoard().getPlacez()[currentPlace.getX() - yDelta][currentPlace.getY() + xDelta]);
+			placesToBeChecked
+					.add(currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta * 2)][currentPlace.getY()
+							+ (xDelta * 2)]);
+			placesToBeChecked
+					.add(currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta * 3)][currentPlace.getY()
+							+ (xDelta * 3)]);
+			placesToBeChecked
+					.add(currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta * 4)][currentPlace.getY()
+							+ (xDelta * 4)]);
 
-			if (!result) {
+			currentPlace.getBoard().setAttackedPlaces(color);
 
-				return false;
+			for (Place toBeCheckedPlace : placesToBeChecked) {
+
+				if (toBeCheckedPlace.isAttacked()) {
+
+					return false;
+				}
 			}
 
-			result &= moveAndRollBack(
-					currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta * 2)][currentPlace.getY() + (xDelta * 2)]);
-
-			if (!result) {
-
-				return false;
-			}
-
-			result &= moveAndRollBack(
-					currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta * 3)][currentPlace.getY() + (xDelta * 3)]);
-
-			if (!result) {
-
-				return false;
-			}
-
-			Place towerPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta * 4)][currentPlace.getY() + (xDelta * 4)];
-
-			Piece tower = towerPlace.getPiece();
-
-			towerPlace.remove(tower);
-
-			result &= moveAndRollBack(towerPlace);
-
-			tower.uncheckedMoveTo(towerPlace);
-
-			if (!result) {
-
-				return false;
-			}
-
-			currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta * 2)][currentPlace.getY() + (xDelta * 2)].attachRocade(
-					new Roccade(currentPlace.getBoard().getPlacez()[currentPlace.getX() - yDelta][currentPlace.getY() + xDelta], tower));
+			rocade = new Rocade(currentPlace, currentPlace
+					.getBoard().getPlacez()[currentPlace.getX() - (yDelta * 2)][currentPlace.getY() + (xDelta * 2)],
+					this,
+					(Tower) currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta * 3)][currentPlace.getY()
+							+ (xDelta * 3)].getPiece(),
+					currentPlace.getBoard().getPlacez()[currentPlace.getX() - yDelta][currentPlace.getY() + xDelta]);
 
 			return true;
+
+		} else {
+
+			return false;
 		}
 
-		return false;
+		/*
+		 * boolean result = true;
+		 * 
+		 * result &= moveAndRollBack(
+		 * currentPlace.getBoard().getPlacez()[currentPlace.getX() -
+		 * yDelta][currentPlace.getY() + xDelta]);
+		 * 
+		 * if (!result) {
+		 * 
+		 * return false; }
+		 * 
+		 * result &= moveAndRollBack(
+		 * currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta *
+		 * 2)][currentPlace.getY() + (xDelta * 2)]);
+		 * 
+		 * if (!result) {
+		 * 
+		 * return false; }
+		 * 
+		 * result &= moveAndRollBack(
+		 * currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta *
+		 * 3)][currentPlace.getY() + (xDelta * 3)]);
+		 * 
+		 * if (!result) {
+		 * 
+		 * return false; }
+		 * 
+		 * Place towerPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() -
+		 * (yDelta * 4)][currentPlace .getY() + (xDelta * 4)];
+		 * 
+		 * Piece tower = towerPlace.getPiece();
+		 * 
+		 * towerPlace.remove(tower);
+		 * 
+		 * result &= moveAndRollBack(towerPlace);
+		 * 
+		 * tower.uncheckedMoveTo(towerPlace);
+		 * 
+		 * if (!result) {
+		 * 
+		 * return false; }
+		 * 
+		 * currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta *
+		 * 2)][currentPlace.getY() + (xDelta * 2)] .attachRocade(new Roccade(
+		 * currentPlace.getBoard().getPlacez()[currentPlace.getX() -
+		 * yDelta][currentPlace.getY() + xDelta], tower));
+		 * 
+		 * return true; }
+		 * 
+		 * return false;
+		 */
 	}
 
-	@Override
-	public void rollBackMoveTo(Place oldPlace) {
-
-		currentPlace.remove(this);
-
-		oldPlace.setPiece(this);
-
-		currentPlace = oldPlace;
-
-		neverMoved = rememberNeverMoved;
-
-		unselect();
-	}
+	/*
+	 * 
+	 * @Override public void rollBackMoveTo(Place oldPlace) {
+	 * 
+	 * currentPlace.remove(this);
+	 * 
+	 * oldPlace.setPiece(this);
+	 * 
+	 * currentPlace = oldPlace;
+	 * 
+	 * neverMoved = rememberNeverMoved;
+	 * 
+	 * unselect(); }
+	 */
 }

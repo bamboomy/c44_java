@@ -155,7 +155,6 @@ public class Player {
 		piecez.add(new Bisshop(board.getPlacez()[7][0], color));
 		piecez.add(new Horse(board.getPlacez()[8][0], color));
 		piecez.add(new Tower(board.getPlacez()[9][0], color));
-
 	}
 
 	boolean click(String md5) {
@@ -348,6 +347,21 @@ public class Player {
 		movable.get((int) (Math.random() * movable.size())).kamikaze();
 
 		die(false);
+	}
+
+	public void setAttackedPlaces(boolean checkRocade) {
+
+		for (Piece piece : piecez) {
+
+			piece.setAttackablePlaces(checkRocade);
+			
+			ArrayList<Move> attackingMoves = piece.getAttackableMoves();
+			
+			for(Move move: attackingMoves) {
+				
+				move.getTo().setAttacked(true);
+			}
+		}
 	}
 
 	/*

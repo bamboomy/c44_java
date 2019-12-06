@@ -41,15 +41,15 @@ public class Pawn extends Piece {
 	}
 
 	@Override
-	protected void setAttackablePlaces() {
+	public void setAttackablePlaces(boolean unused) {
 
-		attackablePlaces = new ArrayList<Move>();
+		attackableMoves = new ArrayList<Move>();
 
 		Place otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() + xDelta][currentPlace.getY() + yDelta];
 
 		if (otherPlace != null && !otherPlace.hasPiece()) {
 
-			attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+			attackableMoves.add(new Move(currentPlace, otherPlace, this));
 
 			if (neverMoved) {
 
@@ -59,7 +59,7 @@ public class Pawn extends Piece {
 
 				if (otherPlace != null && !otherPlace.hasPiece()) {
 
-					attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this));
 
 					/*
 					 * if (!place.getBoard().isCheckingCheck()) {
@@ -83,7 +83,7 @@ public class Pawn extends Piece {
 
 			if (otherPlace != null && otherPlace.getPiece() != null && otherPlace.getPiece().getColor() != color) {
 
-				attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+				attackableMoves.add(new Move(currentPlace, otherPlace, this));
 			}
 		}
 
@@ -93,7 +93,7 @@ public class Pawn extends Piece {
 
 			if (otherPlace != null && otherPlace.getPiece() != null && otherPlace.getPiece().getColor() != color) {
 
-				attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+				attackableMoves.add(new Move(currentPlace, otherPlace, this));
 			}
 		}
 
@@ -103,7 +103,7 @@ public class Pawn extends Piece {
 
 			if (otherPlace != null && otherPlace.getPiece() != null && otherPlace.getPiece().getColor() != color) {
 
-				attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+				attackableMoves.add(new Move(currentPlace, otherPlace, this));
 			}
 		}
 
@@ -113,7 +113,7 @@ public class Pawn extends Piece {
 
 			if (otherPlace != null && otherPlace.getPiece() != null && otherPlace.getPiece().getColor() != color) {
 
-				attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+				attackableMoves.add(new Move(currentPlace, otherPlace, this));
 			}
 		}
 

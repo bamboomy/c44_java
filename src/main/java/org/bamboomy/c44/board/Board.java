@@ -176,7 +176,7 @@ public class Board {
 
 		currentPlayer = playerz[turn];
 
-		//currentPlayer.removeEnPassant();
+		// currentPlayer.removeEnPassant();
 
 		System.out.println("color: " + currentPlayer.getColor());
 
@@ -196,7 +196,7 @@ public class Board {
 			} else {
 
 				if (currentPlayer.canTakeKing()) {
-					
+
 					currentPlayer.takeAKing();
 
 				} else {
@@ -251,5 +251,32 @@ public class Board {
 		 */
 
 		return placez;
+	}
+
+	public void setAttackedPlaces(int color) {
+
+		reset();
+
+		for (Player player : playerz) {
+
+			if (player.getColor() != color) {
+
+				player.setAttackedPlaces(false);
+			}
+		}
+	}
+
+	private void reset() {
+
+		for (Place[] row : placez) {
+
+			for (Place place : row) {
+
+				if (place != null) {
+
+					place.setAttacked(false);
+				}
+			}
+		}
 	}
 }

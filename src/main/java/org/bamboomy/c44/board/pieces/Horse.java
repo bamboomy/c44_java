@@ -36,9 +36,9 @@ public class Horse extends Piece {
 	}
 
 	@Override
-	protected void setAttackablePlaces() {
+	public void setAttackablePlaces(boolean unused) {
 		
-		attackablePlaces = new ArrayList<Move>();
+		attackableMoves = new ArrayList<Move>();
 
 		if (currentPlace.getX() + 2 < 12) {
 
@@ -52,12 +52,12 @@ public class Horse extends Piece {
 
 						if (otherPlace.getPiece().getColor() != color) {
 
-							attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+							attackableMoves.add(new Move(currentPlace, otherPlace, this));
 						}
 
 					} else {
 
-						attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this));
 					}
 				}
 			}
@@ -72,12 +72,12 @@ public class Horse extends Piece {
 
 						if (otherPlace.getPiece().getColor() != color) {
 
-							attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+							attackableMoves.add(new Move(currentPlace, otherPlace, this));
 						}
 
 					} else {
 
-						attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this));
 					}
 				}
 			}
@@ -95,12 +95,12 @@ public class Horse extends Piece {
 
 						if (otherPlace.getPiece().getColor() != color) {
 
-							attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+							attackableMoves.add(new Move(currentPlace, otherPlace, this));
 						}
 
 					} else {
 
-						attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this));
 					}
 				}
 			}
@@ -115,12 +115,12 @@ public class Horse extends Piece {
 
 						if (otherPlace.getPiece().getColor() != color) {
 
-							attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+							attackableMoves.add(new Move(currentPlace, otherPlace, this));
 						}
 
 					} else {
 
-						attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this));
 					}
 				}
 			}
@@ -138,12 +138,12 @@ public class Horse extends Piece {
 
 						if (otherPlace.getPiece().getColor() != color) {
 
-							attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+							attackableMoves.add(new Move(currentPlace, otherPlace, this));
 						}
 
 					} else {
 
-						attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this));
 					}
 				}
 			}
@@ -158,12 +158,12 @@ public class Horse extends Piece {
 
 						if (otherPlace.getPiece().getColor() != color) {
 
-							attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+							attackableMoves.add(new Move(currentPlace, otherPlace, this));
 						}
 
 					} else {
 
-						attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this));
 					}
 				}
 			}
@@ -181,12 +181,12 @@ public class Horse extends Piece {
 
 						if (otherPlace.getPiece().getColor() != color) {
 
-							attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+							attackableMoves.add(new Move(currentPlace, otherPlace, this));
 						}
 
 					} else {
 
-						attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this));
 					}
 				}
 			}
@@ -201,12 +201,12 @@ public class Horse extends Piece {
 
 						if (otherPlace.getPiece().getColor() != color) {
 
-							attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+							attackableMoves.add(new Move(currentPlace, otherPlace, this));
 						}
 
 					} else {
 
-						attackablePlaces.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this));
 					}
 				}
 			}

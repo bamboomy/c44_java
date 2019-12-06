@@ -22,4 +22,14 @@ public class Move {
 
 		this.piece = piece;
 	}
+
+	public void execute() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void rollBack() {
+		// TODO Auto-generated method stub
+		
+	}
 }
