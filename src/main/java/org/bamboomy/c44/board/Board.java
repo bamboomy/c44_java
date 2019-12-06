@@ -44,6 +44,8 @@ public class Board {
 	@Getter
 	private String hash;
 
+	private ArrayList<Move> performedMoves;
+
 	public Board(String hash) {
 
 		System.out.println("board created...");
@@ -95,6 +97,8 @@ public class Board {
 		initYellowPlaces();
 
 		initBluePlaces();
+
+		performedMoves = new ArrayList<>();
 	}
 
 	private void initRedPlaces() {
@@ -144,7 +148,7 @@ public class Board {
 
 					if (place != null && place.getMd5() != null && place.getMd5().equalsIgnoreCase(md5)) {
 
-						place.click(false);
+						place.click(performedMoves);
 					}
 				}
 			}

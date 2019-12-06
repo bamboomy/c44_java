@@ -3,6 +3,7 @@ package org.bamboomy.c44.board;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 
 import javax.xml.bind.DatatypeConverter;
 
@@ -36,22 +37,27 @@ public class Place {
 
 	@Getter
 	private boolean visuallyAttacked = false;
-	
+
 	@Getter
 	@Setter
 	private boolean attacked = false;
+
+	private Move move;
 
 	/*
 	 * @Getter private EnPassant enPassant; // private ArrayList<EnPassant>
 	 * enPassantz;
 	 */
 
-	private Piece takenPiece = null, selectedPiece = null;
-
-	private Place oldPlace = null;
-
-	@Getter
-	private Roccade roccade;
+	/*
+	 * private Piece takenPiece = null, selectedPiece = null;
+	 * 
+	 * private Place oldPlace = null;
+	 * 
+	 * /*
+	 * 
+	 * @Getter private Roccade roccade;
+	 */
 
 	/*
 	 * @Setter
@@ -159,28 +165,29 @@ public class Place {
 		whiteString = "piece_on_white";
 	}
 
-	public void click(boolean noNext) {
+	public void click(ArrayList<Move> performedMoves) {
 
 		System.out.println(getX() + ", " + getY() + ": " + getCssName());
 
-		selectedPiece = board.getCurrentPlayer().getSelectedPiece();
-
-		oldPlace = board.getCurrentPlayer().getSelectedPiece().getCurrentPlace();
-		
-		if (!getBoard().isCheckingCheck() && roccade != null) {
-
-			Roccade aboutToPerform = roccade;
-
-			roccade = null;
-
-			aboutToPerform.perform(board, noNext, this);
-
-			return;
-		}
+		move.execute();
 
 		/*
-		 * if (!getBoard().isCheckingCheck() && enPassant != null && enPassantActivated)
-		 * {
+		 * selectedPiece = board.getCurrentPlayer().getSelectedPiece();
+		 * 
+		 * oldPlace = board.getCurrentPlayer().getSelectedPiece().getCurrentPlace();
+		 * 
+		 * if (!getBoard().isCheckingCheck() && roccade != null) {
+		 * 
+		 * Roccade aboutToPerform = roccade;
+		 * 
+		 * roccade = null;
+		 * 
+		 * aboutToPerform.perform(board, noNext, this);
+		 * 
+		 * return; }
+		 * 
+		 * /* if (!getBoard().isCheckingCheck() && enPassant != null &&
+		 * enPassantActivated) {
 		 * 
 		 * EnPassant aboutToPerform = enPassant;
 		 * 
@@ -191,21 +198,24 @@ public class Place {
 		 * return; }
 		 */
 
-		if (piece != null) {
+		/*
+		 * if (piece != null) {
+		 * 
+		 * takenPiece = piece;
+		 * 
+		 * board.getPlayerz()[takenPiece.getColor()].getPiecez().remove(takenPiece); }
+		 * 
+		 * board.getCurrentPlayer().getSelectedPiece().moveTo(this);
+		 * 
+		 * if (!noNext) {
+		 * 
+		 * commit();
+		 * 
+		 * 
+		 * }
+		 */
 
-			takenPiece = piece;
-
-			board.getPlayerz()[takenPiece.getColor()].getPiecez().remove(takenPiece);
-		}
-
-		board.getCurrentPlayer().getSelectedPiece().moveTo(this);
-
-		if (!noNext) {
-
-			commit();
-
-			board.next();
-		}
+		board.next();
 	}
 
 	public void remove(Piece oldPiece) {
@@ -215,8 +225,8 @@ public class Place {
 			if (piece != null) {
 
 				throw new RuntimeException("this piece wasn't here :-( -> " + oldPiece.getCurrentPlace().getX() + ", "
-						+ oldPiece.getCurrentPlace().getY() + " == " + x + ", " + y + " != " + piece.getCurrentPlace().getX() + ", "
-						+ piece.getCurrentPlace().getY());
+						+ oldPiece.getCurrentPlace().getY() + " == " + x + ", " + y + " != "
+						+ piece.getCurrentPlace().getX() + ", " + piece.getCurrentPlace().getY());
 
 			} else {
 
@@ -236,36 +246,31 @@ public class Place {
 	 * this.enPassant = enPassant; }
 	 */
 
-	public void rollBack() {
-
-		if (takenPiece != null) {
-
-			board.getPlayerz()[takenPiece.getColor()].getPiecez().add(takenPiece);
-		}
-
-		selectedPiece.rollBackMoveTo(oldPlace);
-
-		piece = takenPiece;
-
-		commit();
-	}
-
-	public void commit() {
-
-		takenPiece = null;
-		oldPlace = null;
-		selectedPiece = null;
-	}
-
-	public void attachRocade(Roccade roccade) {
-
-		this.roccade = roccade;
-	}
-
-	public void removeRocade() {
-
-		roccade = null;
-	}
+	/*
+	 * public void rollBack() {
+	 * 
+	 * if (takenPiece != null) {
+	 * 
+	 * board.getPlayerz()[takenPiece.getColor()].getPiecez().add(takenPiece); }
+	 * 
+	 * selectedPiece.rollBackMoveTo(oldPlace);
+	 * 
+	 * piece = takenPiece;
+	 * 
+	 * commit(); }
+	 * 
+	 * public void commit() {
+	 * 
+	 * takenPiece = null; oldPlace = null; selectedPiece = null; }
+	 * 
+	 * public void attachRocade(Roccade roccade) {
+	 * 
+	 * this.roccade = roccade; }
+	 * 
+	 * public void removeRocade() {
+	 * 
+	 * roccade = null; }
+	 */
 
 	/*
 	 * public void removeEnpassant() {
@@ -276,6 +281,11 @@ public class Place {
 	public String getMd5WithBoard() {
 
 		return md5 + "/" + board.getHash();
+	}
+
+	public void addMove(Move move) {
+
+		this.move = move;
 	}
 
 	/*

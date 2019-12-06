@@ -15,21 +15,36 @@ public class Move {
 	@Setter
 	protected Piece piece;
 
+	protected Piece takenPiece;
+
+	@Getter
+	protected boolean isRocade = false;
+
 	public Move(Place from, Place to, Piece piece) {
 
 		this.from = from;
 		this.to = to;
 
 		this.piece = piece;
+
+		to.addMove(this);
 	}
 
 	public void execute() {
-		// TODO Auto-generated method stub
-		
+
+		if (to.getPiece() != null) {
+
+			takenPiece = to.getPiece();
+			to.remove(to.getPiece());
+		}
+
+		from.remove(piece);
+
+		to.setPiece(piece);
 	}
 
 	public void rollBack() {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

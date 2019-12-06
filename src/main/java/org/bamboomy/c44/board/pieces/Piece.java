@@ -294,40 +294,46 @@ public abstract class Piece {
 
 	public boolean checkWouldBeCheck() {
 
-		ArrayList<Place> filtered = new ArrayList<>();
+		ArrayList<Move> filtered = new ArrayList<>();
 
-		ArrayList<Place> unsetList = new ArrayList<>();
+		ArrayList<Move> unsetList = new ArrayList<>();
 
-		for (Place place : attackableMoves) {
+		for (Move move : attackableMoves) {
 
-			if (place.getRoccade() != null) {
+			if (move.isRocade()) {
 
 				continue;
 			}
 
-			place.click(true);
+			// place.click(true);
 
-			if (!place.getBoard().getCurrentPlayer().checkCheck()) {
+			move.execute();
 
-				filtered.add(place);
+			if (!move.getTo().getBoard().getCurrentPlayer().checkCheck()) {
+
+				filtered.add(move);
 
 			} else {
 
-				unsetList.add(place);
+				unsetList.add(move);
 			}
 
-			Piece selectedPiece = place.getPiece();
+			move.rollBack();
 
-			place.rollBack();
-
-			selectedPiece.unselect();
-
-			selectedPiece.click();
+			/*
+			 * Piece selectedPiece = place.getPiece();
+			 * 
+			 * place.rollBack();
+			 * 
+			 * selectedPiece.unselect();
+			 * 
+			 * selectedPiece.click();
+			 */
 		}
 
-		for (Place place : unsetList) {
+		for (Move move : unsetList) {
 
-			place.stopAttack();
+			move.getTo().stopAttack();
 		}
 
 		attackableMoves = filtered;
