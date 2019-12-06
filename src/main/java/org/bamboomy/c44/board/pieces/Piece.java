@@ -36,7 +36,7 @@ public abstract class Piece {
 	@Getter
 	protected ArrayList<Move> attackableMoves = new ArrayList<>();
 
-	protected ArrayList<Place> preventPlacezOfPiece = new ArrayList<>();
+	protected ArrayList<Move> preventMovezOfPiece = new ArrayList<>();
 
 	@Setter
 	@Getter
@@ -48,7 +48,7 @@ public abstract class Piece {
 	 * @Setter protected EnPassant enPassant;
 	 */
 
-	private ArrayList<Place> kingPlacez;
+	private ArrayList<Move> kingMovez;
 
 	public Piece(Place place, int color) {
 
@@ -240,7 +240,7 @@ public abstract class Piece {
 
 		setAttackablePlaces(true);
 
-		preventPlacezOfPiece = new ArrayList<>();
+		preventMovezOfPiece = new ArrayList<>();
 
 		boolean canPrevent = false;
 
@@ -256,11 +256,11 @@ public abstract class Piece {
 			 * move.getTo().click(true);
 			 */
 
-			move.execute();
+			move.execute(null);
 
 			if (!move.getTo().getBoard().getCurrentPlayer().checkCheck()) {
 
-				preventPlacezOfPiece.add(move.getTo());
+				preventMovezOfPiece.add(move);
 
 				canPrevent = true;
 			}
@@ -283,13 +283,9 @@ public abstract class Piece {
 	 * unselect(); }
 	 */
 
-	public void prevent() {
+	public void prevent(ArrayList<Move> performedMoves) {
 
-		unselect();
-
-		click();
-
-		preventPlacezOfPiece.get((int) Math.random() * preventPlacezOfPiece.size()).click(false);
+		preventMovezOfPiece.get((int) Math.random() * preventMovezOfPiece.size()).execute(performedMoves);
 	}
 
 	public boolean checkWouldBeCheck() {
@@ -307,7 +303,7 @@ public abstract class Piece {
 
 			// place.click(true);
 
-			move.execute();
+			move.execute(null);
 
 			if (!move.getTo().getBoard().getCurrentPlayer().checkCheck()) {
 
@@ -348,19 +344,20 @@ public abstract class Piece {
 
 	public boolean canTakeKing() {
 
-		kingPlacez = new ArrayList<>();
+		kingMovez = new ArrayList<>();
 
 		if (canMove()) {
 
-			for (Place place : attackableMoves) {
+			for (Move move : attackableMoves) {
 
-				if (place.getPiece() != null && place.getPiece().getPieceIdentifier().equalsIgnoreCase(KING)) {
+				if (move.getTo().getPiece() != null
+						&& move.getTo().getPiece().getPieceIdentifier().equalsIgnoreCase(KING)) {
 
-					kingPlacez.add(place);
+					kingMovez.add(move);
 				}
 			}
 
-			return kingPlacez.size() > 0;
+			return kingMovez.size() > 0;
 
 		} else {
 
@@ -374,7 +371,7 @@ public abstract class Piece {
 
 		click();
 
-		kingPlacez.get((int) (Math.random() * kingPlacez.size())).click(false);
+		kingMovez.get((int) (Math.random() * kingMovez.size())).click(false);
 	}
 
 	public void kamikaze() {

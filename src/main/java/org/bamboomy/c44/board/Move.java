@@ -1,5 +1,7 @@
 package org.bamboomy.c44.board;
 
+import java.util.ArrayList;
+
 import org.bamboomy.c44.board.pieces.Piece;
 
 import lombok.Getter;
@@ -20,6 +22,8 @@ public class Move {
 	@Getter
 	protected boolean isRocade = false;
 
+	private ArrayList<Move> performedMoves;
+
 	public Move(Place from, Place to, Piece piece) {
 
 		this.from = from;
@@ -30,7 +34,7 @@ public class Move {
 		to.addMove(this);
 	}
 
-	public void execute() {
+	public void execute(ArrayList<Move> performedMoves) {
 
 		if (to.getPiece() != null) {
 
@@ -41,10 +45,33 @@ public class Move {
 		from.remove(piece);
 
 		to.setPiece(piece);
+
+		if (performedMoves != null) {
+
+			performedMoves.add(this);
+
+			this.performedMoves = performedMoves;
+		}
 	}
 
 	public void rollBack() {
-		// TODO Auto-generated method stub
 
+		if (takenPiece != null) {
+
+			to.remove(piece);
+
+			to.setPiece(takenPiece);
+
+		} else {
+
+			to.remove(piece);
+		}
+
+		from.setPiece(piece);
+
+		if (performedMoves != null) {
+
+			performedMoves.remove(performedMoves.indexOf(this));
+		}
 	}
 }

@@ -169,7 +169,7 @@ public class Place {
 
 		System.out.println(getX() + ", " + getY() + ": " + getCssName());
 
-		move.execute();
+		move.execute(performedMoves);
 
 		/*
 		 * selectedPiece = board.getCurrentPlayer().getSelectedPiece();

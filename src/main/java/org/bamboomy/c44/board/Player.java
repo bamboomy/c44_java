@@ -44,6 +44,7 @@ public class Player {
 
 	private ArrayList<Piece> kingTakerz;
 
+	// TODO: pat
 	private boolean pat = false;
 
 	public Player(int color, Board board, boolean isRobot) {
@@ -293,9 +294,9 @@ public class Player {
 		return canPrevent;
 	}
 
-	public void prevent() {
+	public void prevent(ArrayList<Move> performedMoves) {
 
-		preventPieces.get((int) Math.random() * preventPieces.size()).prevent();
+		preventPieces.get((int) Math.random() * preventPieces.size()).prevent(performedMoves);
 	}
 
 	/*
@@ -354,11 +355,11 @@ public class Player {
 		for (Piece piece : piecez) {
 
 			piece.setAttackablePlaces(checkRocade);
-			
+
 			ArrayList<Move> attackingMoves = piece.getAttackableMoves();
-			
-			for(Move move: attackingMoves) {
-				
+
+			for (Move move : attackingMoves) {
+
 				move.getTo().setAttacked(true);
 			}
 		}
