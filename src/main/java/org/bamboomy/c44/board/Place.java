@@ -169,6 +169,8 @@ public class Place {
 		System.out.println(getX() + ", " + getY() + ": " + getCssName());
 
 		move.execute(performedMoves);
+		
+		move.getPiece().unselect();
 
 		/*
 		 * selectedPiece = board.getCurrentPlayer().getSelectedPiece();
