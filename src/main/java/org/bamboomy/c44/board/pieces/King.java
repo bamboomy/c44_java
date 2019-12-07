@@ -287,6 +287,8 @@ public class King extends Piece {
 					(Tower) currentPlace.getBoard().getPlacez()[currentPlace.getX() + (yDelta * 3)][currentPlace.getY()
 							- (xDelta * 3)].getPiece(),
 					currentPlace.getBoard().getPlacez()[currentPlace.getX() + yDelta][currentPlace.getY() - xDelta],
+					currentPlace.getBoard().getPlacez()[currentPlace.getX() + (yDelta * 3)][currentPlace.getY()
+							- (xDelta * 3)],
 					addMove);
 
 			return true;
@@ -410,6 +412,8 @@ public class King extends Piece {
 					(Tower) currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta * 3)][currentPlace.getY()
 							+ (xDelta * 3)].getPiece(),
 					currentPlace.getBoard().getPlacez()[currentPlace.getX() - yDelta][currentPlace.getY() + xDelta],
+					currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta * 3)][currentPlace.getY()
+							+ (xDelta * 3)],
 					addMove);
 
 			return true;

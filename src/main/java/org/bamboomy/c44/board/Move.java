@@ -22,7 +22,7 @@ public class Move {
 	@Getter
 	protected boolean isRocade = false;
 
-	private ArrayList<Move> performedMoves;
+	protected ArrayList<Move> performedMoves;
 
 	public Move(Place from, Place to, Piece piece, boolean addMove) {
 
