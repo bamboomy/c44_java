@@ -251,7 +251,9 @@ public abstract class Piece {
 
 		boolean canPrevent = false;
 
-		for (Move move : attackableMoves) {
+		ArrayList<Move> attackableMovesCopy = attackableMoves;
+
+		for (Move move : attackableMovesCopy) {
 
 			// TODO: untested code
 
@@ -301,7 +303,9 @@ public abstract class Piece {
 
 		ArrayList<Move> unsetList = new ArrayList<>();
 
-		for (Move move : attackableMoves) {
+		ArrayList<Move> attackableMovesCopy = attackableMoves;
+
+		for (Move move : attackableMovesCopy) {
 
 			if (move.isRocade()) {
 
@@ -375,10 +379,10 @@ public abstract class Piece {
 	public void takeKing(ArrayList<Move> performedMoves) {
 
 		/*
-		unselect();
-
-		click();
-		*/
+		 * unselect();
+		 * 
+		 * click();
+		 */
 
 		kingMovez.get((int) (Math.random() * kingMovez.size())).execute(performedMoves);
 	}
@@ -386,10 +390,10 @@ public abstract class Piece {
 	public void kamikaze(ArrayList<Move> performedMoves) {
 
 		/*
-		unselect();
-
-		click();
-		*/
+		 * unselect();
+		 * 
+		 * click();
+		 */
 
 		attackableMoves.get((int) (Math.random() * attackableMoves.size())).execute(performedMoves);
 	}

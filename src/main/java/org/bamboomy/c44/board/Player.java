@@ -207,32 +207,34 @@ public class Player {
 			}
 		}
 
-		/*
-		 * ArrayList<Integer> selectedPlaces = new ArrayList<>();
-		 * 
-		 * int index = (int) (Math.random() * movable.size());
-		 * 
-		 * while (!movable.get(index).doRandomMove() && selectedPlaces.size() <
-		 * movable.size()) {
-		 * 
-		 * selectedPlaces.add(index);
-		 * 
-		 * index = (int) (Math.random() * movable.size());
-		 * 
-		 * while (selectedPlaces.contains(index) && selectedPlaces.size() <
-		 * movable.size()) {
-		 * 
-		 * index = (int) (Math.random() * movable.size()); } }
-		 */
+		ArrayList<Integer> selectedPlaces = new ArrayList<>();
 
-		if (moves.size() == 0) {
+		int index = (int) (Math.random() * moves.size());
+
+		boolean check = true;
+
+		while (check && selectedPlaces.size() < moves.size()) {
+
+			selectedPlaces.add(index);
+
+			moves.get(index).execute(null);
+
+			check = checkCheck();
+
+			moves.get(index).rollBack();
+
+			while (check && selectedPlaces.contains(index) && selectedPlaces.size() < moves.size()) {
+
+				index = (int) (Math.random() * moves.size());
+			}
+		}
+
+		if (selectedPlaces.size() == moves.size()) {
 
 			die(true);
 
 		} else {
-			
-			int index = (int) (Math.random() * moves.size());
-			
+
 			moves.get(index).execute(performedMoves);
 
 			board.next();
@@ -302,7 +304,7 @@ public class Player {
 	public void prevent(ArrayList<Move> performedMoves) {
 
 		preventPieces.get((int) Math.random() * preventPieces.size()).prevent(performedMoves);
-		
+
 		board.next();
 	}
 
@@ -338,7 +340,7 @@ public class Player {
 	public void takeAKing(ArrayList<Move> performedMoves) {
 
 		kingTakerz.get((int) (kingTakerz.size() * Math.random())).takeKing(performedMoves);
-		
+
 		board.next();
 	}
 
@@ -357,7 +359,7 @@ public class Player {
 		movable.get((int) (Math.random() * movable.size())).kamikaze(performedMoves);
 
 		die(false);
-		
+
 		board.next();
 	}
 
