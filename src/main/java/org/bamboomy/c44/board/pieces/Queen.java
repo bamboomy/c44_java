@@ -8,8 +8,8 @@ import org.bamboomy.c44.board.Player;
 
 public class Queen extends Piece {
 
-	public Queen(Place place, int color) {
-		super(place, color);
+	public Queen(Place place, int color, Player player) {
+		super(place, color, player);
 	}
 
 	@Override

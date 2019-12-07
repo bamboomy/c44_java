@@ -10,8 +10,8 @@ public class Pawn extends Piece {
 
 	private int xDelta, yDelta;
 
-	public Pawn(Place place, int color, int xDelta, int yDelta) {
-		super(place, color);
+	public Pawn(Place place, int color, int xDelta, int yDelta, Player player) {
+		super(place, color, player);
 
 		this.xDelta = xDelta;
 		this.yDelta = yDelta;

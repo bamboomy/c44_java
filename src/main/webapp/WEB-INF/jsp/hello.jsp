@@ -61,7 +61,7 @@
 									<img src="../img/blank.png" width="40px" height="40px" />
 
 									<c:choose>
-										<c:when test="${place.isAttacked()}">
+										<c:when test="${place.isVisuallyAttacked()}">
 											<c:choose>
 												<c:when test="${place.hasPiece()}">
 													<img class="${place.getCssName()}"

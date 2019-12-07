@@ -9,6 +9,7 @@ import javax.xml.bind.DatatypeConverter;
 
 import org.bamboomy.c44.board.Move;
 import org.bamboomy.c44.board.Place;
+import org.bamboomy.c44.board.Player;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -50,7 +51,10 @@ public abstract class Piece {
 
 	private ArrayList<Move> kingMovez;
 
-	public Piece(Place place, int color) {
+	@Getter
+	private Player player;
+
+	public Piece(Place place, int color, Player player) {
 
 		this.currentPlace = place;
 
@@ -59,6 +63,8 @@ public abstract class Piece {
 		this.color = color;
 
 		recalculateHash();
+
+		this.player = player;
 	}
 
 	private void recalculateHash() {

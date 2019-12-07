@@ -225,12 +225,14 @@ public class Place {
 
 				throw new RuntimeException("this piece wasn't here :-( -> " + oldPiece.getCurrentPlace().getX() + ", "
 						+ oldPiece.getCurrentPlace().getY() + " == " + x + ", " + y + " != "
-						+ piece.getCurrentPlace().getX() + ", " + piece.getCurrentPlace().getY());
+						+ piece.getCurrentPlace().getX() + ", " + piece.getCurrentPlace().getY() + "=>"
+						+ oldPiece.getPieceIdentifier());
 
 			} else {
 
 				throw new RuntimeException("this piece wasn't here :-( -> " + oldPiece.getCurrentPlace().getX() + ", "
-						+ oldPiece.getCurrentPlace().getY() + " == " + x + ", " + y);
+						+ oldPiece.getCurrentPlace().getY() + " == " + x + ", " + y + "=>"
+						+ oldPiece.getPieceIdentifier());
 			}
 		}
 

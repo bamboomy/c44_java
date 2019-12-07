@@ -8,8 +8,8 @@ import org.bamboomy.c44.board.Player;
 
 public class Horse extends Piece {
 
-	public Horse(Place place, int color) {
-		super(place, color);
+	public Horse(Place place, int color, Player player) {
+		super(place, color, player);
 	}
 
 	@Override

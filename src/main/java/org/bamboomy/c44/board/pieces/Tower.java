@@ -8,8 +8,8 @@ import org.bamboomy.c44.board.Player;
 
 public class Tower extends Piece {
 
-	public Tower(Place place, int color) {
-		super(place, color);
+	public Tower(Place place, int color, Player player) {
+		super(place, color, player);
 	}
 
 	@Override

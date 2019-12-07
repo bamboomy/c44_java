@@ -11,8 +11,8 @@ public class King extends Piece {
 
 	private int xDelta, yDelta;
 
-	public King(Place place, int color, int xDeltq, int yDelta) {
-		super(place, color);
+	public King(Place place, int color, int xDeltq, int yDelta, Player player) {
+		super(place, color, player);
 
 		this.xDelta = xDeltq;
 		this.yDelta = yDelta;

@@ -40,6 +40,8 @@ public class Move {
 
 			takenPiece = to.getPiece();
 			to.remove(to.getPiece());
+
+			takenPiece.getPlayer().getPiecez().remove(takenPiece.getPlayer().getPiecez().indexOf(takenPiece));
 		}
 
 		from.remove(piece);
@@ -61,6 +63,8 @@ public class Move {
 			to.remove(piece);
 
 			to.setPiece(takenPiece);
+
+			takenPiece.getPlayer().getPiecez().add(takenPiece);
 
 		} else {
 
