@@ -35,7 +35,7 @@ public class Tower extends Piece {
 		throw new RuntimeException("invalid color in tower");
 	}
 
-	public void setAttackablePlaces(boolean unused) {
+	public void setAttackablePlaces(boolean unused, boolean addMove) {
 
 		attackableMoves = new ArrayList<Move>();
 
@@ -49,14 +49,14 @@ public class Tower extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackableMoves.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 					}
 
 					break;
 
 				} else {
 
-					attackableMoves.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 				}
 			}
 		}
@@ -71,14 +71,14 @@ public class Tower extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackableMoves.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 					}
 
 					break;
 
 				} else {
 
-					attackableMoves.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 				}
 			}
 		}
@@ -93,14 +93,14 @@ public class Tower extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackableMoves.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 					}
 
 					break;
 
 				} else {
 
-					attackableMoves.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 				}
 			}
 		}
@@ -115,14 +115,14 @@ public class Tower extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackableMoves.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 					}
 
 					break;
 
 				} else {
 
-					attackableMoves.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 				}
 			}
 		}

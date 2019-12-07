@@ -36,7 +36,7 @@ public class Queen extends Piece {
 	}
 
 	@Override
-	public void setAttackablePlaces(boolean unused) {
+	public void setAttackablePlaces(boolean unused, boolean addMove) {
 
 		int counter = 0;
 		
@@ -57,14 +57,14 @@ public class Queen extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackableMoves.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 					}
 
 					break;
 
 				} else {
 
-					attackableMoves.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 				}
 			}
 
@@ -88,14 +88,14 @@ public class Queen extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackableMoves.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 					}
 
 					break;
 
 				} else {
 
-					attackableMoves.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 				}
 			}
 
@@ -119,14 +119,14 @@ public class Queen extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackableMoves.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 					}
 
 					break;
 
 				} else {
 
-					attackableMoves.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 				}
 			}
 
@@ -150,14 +150,14 @@ public class Queen extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackableMoves.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 					}
 
 					break;
 
 				} else {
 
-					attackableMoves.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 				}
 			}
 
@@ -174,14 +174,14 @@ public class Queen extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackableMoves.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 					}
 					
 					break;
 
 				} else {
 
-					attackableMoves.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 				}
 			}
 		}
@@ -196,14 +196,14 @@ public class Queen extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackableMoves.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 					}
 					
 					break;
 
 				} else {
 
-					attackableMoves.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 				}
 			}
 		}
@@ -218,14 +218,14 @@ public class Queen extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackableMoves.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 					}
 					
 					break;
 
 				} else {
 
-					attackableMoves.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 				}
 			}
 		}
@@ -240,14 +240,14 @@ public class Queen extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackableMoves.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 					}
 					
 					break;
 
 				} else {
 
-					attackableMoves.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 				}
 			}
 		}

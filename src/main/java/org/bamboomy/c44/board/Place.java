@@ -41,6 +41,7 @@ public class Place {
 	@Setter
 	private boolean attacked = false;
 
+	@Getter
 	private Move move;
 
 	/*

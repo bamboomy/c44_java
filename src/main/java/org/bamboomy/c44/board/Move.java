@@ -24,14 +24,17 @@ public class Move {
 
 	private ArrayList<Move> performedMoves;
 
-	public Move(Place from, Place to, Piece piece) {
+	public Move(Place from, Place to, Piece piece, boolean addMove) {
 
 		this.from = from;
 		this.to = to;
 
 		this.piece = piece;
 
-		to.addMove(this);
+		if (addMove) {
+
+			to.addMove(this);
+		}
 	}
 
 	public void execute(ArrayList<Move> performedMoves) {
@@ -49,7 +52,7 @@ public class Move {
 		to.setPiece(piece);
 
 		piece.setCurrentPlace(to);
-		
+
 		if (performedMoves != null) {
 
 			performedMoves.add(this);

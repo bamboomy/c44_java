@@ -111,7 +111,7 @@ public abstract class Piece {
 
 			currentPlace.getBoard().getCurrentPlayer().setSelected(this);
 
-			setAttackablePlaces(true);
+			setAttackablePlaces(true, true);
 
 			for (Move move : attackableMoves) {
 
@@ -126,7 +126,7 @@ public abstract class Piece {
 		}
 	}
 
-	public abstract void setAttackablePlaces(boolean checkRocade);
+	public abstract void setAttackablePlaces(boolean checkRocade, boolean addMove);
 
 	public void unselect() {
 
@@ -172,7 +172,7 @@ public abstract class Piece {
 
 	public boolean canMove() {
 
-		setAttackablePlaces(true);
+		setAttackablePlaces(true, false);
 
 		/*
 		 * if (enPassant != null) {
@@ -230,7 +230,7 @@ public abstract class Piece {
 
 		recalculateHash();
 
-		setAttackablePlaces(false);
+		setAttackablePlaces(false, false);
 
 		for (Move move : attackableMoves) {
 
@@ -245,7 +245,7 @@ public abstract class Piece {
 
 	public boolean canPrevent() {
 
-		setAttackablePlaces(true);
+		setAttackablePlaces(true, false);
 
 		preventMovezOfPiece = new ArrayList<>();
 

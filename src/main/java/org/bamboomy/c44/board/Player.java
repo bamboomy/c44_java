@@ -367,7 +367,7 @@ public class Player {
 
 		for (Piece piece : piecez) {
 
-			piece.setAttackablePlaces(checkRocade);
+			piece.setAttackablePlaces(checkRocade, false);
 
 			ArrayList<Move> attackingMoves = piece.getAttackableMoves();
 

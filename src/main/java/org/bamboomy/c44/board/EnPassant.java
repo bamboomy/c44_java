@@ -11,8 +11,8 @@ public class EnPassant extends Move {
 	@Getter
 	private ArrayList<Piece> enemies;
 
-	public EnPassant(Place from, Place to, Piece piece) {
+	public EnPassant(Place from, Place to, Piece piece, boolean addMove) {
 		
-		super(from, to, piece);
+		super(from, to, piece, addMove);
 	}
 }

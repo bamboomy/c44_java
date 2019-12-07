@@ -44,7 +44,7 @@ public class King extends Piece {
 	}
 
 	@Override
-	public void setAttackablePlaces(boolean checkRocade) {
+	public void setAttackablePlaces(boolean checkRocade, boolean addMove) {
 
 		attackableMoves = new ArrayList<Move>();
 
@@ -61,12 +61,12 @@ public class King extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackableMoves.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 					}
 
 				} else {
 
-					attackableMoves.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 				}
 			}
 		}
@@ -83,12 +83,12 @@ public class King extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackableMoves.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 					}
 
 				} else {
 
-					attackableMoves.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 				}
 			}
 		}
@@ -105,12 +105,12 @@ public class King extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackableMoves.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 					}
 
 				} else {
 
-					attackableMoves.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 				}
 			}
 		}
@@ -128,12 +128,12 @@ public class King extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackableMoves.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 					}
 
 				} else {
 
-					attackableMoves.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 				}
 			}
 		}
@@ -150,12 +150,12 @@ public class King extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackableMoves.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 					}
 
 				} else {
 
-					attackableMoves.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 				}
 			}
 		}
@@ -173,12 +173,12 @@ public class King extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackableMoves.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 					}
 
 				} else {
 
-					attackableMoves.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 				}
 			}
 		}
@@ -195,12 +195,12 @@ public class King extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackableMoves.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 					}
 
 				} else {
 
-					attackableMoves.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 				}
 			}
 		}
@@ -217,12 +217,12 @@ public class King extends Piece {
 
 					if (otherPlace.getPiece().getColor() != color) {
 
-						attackableMoves.add(new Move(currentPlace, otherPlace, this));
+						attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 					}
 
 				} else {
 
-					attackableMoves.add(new Move(currentPlace, otherPlace, this));
+					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 				}
 			}
 		}
@@ -232,18 +232,18 @@ public class King extends Piece {
 			return;
 		}
 
-		if (canRocadeRight()) {
+		if (canRocadeRight(addMove)) {
 
 			attackableMoves.add(rocade);
 		}
 
-		if (canRocadeLeft()) {
+		if (canRocadeLeft(addMove)) {
 
 			attackableMoves.add(rocade);
 		}
 	}
 
-	private boolean canRocadeRight() {
+	private boolean canRocadeRight(boolean addMove) {
 
 		if (currentPlace.getBoard().isCheckingCheck() || isRocaded() || !neverMoved) {
 
@@ -286,7 +286,8 @@ public class King extends Piece {
 					this,
 					(Tower) currentPlace.getBoard().getPlacez()[currentPlace.getX() + (yDelta * 3)][currentPlace.getY()
 							- (xDelta * 3)].getPiece(),
-					currentPlace.getBoard().getPlacez()[currentPlace.getX() + yDelta][currentPlace.getY() - xDelta]);
+					currentPlace.getBoard().getPlacez()[currentPlace.getX() + yDelta][currentPlace.getY() - xDelta],
+					addMove);
 
 			return true;
 
@@ -360,7 +361,7 @@ public class King extends Piece {
 		return KING;
 	}
 
-	private boolean canRocadeLeft() {
+	private boolean canRocadeLeft(boolean addMove) {
 
 		if (currentPlace.getBoard().isCheckingCheck() || isRocaded() || !neverMoved) {
 
@@ -408,7 +409,8 @@ public class King extends Piece {
 					this,
 					(Tower) currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta * 3)][currentPlace.getY()
 							+ (xDelta * 3)].getPiece(),
-					currentPlace.getBoard().getPlacez()[currentPlace.getX() - yDelta][currentPlace.getY() + xDelta]);
+					currentPlace.getBoard().getPlacez()[currentPlace.getX() - yDelta][currentPlace.getY() + xDelta],
+					addMove);
 
 			return true;
 

@@ -14,9 +14,9 @@ public class Rocade extends Move {
 
 	private Place towerToPlace;
 
-	public Rocade(Place from, Place to, Piece piece, Tower tower, Place towerToPlace) {
+	public Rocade(Place from, Place to, Piece piece, Tower tower, Place towerToPlace, boolean addMove) {
 
-		super(from, to, piece);
+		super(from, to, piece, addMove);
 
 		this.tower = tower;
 		this.towerToPlace = towerToPlace;
