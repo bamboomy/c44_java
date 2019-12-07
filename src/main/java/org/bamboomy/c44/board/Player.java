@@ -302,6 +302,8 @@ public class Player {
 	public void prevent(ArrayList<Move> performedMoves) {
 
 		preventPieces.get((int) Math.random() * preventPieces.size()).prevent(performedMoves);
+		
+		board.next();
 	}
 
 	/*
@@ -336,6 +338,8 @@ public class Player {
 	public void takeAKing(ArrayList<Move> performedMoves) {
 
 		kingTakerz.get((int) (kingTakerz.size() * Math.random())).takeKing(performedMoves);
+		
+		board.next();
 	}
 
 	public void kamikaze(ArrayList<Move> performedMoves) {
@@ -353,6 +357,8 @@ public class Player {
 		movable.get((int) (Math.random() * movable.size())).kamikaze(performedMoves);
 
 		die(false);
+		
+		board.next();
 	}
 
 	public void setAttackedPlaces(boolean checkRocade) {

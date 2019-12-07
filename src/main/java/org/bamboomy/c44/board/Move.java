@@ -48,6 +48,8 @@ public class Move {
 
 		to.setPiece(piece);
 
+		piece.setCurrentPlace(to);
+
 		if (performedMoves != null) {
 
 			performedMoves.add(this);
@@ -72,6 +74,8 @@ public class Move {
 		}
 
 		from.setPiece(piece);
+
+		piece.setCurrentPlace(from);
 
 		if (performedMoves != null) {
 
