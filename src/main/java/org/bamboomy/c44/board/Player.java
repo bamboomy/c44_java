@@ -3,7 +3,6 @@ package org.bamboomy.c44.board;
 import java.util.ArrayList;
 
 import org.bamboomy.c44.board.pieces.Bisshop;
-import org.bamboomy.c44.board.pieces.EnPassant;
 import org.bamboomy.c44.board.pieces.Horse;
 import org.bamboomy.c44.board.pieces.King;
 import org.bamboomy.c44.board.pieces.Pawn;

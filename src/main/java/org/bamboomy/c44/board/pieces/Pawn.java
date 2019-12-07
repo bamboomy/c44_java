@@ -45,7 +45,8 @@ public class Pawn extends Piece {
 
 		attackableMoves = new ArrayList<Move>();
 
-		Place otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() + xDelta][currentPlace.getY() + yDelta];
+		Place otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() + xDelta][currentPlace.getY()
+				+ yDelta];
 
 		if (otherPlace != null && !otherPlace.hasPiece()) {
 
@@ -55,7 +56,8 @@ public class Pawn extends Piece {
 
 				// Place enPassantPlace = otherPlace;
 
-				otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() + (xDelta * 2)][currentPlace.getY() + (yDelta * 2)];
+				otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() + (xDelta * 2)][currentPlace.getY()
+						+ (yDelta * 2)];
 
 				if (otherPlace != null && !otherPlace.hasPiece()) {
 
@@ -181,27 +183,25 @@ public class Pawn extends Piece {
 		 */
 	}
 
-	@Override
-	public void rollBackMoveTo(Place oldPlace) {
-
-		/*
-		 * if (enPassant != null) {
-		 * 
-		 * enPassant.destroy(); }
-		 */
-
-		currentPlace.remove(this);
-
-		oldPlace.setPiece(this);
-
-		currentPlace = oldPlace;
-
-		neverMoved = rememberNeverMoved;
-
-		// oldPlace.restoreEnpassant();
-
-		unselect();
-	}
+	/*
+	 * @Override public void rollBackMoveTo(Place oldPlace) {
+	 * 
+	 * /* if (enPassant != null) {
+	 * 
+	 * enPassant.destroy(); }
+	 * 
+	 * currentPlace.remove(this);
+	 * 
+	 * oldPlace.setPiece(this);
+	 * 
+	 * currentPlace = oldPlace;
+	 * 
+	 * neverMoved = rememberNeverMoved;
+	 * 
+	 * // oldPlace.restoreEnpassant();
+	 * 
+	 * unselect(); }
+	 */
 
 	@Override
 	public String getPieceIdentifier() {
