@@ -245,7 +245,7 @@ public class King extends Piece {
 
 	private boolean canRocadeRight(boolean addMove) {
 
-		if (currentPlace.getBoard().isCheckingCheck() || isRocaded() || !neverMoved) {
+		if (currentPlace.getBoard().isCheckingCheck() || isMoved()) {
 
 			return false;
 		}
@@ -365,7 +365,7 @@ public class King extends Piece {
 
 	private boolean canRocadeLeft(boolean addMove) {
 
-		if (currentPlace.getBoard().isCheckingCheck() || isRocaded() || !neverMoved) {
+		if (currentPlace.getBoard().isCheckingCheck() || isMoved()) {
 
 			return false;
 		}
@@ -409,11 +409,11 @@ public class King extends Piece {
 			rocade = new Rocade(currentPlace, currentPlace
 					.getBoard().getPlacez()[currentPlace.getX() - (yDelta * 2)][currentPlace.getY() + (xDelta * 2)],
 					this,
-					(Tower) currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta * 3)][currentPlace.getY()
-							+ (xDelta * 3)].getPiece(),
+					(Tower) currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta * 4)][currentPlace.getY()
+							+ (xDelta * 4)].getPiece(),
 					currentPlace.getBoard().getPlacez()[currentPlace.getX() - yDelta][currentPlace.getY() + xDelta],
-					currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta * 3)][currentPlace.getY()
-							+ (xDelta * 3)],
+					currentPlace.getBoard().getPlacez()[currentPlace.getX() - (yDelta * 4)][currentPlace.getY()
+							+ (xDelta * 4)],
 					addMove);
 
 			return true;

@@ -55,6 +55,10 @@ public abstract class Piece {
 	@Getter
 	private Player player;
 
+	@Getter
+	@Setter
+	private boolean moved = false;
+
 	public Piece(Place place, int color, Player player) {
 
 		this.currentPlace = place;
@@ -308,6 +312,8 @@ public abstract class Piece {
 		for (Move move : attackableMovesCopy) {
 
 			if (move.isRocade()) {
+				
+				filtered.add(move);
 
 				continue;
 			}

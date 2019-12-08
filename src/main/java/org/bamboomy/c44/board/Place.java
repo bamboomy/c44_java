@@ -172,6 +172,8 @@ public class Place {
 		move.execute(performedMoves);
 		
 		move.getPiece().unselect();
+		
+		move.getPiece().setMoved(true);
 
 		/*
 		 * selectedPiece = board.getCurrentPlayer().getSelectedPiece();

@@ -52,7 +52,7 @@ public class Pawn extends Piece {
 
 			attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 
-			if (neverMoved) {
+			if (!isMoved()) {
 
 				// Place enPassantPlace = otherPlace;
 

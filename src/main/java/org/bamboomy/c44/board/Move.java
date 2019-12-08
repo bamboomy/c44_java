@@ -23,6 +23,8 @@ public class Move {
 	protected boolean isRocade = false;
 
 	protected ArrayList<Move> performedMoves;
+	
+	protected boolean rememberMoved;
 
 	public Move(Place from, Place to, Piece piece, boolean addMove) {
 
@@ -59,6 +61,10 @@ public class Move {
 
 			this.performedMoves = performedMoves;
 		}
+		
+		rememberMoved = piece.isMoved();
+		
+		piece.setMoved(true);
 	}
 
 	public void rollBack() {
@@ -84,5 +90,7 @@ public class Move {
 
 			performedMoves.remove(performedMoves.indexOf(this));
 		}
+		
+		piece.setMoved(rememberMoved);
 	}
 }
