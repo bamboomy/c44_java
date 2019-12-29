@@ -5,6 +5,31 @@
 <meta charset="UTF-8">
 <title>Hello ${name}!</title>
 <link href="/css/main.css" rel="stylesheet">
+
+<style>
+.outer {
+  display: table;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.middle {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.inner {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+</style>
+
+
 <script src="/js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 	var myId;
@@ -45,7 +70,28 @@
 
 </head>
 <body>
+
+<div id="status">
+
+	<h3>"A green letter outside of Indiana Jones."</h3>
+	
+	Green:<br/>
+	<br/>
+	Blue:<br/>
+	<br/>
+	Red:<br/>
+	<br/>
+	Yellow:<br/>
+	<br/>
+
+</div>
+
 	<center>
+	
+<div class="outer">
+  <div class="middle">
+    <div class="inner">
+	
 		<div>
 			<c:forEach items="${board.getRotatedPlacez()}" var="row">
 
@@ -58,20 +104,20 @@
 
 								<div class="square">
 
-									<img src="../img/blank.png" width="40px" height="40px" />
+									<img src="../img/blank.png" width="35px" height="35px" />
 
 									<c:choose>
 										<c:when test="${place.isVisuallyAttacked()}">
 											<c:choose>
 												<c:when test="${place.hasPiece()}">
 													<img class="${place.getCssName()}"
-														src="${place.getPiece().getPieceName()}" width="40px"
-														height="40px"
+														src="${place.getPiece().getPieceName()}" width="35px"
+														height="35px"
 														onclick="clickToServer('${place.getMd5WithBoard()}')" />
 												</c:when>
 												<c:otherwise>
 													<img class="${place.getCssName()}"
-														src="../img/transparent.png" width="40px" height="40px"
+														src="../img/transparent.png" width="35px" height="35px"
 														onclick="clickToServer('${place.getMd5WithBoard()}')" />
 												</c:otherwise>
 											</c:choose>
@@ -80,13 +126,13 @@
 											<c:choose>
 												<c:when test="${place.hasPiece()}">
 													<img class="${place.getCssName()}"
-														src="${place.getPiece().getPieceName()}" width="40px"
-														height="40px"
+														src="${place.getPiece().getPieceName()}" width="35px"
+														height="35px"
 														onclick="clickToServer('${place.getPiece().getMd5WithBoard()}')" />
 												</c:when>
 												<c:otherwise>
 													<img class="${place.getCssName()}"
-														src="../img/transparent.png" width="40px" height="40px" />
+														src="../img/transparent.png" width="35px" height="35px" />
 												</c:otherwise>
 											</c:choose>
 										</c:otherwise>
@@ -96,7 +142,7 @@
 							</c:when>
 							<c:otherwise>
 								<div class="square">
-									<img src="../img/blank.png" width="40px" height="40px" />
+									<img src="../img/blank.png" width="35px" height="35px" />
 								</div>
 							</c:otherwise>
 						</c:choose>
@@ -105,6 +151,10 @@
 				</div>
 			</c:forEach>
 		</div>
+		
+	</div>
+  </div>
+</div>		
 	</center>
 </body>
 </html>

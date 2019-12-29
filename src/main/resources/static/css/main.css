@@ -4,12 +4,12 @@
 }
 
 .row{
-	width: 480px;
+	width: 420px;
 }
 
 .piece_on_black{
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   z-index: 1;
   position: absolute;
   float: left;
@@ -17,8 +17,8 @@
 }
 
 .piece_on_white{
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   z-index: 1;
   position: absolute;
   float: left;
@@ -26,8 +26,8 @@
 }
 
 .piece_on_black_red{
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   z-index: 1;
   position: absolute;
   float: left;
@@ -35,8 +35,8 @@
 }
 
 .piece_on_white_red{
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   z-index: 1;
   position: absolute;
   float: left;
@@ -44,8 +44,8 @@
 }
 
 .piece_on_black_yellow{
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   z-index: 1;
   position: absolute;
   float: left;
@@ -53,8 +53,8 @@
 }
 
 .piece_on_white_yellow{
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   z-index: 1;
   position: absolute;
   float: left;
@@ -62,8 +62,8 @@
 }
 
 .piece_on_black_blue{
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   z-index: 1;
   position: absolute;
   float: left;
@@ -71,8 +71,8 @@
 }
 
 .piece_on_white_blue{
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   z-index: 1;
   position: absolute;
   float: left;
@@ -80,8 +80,8 @@
 }
 
 .piece_on_black_green{
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   z-index: 1;
   position: absolute;
   float: left;
@@ -89,10 +89,25 @@
 }
 
 .piece_on_white_green{
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   z-index: 1;
   position: absolute;
   float: left;
   background-image: url(../img/white_green.png);
+}
+
+#status {
+
+	position: absolute;
+	
+	top: 20px;
+	left: 20px;
+	
+	width: 300px;
+	height: 300px;
+	
+	border: 1px solid;
+	
+	padding: 10px;
 }
