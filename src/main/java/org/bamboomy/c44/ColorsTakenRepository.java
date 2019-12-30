@@ -8,6 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ColorsTakenRepository extends CrudRepository<ColorsTaken, Integer> {
 
-	@Query("SELECT t FROM ColorsTaken t WHERE t.java_hash = ?1")
+	@Query("SELECT t FROM ColorsTaken t WHERE t.javaHash = ?1")
 	ColorsTaken findByHash(String hash);
 }
