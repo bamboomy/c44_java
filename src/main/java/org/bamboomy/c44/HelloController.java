@@ -29,6 +29,6 @@ public class HelloController {
 		
 		System.out.println(gameRepository.findByHash("921164de9eec315810062a7753cf8a77").getSentence());
 
-		return "hello";
+		return "negative";
 	}
 }
