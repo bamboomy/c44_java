@@ -33,13 +33,13 @@
 <div class="outer">
   <div class="middle">
     <div class="inner">
-	
+	<center>
 		<div>
 			<h1>That's a negative...</h1>
 			
 			We don't seem to know that game around here...
 		</div>
-		
+		</center>
 	</div>
   </div>
 </div>		
