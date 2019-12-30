@@ -13,7 +13,7 @@ public class HelloController {
 	private GameRepository gameRepository;
 
 	@Autowired 
-	private ColorsTakenRepository userRepository;
+	private ColorsTakenRepository colorsTakenRepository;
 
 	@GetMapping({ "/" })
 	public String hello(Model model,
@@ -23,7 +23,7 @@ public class HelloController {
 
 		model.addAttribute("board", BoardController.getInstance().getBoard(hash));
 
-		Iterable<ColorsTaken> gamez = userRepository.findAll();
+		Iterable<ColorsTaken> gamez = colorsTakenRepository.findAll();
 
 		for (ColorsTaken ct: gamez) {
 
