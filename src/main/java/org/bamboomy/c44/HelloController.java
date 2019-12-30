@@ -21,26 +21,17 @@ public class HelloController {
 
 		System.out.println(hash);
 
-		model.addAttribute("board", BoardController.getInstance().getBoard(hash));
+		ColorsTaken user = colorsTakenRepository.findByHash(hash);
 
-		Iterable<ColorsTaken> gamez = colorsTakenRepository.findAll();
-
-		for (ColorsTaken ct: gamez) {
-
-			System.out.println(ct.getJavaHash());
+		if(user == null) {
+			
+			return "negative";	
 		}
 		
-		/*
-		Iterable<Game> gamez = gameRepository.findAll();
-
-		for (Game game : gamez) {
-
-			System.out.println(game.getSentence());
-		}
+		String gameHash = user.getGame();
 		
-		System.out.println(gameRepository.findByHash("921164de9eec315810062a7753cf8a77").getSentence());
-		*/
+		model.addAttribute("board", BoardController.getInstance().getBoard(gameHash));
 
-		return "negative";
+		return "hello";
 	}
 }
