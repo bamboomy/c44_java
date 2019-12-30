@@ -20,4 +20,5 @@ public class Game {
 	private String hash;
 	
 	private Integer fail;
+
 }

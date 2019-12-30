@@ -12,14 +12,25 @@ public class HelloController {
 	@Autowired 
 	private GameRepository gameRepository;
 
+	@Autowired 
+	private ColorsTakenRepository userRepository;
+
 	@GetMapping({ "/" })
 	public String hello(Model model,
-			@RequestParam(value = "id", required = false, defaultValue = "World") final String hash) {
+			@RequestParam(value = "id", required = true, defaultValue = "World") final String hash) {
 
 		System.out.println(hash);
 
 		model.addAttribute("board", BoardController.getInstance().getBoard(hash));
 
+		Iterable<ColorsTaken> gamez = userRepository.findAll();
+
+		for (ColorsTaken ct: gamez) {
+
+			System.out.println(ct.getJavaHash());
+		}
+		
+		/*
 		Iterable<Game> gamez = gameRepository.findAll();
 
 		for (Game game : gamez) {
@@ -28,6 +39,7 @@ public class HelloController {
 		}
 		
 		System.out.println(gameRepository.findByHash("921164de9eec315810062a7753cf8a77").getSentence());
+		*/
 
 		return "negative";
 	}
