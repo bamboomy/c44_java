@@ -47,6 +47,10 @@ public class HelloController {
 			board .setYellowName(user.getName());
 		} 
 		
+		Game game = gameRepository.findByHash(gameHash);
+		
+		board.setGameName(game.getSentence());
+		
 		model.addAttribute("board", board);
 
 		return "hello";

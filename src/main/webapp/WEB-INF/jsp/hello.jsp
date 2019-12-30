@@ -73,7 +73,7 @@
 
 <div id="status">
 
-	<h3>"A green letter outside of Indiana Jones."</h3>
+	<h3>${board.gameName}</h3>
 	
 	Green: ${board.greenName}<br/>
 	<br/>
