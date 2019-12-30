@@ -24,6 +24,10 @@ public class Board {
 
 	@Getter
 	private Player currentPlayer;
+	
+	@Getter 
+	@Setter
+	private String redName, greenName, blueName, yellowName, gameName;
 
 	private int turn = 2;
 

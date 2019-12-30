@@ -1,5 +1,6 @@
 package org.bamboomy.c44;
 
+import org.bamboomy.c44.board.Board;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +31,23 @@ public class HelloController {
 		
 		String gameHash = user.getGame();
 		
-		model.addAttribute("board", BoardController.getInstance().getBoard(gameHash));
+		Board board = BoardController.getInstance().getBoard(gameHash);
+		
+		if(user.getColor().equalsIgnoreCase("red")) {
+			
+			board .setRedName(user.getName());
+		} else if(user.getColor().equalsIgnoreCase("green")) {
+			
+			board .setGreenName(user.getName());
+		}else  if(user.getColor().equalsIgnoreCase("blue")) {
+			
+			board .setBlueName(user.getName());
+		}else if(user.getColor().equalsIgnoreCase("yellow")) {
+			
+			board .setYellowName(user.getName());
+		} 
+		
+		model.addAttribute("board", board);
 
 		return "hello";
 	}

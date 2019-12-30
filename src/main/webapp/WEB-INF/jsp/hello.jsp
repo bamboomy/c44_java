@@ -75,13 +75,13 @@
 
 	<h3>"A green letter outside of Indiana Jones."</h3>
 	
-	Green:<br/>
+	Green: ${board.getGreenName}<br/>
 	<br/>
-	Blue:<br/>
+	Blue: ${board.getBlueName}<br/>
 	<br/>
-	Red:<br/>
+	Red: ${board.getRedName}<br/>
 	<br/>
-	Yellow:<br/>
+	Yellow: ${board.getYellowName}<br/>
 	<br/>
 
 </div>
