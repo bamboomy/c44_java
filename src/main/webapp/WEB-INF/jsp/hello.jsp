@@ -133,7 +133,7 @@
 
 		if (e.which == 13) {
 
-			sendMessage()
+			sendMessage();
 		}
 	});
 </script>
