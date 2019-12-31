@@ -47,53 +47,85 @@
 			}
 		});
 	}
-	
-	function fill(){
 
-		$.ajax({ type: "GET",   
-				 url: "http://chess4four.io:8080/board/?id=${board.playerHash}",    
-				 async: false,
-				 success : function(text)
-				 {
-					 $('#board').html(text);
-				 }
+	function fill() {
+
+		$.ajax({
+			type : "GET",
+			url : "http://chess4four.io:8080/board/?id=${board.playerHash}",
+			async : false,
+			success : function(text) {
+				$('#board').html(text);
+			}
 		});
 	}
 
 	function again() {
 
-		setTimeout(function(){
+		setTimeout(function() {
 
 			fill();
-			
+
 			again();
 
 		}, 1000);
 	}
 
 	again();
-	
+
 	fill();
-	
+
 	var checkShown = false;
-	
+
 	var cantMoveShown = false;
-	
-	function sendMessage(){
-	
+
+	function sendMessage() {
+
 		var chat = $("#chatField").val();
-	
-		$.ajax({
-		  type: "POST",
-		  xhrFields: { withCredentials: true },
-		  url: "https://chess4four.io/java/chat.php?board=${board.playerHash}",
-		  data: {text: chat},
-		  success: function(text) {
-					 alert(text);	
-				 }
-		});
+
+		$
+				.ajax({
+					type : "POST",
+					xhrFields : {
+						withCredentials : true
+					},
+					url : "https://chess4four.io/java/chat.php?board=${board.playerHash}",
+					data : {
+						text : chat
+					},
+					success : function(text) {
+						alert(text);
+					}
+				});
 	}
 
+	function fillChat() {
+
+		$
+				.ajax({
+					type : "get",
+					xhrFields : {
+						withCredentials : true
+					},
+					url : "https://chess4four.io/java/chatText.php?board=${board.playerHash}",
+					success : function(text) {
+						$('#chatText').html(text);
+					}
+				});
+	}
+
+	function showChat() {
+
+		setTimeout(function() {
+
+			fillChat();
+
+			showChat();
+
+		}, 1000);
+	}
+
+	showChat();
 </script>
 
 </head>
@@ -103,8 +135,9 @@
 
 		<h3>${board.gameName}</h3>
 
-		Green: ${board.greenName}<br /> <br /> Blue: ${board.blueName}<br /> <br />
-		Red: ${board.redName}<br /> <br /> Yellow: ${board.yellowName}<br /> <br />
+		Green: ${board.greenName}<br /> <br /> Blue: ${board.blueName}<br />
+		<br /> Red: ${board.redName}<br /> <br /> Yellow:
+		${board.yellowName}<br /> <br />
 
 	</div>
 
@@ -120,14 +153,17 @@
 			</div>
 		</div>
 	</center>
-	
+
 	<div id="chat">
 		
+		<div id="chatText"></div>
+
 		<div class="bottom">
-			<input id="chatField" type="text" class="fill"/><input type="button" value="Send" onclick="sendMessage();"/>
+			<input id="chatField" type="text" class="fill" /><input type="button"
+				value="Send" onclick="sendMessage();" />
 		</div>
 
 	</div>
-	
+
 </body>
 </html>
