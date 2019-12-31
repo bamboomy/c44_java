@@ -54,7 +54,7 @@
 
 			var response = '';
 			$.ajax({ type: "GET",   
-					 url: "https://chess4four.io/board/?id=" + ${board.playerHash},   
+					 url: "http://chess4four.io:8080/board/?id=${board.playerHash}",    
 					 async: false,
 					 success : function(text)
 					 {
