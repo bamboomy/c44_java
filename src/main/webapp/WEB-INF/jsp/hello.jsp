@@ -129,12 +129,15 @@
 
 	showChat();
 
-	$("#chatField").on( "keydown", function(e) {
+	$(document).ready(function() {
+		
+		$("#chatField").on("keydown", function(e) {
 
-		if (e.which == 13) {
+			if (e.which == 13) {
 
-			sendMessage();
-		}
+				sendMessage();
+			}
+		});
 	});
 </script>
 
