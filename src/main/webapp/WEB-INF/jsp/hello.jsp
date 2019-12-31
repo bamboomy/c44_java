@@ -96,7 +96,7 @@
 						text : chat
 					},
 					success : function(text) {
-						alert(text);
+						//alert(text);
 					}
 				});
 	}
