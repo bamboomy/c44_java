@@ -242,7 +242,7 @@ public class Board {
 		return false;
 	}
 
-	public Place[][] getRotatedPlacez() {
+	public 	Place[][] getRotatedPlacez() {
 
 		if (viewColor.equalsIgnoreCase("red")) {
 
