@@ -89,7 +89,11 @@
 					},
 					url : "https://chess4four.io/java/chatText.php?board=${board.playerHash}",
 					success : function(text) {
+
 						$('#chatText').html(text);
+						
+						var objDiv = document.getElementById("chatText");
+						objDiv.scrollTop = objDiv.scrollHeight;
 					}
 				});
 	}
