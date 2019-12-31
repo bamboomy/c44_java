@@ -46,7 +46,7 @@ public class BoardController {
 		return single_instance;
 	}
 
-	Board getBoard(String hash) {
+	synchronized Board getBoard(String hash) {
 
 		Board result = GAMEZ.get(hash);
 
