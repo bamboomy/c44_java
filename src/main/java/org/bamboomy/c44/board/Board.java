@@ -142,12 +142,13 @@ public class Board {
 
 		System.out.println(md5);
 
-		if ((currentPlayer.getColor() == Player.RED && !color.equalsIgnoreCase("red"))
-				|| (currentPlayer.getColor() == Player.GREEN && !color.equalsIgnoreCase("green"))
-				|| (currentPlayer.getColor() == Player.BLUE && !color.equalsIgnoreCase("blue"))
-				|| (currentPlayer.getColor() == Player.YELLOW && !color.equalsIgnoreCase("yellow"))) {
-			return;
-		}
+		/*
+		 * if ((currentPlayer.getColor() == Player.RED &&
+		 * !color.equalsIgnoreCase("red")) || (currentPlayer.getColor() == Player.GREEN
+		 * && !color.equalsIgnoreCase("green")) || (currentPlayer.getColor() ==
+		 * Player.BLUE && !color.equalsIgnoreCase("blue")) || (currentPlayer.getColor()
+		 * == Player.YELLOW && !color.equalsIgnoreCase("yellow"))) { return; }
+		 */
 
 		if (!currentPlayer.click(md5)) {
 
