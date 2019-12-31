@@ -51,8 +51,32 @@ public class HelloController {
 		
 		board.setGameName(game.getSentence());
 		
+		board.setPlayerHash(hash);
+		
 		model.addAttribute("board", board);
 
 		return "hello";
+	}
+
+	@GetMapping({ "/board/" })
+	public String board(Model model,
+			@RequestParam(value = "id", required = true, defaultValue = "World") final String hash) {
+
+		System.out.println(hash);
+
+		ColorsTaken user = colorsTakenRepository.findByHash(hash);
+
+		if(user == null) {
+			
+			return "negative";	
+		}
+		
+		String gameHash = user.getGame();
+		
+		Board board = BoardController.getInstance().getBoard(gameHash);
+
+		model.addAttribute("board", board);
+
+		return "board";
 	}
 }

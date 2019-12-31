@@ -48,28 +48,29 @@
 		});
 	}
 
-	setTimeout(function() {
-		window.location.reload(1);
-	}, 1000);
-</script>
-<c:if
-	test="${!board.isPlayerIsMoving() && board.getCurrentPlayer().checkCheck() }">
-	<script type="text/javascript">
-		alert('check!!!');
-	</script>
-</c:if>
-<c:if
-	test="${!board.isPlayerIsMoving() && board.getCurrentPlayer().checkCheck() && board.getCurrentPlayer().canPrevent()}">
-	<script type="text/javascript">
-		alert('... but you can prevent...');
-	</script>
-</c:if>
-<c:if test="${board.isWouldBeCheck()}">
-	<script type="text/javascript">
-		alert('You can\'t move that piece!!! (you would be check...)');
-	</script>
-</c:if>
+	function again() {
 
+		setTimeout(function(){
+
+			var response = '';
+			$.ajax({ type: "GET",   
+					 url: "https://chess4four.io/board/?id=" + ${board.playerHash},   
+					 async: false,
+					 success : function(text)
+					 {
+						 response = text;
+					 }
+			});
+
+			$('#board').html(response);
+			
+			again();
+
+		}, 300);
+	}
+
+	again();
+</script>
 
 </head>
 <body>
@@ -89,65 +90,7 @@
 			<div class="middle">
 				<div class="inner">
 
-					<div>
-						<c:forEach items="${board.getRotatedPlacez()}" var="row">
-
-							<div class="row">
-
-								<c:forEach items="${row}" var="place">
-
-									<c:choose>
-										<c:when test="${place != null}">
-
-											<div class="square">
-
-												<img src="../img/blank.png" width="35px" height="35px" />
-
-												<c:choose>
-													<c:when test="${place.isVisuallyAttacked()}">
-														<c:choose>
-															<c:when test="${place.hasPiece()}">
-																<img class="${place.getCssName()}"
-																	src="${place.getPiece().getPieceName()}" width="35px"
-																	height="35px"
-																	onclick="clickToServer('${place.getMd5WithBoard()}')" />
-															</c:when>
-															<c:otherwise>
-																<img class="${place.getCssName()}"
-																	src="../img/transparent.png" width="35px" height="35px"
-																	onclick="clickToServer('${place.getMd5WithBoard()}')" />
-															</c:otherwise>
-														</c:choose>
-													</c:when>
-													<c:otherwise>
-														<c:choose>
-															<c:when test="${place.hasPiece()}">
-																<img class="${place.getCssName()}"
-																	src="${place.getPiece().getPieceName()}" width="35px"
-																	height="35px"
-																	onclick="clickToServer('${place.getPiece().getMd5WithBoard()}')" />
-															</c:when>
-															<c:otherwise>
-																<img class="${place.getCssName()}"
-																	src="../img/transparent.png" width="35px" height="35px" />
-															</c:otherwise>
-														</c:choose>
-													</c:otherwise>
-												</c:choose>
-
-											</div>
-										</c:when>
-										<c:otherwise>
-											<div class="square">
-												<img src="../img/blank.png" width="35px" height="35px" />
-											</div>
-										</c:otherwise>
-									</c:choose>
-								</c:forEach>
-
-							</div>
-						</c:forEach>
-					</div>
+					<div id="board"></div>
 
 				</div>
 			</div>

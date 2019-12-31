@@ -27,7 +27,7 @@ public class Board {
 	
 	@Getter 
 	@Setter
-	private String redName, greenName, blueName, yellowName, gameName;
+	private String redName, greenName, blueName, yellowName, gameName, playerHash;
 
 	private int turn = 2;
 
