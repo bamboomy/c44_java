@@ -27,7 +27,7 @@ public class Board {
 
 	@Getter
 	@Setter
-	private String redName, greenName, blueName, yellowName, gameName, playerHash, viewColor;
+	private String redName, greenName, blueName, yellowName, gameName, playerHash;
 
 	private int turn = 2;
 
@@ -242,17 +242,17 @@ public class Board {
 		return false;
 	}
 
-	public 	Place[][] getRotatedPlacez() {
+	public 	Place[][] getRotatedPlacez(String color) {
 
-		if (viewColor.equalsIgnoreCase("red")) {
+		if (color.equalsIgnoreCase("red")) {
 
 			return getRedPlacez();
 
-		} else if (viewColor.equalsIgnoreCase("yellow")) {
+		} else if (color.equalsIgnoreCase("yellow")) {
 
 			return getYellozPlacez();
 
-		} else if (viewColor.equalsIgnoreCase("blue")) {
+		} else if (color.equalsIgnoreCase("blue")) {
 
 			return getBluePlacez();
 		}

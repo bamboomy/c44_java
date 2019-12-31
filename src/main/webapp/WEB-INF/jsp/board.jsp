@@ -49,7 +49,7 @@
 	</script>
 </c:if>
 <div>
-	<c:forEach items="${board.getRotatedPlacez()}" var="row">
+	<c:forEach items="${board.getRotatedPlacez(user.color)}" var="row">
 
 		<div class="row">
 

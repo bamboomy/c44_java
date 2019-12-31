@@ -115,6 +115,7 @@ public class HelloController {
 		board.setViewColor(user.getColor());
 
 		model.addAttribute("board", board);
+		model.addAttribute("user", user);
 
 		return "board";
 	}
