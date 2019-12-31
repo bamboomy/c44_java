@@ -112,7 +112,7 @@
 	<div id="chat">
 		
 		<div class="bottom">
-			<input type="text"/><input type="button" value="Send"/>
+			<input type="text" class="fill"/><input type="button" value="Send"/>
 		</div>
 
 	</div>
