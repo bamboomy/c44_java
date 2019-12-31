@@ -24,10 +24,10 @@ public class Board {
 
 	@Getter
 	private Player currentPlayer;
-	
-	@Getter 
+
+	@Getter
 	@Setter
-	private String redName, greenName, blueName, yellowName, gameName, playerHash;
+	private String redName, greenName, blueName, yellowName, gameName, playerHash, viewColor;
 
 	private int turn = 2;
 
@@ -244,19 +244,18 @@ public class Board {
 
 	public Place[][] getRotatedPlacez() {
 
-		/*
-		 * if (currentPlayer.getColor() == Player.RED) {
-		 * 
-		 * return getRedPlacez(); }
-		 * 
-		 * if (currentPlayer.getColor() == Player.YELLOW) {
-		 * 
-		 * return getYellozPlacez(); }
-		 * 
-		 * if (currentPlayer.getColor() == Player.BLUE) {
-		 * 
-		 * return getBluePlacez(); }
-		 */
+		if (viewColor.equalsIgnoreCase("red")) {
+
+			return getRedPlacez();
+
+		} else if (viewColor.equalsIgnoreCase("yellow")) {
+
+			return getYellozPlacez();
+
+		} else if (viewColor.equalsIgnoreCase("blue")) {
+
+			return getBluePlacez();
+		}
 
 		return placez;
 	}

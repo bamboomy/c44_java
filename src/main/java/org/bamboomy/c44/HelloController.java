@@ -111,6 +111,8 @@ public class HelloController {
 		String gameHash = user.getGame();
 		
 		Board board = BoardController.getInstance().getBoard(gameHash);
+		
+		board.setViewColor(user.getColor());
 
 		model.addAttribute("board", board);
 
