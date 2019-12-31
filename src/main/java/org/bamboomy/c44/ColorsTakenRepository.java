@@ -10,4 +10,7 @@ public interface ColorsTakenRepository extends CrudRepository<ColorsTaken, Integ
 
 	@Query("SELECT t FROM ColorsTaken t WHERE t.javaHash = ?1")
 	ColorsTaken findByHash(String hash);
+	
+	@Query("SELECT t FROM ColorsTaken t WHERE t.game = ?1")
+	Iterable<ColorsTaken> findByGameHash(String hash);
 }

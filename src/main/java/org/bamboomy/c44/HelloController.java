@@ -33,19 +33,28 @@ public class HelloController {
 		
 		Board board = BoardController.getInstance().getBoard(gameHash);
 		
-		if(user.getColor().equalsIgnoreCase("red")) {
+		Iterable<ColorsTaken> userIterable = colorsTakenRepository.findByGameHash(gameHash);
+		
+		for(ColorsTaken userColor: userIterable) {
 			
-			board .setRedName(user.getName());
-		} else if(user.getColor().equalsIgnoreCase("green")) {
-			
-			board .setGreenName(user.getName());
-		}else  if(user.getColor().equalsIgnoreCase("blue")) {
-			
-			board .setBlueName(user.getName());
-		}else if(user.getColor().equalsIgnoreCase("yellow")) {
-			
-			board .setYellowName(user.getName());
-		} 
+			if(userColor.getColor().equalsIgnoreCase("red")) {
+				
+				board .setRedName(userColor.getName());
+				
+			} else if(userColor.getColor().equalsIgnoreCase("green")) {
+				
+				board .setGreenName(userColor.getName());
+				
+			}else  if(userColor.getColor().equalsIgnoreCase("blue")) {
+				
+				board .setBlueName(userColor.getName());
+				
+			}else if(userColor.getColor().equalsIgnoreCase("yellow")) {
+				
+				board .setYellowName(userColor.getName());
+			} 
+		}
+		
 		
 		Game game = gameRepository.findByHash(gameHash);
 		
