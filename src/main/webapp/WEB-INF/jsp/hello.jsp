@@ -47,22 +47,27 @@
 			}
 		});
 	}
+	
+	function fill(){
+		
+		var response = '';
+		$.ajax({ type: "GET",   
+				 url: "http://chess4four.io:8080/board/?id=${board.playerHash}",    
+				 async: false,
+				 success : function(text)
+				 {
+					 response = text;
+				 }
+		});
+
+		$('#board').html(response);
+	}
 
 	function again() {
 
 		setTimeout(function(){
 
-			var response = '';
-			$.ajax({ type: "GET",   
-					 url: "http://chess4four.io:8080/board/?id=${board.playerHash}",    
-					 async: false,
-					 success : function(text)
-					 {
-						 response = text;
-					 }
-			});
-
-			$('#board').html(response);
+			fill();
 			
 			again();
 
@@ -70,6 +75,8 @@
 	}
 
 	again();
+	
+	fill();
 </script>
 
 </head>
