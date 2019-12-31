@@ -83,6 +83,8 @@
 
 		var chat = $("#chatField").val();
 
+		$("#chatField").val("");
+
 		$
 				.ajax({
 					type : "POST",
@@ -126,6 +128,14 @@
 	}
 
 	showChat();
+
+	$("#chatField").keypress(function(e) {
+
+		if (e.which == 13) {
+
+			sendMessage()
+		}
+	});
 </script>
 
 </head>
@@ -155,12 +165,12 @@
 	</center>
 
 	<div id="chat">
-		
+
 		<div id="chatText"></div>
 
 		<div class="bottom">
-			<input id="chatField" type="text" class="fill" /><input type="button"
-				value="Send" onclick="sendMessage();" />
+			<input id="chatField" type="text" class="fill" /><input
+				type="button" value="Send" onclick="sendMessage();" />
 		</div>
 
 	</div>
