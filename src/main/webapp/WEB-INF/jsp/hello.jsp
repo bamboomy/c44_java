@@ -49,18 +49,15 @@
 	}
 	
 	function fill(){
-		
-		var response = '';
+
 		$.ajax({ type: "GET",   
 				 url: "http://chess4four.io:8080/board/?id=${board.playerHash}",    
 				 async: false,
 				 success : function(text)
 				 {
-					 response = text;
+					 $('#board').html(text);
 				 }
 		});
-
-		$('#board').html(response);
 	}
 
 	function again() {
@@ -81,6 +78,20 @@
 	var checkShown = false;
 	
 	var cantMoveShown = false;
+	
+	function sendMessage(){
+	
+		var text = $("#chatField").val();
+	
+		$.ajax({
+		  type: "POST",
+		  url: "https://chess4four.io/java/chat.php?board=${board.playerHash}",
+		  data: text,
+		  success: function(text) {
+					 alert(text);	
+				 }
+		});
+	}
 
 </script>
 
@@ -112,7 +123,7 @@
 	<div id="chat">
 		
 		<div class="bottom">
-			<input type="text" class="fill"/><input type="button" value="Send"/>
+			<input id="chatField" type="text" class="fill"/><input type="button" value="Send" onclick="sendMessage();"/>
 		</div>
 
 	</div>
