@@ -85,7 +85,8 @@
 	
 		$.ajax({
 		  type: "POST",
-		  url: "http://chess4four.io/java/chat.php?board=${board.playerHash}",
+		  xhrFields: { withCredentials: true },
+		  url: "https://chess4four.io/java/chat.php?board=${board.playerHash}",
 		  data: {text: chat},
 		  success: function(text) {
 					 alert(text);	
