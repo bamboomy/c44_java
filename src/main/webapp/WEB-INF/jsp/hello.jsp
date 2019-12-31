@@ -129,7 +129,7 @@
 
 	showChat();
 
-	$("#chatField").keydown(function(e) {
+	$("#chatField").on( "keydown", function(e) {
 
 		if (e.which == 13) {
 
