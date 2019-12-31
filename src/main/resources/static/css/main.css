@@ -142,6 +142,7 @@
 
 #chatText {
 
-	overflow: scroll;
+	overflow-y:auto;
+	height: 90%;
 }
 
