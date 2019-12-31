@@ -79,6 +79,21 @@
 
 	var cantMoveShown = false;
 
+	function fillChat() {
+
+		$
+				.ajax({
+					type : "get",
+					xhrFields : {
+						withCredentials : true
+					},
+					url : "https://chess4four.io/java/chatText.php?board=${board.playerHash}",
+					success : function(text) {
+						$('#chatText').html(text);
+					}
+				});
+	}
+
 	function sendMessage() {
 
 		var chat = $("#chatField").val();
@@ -97,21 +112,8 @@
 					},
 					success : function(text) {
 						//alert(text);
-					}
-				});
-	}
-
-	function fillChat() {
-
-		$
-				.ajax({
-					type : "get",
-					xhrFields : {
-						withCredentials : true
-					},
-					url : "https://chess4four.io/java/chatText.php?board=${board.playerHash}",
-					success : function(text) {
-						$('#chatText').html(text);
+						
+						fillChat();
 					}
 				});
 	}
