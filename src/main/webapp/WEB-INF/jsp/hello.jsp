@@ -110,8 +110,10 @@
 	</center>
 	
 	<div id="chat">
-
-		<input type="text"/><input type="button" value="Send"/>
+		
+		<div class="bottom">
+			<input type="text"/><input type="button" value="Send"/>
+		</div>
 
 	</div>
 	
