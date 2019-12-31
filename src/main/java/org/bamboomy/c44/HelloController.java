@@ -39,19 +39,47 @@ public class HelloController {
 			
 			if(userColor.getColor().equalsIgnoreCase("red")) {
 				
-				board .setRedName(userColor.getName());
-				
+				if(userColor.getColor().equalsIgnoreCase(user.getColor())) {
+					
+					board .setRedName("You");	
+					
+				}else {
+					
+					board .setRedName(userColor.getName());	
+				}
+
 			} else if(userColor.getColor().equalsIgnoreCase("green")) {
 				
-				board .setGreenName(userColor.getName());
-				
+				if(userColor.getColor().equalsIgnoreCase(user.getColor())) {
+					
+					board .setGreenName("You");	
+					
+				}else {
+					
+					board .setGreenName(userColor.getName());	
+				}
+
 			}else  if(userColor.getColor().equalsIgnoreCase("blue")) {
 				
-				board .setBlueName(userColor.getName());
-				
+				if(userColor.getColor().equalsIgnoreCase(user.getColor())) {
+					
+					board .setBlueName("You");	
+					
+				}else {
+					
+					board .setBlueName(userColor.getName());	
+				}
+
 			}else if(userColor.getColor().equalsIgnoreCase("yellow")) {
 				
-				board .setYellowName(userColor.getName());
+				if(userColor.getColor().equalsIgnoreCase(user.getColor())) {
+					
+					board .setYellowName("You");	
+					
+				}else {
+					
+					board .setYellowName(userColor.getName());	
+				}
 			} 
 		}
 		
