@@ -81,12 +81,12 @@
 	
 	function sendMessage(){
 	
-		var text = $("#chatField").val();
+		var chat = $("#chatField").val();
 	
 		$.ajax({
 		  type: "POST",
 		  url: "https://chess4four.io/java/chat.php?board=${board.playerHash}",
-		  data: text,
+		  data: {text: chat},
 		  success: function(text) {
 					 alert(text);	
 				 }
