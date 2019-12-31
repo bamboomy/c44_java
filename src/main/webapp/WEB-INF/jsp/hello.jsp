@@ -77,6 +77,11 @@
 	again();
 	
 	fill();
+	
+	var checkShown = false;
+	
+	var cantMoveShown = false;
+
 </script>
 
 </head>
