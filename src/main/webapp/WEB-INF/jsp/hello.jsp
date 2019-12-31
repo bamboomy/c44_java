@@ -37,11 +37,11 @@
 		myId = $('form').attr('myattribute');
 	});
 
-	function clickToServer(md5) {
+	function clickToServer(md5, userHash) {
 
 		$.ajax({
 			type : "GET",
-			'url' : '/peace/' + md5,
+			'url' : '/peace/' + md5 + "/" + userHash,
 			success : function(text) {
 				location.reload();
 			}

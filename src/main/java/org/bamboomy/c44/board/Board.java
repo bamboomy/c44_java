@@ -138,9 +138,16 @@ public class Board {
 		}
 	}
 
-	public void click(String md5) {
+	public void click(String md5, String color) {
 
 		System.out.println(md5);
+
+		if ((currentPlayer.getColor() == Player.RED && !color.equalsIgnoreCase("red"))
+				|| (currentPlayer.getColor() == Player.GREEN && !color.equalsIgnoreCase("green"))
+				|| (currentPlayer.getColor() == Player.BLUE && !color.equalsIgnoreCase("blue"))
+				|| (currentPlayer.getColor() == Player.YELLOW && !color.equalsIgnoreCase("yellow"))) {
+			return;
+		}
 
 		if (!currentPlayer.click(md5)) {
 
@@ -242,7 +249,7 @@ public class Board {
 		return false;
 	}
 
-	public 	Place[][] getRotatedPlacez(String color) {
+	public Place[][] getRotatedPlacez(String color) {
 
 		if (color.equalsIgnoreCase("red")) {
 

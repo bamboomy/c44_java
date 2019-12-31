@@ -69,12 +69,12 @@
 											<img class="${place.getCssName()}"
 												src="${place.getPiece().getPieceName()}" width="35px"
 												height="35px"
-												onclick="clickToServer('${place.getMd5WithBoard()}')" />
+												onclick="clickToServer('${place.getMd5WithBoard()}', '${user.javaHash}')" />
 										</c:when>
 										<c:otherwise>
 											<img class="${place.getCssName()}"
 												src="../img/transparent.png" width="35px" height="35px"
-												onclick="clickToServer('${place.getMd5WithBoard()}')" />
+												onclick="clickToServer('${place.getMd5WithBoard()}', '${user.javaHash}')" />
 										</c:otherwise>
 									</c:choose>
 								</c:when>
@@ -84,7 +84,7 @@
 											<img class="${place.getCssName()}"
 												src="${place.getPiece().getPieceName()}" width="35px"
 												height="35px"
-												onclick="clickToServer('${place.getPiece().getMd5WithBoard()}')" />
+												onclick="clickToServer('${place.getPiece().getMd5WithBoard()}', '${user.javaHash}')" />
 										</c:when>
 										<c:otherwise>
 											<img class="${place.getCssName()}"
