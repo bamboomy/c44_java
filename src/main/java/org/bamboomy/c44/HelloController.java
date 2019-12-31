@@ -96,7 +96,7 @@ public class HelloController {
 	}
 
 	@GetMapping({ "/board/" })
-	public String board(Model model,
+	public synchronized String board(Model model,
 			@RequestParam(value = "id", required = true, defaultValue = "World") final String hash) {
 
 		System.out.println(hash);
