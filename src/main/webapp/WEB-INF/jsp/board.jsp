@@ -6,17 +6,6 @@
 	$(document).ready(function() {
 		myId = $('form').attr('myattribute');
 	});
-
-	function clickToServer(md5) {
-
-		$.ajax({
-			type : "GET",
-			'url' : '/peace/' + md5,
-			success : function(text) {
-				location.reload();
-			}
-		});
-	}
 </script>
 <c:if
 	test="${!board.isPlayerIsMoving() && board.getCurrentPlayer().checkCheck() }">
