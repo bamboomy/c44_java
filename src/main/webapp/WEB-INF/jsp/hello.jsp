@@ -111,10 +111,7 @@
 	
 	<div id="chat">
 
-		<h3>${board.gameName}</h3>
-
-		Green: ${board.greenName}<br /> <br /> Blue: ${board.blueName}<br /> <br />
-		Red: ${board.redName}<br /> <br /> Yellow: ${board.yellowName}<br /> <br />
+		<input type="text"/><input type="button" value="Send"/>
 
 	</div>
 	
