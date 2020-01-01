@@ -89,11 +89,14 @@
 					},
 					url : "https://chess4four.io/java/chatText.php?board=${board.playerHash}",
 					success : function(text) {
-
-						$('#chatText').html(text);
 						
-						var objDiv = document.getElementById("chatText");
-						objDiv.scrollTop = objDiv.scrollHeight;
+						if(text != "clean"){
+							
+							$('#chatText').html(text);
+							
+							var objDiv = document.getElementById("chatText");
+							objDiv.scrollTop = objDiv.scrollHeight;
+						}
 					}
 				});
 	}
@@ -174,7 +177,8 @@
 	</center>
 
 	<div id="chat">
-
+	
+		<div style="text-align: center; font-size: larger;">Chat</div>
 		<div id="chatText"></div>
 
 		<div class="bottom">
