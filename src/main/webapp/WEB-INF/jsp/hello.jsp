@@ -178,8 +178,12 @@
 
 	<div id="resign">
 		
-		<div>
-			<input type="button" value="resign" />
+		<div class="outer">
+			<div class="middle">
+				<div class="inner">
+					<input type="button" value="resign" />
+				</div>
+			</div>
 		</div>
 
 	</div>
