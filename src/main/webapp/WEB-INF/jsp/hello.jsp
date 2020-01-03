@@ -181,6 +181,19 @@
 </head>
 <body>
 
+<audio id="myAudio">
+  <source src="/soundz/tik.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<script>
+var x = document.getElementById("myAudio"); 
+
+function playAudio() { 
+  x.play(); 
+} 
+</script>
+
 	<div id="judge"></div>
 
 	<center>

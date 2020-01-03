@@ -55,6 +55,9 @@ public class Board {
 
 	private long reference;
 
+	@Getter
+	private boolean playSound = false;
+
 	public Board(String hash) {
 
 		System.out.println("board created...");
@@ -120,17 +123,14 @@ public class Board {
 
 		long millisUntilFinished = (reference + (2 * 60000) - now);
 
-		return String.format("%02d:%02d", millisUntilFinished / 60000, millisUntilFinished % 60000 / 1000);
+		playSound = false;
 
-		/*
-		 * int sec = (int) ((now - reference) / 1000);
-		 * 
-		 * int secText = (60 - sec) % 60;
-		 * 
-		 * int min = 2 - (int) (now - (sec * 1000)) / 60000;
-		 * 
-		 * return min + ":" + secText;
-		 */
+		if ((millisUntilFinished % 60000 / 1000) < 10) {
+
+			playSound = true;
+		}
+
+		return String.format("%02d:%02d", millisUntilFinished / 60000, millisUntilFinished % 60000 / 1000);
 	}
 
 	private void resetTimer() {
