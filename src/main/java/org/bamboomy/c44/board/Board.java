@@ -53,6 +53,8 @@ public class Board {
 
 	private ArrayList<Move> performedMoves;
 
+	private long reference;
+
 	public Board(String hash) {
 
 		System.out.println("board created...");
@@ -113,13 +115,19 @@ public class Board {
 	}
 
 	private String getCurrentTimeOfCurrentPlayer() {
-		// TODO Auto-generated method stub
-		return "2:55";
+
+		long now = System.currentTimeMillis();
+		
+		int min = (int)(reference - now)/60000;
+		
+		int sec = (int)((now - (min * 60000))/1000);
+		
+		return min + ":" + sec;
 	}
 
 	private void resetTimer() {
-		// TODO Auto-generated method stub
-		
+
+		reference = System.currentTimeMillis();
 	}
 
 	private void initRedPlaces() {
@@ -309,5 +317,10 @@ public class Board {
 				}
 			}
 		}
+	}
+
+	public void updateTime() {
+
+		timeArray[turn] = getCurrentTimeOfCurrentPlayer();
 	}
 }

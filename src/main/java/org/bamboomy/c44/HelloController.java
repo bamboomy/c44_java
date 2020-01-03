@@ -135,6 +135,8 @@ public class HelloController {
 		
 		Board board = BoardController.getInstance().getBoard(gameHash);
 		
+		board.updateTime();
+		
 		model.addAttribute("board", board);
 		model.addAttribute("user", user);
 
