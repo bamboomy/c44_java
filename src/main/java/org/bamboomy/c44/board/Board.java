@@ -118,9 +118,9 @@ public class Board {
 
 		long now = System.currentTimeMillis();
 
-		int i = (int) (reference + (2 * 60000) - now);
+		long millisUntilFinished = (reference + (2 * 60000) - now);
 
-		return String.format("%02d:%02d", i / 60, i % 60);
+		return String.format("%02d:%02d", millisUntilFinished / 60000, millisUntilFinished % 60000 / 1000);
 
 		/*
 		 * int sec = (int) ((now - reference) / 1000);
