@@ -118,9 +118,11 @@ public class Board {
 
 		long now = System.currentTimeMillis();
 
-		int min = (int) ((reference - now) / 60000) + 2;
+		int min = 2 - (int) (now - reference) % 60000;
 
-		int sec = (int) (60 - ((60 + ((now - reference) - (2 * 60000) % 60)) / 1000));
+		// int minText = 2 - min;
+
+		int sec = (int) (60 - (((now - reference) - (min * 60000)) % 1000));
 
 		return min + ":" + sec;
 	}
