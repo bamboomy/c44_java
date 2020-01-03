@@ -118,13 +118,13 @@ public class Board {
 
 		long now = System.currentTimeMillis();
 
-		int min = 2 - (int) (now - reference) / 60000;
+		int sec = (int) ((now - reference) / 1000);
 
-		// int minText = 2 - min;
+		int secText = 60 - sec;
 
-		int sec = (int) (60 - (((now - reference) - (min * 60000)) % 1000));
+		int min = 2 - (int) ((now - reference) - (sec * 1000)) / 60000;
 
-		return min + ":" + sec;
+		return min + ":" + secText;
 	}
 
 	private void resetTimer() {
