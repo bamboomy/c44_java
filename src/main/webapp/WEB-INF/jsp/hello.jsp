@@ -148,20 +148,40 @@
 			}
 		});
 	});
+
+	function callJudge() {
+
+		$.ajax({
+			type : "GET",
+			url : "http://chess4four.io:8080/judge/?id=${board.playerHash}",
+			async : false,
+			success : function(text) {
+				$('#judge').html(text);
+			}
+		});
+	}
+
+	function judge() {
+
+		setTimeout(function() {
+
+			callJudge();
+
+			judge();
+
+		}, 1000);
+	}
+
+	judge();
+
+	callJudge();
+
 </script>
 
 </head>
 <body>
 
-	<div id="status">
-
-		<h3>${board.gameName}</h3>
-
-		Green: ${board.greenName}<br /> <br /> Blue: ${board.blueName}<br />
-		<br /> Red: ${board.redName}<br /> <br /> Yellow:
-		${board.yellowName}<br /> <br />
-
-	</div>
+	<div id="judge"></div>
 
 	<center>
 

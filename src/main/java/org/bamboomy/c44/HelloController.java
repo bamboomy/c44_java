@@ -117,4 +117,26 @@ public class HelloController {
 
 		return "board";
 	}
-}
+
+	@GetMapping({ "/judge/" })
+	public synchronized String judge(Model model,
+			@RequestParam(value = "id", required = true, defaultValue = "World") final String hash) {
+
+		System.out.println(hash);
+
+		ColorsTaken user = colorsTakenRepository.findByHash(hash);
+
+		if(user == null) {
+			
+			return "negative";	
+		}
+		
+		String gameHash = user.getGame();
+		
+		Board board = BoardController.getInstance().getBoard(gameHash);
+
+		model.addAttribute("board", board);
+		model.addAttribute("user", user);
+
+		return "judge";
+	}}
