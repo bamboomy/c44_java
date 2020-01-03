@@ -118,7 +118,7 @@ public class Board {
 
 		long now = System.currentTimeMillis();
 
-		int i = (int) (reference - now + (2 * 60000));
+		int i = (int) (now - reference + (2 * 60000));
 
 		return String.format("%02d:%02d", i / 60, i % 60);
 
