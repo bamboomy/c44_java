@@ -6,17 +6,6 @@
 	$(document).ready(function() {
 		myId = $('form').attr('myattribute');
 	});
-
-	function clickToServer(md5) {
-
-		$.ajax({
-			type : "GET",
-			'url' : '/peace/' + md5,
-			success : function(text) {
-				location.reload();
-			}
-		});
-	}
 </script>
 <c:if
 	test="${!board.isPlayerIsMoving() && board.getCurrentPlayer().checkCheck() }">
@@ -49,7 +38,7 @@
 	</script>
 </c:if>
 <div>
-	<c:forEach items="${board.getRotatedPlacez()}" var="row">
+	<c:forEach items="${board.getRotatedPlacez(user.color)}" var="row">
 
 		<div class="row">
 
@@ -69,12 +58,12 @@
 											<img class="${place.getCssName()}"
 												src="${place.getPiece().getPieceName()}" width="35px"
 												height="35px"
-												onclick="clickToServer('${place.getMd5WithBoard()}')" />
+												onclick="clickToServer('${place.getMd5WithBoard()}', '${user.javaHash}')" />
 										</c:when>
 										<c:otherwise>
 											<img class="${place.getCssName()}"
 												src="../img/transparent.png" width="35px" height="35px"
-												onclick="clickToServer('${place.getMd5WithBoard()}')" />
+												onclick="clickToServer('${place.getMd5WithBoard()}', '${user.javaHash}')" />
 										</c:otherwise>
 									</c:choose>
 								</c:when>
@@ -84,7 +73,7 @@
 											<img class="${place.getCssName()}"
 												src="${place.getPiece().getPieceName()}" width="35px"
 												height="35px"
-												onclick="clickToServer('${place.getPiece().getMd5WithBoard()}')" />
+												onclick="clickToServer('${place.getPiece().getMd5WithBoard()}', '${user.javaHash}')" />
 										</c:when>
 										<c:otherwise>
 											<img class="${place.getCssName()}"

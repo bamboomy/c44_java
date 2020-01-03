@@ -24,8 +24,8 @@ public class Board {
 
 	@Getter
 	private Player currentPlayer;
-	
-	@Getter 
+
+	@Getter
 	@Setter
 	private String redName, greenName, blueName, yellowName, gameName, playerHash;
 
@@ -84,13 +84,13 @@ public class Board {
 			}
 		}
 
-		playerz[0] = new Player(0, this, true);
+		playerz[0] = new Player(0, this, false);
 
-		playerz[1] = new Player(1, this, true);
+		playerz[1] = new Player(1, this, false);
 
 		playerz[2] = new Player(2, this, false);
 
-		playerz[3] = new Player(3, this, true);
+		playerz[3] = new Player(3, this, false);
 
 		currentPlayer = playerz[turn];
 
@@ -138,9 +138,16 @@ public class Board {
 		}
 	}
 
-	public void click(String md5) {
+	public void click(String md5, String color) {
 
 		System.out.println(md5);
+
+		if ((currentPlayer.getColor() == Player.RED && !color.equalsIgnoreCase("red"))
+				|| (currentPlayer.getColor() == Player.GREEN && !color.equalsIgnoreCase("green"))
+				|| (currentPlayer.getColor() == Player.BLUE && !color.equalsIgnoreCase("blue"))
+				|| (currentPlayer.getColor() == Player.YELLOW && !color.equalsIgnoreCase("yellow"))) {
+			return;
+		}
 
 		if (!currentPlayer.click(md5)) {
 
@@ -242,21 +249,20 @@ public class Board {
 		return false;
 	}
 
-	public Place[][] getRotatedPlacez() {
+	public Place[][] getRotatedPlacez(String color) {
 
-		/*
-		 * if (currentPlayer.getColor() == Player.RED) {
-		 * 
-		 * return getRedPlacez(); }
-		 * 
-		 * if (currentPlayer.getColor() == Player.YELLOW) {
-		 * 
-		 * return getYellozPlacez(); }
-		 * 
-		 * if (currentPlayer.getColor() == Player.BLUE) {
-		 * 
-		 * return getBluePlacez(); }
-		 */
+		if (color.equalsIgnoreCase("red")) {
+
+			return getRedPlacez();
+
+		} else if (color.equalsIgnoreCase("yellow")) {
+
+			return getYellozPlacez();
+
+		} else if (color.equalsIgnoreCase("blue")) {
+
+			return getBluePlacez();
+		}
 
 		return placez;
 	}
