@@ -30,7 +30,7 @@ public class Board {
 	private String redName, greenName, blueName, yellowName, gameName, playerHash;
 
 	private int turn = 2;
-	
+
 	@Getter
 	private String[] timeArray = new String[4];
 
@@ -108,20 +108,20 @@ public class Board {
 		initBluePlaces();
 
 		performedMoves = new ArrayList<>();
-		
+
 		resetTimer();
-		
+
 		timeArray[2] = getCurrentTimeOfCurrentPlayer();
 	}
 
 	private String getCurrentTimeOfCurrentPlayer() {
 
 		long now = System.currentTimeMillis();
-		
-		int min = (int)(reference - now)/60000;
-		
-		int sec = (int)((now - (min * 60000))/1000);
-		
+
+		int min = (int) ((reference - now) / 60000) + 2;
+
+		int sec = (int) (((reference - now) - (min * 60000)) / 1000);
+
 		return min + ":" + sec;
 	}
 
