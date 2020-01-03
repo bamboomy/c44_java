@@ -22,6 +22,5 @@ private String game;
 	private String name;
 	
 	private String javaHash;
-	
-	private String time;
+
 	}

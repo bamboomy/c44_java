@@ -28,6 +28,10 @@ public class Board {
 	@Getter
 	@Setter
 	private String redName, greenName, blueName, yellowName, gameName, playerHash;
+	
+	@Getter
+	@Setter
+	private String redTime = "2:00", greenTime="1:58", blueTime="1:54", yellowTime="4:20";
 
 	private int turn = 2;
 
