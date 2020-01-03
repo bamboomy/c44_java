@@ -179,7 +179,7 @@
 	<div id="resign">
 		
 		<div>
-			<input type="buton" value="resign" />
+			<input type="button" value="resign" />
 		</div>
 
 	</div>
