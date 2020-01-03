@@ -4,9 +4,9 @@
 
 		<h3>${board.gameName}</h3>
 
-		Green: ${board.greenName} ${board.greenTime}<br /> <br /> 
-		Blue: ${board.blueName} ${board.blueTime}<br />
-		<br /> Red: ${board.redName} ${board.redTime}<br /> <br /> Yellow:
-		${board.yellowName} ${board.yellowTime}<br /> <br />
+		Green: ${board.greenName} ${board.timeArray[2]}<br /> <br /> 
+		Blue: ${board.blueName} ${board.timeArray[3]}<br />
+		<br /> Red: ${board.redName} ${board.timeArray[0]}<br /> <br /> Yellow:
+		${board.yellowName} ${board.timeArray[1]}<br /> <br />
 
 	</div>

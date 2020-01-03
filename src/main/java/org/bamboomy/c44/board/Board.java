@@ -28,12 +28,10 @@ public class Board {
 	@Getter
 	@Setter
 	private String redName, greenName, blueName, yellowName, gameName, playerHash;
-	
-	@Getter
-	@Setter
-	private String redTime = "2:00", greenTime="1:58", blueTime="1:54", yellowTime="4:20";
 
 	private int turn = 2;
+	
+	private String[] timeArray = new String[4];
 
 	private ArrayList<Integer> deadPlayers = new ArrayList<>();
 
@@ -96,6 +94,11 @@ public class Board {
 
 		playerz[3] = new Player(3, this, false);
 
+		timeArray[0] = "1:20";
+		timeArray[1] = "1:21";
+		timeArray[2] = "1:22";
+		timeArray[3] = "1:23";
+		
 		currentPlayer = playerz[turn];
 
 		this.hash = hash;
@@ -107,6 +110,20 @@ public class Board {
 		initBluePlaces();
 
 		performedMoves = new ArrayList<>();
+		
+		resetTimer();
+		
+		timeArray[2] = getCurrentTimeOfCurrentPlayer();
+	}
+
+	private String getCurrentTimeOfCurrentPlayer() {
+		// TODO Auto-generated method stub
+		return "2:55";
+	}
+
+	private void resetTimer() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	private void initRedPlaces() {
