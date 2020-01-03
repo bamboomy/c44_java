@@ -95,11 +95,6 @@ public class Board {
 
 		playerz[3] = new Player(3, this, false);
 
-		timeArray[0] = "1:20";
-		timeArray[1] = "1:21";
-		timeArray[2] = "1:22";
-		timeArray[3] = "1:23";
-		
 		currentPlayer = playerz[turn];
 
 		this.hash = hash;
