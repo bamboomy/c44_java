@@ -31,6 +31,7 @@ public class Board {
 
 	private int turn = 2;
 	
+	@Getter
 	private String[] timeArray = new String[4];
 
 	private ArrayList<Integer> deadPlayers = new ArrayList<>();
