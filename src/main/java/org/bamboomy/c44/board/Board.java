@@ -120,7 +120,7 @@ public class Board {
 
 		int min = (int) ((reference - now) / 60000) + 2;
 
-		int sec = (int) ((60 + ((now - reference) - (2 * 60000) % 60)) / 1000);
+		int sec = (int) (60 - ((60 + ((now - reference) - (2 * 60000) % 60)) / 1000));
 
 		return min + ":" + sec;
 	}
