@@ -119,6 +119,14 @@
 			</div>
 		</div>
 	</center>
+
+	<div id="resign">
+		
+		<div>
+			<input type="buton" value="resign" />
+		</div>
+
+	</div>
 	
 	<div id="chat">
 		
