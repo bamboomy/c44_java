@@ -129,6 +129,8 @@ public class Board {
 
 	private String getCurrentTimeOfCurrentPlayer() {
 
+		timeOut = false;
+		
 		long now = System.currentTimeMillis();
 
 		// long millisUntilFinished = (reference + (2 * 60000) - now);
