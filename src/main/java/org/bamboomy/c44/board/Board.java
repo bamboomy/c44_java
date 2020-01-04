@@ -34,6 +34,12 @@ public class Board {
 	@Getter
 	private String[] timeArray = new String[4];
 
+	@Getter
+	private int[] timeOutzIntz = new int[4];
+
+	@Getter
+	private String[] timeOutzArray = new String[4];
+
 	private ArrayList<Integer> deadPlayers = new ArrayList<>();
 
 	@Getter
@@ -43,10 +49,6 @@ public class Board {
 	@Getter
 	@Setter
 	private boolean wouldBeCheck = false;
-
-	private int max = 100;
-
-	private int counter = 0;
 
 	@Getter
 	private String hash;
@@ -118,6 +120,11 @@ public class Board {
 		resetTimer();
 
 		timeArray[2] = getCurrentTimeOfCurrentPlayer();
+
+		for (int i = 0; i < 4; i++) {
+
+			timeOutzIntz[i] = 6;
+		}
 	}
 
 	private String getCurrentTimeOfCurrentPlayer() {
@@ -140,6 +147,10 @@ public class Board {
 			forceMove();
 
 			timeOut = true;
+
+			timeOutzIntz[turn]--;
+
+			timeOutzArray[turn] = timeOutzIntz[turn] + " timeouts left...";
 
 			return "";
 		}
@@ -260,13 +271,6 @@ public class Board {
 	public void removeMe() {
 
 		deadPlayers.add(turn);
-
-		next();
-	}
-
-	public void generateMoves() {
-
-		counter = 0;
 
 		next();
 	}

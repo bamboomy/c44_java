@@ -4,10 +4,10 @@
 
 	<h3>${board.gameName}</h3>
 
-	Green: ${board.greenName} ${board.timeArray[2]}<br /> <br /> Blue:
-	${board.blueName} ${board.timeArray[3]}<br /> <br /> Red:
-	${board.redName} ${board.timeArray[0]}<br /> <br /> Yellow:
-	${board.yellowName} ${board.timeArray[1]}<br /> <br />
+	Green: ${board.greenName} ${board.timeArray[2]} <span class="red">${board.timeOutzArray[2]}</span> <br /> <br /> Blue:
+	${board.blueName} ${board.timeArray[3]} <span class="red">${board.timeOutzArray[3]}</span><br /> <br /> Red:
+	${board.redName} ${board.timeArray[0]} <span class="red">${board.timeOutzArray[0]}</span><br /> <br /> Yellow:
+	${board.yellowName} ${board.timeArray[1]} <span class="red">${board.timeOutzArray[1]}</span><br /> <br />
 
 </div>
 
