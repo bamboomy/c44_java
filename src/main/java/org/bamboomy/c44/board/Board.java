@@ -141,8 +141,6 @@ public class Board {
 	private void forceMove() {
 
 		playerz[turn].playRandomMove(performedMoves);
-		
-		next();
 	}
 
 	private void resetTimer() {
@@ -214,8 +212,12 @@ public class Board {
 	public void next() {
 
 		playerIsMoving = false;
+		
+		timeArray[turn] = "";
 
 		turn = (turn + 1) % 4;
+		
+		resetTimer();
 
 		for (Integer i : deadPlayers) {
 
