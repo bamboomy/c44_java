@@ -330,8 +330,6 @@ public class Board {
 
 	public void updateTime() {
 		
-		renderingCurrentPlayer = false;
-
 		timeArray[turn] = getCurrentTimeOfCurrentPlayer();
 	}
 }
