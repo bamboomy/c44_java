@@ -133,7 +133,7 @@ public class Board {
 
 		// long millisUntilFinished = (reference + (2 * 60000) - now);
 
-		long millisUntilFinished = (reference + (30000) - now);
+		long millisUntilFinished = (reference + (10000) - now);
 
 		playSound = false;
 
@@ -155,7 +155,7 @@ public class Board {
 
 		String result = String.format("%02d:%02d", millisUntilFinished / 60000, millisUntilFinished % 60000 / 1000);
 
-		if (result.equalsIgnoreCase("00:00")) {
+		if (millisUntilFinished - 1000 <= 0) {
 
 			timeOut[turn] = true;
 		}
