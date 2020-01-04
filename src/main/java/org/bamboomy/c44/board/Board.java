@@ -147,15 +147,20 @@ public class Board {
 			timeOutzIntz[turn]--;
 
 			timeOutzArray[turn] = timeOutzIntz[turn] + " timeouts left...";
-			
-			timeOut[turn] = true;
 
 			forceMove();
 
 			return "";
 		}
 
-		return String.format("%02d:%02d", millisUntilFinished / 60000, millisUntilFinished % 60000 / 1000);
+		String result = String.format("%02d:%02d", millisUntilFinished / 60000, millisUntilFinished % 60000 / 1000);
+
+		if (result.equalsIgnoreCase("00:00")) {
+
+			timeOut[turn] = true;
+		}
+
+		return result;
 	}
 
 	private void forceMove() {
@@ -361,11 +366,11 @@ public class Board {
 	}
 
 	public boolean isTimeOut() {
-		
+
 		boolean result = timeOut[turn];
-		
+
 		timeOut[turn] = false;
-		
+
 		return result;
 	}
 }
