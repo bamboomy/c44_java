@@ -18,3 +18,9 @@
 		//x.play();
 	</script>
 </c:if>
+
+<c:if test="${board.renderingCurrentPlayer}">
+	<script>
+		alert("it's your turn...");	
+	</script>
+</c:if>

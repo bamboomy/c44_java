@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class HelloController {
 
-	@Autowired 
+	@Autowired
 	private GameRepository gameRepository;
 
-	@Autowired 
+	@Autowired
 	private ColorsTakenRepository colorsTakenRepository;
 
 	@GetMapping({ "/" })
@@ -24,72 +24,79 @@ public class HelloController {
 
 		ColorsTaken user = colorsTakenRepository.findByHash(hash);
 
-		if(user == null) {
-			
-			return "negative";	
+		if (user == null) {
+
+			return "negative";
 		}
-		
+
 		String gameHash = user.getGame();
-		
+
 		Board board = BoardController.getInstance().getBoard(gameHash);
-		
+
 		Iterable<ColorsTaken> userIterable = colorsTakenRepository.findByGameHash(gameHash);
-		
-		for(ColorsTaken userColor: userIterable) {
-			
-			if(userColor.getColor().equalsIgnoreCase("red")) {
-				
-				if(userColor.getColor().equalsIgnoreCase(user.getColor())) {
-					
-					board .setRedName("You");	
-					
-				}else {
-					
-					board .setRedName(userColor.getName());	
+
+		for (ColorsTaken userColor : userIterable) {
+
+			if (userColor.getColor().equalsIgnoreCase("red")) {
+
+				if (userColor.getColor().equalsIgnoreCase(user.getColor())) {
+
+					board.setRedName("You");
+
+					board.setRenderingCurrentPlayer(user.getColor().equalsIgnoreCase("Red"));
+
+				} else {
+
+					board.setRedName(userColor.getName());
 				}
 
-			} else if(userColor.getColor().equalsIgnoreCase("green")) {
-				
-				if(userColor.getColor().equalsIgnoreCase(user.getColor())) {
+			} else if (userColor.getColor().equalsIgnoreCase("green")) {
+
+				if (userColor.getColor().equalsIgnoreCase(user.getColor())) {
+
+					board.setGreenName("You");
 					
-					board .setGreenName("You");	
-					
-				}else {
-					
-					board .setGreenName(userColor.getName());	
+					board.setRenderingCurrentPlayer(user.getColor().equalsIgnoreCase("green"));
+
+				} else {
+
+					board.setGreenName(userColor.getName());
 				}
 
-			}else  if(userColor.getColor().equalsIgnoreCase("blue")) {
-				
-				if(userColor.getColor().equalsIgnoreCase(user.getColor())) {
+			} else if (userColor.getColor().equalsIgnoreCase("blue")) {
+
+				if (userColor.getColor().equalsIgnoreCase(user.getColor())) {
+
+					board.setBlueName("You");
 					
-					board .setBlueName("You");	
-					
-				}else {
-					
-					board .setBlueName(userColor.getName());	
+					board.setRenderingCurrentPlayer(user.getColor().equalsIgnoreCase("blue"));
+
+				} else {
+
+					board.setBlueName(userColor.getName());
 				}
 
-			}else if(userColor.getColor().equalsIgnoreCase("yellow")) {
-				
-				if(userColor.getColor().equalsIgnoreCase(user.getColor())) {
+			} else if (userColor.getColor().equalsIgnoreCase("yellow")) {
+
+				if (userColor.getColor().equalsIgnoreCase(user.getColor())) {
+
+					board.setYellowName("You");
 					
-					board .setYellowName("You");	
-					
-				}else {
-					
-					board .setYellowName(userColor.getName());	
+					board.setRenderingCurrentPlayer(user.getColor().equalsIgnoreCase("yellow"));
+
+				} else {
+
+					board.setYellowName(userColor.getName());
 				}
-			} 
+			}
 		}
-		
-		
+
 		Game game = gameRepository.findByHash(gameHash);
-		
+
 		board.setGameName(game.getSentence());
-		
+
 		board.setPlayerHash(hash);
-		
+
 		model.addAttribute("board", board);
 
 		return "hello";
@@ -103,13 +110,13 @@ public class HelloController {
 
 		ColorsTaken user = colorsTakenRepository.findByHash(hash);
 
-		if(user == null) {
-			
-			return "negative";	
+		if (user == null) {
+
+			return "negative";
 		}
-		
+
 		String gameHash = user.getGame();
-		
+
 		Board board = BoardController.getInstance().getBoard(gameHash);
 
 		model.addAttribute("board", board);
@@ -126,19 +133,20 @@ public class HelloController {
 
 		ColorsTaken user = colorsTakenRepository.findByHash(hash);
 
-		if(user == null) {
-			
-			return "negative";	
+		if (user == null) {
+
+			return "negative";
 		}
-		
+
 		String gameHash = user.getGame();
-		
+
 		Board board = BoardController.getInstance().getBoard(gameHash);
-		
+
 		board.updateTime();
-		
+
 		model.addAttribute("board", board);
 		model.addAttribute("user", user);
 
 		return "judge";
-	}}
+	}
+}

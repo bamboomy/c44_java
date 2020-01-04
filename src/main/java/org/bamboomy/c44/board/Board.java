@@ -54,6 +54,10 @@ public class Board {
 	private ArrayList<Move> performedMoves;
 
 	private long reference;
+	
+	@Getter
+	@Setter
+	private boolean renderingCurrentPlayer = false;
 
 	@Getter
 	private boolean playSound = false;
@@ -123,7 +127,7 @@ public class Board {
 
 		//long millisUntilFinished = (reference + (2 * 60000) - now);
 		
-		long millisUntilFinished = (reference + (10000) - now);
+		long millisUntilFinished = (reference + (30000) - now);
 
 		playSound = false;
 
