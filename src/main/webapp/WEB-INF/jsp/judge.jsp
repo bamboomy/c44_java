@@ -19,7 +19,7 @@
 	</script>
 </c:if>
 
-<c:if test="${board.renderingCurrentPlayer}">
+<c:if test="${board.isRenderingCurrentPlayer(user.color)}">
 	<script>
 		alert("it's your turn...");	
 	</script>

@@ -54,10 +54,6 @@ public class Board {
 	private ArrayList<Move> performedMoves;
 
 	private long reference;
-	
-	@Getter
-	@Setter
-	private boolean renderingCurrentPlayer = false;
 
 	@Getter
 	private boolean playSound = false;
@@ -125,8 +121,8 @@ public class Board {
 
 		long now = System.currentTimeMillis();
 
-		//long millisUntilFinished = (reference + (2 * 60000) - now);
-		
+		// long millisUntilFinished = (reference + (2 * 60000) - now);
+
 		long millisUntilFinished = (reference + (30000) - now);
 
 		playSound = false;
@@ -135,11 +131,11 @@ public class Board {
 
 			playSound = true;
 		}
-		
-		if(millisUntilFinished <= 0) {
-			
+
+		if (millisUntilFinished <= 0) {
+
 			forceMove();
-			
+
 			return "";
 		}
 
@@ -220,11 +216,11 @@ public class Board {
 	public void next() {
 
 		playerIsMoving = false;
-		
+
 		timeArray[turn] = "";
 
 		turn = (turn + 1) % 4;
-		
+
 		resetTimer();
 
 		for (Integer i : deadPlayers) {
@@ -251,7 +247,7 @@ public class Board {
 		System.out.println("color: " + currentPlayer.getColor());
 
 		if (currentPlayer.isRobot()) {
-			
+
 			currentPlayer.playRandomMove(performedMoves);
 		}
 	}
@@ -329,7 +325,29 @@ public class Board {
 	}
 
 	public void updateTime() {
-		
+
 		timeArray[turn] = getCurrentTimeOfCurrentPlayer();
+	}
+
+	public boolean isRenderingCurrentPlayer(String color) {
+
+		if (playerz[turn].getColor() == Player.RED && color.equalsIgnoreCase("red")) {
+
+			return true;
+
+		} else if (playerz[turn].getColor() == Player.GREEN && color.equalsIgnoreCase("green")) {
+
+			return true;
+
+		} else if (playerz[turn].getColor() == Player.BLUE && color.equalsIgnoreCase("blue")) {
+
+			return true;
+
+		} else if (playerz[turn].getColor() == Player.YELLOW && color.equalsIgnoreCase("yellow")) {
+
+			return true;
+		}
+
+		return false;
 	}
 }
