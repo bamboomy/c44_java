@@ -19,8 +19,8 @@
 	</script>
 </c:if>
 
-<c:if test="${board.isRenderingCurrentPlayer(user.color)}">
+<c:if test="${board.isRenderingCurrentPlayer(user.color) && board.timeOut}">
 	<script>
-		alert("it's your turn...");	
+		alert("You timed out; you can do this 5 times max\nthe 6th time you automatically resign...");	
 	</script>
 </c:if>

@@ -58,6 +58,9 @@ public class Board {
 	@Getter
 	private boolean playSound = false;
 
+	@Getter
+	private boolean timeOut = false;
+
 	public Board(String hash) {
 
 		System.out.println("board created...");
@@ -123,7 +126,7 @@ public class Board {
 
 		// long millisUntilFinished = (reference + (2 * 60000) - now);
 
-		long millisUntilFinished = (reference + (30000) - now);
+		long millisUntilFinished = (reference + (5000) - now);
 
 		playSound = false;
 
@@ -135,6 +138,8 @@ public class Board {
 		if (millisUntilFinished <= 0) {
 
 			forceMove();
+
+			timeOut = true;
 
 			return "";
 		}

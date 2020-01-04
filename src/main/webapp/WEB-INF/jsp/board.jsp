@@ -8,7 +8,8 @@
 	});
 </script>
 <c:if
-	test="${!board.isPlayerIsMoving() && board.getCurrentPlayer().checkCheck() }">
+	test="${!board.isPlayerIsMoving() && board.isRenderingCurrentPlayer(user.color) 
+	&& board.getCurrentPlayer().checkCheck() }">
 	<script type="text/javascript">
 		if (!checkShown) {
 
@@ -19,7 +20,8 @@
 	</script>
 </c:if>
 <c:if
-	test="${!board.isPlayerIsMoving() && board.getCurrentPlayer().checkCheck() && board.getCurrentPlayer().canPrevent()}">
+	test="${!board.isPlayerIsMoving() && board.getCurrentPlayer().checkCheck() 
+	&& board.isRenderingCurrentPlayer(user.color) && board.getCurrentPlayer().canPrevent()}">
 	<script type="text/javascript">
 		if (!checkShown) {
 
@@ -27,7 +29,7 @@
 		}
 	</script>
 </c:if>
-<c:if test="${board.isWouldBeCheck()}">
+<c:if test="${board.isWouldBeCheck() && board.isRenderingCurrentPlayer(user.color)}">
 	<script type="text/javascript">
 		if (!cantMoveShown) {
 
