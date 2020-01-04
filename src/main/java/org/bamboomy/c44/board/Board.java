@@ -61,7 +61,7 @@ public class Board {
 	private boolean playSound = false;
 
 	@Getter
-	private boolean timeOut = false;
+	private boolean[] timeOut = new boolean[4];
 
 	public Board(String hash) {
 
@@ -129,8 +129,6 @@ public class Board {
 
 	private String getCurrentTimeOfCurrentPlayer() {
 
-		timeOut = false;
-		
 		long now = System.currentTimeMillis();
 
 		// long millisUntilFinished = (reference + (2 * 60000) - now);
@@ -149,10 +147,10 @@ public class Board {
 			timeOutzIntz[turn]--;
 
 			timeOutzArray[turn] = timeOutzIntz[turn] + " timeouts left...";
+			
+			timeOut[turn] = true;
 
 			forceMove();
-
-			timeOut = true;
 
 			return "";
 		}
@@ -360,5 +358,14 @@ public class Board {
 		}
 
 		return false;
+	}
+
+	public boolean isTimeOut() {
+		
+		boolean result = timeOut[turn];
+		
+		timeOut[turn] = false;
+		
+		return result;
 	}
 }
