@@ -129,8 +129,20 @@ public class Board {
 
 			playSound = true;
 		}
+		
+		if(millisUntilFinished <= 0) {
+			
+			forceMove();
+		}
 
 		return String.format("%02d:%02d", millisUntilFinished / 60000, millisUntilFinished % 60000 / 1000);
+	}
+
+	private void forceMove() {
+
+		playerz[turn].playRandomMove(performedMoves);
+		
+		next();
 	}
 
 	private void resetTimer() {
@@ -229,29 +241,8 @@ public class Board {
 		System.out.println("color: " + currentPlayer.getColor());
 
 		if (currentPlayer.isRobot()) {
-
-			if (currentPlayer.checkCheck()) {
-
-				if (currentPlayer.canPrevent()) {
-
-					currentPlayer.prevent(performedMoves);
-
-				} else {
-
-					currentPlayer.kamikaze(performedMoves);
-				}
-
-			} else {
-
-				if (currentPlayer.canTakeKing()) {
-
-					currentPlayer.takeAKing(performedMoves);
-
-				} else {
-
-					currentPlayer.generateRandomMove(performedMoves);
-				}
-			}
+			
+			currentPlayer.playRandomMove(performedMoves);
 		}
 	}
 

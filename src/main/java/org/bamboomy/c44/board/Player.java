@@ -378,6 +378,32 @@ public class Player {
 		}
 	}
 
+	public void playRandomMove(ArrayList<Move> performedMoves) {
+		
+		if (checkCheck()) {
+
+			if (canPrevent()) {
+
+				prevent(performedMoves);
+
+			} else {
+
+				kamikaze(performedMoves);
+			}
+
+		} else {
+
+			if (canTakeKing()) {
+
+				takeAKing(performedMoves);
+
+			} else {
+
+				generateRandomMove(performedMoves);
+			}
+		}
+	}
+
 	/*
 	 * public void removeEnPassant(EnPassant enPassant) {
 	 * 
