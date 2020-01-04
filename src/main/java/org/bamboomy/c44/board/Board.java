@@ -125,7 +125,7 @@ public class Board {
 
 		playSound = false;
 
-		if ((millisUntilFinished % 60000 / 1000) < 10) {
+		if (((millisUntilFinished % 60000 / 1000) < 10 && ((millisUntilFinished / 60000) == 0))) {
 
 			playSound = true;
 		}

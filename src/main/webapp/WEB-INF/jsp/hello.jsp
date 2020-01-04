@@ -186,14 +186,6 @@
   Your browser does not support the audio element.
 </audio>
 
-<script>
-var x = document.getElementById("myAudio"); 
-
-function playAudio() { 
-  x.play(); 
-} 
-</script>
-
 	<div id="judge"></div>
 
 	<center>
