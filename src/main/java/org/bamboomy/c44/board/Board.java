@@ -144,13 +144,13 @@ public class Board {
 
 		if (millisUntilFinished <= 0) {
 
-			forceMove();
-
-			timeOut = true;
-
 			timeOutzIntz[turn]--;
 
 			timeOutzArray[turn] = timeOutzIntz[turn] + " timeouts left...";
+
+			forceMove();
+
+			timeOut = true;
 
 			return "";
 		}
