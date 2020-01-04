@@ -133,6 +133,8 @@ public class Board {
 		if(millisUntilFinished <= 0) {
 			
 			forceMove();
+			
+			return "";
 		}
 
 		return String.format("%02d:%02d", millisUntilFinished / 60000, millisUntilFinished % 60000 / 1000);
