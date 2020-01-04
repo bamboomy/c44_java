@@ -133,7 +133,7 @@ public class Board {
 
 		// long millisUntilFinished = (reference + (2 * 60000) - now);
 
-		long millisUntilFinished = (reference + (5000) - now);
+		long millisUntilFinished = (reference + (30000) - now);
 
 		playSound = false;
 
