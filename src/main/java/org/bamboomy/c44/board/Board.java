@@ -121,7 +121,9 @@ public class Board {
 
 		long now = System.currentTimeMillis();
 
-		long millisUntilFinished = (reference + (2 * 60000) - now);
+		//long millisUntilFinished = (reference + (2 * 60000) - now);
+		
+		long millisUntilFinished = (reference + (10000) - now);
 
 		playSound = false;
 
