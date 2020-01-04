@@ -15,6 +15,6 @@
 	<script>
 		var x = document.getElementById("myAudio");
 
-		x.play();
+		//x.play();
 	</script>
 </c:if>
