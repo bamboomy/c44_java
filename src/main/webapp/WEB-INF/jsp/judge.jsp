@@ -19,7 +19,7 @@
 	</script>
 </c:if>
 
-<c:if test="${board.isTimeOut() && board.isRenderingCurrentPlayer(user.color)}">
+<c:if test="${board.isTimeOut(user.color)}">
 	<script>
 		alert("You timed out; you can do this 5 times max\nthe 6th time you automatically resign...");	
 	</script>
