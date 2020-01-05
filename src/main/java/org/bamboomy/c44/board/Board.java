@@ -466,6 +466,8 @@ public class Board {
 
 			resignRead[Player.YELLOW] = true;
 		}
+		
+		System.out.println(result);
 
 		return result;
 	}
