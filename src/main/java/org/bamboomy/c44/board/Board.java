@@ -163,6 +163,8 @@ public class Board {
 				removeMe();
 
 				resignText = buildResignText();
+				
+				System.out.println(resignText);
 
 				for (int i = 0; i < 4; i++) {
 
