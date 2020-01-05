@@ -169,7 +169,7 @@ public class Board {
 					resignRead[i] = false;
 				}
 				
-				return "";
+				return "-1";
 			}
 
 			timeOut[turn] = true;
