@@ -148,17 +148,14 @@ public class Board {
 
 			timeOutzArray[turn] = timeOutzIntz[turn] + " timeouts left...";
 
+			timeOut[turn] = true;
+
 			forceMove();
 
 			return "";
 		}
 
 		String result = String.format("%02d:%02d", millisUntilFinished / 60000, millisUntilFinished % 60000 / 1000);
-
-		if (millisUntilFinished - 1000 <= 0) {
-
-			timeOut[turn] = true;
-		}
 
 		return result;
 	}
@@ -365,11 +362,34 @@ public class Board {
 		return false;
 	}
 
-	public boolean isTimeOut() {
+	public boolean isTimeOut(String color) {
 
-		boolean result = timeOut[turn];
+		boolean result = false;
 
-		timeOut[turn] = false;
+		if (color.equalsIgnoreCase("red")) {
+
+			result = timeOut[Player.RED];
+
+			timeOut[Player.RED] = false;
+
+		} else if (color.equalsIgnoreCase("green")) {
+
+			result = timeOut[Player.GREEN];
+
+			timeOut[Player.GREEN] = false;
+
+		} else if (color.equalsIgnoreCase("blue")) {
+
+			result = timeOut[Player.BLUE];
+
+			timeOut[Player.BLUE] = false;
+
+		} else if (color.equalsIgnoreCase("yellow")) {
+
+			result = timeOut[Player.YELLOW];
+
+			timeOut[Player.YELLOW] = false;
+		}
 
 		return result;
 	}
