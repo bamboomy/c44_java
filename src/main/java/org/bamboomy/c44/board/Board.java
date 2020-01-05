@@ -147,6 +147,11 @@ public class Board {
 			timeOutzIntz[turn]--;
 
 			timeOutzArray[turn] = timeOutzIntz[turn] + " timeouts left...";
+			
+			if(timeOutzIntz[turn] <= 0) {
+				
+				
+			}
 
 			forceMove();
 
