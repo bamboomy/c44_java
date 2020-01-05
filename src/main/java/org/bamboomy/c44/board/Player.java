@@ -19,6 +19,11 @@ public class Player {
 	private int color;
 
 	public static final int RED = 0, YELLOW = 1, GREEN = 2, BLUE = 3;
+	
+	@Getter 
+	private static String[] colorNamez = {
+			"Red", "Yellow", "Green", "Blue"
+	};
 
 	@Getter
 	private ArrayList<Piece> piecez = new ArrayList<Piece>();

@@ -24,3 +24,9 @@
 		alert("You timed out; you can do this 5 times max\nthe 6th time you automatically resign...");	
 	</script>
 </c:if>
+
+<c:if test="${!board.readResign(user.color)}">
+	<script>
+		alert('${board.resignText}');	
+	</script>
+</c:if>

@@ -91,6 +91,8 @@ public class HelloController {
 
 		model.addAttribute("board", board);
 
+		board.syncNames();
+		
 		return "hello";
 	}
 

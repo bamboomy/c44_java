@@ -63,6 +63,14 @@ public class Board {
 	@Getter
 	private boolean[] timeOut = new boolean[4];
 
+	@Getter
+	private String resignText;
+
+	private boolean[] resignRead = new boolean[4];
+
+	@Getter
+	private String[] nameArray = new String[4];
+
 	public Board(String hash) {
 
 		System.out.println("board created...");
@@ -124,6 +132,8 @@ public class Board {
 		for (int i = 0; i < 4; i++) {
 
 			timeOutzIntz[i] = 6;
+
+			resignRead[i] = true;
 		}
 	}
 
@@ -147,10 +157,19 @@ public class Board {
 			timeOutzIntz[turn]--;
 
 			timeOutzArray[turn] = timeOutzIntz[turn] + " timeouts left...";
-			
-			if(timeOutzIntz[turn] <= 0) {
+
+			if (timeOutzIntz[turn] <= 0) {
+
+				removeMe();
+
+				resignText = buildResignText();
+
+				for (int i = 0; i < 4; i++) {
+
+					resignRead[i] = false;
+				}
 				
-				
+				return "";
 			}
 
 			timeOut[turn] = true;
@@ -161,6 +180,24 @@ public class Board {
 		}
 
 		String result = String.format("%02d:%02d", millisUntilFinished / 60000, millisUntilFinished % 60000 / 1000);
+
+		return result;
+	}
+
+	private String buildResignText() {
+
+		String result = "";
+
+		result += Player.getColorNamez()[playerz[turn].getColor()] + "(";
+
+		result += nameArray[playerz[turn].getColor()];
+
+		result += ") has resigned,\n";
+		
+		if(deadPlayers.size() < 3) {
+			
+			result += deadPlayers.size() + " players are left...";
+		}
 
 		return result;
 	}
@@ -397,5 +434,45 @@ public class Board {
 		}
 
 		return result;
+	}
+
+	public boolean readResign(String color) {
+
+		boolean result = true;
+
+		if (color.equalsIgnoreCase("red")) {
+
+			result = resignRead[Player.RED];
+
+			resignRead[Player.RED] = true;
+
+		} else if (color.equalsIgnoreCase("green")) {
+
+			result = resignRead[Player.GREEN];
+
+			resignRead[Player.GREEN] = true;
+
+		} else if (color.equalsIgnoreCase("blue")) {
+
+			result = resignRead[Player.BLUE];
+
+			resignRead[Player.BLUE] = true;
+
+		} else if (color.equalsIgnoreCase("yellow")) {
+
+			result = resignRead[Player.YELLOW];
+
+			resignRead[Player.YELLOW] = true;
+		}
+
+		return result;
+	}
+
+	public void syncNames() {
+
+		nameArray[0] = redName;
+		nameArray[1] = yellowName;
+		nameArray[2] = greenName;
+		nameArray[3] = blueName;
 	}
 }
