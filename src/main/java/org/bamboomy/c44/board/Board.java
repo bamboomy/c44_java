@@ -194,7 +194,7 @@ public class Board {
 
 		result += nameArray[playerz[turn].getColor()];
 
-		result += ") has resigned,\n";
+		result += ") has resigned,\\n";
 
 		if (deadPlayers.size() < 3) {
 
