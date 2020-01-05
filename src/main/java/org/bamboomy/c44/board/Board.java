@@ -131,7 +131,7 @@ public class Board {
 
 		for (int i = 0; i < 4; i++) {
 
-			timeOutzIntz[i] = 6;
+			timeOutzIntz[i] = 2;
 
 			resignRead[i] = true;
 		}
