@@ -437,6 +437,8 @@ public class Board {
 	}
 
 	public boolean readResign(String color) {
+		
+		System.out.println("readin...");
 
 		boolean result = true;
 
