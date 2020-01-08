@@ -168,7 +168,7 @@ public class Board {
 
 					resignRead[i] = false;
 				}
-				
+
 				return "";
 			}
 
@@ -193,10 +193,10 @@ public class Board {
 		result += nameArray[playerz[turn].getColor()];
 
 		result += ") has resigned,\n";
-		
-		if(deadPlayers.size() < 3) {
-			
-			result += deadPlayers.size() + " players are left...";
+
+		if (deadPlayers.size() < 3) {
+
+			result += (deadPlayers.size() - 1) + " players are left...";
 		}
 
 		return result;
