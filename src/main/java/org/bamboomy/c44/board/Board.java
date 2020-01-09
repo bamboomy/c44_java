@@ -160,9 +160,11 @@ public class Board {
 
 			if (timeOutzIntz[turn] <= 0) {
 
-				removeMe();
-
 				resignText = buildResignText();
+
+				System.out.println(resignText);
+
+				removeMe();
 
 				for (int i = 0; i < 4; i++) {
 
@@ -192,7 +194,7 @@ public class Board {
 
 		result += nameArray[playerz[turn].getColor()];
 
-		result += ") has resigned,\n";
+		result += ") has resigned,\\n";
 
 		if (deadPlayers.size() < 3) {
 
@@ -438,6 +440,8 @@ public class Board {
 
 	public boolean readResign(String color) {
 
+		System.out.println("readin...");
+
 		boolean result = true;
 
 		if (color.equalsIgnoreCase("red")) {
@@ -464,6 +468,8 @@ public class Board {
 
 			resignRead[Player.YELLOW] = true;
 		}
+
+		System.out.println(result);
 
 		return result;
 	}
