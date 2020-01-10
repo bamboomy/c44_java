@@ -198,7 +198,7 @@ public class Board {
 
 		if (deadPlayers.size() < 3) {
 
-			result += (deadPlayers.size() - 1) + " players are left...";
+			result += (3 - deadPlayers.size()) + " players are left...";
 		}
 
 		return result;
