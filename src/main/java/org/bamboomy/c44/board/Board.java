@@ -71,6 +71,8 @@ public class Board {
 	@Getter
 	private String[] nameArray = new String[4];
 
+	private boolean finished;
+
 	public Board(String hash) {
 
 		System.out.println("board created...");
@@ -166,6 +168,8 @@ public class Board {
 
 				removeMe();
 
+				checkFinish();
+
 				for (int i = 0; i < 4; i++) {
 
 					resignRead[i] = false;
@@ -184,6 +188,14 @@ public class Board {
 		String result = String.format("%02d:%02d", millisUntilFinished / 60000, millisUntilFinished % 60000 / 1000);
 
 		return result;
+	}
+
+	private void checkFinish() {
+
+		if (finished) {
+
+			resignText = Player.getColorNamez()[playerz[turn].getColor()] + " has won the game :)";
+		}
 	}
 
 	private String buildResignText() {
@@ -293,6 +305,8 @@ public class Board {
 		if (deadPlayers.size() >= 3) {
 
 			System.out.println("Game ended...");
+
+			finished = true;
 
 			return;
 		}
