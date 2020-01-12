@@ -42,6 +42,10 @@ public class Board {
 
 	private ArrayList<Integer> deadPlayers = new ArrayList<>();
 
+	private ArrayList<Integer> deadNotifiedPlayers = new ArrayList<>();
+
+	private ArrayList<Integer> deadGUINotifiedPlayers = new ArrayList<>();
+
 	@Getter
 	@Setter
 	private boolean playerIsMoving = false;
@@ -494,5 +498,38 @@ public class Board {
 		nameArray[1] = yellowName;
 		nameArray[2] = greenName;
 		nameArray[3] = blueName;
+	}
+
+	public boolean isDead() {
+
+		return deadPlayers.contains(turn);
+	}
+
+	public boolean isNewDead() {
+
+		boolean result = false;
+
+		if (deadPlayers.contains(turn) && !deadNotifiedPlayers.contains(turn)) {
+
+			deadNotifiedPlayers.add(turn);
+
+			result = true;
+		}
+
+		return result;
+	}
+
+	public boolean isNewGUIDead() {
+
+		boolean result = false;
+
+		if (deadPlayers.contains(turn) && !deadGUINotifiedPlayers.contains(turn)) {
+
+			deadGUINotifiedPlayers.add(turn);
+
+			result = true;
+		}
+
+		return result;
 	}
 }

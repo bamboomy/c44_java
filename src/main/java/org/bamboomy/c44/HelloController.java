@@ -1,5 +1,11 @@
 package org.bamboomy.c44;
 
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+import javax.xml.bind.DatatypeConverter;
+
 import org.bamboomy.c44.board.Board;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +21,9 @@ public class HelloController {
 
 	@Autowired
 	private ColorsTakenRepository colorsTakenRepository;
+
+	@Autowired
+	private GameResultRepository gameResultRepository;
 
 	@GetMapping({ "/" })
 	public String hello(Model model,
@@ -34,7 +43,7 @@ public class HelloController {
 		Board board = BoardController.getInstance().getBoard(gameHash);
 
 		Iterable<ColorsTaken> userIterable = colorsTakenRepository.findByGameHash(gameHash);
-		
+
 		for (ColorsTaken userColor : userIterable) {
 
 			if (userColor.getColor().equalsIgnoreCase("red")) {
@@ -64,7 +73,7 @@ public class HelloController {
 				if (userColor.getColor().equalsIgnoreCase(user.getColor())) {
 
 					board.setBlueName("You");
-					
+
 				} else {
 
 					board.setBlueName(userColor.getName());
@@ -92,7 +101,7 @@ public class HelloController {
 		model.addAttribute("board", board);
 
 		board.syncNames();
-		
+
 		return "hello";
 	}
 
@@ -138,9 +147,49 @@ public class HelloController {
 
 		board.updateTime();
 
+		if (board.isNewDead()) {
+
+			GameResult result = new GameResult();
+
+			result.setGame(gameHash);
+			result.setPlayer(hash);
+			result.setToken(getToken());
+
+			gameResultRepository.save(result);
+		}
+
 		model.addAttribute("board", board);
 		model.addAttribute("user", user);
 
 		return "judge";
+	}
+
+	private String getToken() {
+
+		String time = System.currentTimeMillis() + "6";
+
+		time += (Math.random() * 999);
+
+		try {
+
+			byte[] bytesOfMessage = time.getBytes("UTF-8");
+
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			byte[] thedigest = md.digest(bytesOfMessage);
+
+			return DatatypeConverter.printHexBinary(thedigest).toUpperCase();
+
+		} catch (UnsupportedEncodingException e) {
+
+			e.printStackTrace();
+
+			throw new RuntimeException(e);
+
+		} catch (NoSuchAlgorithmException e) {
+
+			e.printStackTrace();
+
+			throw new RuntimeException(e);
+		}
 	}
 }
