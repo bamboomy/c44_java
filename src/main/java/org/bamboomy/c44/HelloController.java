@@ -91,11 +91,11 @@ public class HelloController {
 			return "negative";
 		}
 
-		Iterable<ColorsTaken> userIterable = colorsTakenRepository.findByGameHash(hash);
-
 		String gameHash = user.getGame();
 
 		Board board = BoardController.getInstance().getBoard(gameHash);
+
+		Iterable<ColorsTaken> userIterable = colorsTakenRepository.findByGameHash(gameHash);
 
 		for (ColorsTaken userColor : userIterable) {
 
