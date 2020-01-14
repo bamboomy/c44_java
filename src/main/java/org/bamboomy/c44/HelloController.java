@@ -42,56 +42,6 @@ public class HelloController {
 
 		Board board = BoardController.getInstance().getBoard(gameHash);
 
-		Iterable<ColorsTaken> userIterable = colorsTakenRepository.findByGameHash(gameHash);
-
-		for (ColorsTaken userColor : userIterable) {
-
-			if (userColor.getColor().equalsIgnoreCase("red")) {
-
-				if (userColor.getColor().equalsIgnoreCase(user.getColor())) {
-
-					board.setRedName("You");
-
-				} else {
-
-					board.setRedName(userColor.getName());
-				}
-
-			} else if (userColor.getColor().equalsIgnoreCase("green")) {
-
-				if (userColor.getColor().equalsIgnoreCase(user.getColor())) {
-
-					board.setGreenName("You");
-
-				} else {
-
-					board.setGreenName(userColor.getName());
-				}
-
-			} else if (userColor.getColor().equalsIgnoreCase("blue")) {
-
-				if (userColor.getColor().equalsIgnoreCase(user.getColor())) {
-
-					board.setBlueName("You");
-
-				} else {
-
-					board.setBlueName(userColor.getName());
-				}
-
-			} else if (userColor.getColor().equalsIgnoreCase("yellow")) {
-
-				if (userColor.getColor().equalsIgnoreCase(user.getColor())) {
-
-					board.setYellowName("You");
-
-				} else {
-
-					board.setYellowName(userColor.getName());
-				}
-			}
-		}
-
 		Game game = gameRepository.findByHash(gameHash);
 
 		board.setGameName(game.getSentence());
@@ -141,9 +91,59 @@ public class HelloController {
 			return "negative";
 		}
 
+		Iterable<ColorsTaken> userIterable = colorsTakenRepository.findByGameHash(hash);
+
 		String gameHash = user.getGame();
 
 		Board board = BoardController.getInstance().getBoard(gameHash);
+
+		for (ColorsTaken userColor : userIterable) {
+
+			if (userColor.getColor().equalsIgnoreCase("red")) {
+
+				if (userColor.getColor().equalsIgnoreCase(user.getColor())) {
+
+					board.setRedName("You");
+
+				} else {
+
+					board.setRedName(userColor.getName());
+				}
+
+			} else if (userColor.getColor().equalsIgnoreCase("green")) {
+
+				if (userColor.getColor().equalsIgnoreCase(user.getColor())) {
+
+					board.setGreenName("You");
+
+				} else {
+
+					board.setGreenName(userColor.getName());
+				}
+
+			} else if (userColor.getColor().equalsIgnoreCase("blue")) {
+
+				if (userColor.getColor().equalsIgnoreCase(user.getColor())) {
+
+					board.setBlueName("You");
+
+				} else {
+
+					board.setBlueName(userColor.getName());
+				}
+
+			} else if (userColor.getColor().equalsIgnoreCase("yellow")) {
+
+				if (userColor.getColor().equalsIgnoreCase(user.getColor())) {
+
+					board.setYellowName("You");
+
+				} else {
+
+					board.setYellowName(userColor.getName());
+				}
+			}
+		}
 
 		board.updateTime();
 
