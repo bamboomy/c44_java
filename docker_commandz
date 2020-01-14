@@ -1,0 +1,3 @@
+./mvnw package && java -jar target/c44-1.0.1-SNAPSHOT.war
+docker build -t springio/c44 .
+docker run -p 8080:8080 -t springio/c44
