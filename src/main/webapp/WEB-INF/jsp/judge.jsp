@@ -33,7 +33,7 @@
 
 <c:if test="${board.isNewGUIDead()}">
 	<script>
-	  if (!confirm("You resigned...\nDo you want to stick around?\nClick 'ok' to stay,\nclick 'cancel' to leave.")) {
+	  if (confirm("You resigned...\nDo you want to stick around?\nClick 'ok' to stay,\nclick 'cancel' to leave.") != true) {
 			//delete king
 				window.location.assign("https://www.google.be"); 
   		}
