@@ -13,5 +13,6 @@ RUN mvn -f /home/app/pom.xml clean package
 FROM openjdk:11-jdk-alpine
 RUN addgroup -S spring && adduser -S spring -G spring
 USER spring:spring
-COPY target/*.war app.war
+ARG war_FILE=target/*.war
+COPY ${war_FILE} app.war
 ENTRYPOINT ["java","-jar","/app.war"]
