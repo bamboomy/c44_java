@@ -13,5 +13,5 @@ RUN cd /home/app/ && mvn clean package
 FROM openjdk:8-jdk-alpine
 RUN addgroup -S spring && adduser -S spring -G spring
 USER spring:spring
-COPY /home/app/target/*.war app.war
+COPY --from=build /home/app/target/*.war app.war
 ENTRYPOINT ["java","-jar","/app.war"]
