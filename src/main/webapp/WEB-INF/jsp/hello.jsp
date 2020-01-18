@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Hello ${name}!</title>
-<link href="/css/main.css" rel="stylesheet">
+<link href="/tomcat/css/main.css" rel="stylesheet">
 
 <style>
 .outer {
