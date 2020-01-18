@@ -75,6 +75,7 @@ public class Board {
 	@Getter
 	private String[] nameArray = new String[4];
 
+	@Getter
 	private boolean finished;
 
 	public Board(String hash) {

@@ -39,3 +39,10 @@
   		}
 	</script>
 </c:if>
+
+<c:if test="${board.isFinished()}">
+	<script>
+		finished = true;
+	</script>
+</c:if>
+

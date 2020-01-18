@@ -33,6 +33,8 @@
 <script type="text/javascript">
 	var myId;
 
+	var finished = false;
+
 	$(document).ready(function() {
 		myId = $('form').attr('myattribute');
 	});
@@ -89,11 +91,11 @@
 					},
 					url : "https://chess4four.io/java/chatText.php?board=${board.playerHash}",
 					success : function(text) {
-						
-						if(text != "clean"){
-							
+
+						if (text != "clean") {
+
 							$('#chatText').html(text);
-							
+
 							var objDiv = document.getElementById("chatText");
 							objDiv.scrollTop = objDiv.scrollHeight;
 						}
@@ -119,7 +121,7 @@
 					},
 					success : function(text) {
 						//alert(text);
-						
+
 						fillChat();
 					}
 				});
@@ -139,7 +141,7 @@
 	showChat();
 
 	$(document).ready(function() {
-		
+
 		$("#chatField").on("keydown", function(e) {
 
 			if (e.which == 13) {
@@ -163,6 +165,11 @@
 
 	function judge() {
 
+		if (finished) {
+
+			return;
+		}
+
 		setTimeout(function() {
 
 			callJudge();
@@ -175,16 +182,15 @@
 	judge();
 
 	callJudge();
-
 </script>
 
 </head>
 <body>
 
-<audio id="myAudio">
-  <source src="/soundz/tik.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
+	<audio id="myAudio">
+		<source src="/soundz/tik.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+	</audio>
 
 	<div id="judge"></div>
 
@@ -202,7 +208,7 @@
 	</center>
 
 	<div id="resign">
-		
+
 		<div class="outer">
 			<div class="middle">
 				<div class="inner">
@@ -214,7 +220,7 @@
 	</div>
 
 	<div id="chat">
-	
+
 		<div style="text-align: center; font-size: larger;">Chat</div>
 		<div id="chatText"></div>
 
