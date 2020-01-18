@@ -1,4 +1,4 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="https://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,7 +52,7 @@
 
 		$.ajax({
 			type : "GET",
-			url : "http://chess4four.io:8080/board/?id=${board.playerHash}",
+			url : "https://chess4four.io/tomcat/board/?id=${board.playerHash}",
 			async : false,
 			success : function(text) {
 				$('#board').html(text);
@@ -153,7 +153,7 @@
 
 		$.ajax({
 			type : "GET",
-			url : "http://chess4four.io:8080/judge/?id=${board.playerHash}",
+			url : "https://chess4four.io/tomcat/judge/?id=${board.playerHash}",
 			async : false,
 			success : function(text) {
 				$('#judge').html(text);
