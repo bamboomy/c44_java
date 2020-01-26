@@ -31,8 +31,11 @@ public class Board {
 
 	private int turn = 2;
 
-	@Getter
-	private String[] timeArray = new String[4];
+	/*
+	 * @Getter private String[] timeArray = new String[4];
+	 */
+
+	private int[] timeArrayInt = new int[4];
 
 	@Getter
 	private int[] timeOutzIntz = new int[4];
@@ -134,7 +137,7 @@ public class Board {
 
 		resetTimer();
 
-		timeArray[2] = getCurrentTimeOfCurrentPlayer();
+		// timeArray[2] = getCurrentTimeOfCurrentPlayer();
 
 		for (int i = 0; i < 4; i++) {
 
@@ -144,13 +147,13 @@ public class Board {
 		}
 	}
 
-	private String getCurrentTimeOfCurrentPlayer() {
+	private int getCurrentTimeOfCurrentPlayer() {
 
 		long now = System.currentTimeMillis();
 
 		// long millisUntilFinished = (reference + (2 * 60000) - now);
 
-		long millisUntilFinished = (reference + (20 * 1000) - now);
+		long millisUntilFinished = timeArrayInt[turn] + (reference + (20 * 1000) - now);
 
 		playSound = false;
 
@@ -180,19 +183,17 @@ public class Board {
 					resignRead[i] = false;
 				}
 
-				return "";
+				return 0;
 			}
 
 			timeOut[turn] = true;
 
 			forceMove();
 
-			return "";
+			return 0;
 		}
 
-		String result = String.format("%02d:%02d", millisUntilFinished / 60000, millisUntilFinished % 60000 / 1000);
-
-		return result;
+		return (int) millisUntilFinished;
 	}
 
 	private void checkFinish() {
@@ -296,7 +297,7 @@ public class Board {
 
 		playerIsMoving = false;
 
-		timeArray[turn] = "";
+		timeArrayInt[turn] += (reference + (20 * 1000) - System.currentTimeMillis());
 
 		turn = (turn + 1) % 4;
 
@@ -400,7 +401,7 @@ public class Board {
 
 	public void updateTime() {
 
-		timeArray[turn] = getCurrentTimeOfCurrentPlayer();
+		timeArrayInt[turn] = getCurrentTimeOfCurrentPlayer();
 	}
 
 	public boolean isRenderingCurrentPlayer(String color) {
@@ -530,6 +531,13 @@ public class Board {
 
 			result = true;
 		}
+
+		return result;
+	}
+
+	public String getTimeArray(int index) {
+
+		String result = String.format("%02d:%02d", timeArrayInt[index] / 60000, timeArrayInt[index] % 60000 / 1000);
 
 		return result;
 	}
