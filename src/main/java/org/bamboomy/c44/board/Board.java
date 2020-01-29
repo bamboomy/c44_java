@@ -147,8 +147,6 @@ public class Board {
 
 			resignRead[i] = true;
 		}
-
-		delta = (20 * 1000);
 	}
 
 	private int getCurrentTimeOfCurrentPlayer() {
@@ -157,7 +155,7 @@ public class Board {
 
 		// long millisUntilFinished = (reference + (2 * 60000) - now);
 
-		long millisUntilFinished = delta + (reference + (20 * 1000) - now);
+		long millisUntilFinished = delta + (reference + (30 * 1000) - now);
 
 		playSound = false;
 
@@ -301,11 +299,11 @@ public class Board {
 
 		playerIsMoving = false;
 
-		timeArrayInt[turn] = Math.max((int) (delta + (reference + (20 * 1000) - System.currentTimeMillis())), 0);
+		timeArrayInt[turn] = Math.max((int) (delta + (reference + (30 * 1000) - System.currentTimeMillis())), 0);
 
 		turn = (turn + 1) % 4;
 
-		delta = timeArrayInt[turn] + (20 * 1000);
+		delta = timeArrayInt[turn];
 
 		resetTimer();
 
