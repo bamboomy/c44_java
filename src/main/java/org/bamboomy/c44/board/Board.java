@@ -143,6 +143,8 @@ public class Board {
 
 		for (int i = 0; i < 4; i++) {
 
+			timeOutzIntz[i] = 2;
+
 			resignRead[i] = true;
 		}
 
@@ -303,7 +305,7 @@ public class Board {
 
 		turn = (turn + 1) % 4;
 
-		delta = timeArrayInt[turn];
+		delta = timeArrayInt[turn] + (20 * 1000);
 
 		resetTimer();
 
