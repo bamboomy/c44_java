@@ -81,6 +81,8 @@ public class Board {
 	@Getter
 	private boolean finished;
 
+	private int delta;
+
 	public Board(String hash) {
 
 		System.out.println("board created...");
@@ -141,10 +143,10 @@ public class Board {
 
 		for (int i = 0; i < 4; i++) {
 
-			timeOutzIntz[i] = (20 * 1000);
-
 			resignRead[i] = true;
 		}
+
+		delta = (20 * 1000);
 	}
 
 	private int getCurrentTimeOfCurrentPlayer() {
@@ -153,7 +155,7 @@ public class Board {
 
 		// long millisUntilFinished = (reference + (2 * 60000) - now);
 
-		long millisUntilFinished = timeArrayInt[turn] + (reference + (20 * 1000) - now);
+		long millisUntilFinished = delta + (reference + (20 * 1000) - now);
 
 		playSound = false;
 
@@ -297,10 +299,11 @@ public class Board {
 
 		playerIsMoving = false;
 
-		timeArrayInt[turn] = Math
-				.max((int) (timeArrayInt[turn] + (reference + (20 * 1000) - System.currentTimeMillis())), 0);
+		timeArrayInt[turn] = Math.max((int) (delta + (reference + (20 * 1000) - System.currentTimeMillis())), 0);
 
 		turn = (turn + 1) % 4;
+
+		delta = timeArrayInt[turn];
 
 		resetTimer();
 
