@@ -141,7 +141,7 @@ public class Board {
 
 		for (int i = 0; i < 4; i++) {
 
-			timeOutzIntz[i] = 2;
+			timeOutzIntz[i] = (20 * 1000);
 
 			resignRead[i] = true;
 		}
@@ -297,7 +297,8 @@ public class Board {
 
 		playerIsMoving = false;
 
-		timeArrayInt[turn] += (reference + (20 * 1000) - System.currentTimeMillis());
+		timeArrayInt[turn] = Math
+				.max((int) (timeArrayInt[turn] + (reference + (20 * 1000) - System.currentTimeMillis())), 0);
 
 		turn = (turn + 1) % 4;
 
