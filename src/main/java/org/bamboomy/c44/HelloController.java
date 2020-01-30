@@ -84,8 +84,6 @@ public class HelloController {
 
 		System.out.println(hash);
 		
-		Board.getLock().lock();
-
 		ColorsTaken user = colorsTakenRepository.findByHash(hash);
 
 		if (user == null) {
@@ -96,6 +94,8 @@ public class HelloController {
 		String gameHash = user.getGame();
 
 		Board board = BoardController.getInstance().getBoard(gameHash);
+
+		board.getLock().lock();
 
 		Iterable<ColorsTaken> userIterable = colorsTakenRepository.findByGameHash(gameHash);
 

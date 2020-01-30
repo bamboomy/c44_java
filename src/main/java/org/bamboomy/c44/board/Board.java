@@ -85,7 +85,7 @@ public class Board {
 	private int delta;
 	
 	@Getter
-	private static ReentrantLock lock = new ReentrantLock();
+	private ReentrantLock lock = new ReentrantLock();
 
 	public Board(String hash) {
 
