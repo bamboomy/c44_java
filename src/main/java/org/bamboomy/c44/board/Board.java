@@ -155,7 +155,7 @@ public class Board {
 
 		// long millisUntilFinished = (reference + (2 * 60000) - now);
 
-		long millisUntilFinished = delta + (reference + (30 * 1000) - now);
+		long millisUntilFinished = delta + (reference + (3 * 60 * 1000) - now);
 
 		playSound = false;
 
@@ -299,7 +299,7 @@ public class Board {
 
 		playerIsMoving = false;
 
-		timeArrayInt[turn] = Math.max((int) (delta + (reference + (30 * 1000) - System.currentTimeMillis())), 0);
+		timeArrayInt[turn] = Math.max((int) (delta + (reference + (3 * 60 * 1000) - System.currentTimeMillis())), 0);
 
 		turn = (turn + 1) % 4;
 
