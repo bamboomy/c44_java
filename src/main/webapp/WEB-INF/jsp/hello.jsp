@@ -46,7 +46,7 @@
 			type : "GET",
 			'url' : '/peace/' + md5 + "/" + userHash,
 			success : function(text) {
-				location.reload();
+				fill();
 			}
 		});
 	}
