@@ -8,7 +8,7 @@
 
 <style>
 .outer {
-	display: table;
+	overflow:hidden;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -17,7 +17,6 @@
 }
 
 .middle {
-	display: table-cell;
 	vertical-align: middle;
 }
 
