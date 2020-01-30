@@ -83,6 +83,8 @@ public class HelloController {
 			@RequestParam(value = "id", required = true, defaultValue = "World") final String hash) {
 
 		System.out.println(hash);
+		
+		Board.getLock().lock();
 
 		ColorsTaken user = colorsTakenRepository.findByHash(hash);
 

@@ -1,6 +1,7 @@
 package org.bamboomy.c44.board;
 
 import java.util.ArrayList;
+import java.util.concurrent.locks.ReentrantLock;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -82,6 +83,9 @@ public class Board {
 	private boolean finished;
 
 	private int delta;
+	
+	@Getter
+	private static ReentrantLock lock = new ReentrantLock();
 
 	public Board(String hash) {
 
