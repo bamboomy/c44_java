@@ -50,5 +50,7 @@
 </c:if>
 
 <%
+	Board board = (Board) request.getAttribute("board");
+
 	board.getLock().unlock();
 %>
