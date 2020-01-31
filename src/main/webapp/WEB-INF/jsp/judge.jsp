@@ -50,5 +50,5 @@
 </c:if>
 
 <%
-	Board.getLock().unlock();
+	board.getLock().unlock();
 %>

@@ -56,7 +56,7 @@ public class HelloController {
 	}
 
 	@GetMapping({ "/board/" })
-	public synchronized String board(Model model,
+	public String board(Model model,
 			@RequestParam(value = "id", required = true, defaultValue = "World") final String hash) {
 
 		System.out.println(hash);
@@ -79,7 +79,7 @@ public class HelloController {
 	}
 
 	@GetMapping({ "/judge/" })
-	public synchronized String judge(Model model,
+	public String judge(Model model,
 			@RequestParam(value = "id", required = true, defaultValue = "World") final String hash) {
 
 		System.out.println(hash);
