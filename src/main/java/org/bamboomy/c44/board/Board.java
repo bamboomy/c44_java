@@ -315,7 +315,7 @@ public class Board {
 
 			System.out.print("dead:" + i);
 		}
-		
+
 		countDead();
 
 		if (finished) {
@@ -575,8 +575,10 @@ public class Board {
 		}
 
 		deadPlayers.add(colorInt);
-		
-		countDead();		
+
+		System.out.println(colorInt + " resigned...");
+
+		countDead();
 
 		checkFinish();
 
