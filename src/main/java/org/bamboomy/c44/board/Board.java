@@ -222,7 +222,7 @@ public class Board {
 
 		if (deadPlayers.size() < 3) {
 
-			result += (3 - deadPlayers.size()) + " players are left...";
+			result += (4 - deadPlayers.size()) + " players are left...";
 		}
 
 		return result;
