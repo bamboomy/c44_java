@@ -577,6 +577,8 @@ public class Board {
 		deadPlayers.add(colorInt);
 
 		System.out.println(colorInt + " resigned...");
+		
+		resignText = buildResignText();
 
 		countDead();
 
