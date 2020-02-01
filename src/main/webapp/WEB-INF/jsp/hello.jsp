@@ -182,6 +182,23 @@
 	judge();
 
 	callJudge();
+
+	function resign() {
+
+		if (window
+				.confirm("Are you sure?\n(This is an irriversible action\nthat will change your life forever!!!)")) {
+
+			$
+					.ajax({
+						type : "GET",
+						url : "https://chess4four.io/tomcat/resign/?id=${board.playerHash}",
+						async : false,
+						success : function(text) {
+							alert('you resigned');
+						}
+					});
+		}
+	}
 </script>
 
 </head>
@@ -212,7 +229,7 @@
 		<div class="outer">
 			<div class="middle">
 				<div class="inner">
-					<input type="button" value="resign" />
+					<input type="button" onclick="resign();" value="resign" />
 				</div>
 			</div>
 		</div>

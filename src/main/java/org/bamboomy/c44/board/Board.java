@@ -83,7 +83,7 @@ public class Board {
 	private boolean finished;
 
 	private int delta;
-	
+
 	@Getter
 	private ReentrantLock lock = new ReentrantLock();
 
@@ -315,12 +315,10 @@ public class Board {
 
 			System.out.print("dead:" + i);
 		}
+		
+		countDead();
 
-		if (deadPlayers.size() >= 3) {
-
-			System.out.println("Game ended...");
-
-			finished = true;
+		if (finished) {
 
 			return;
 		}
@@ -339,6 +337,16 @@ public class Board {
 		if (currentPlayer.isRobot()) {
 
 			currentPlayer.playRandomMove(performedMoves);
+		}
+	}
+
+	private void countDead() {
+
+		if (deadPlayers.size() >= 3) {
+
+			System.out.println("Game ended...");
+
+			finished = true;
 		}
 	}
 
@@ -548,5 +556,33 @@ public class Board {
 		String result = String.format("%02d:%02d", timeArrayInt[index] / 60000, timeArrayInt[index] % 60000 / 1000);
 
 		return result;
+	}
+
+	public void resign(String color) {
+
+		int colorInt = 0;
+
+		String[] colorNames = Player.getColorNamez();
+
+		for (int i = 0; i < 4; i++) {
+
+			if (colorNames[i].equalsIgnoreCase(color)) {
+
+				colorInt = i;
+
+				break;
+			}
+		}
+
+		deadPlayers.add(colorInt);
+		
+		countDead();		
+
+		checkFinish();
+
+		for (int i = 0; i < 4; i++) {
+
+			resignRead[i] = false;
+		}
 	}
 }

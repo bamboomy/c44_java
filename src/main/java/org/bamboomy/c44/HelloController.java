@@ -166,6 +166,26 @@ public class HelloController {
 		return "judge";
 	}
 
+	@GetMapping({ "/resign/" })
+	public String resign(Model model,
+			@RequestParam(value = "id", required = true, defaultValue = "World") final String hash) {
+
+		System.out.println(hash);
+		
+		ColorsTaken user = colorsTakenRepository.findByHash(hash);
+
+		if (user == null) {
+
+			return "negative";
+		}
+
+		String gameHash = user.getGame();
+
+		Board board = BoardController.getInstance().getBoard(gameHash);
+		
+		return "ok";
+	}
+	
 	private String getToken() {
 
 		String time = System.currentTimeMillis() + "6";
