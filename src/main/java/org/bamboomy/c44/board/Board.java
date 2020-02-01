@@ -176,7 +176,7 @@ public class Board {
 
 			if (timeOutzIntz[turn] <= 0) {
 
-				resignText = buildResignText();
+				resignText = buildResignText(turn);
 
 				System.out.println(resignText);
 
@@ -210,13 +210,13 @@ public class Board {
 		}
 	}
 
-	private String buildResignText() {
+	private String buildResignText(int player) {
 
 		String result = "";
 
-		result += Player.getColorNamez()[playerz[turn].getColor()] + "(";
+		result += Player.getColorNamez()[playerz[player].getColor()] + "(";
 
-		result += nameArray[playerz[turn].getColor()];
+		result += nameArray[playerz[player].getColor()];
 
 		result += ") has resigned,\\n";
 
@@ -578,7 +578,7 @@ public class Board {
 
 		System.out.println(colorInt + " resigned...");
 		
-		resignText = buildResignText();
+		resignText = buildResignText(colorInt);
 
 		countDead();
 
