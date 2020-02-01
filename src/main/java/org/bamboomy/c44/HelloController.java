@@ -83,7 +83,7 @@ public class HelloController {
 			@RequestParam(value = "id", required = true, defaultValue = "World") final String hash) {
 
 		System.out.println(hash);
-		
+
 		ColorsTaken user = colorsTakenRepository.findByHash(hash);
 
 		if (user == null) {
@@ -170,8 +170,8 @@ public class HelloController {
 	public String resign(Model model,
 			@RequestParam(value = "id", required = true, defaultValue = "World") final String hash) {
 
-		System.out.println(hash);
-		
+		System.out.println(hash + "calling resign...");
+
 		ColorsTaken user = colorsTakenRepository.findByHash(hash);
 
 		if (user == null) {
@@ -182,10 +182,12 @@ public class HelloController {
 		String gameHash = user.getGame();
 
 		Board board = BoardController.getInstance().getBoard(gameHash);
-		
+
+		board.resign(user.getColor());
+
 		return "ok";
 	}
-	
+
 	private String getToken() {
 
 		String time = System.currentTimeMillis() + "6";
