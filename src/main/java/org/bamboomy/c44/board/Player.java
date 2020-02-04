@@ -19,11 +19,9 @@ public class Player {
 	private int color;
 
 	public static final int RED = 0, YELLOW = 1, GREEN = 2, BLUE = 3;
-	
-	@Getter 
-	private static String[] colorNamez = {
-			"Red", "Yellow", "Green", "Blue"
-	};
+
+	@Getter
+	private static String[] colorNamez = { "Red", "Yellow", "Green", "Blue" };
 
 	@Getter
 	private ArrayList<Piece> piecez = new ArrayList<Piece>();
@@ -125,10 +123,10 @@ public class Player {
 	private void initGreen(Board board) {
 
 		for (int i = 0; i < 8; i++) {
-			
-			if(i!=2 && i!=3) {
-				
-				piecez.add(new Pawn(board.getPlacez()[10][i + 2], color, -1, 0, this));	
+
+			if (i != 4 && i != 5) {
+
+				piecez.add(new Pawn(board.getPlacez()[10][i + 2], color, -1, 0, this));
 			}
 		}
 
@@ -388,7 +386,7 @@ public class Player {
 	}
 
 	public void playRandomMove(ArrayList<Move> performedMoves) {
-		
+
 		if (checkCheck()) {
 
 			if (canPrevent()) {
