@@ -24,7 +24,7 @@
 
 <c:if test="${board.isTimeOut(user.color)}">
 	<script>
-		alert("You timed out; you can do this 5 times max\nthe 6th time you automatically resign...");
+		alert("You timed out; you can do this 3 times max\nthe 4th time you automatically resign...");
 	</script>
 </c:if>
 

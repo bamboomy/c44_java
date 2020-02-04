@@ -159,7 +159,7 @@ public class Board {
 
 		// long millisUntilFinished = (reference + (2 * 60000) - now);
 
-		long millisUntilFinished = delta + (reference + (3 * 60 * 1000) - now);
+		long millisUntilFinished = delta + (reference + (2 * 60 * 1000) - now);
 
 		playSound = false;
 
@@ -176,11 +176,9 @@ public class Board {
 
 			if (timeOutzIntz[turn] <= 0) {
 
-				resignText = buildResignText(turn);
-
-				System.out.println(resignText);
-
 				removeMe();
+				
+				resignText = buildResignText(turn);
 
 				checkFinish();
 
@@ -214,11 +212,13 @@ public class Board {
 
 		String result = "";
 
-		result += Player.getColorNamez()[playerz[player].getColor()] + "(";
+		result += Player.getColorNamez()[playerz[player].getColor()] + " has resigned,\\n";
 
-		result += nameArray[playerz[player].getColor()];
-
-		result += ") has resigned,\\n";
+		//TODO: refactor so the name (and not 'You') is used when building resign text
+		// -> 1 possible tactic: build resigntext upon read... 
+		
+		//result += nameArray[playerz[player].getColor()];
+		//result += ") 
 
 		if (deadPlayers.size() < 3) {
 
@@ -303,7 +303,7 @@ public class Board {
 
 		playerIsMoving = false;
 
-		timeArrayInt[turn] = Math.max((int) (delta + (reference + (3 * 60 * 1000) - System.currentTimeMillis())), 0);
+		timeArrayInt[turn] = Math.max((int) (delta + (reference + (2 * 60 * 1000) - System.currentTimeMillis())), 0);
 
 		turn = (turn + 1) % 4;
 
