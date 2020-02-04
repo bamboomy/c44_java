@@ -31,6 +31,11 @@
 
 <script src="/js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
+
+	var checkShown = false;
+	
+	var cantMoveShown = false;
+
 	var myId;
 
 	var finished = false;
@@ -46,6 +51,10 @@
 			'url' : '/peace/' + md5 + "/" + userHash,
 			success : function(text) {
 				fill();
+				
+				checkShown = false;
+				
+				cantMoveShown = false;
 			}
 		});
 	}
@@ -76,10 +85,6 @@
 	again();
 
 	fill();
-
-	var checkShown = false;
-
-	var cantMoveShown = false;
 
 	function fillChat() {
 

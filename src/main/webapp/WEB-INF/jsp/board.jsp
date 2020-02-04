@@ -23,9 +23,11 @@
 	test="${!board.isPlayerIsMoving() && board.getCurrentPlayer().checkCheck() 
 	&& board.isRenderingCurrentPlayer(user.color) && board.getCurrentPlayer().canPrevent()}">
 	<script type="text/javascript">
-		if (!checkShown) {
+		if (!cantMoveShown) {
 
 			alert('... but you can prevent...');
+			
+			cantMoveShown = true;
 		}
 	</script>
 </c:if>
