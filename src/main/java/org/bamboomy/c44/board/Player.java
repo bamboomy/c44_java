@@ -125,7 +125,11 @@ public class Player {
 	private void initGreen(Board board) {
 
 		for (int i = 0; i < 8; i++) {
-			piecez.add(new Pawn(board.getPlacez()[10][i + 2], color, -1, 0, this));
+			
+			if(i!=2 && i!=3) {
+				
+				piecez.add(new Pawn(board.getPlacez()[10][i + 2], color, -1, 0, this));	
+			}
 		}
 
 		piecez.add(new Tower(board.getPlacez()[11][2], color, this));
