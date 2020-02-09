@@ -66,6 +66,9 @@ public class Bisshop extends Piece {
 
 					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 				}
+			} else if (otherPlace == null) {
+				
+				break;
 			}
 
 			counter++;
@@ -97,6 +100,9 @@ public class Bisshop extends Piece {
 
 					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 				}
+			}else if (otherPlace == null) {
+				
+				break;
 			}
 
 			counter++;
@@ -128,6 +134,9 @@ public class Bisshop extends Piece {
 
 					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 				}
+			}else if (otherPlace == null) {
+				
+				break;
 			}
 
 			counter++;
@@ -159,6 +168,9 @@ public class Bisshop extends Piece {
 
 					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 				}
+			}else if (otherPlace == null) {
+				
+				break;
 			}
 
 			counter++;

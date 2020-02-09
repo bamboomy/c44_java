@@ -260,6 +260,8 @@ public class Player {
 	}
 
 	public boolean checkCheck() {
+		
+		/*
 
 		for (Player player : board.getPlayerz()) {
 
@@ -280,6 +282,8 @@ public class Player {
 				}
 			}
 		}
+		
+		*/
 
 		return false;
 	}

@@ -219,7 +219,7 @@ public class Place {
 		 * }
 		 */
 
-		board.next();
+		//board.next();
 	}
 
 	public void remove(Piece oldPiece) {
