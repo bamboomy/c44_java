@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Hello ${name}!</title>
-<link href="/tomcat/css/main.css" rel="stylesheet">
+<link href="/css/main.css" rel="stylesheet">
 
 <style>
 .outer {
@@ -44,11 +44,11 @@
 		myId = $('form').attr('myattribute');
 	});
 
-	function clickToServer(md5, userHash) {
+	function clickToServer(md5) {
 
 		$.ajax({
 			type : "GET",
-			'url' : '/peace/' + md5 + "/" + userHash,
+			'url' : '/peace/' + md5, // + "/" + userHash,
 			success : function(text) {
 				fill();
 				
@@ -63,7 +63,8 @@
 
 		$.ajax({
 			type : "GET",
-			url : "https://chess4four.io/tomcat/board/?id=${board.playerHash}",
+			//url : "https://chess4four.io/tomcat/board/?id=${board.playerHash}",
+			url : "http://localhost:8080/board/?id=${board.playerHash}",
 			async : false,
 			success : function(text) {
 				$('#board').html(text);
@@ -143,7 +144,7 @@
 		}, 1000);
 	}
 
-	showChat();
+	//showChat();
 
 	$(document).ready(function() {
 
@@ -184,9 +185,9 @@
 		}, 1000);
 	}
 
-	judge();
+	//judge();
 
-	callJudge();
+	//callJudge();
 
 	function resign() {
 

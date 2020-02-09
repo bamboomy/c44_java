@@ -35,16 +35,17 @@ public class HelloController {
 
 		if (user == null) {
 
-			return "negative";
+			//return "negative";
+		
 		}
 
-		String gameHash = user.getGame();
+		String gameHash = hash; //user.getGame();
 
-		Board board = BoardController.getInstance().getBoard(gameHash);
+		Board board = BoardController.getInstance().getBoard(hash);
 
 		Game game = gameRepository.findByHash(gameHash);
 
-		board.setGameName(game.getSentence());
+		//board.setGameName(game.getSentence());
 
 		board.setPlayerHash(hash);
 
@@ -65,15 +66,15 @@ public class HelloController {
 
 		if (user == null) {
 
-			return "negative";
+			//return "negative";
 		}
 
-		String gameHash = user.getGame();
+		String gameHash = hash; //user.getGame();
 
 		Board board = BoardController.getInstance().getBoard(gameHash);
 
 		model.addAttribute("board", board);
-		model.addAttribute("user", user);
+		//model.addAttribute("user", user);
 
 		return "board";
 	}

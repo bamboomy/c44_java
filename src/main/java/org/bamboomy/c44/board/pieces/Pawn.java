@@ -119,7 +119,7 @@ public class Pawn extends Piece {
 			}
 		}
 
-		// em passant -> it doesn't work: we abandon it (for now)... (we're still in
+		// en passant -> it doesn't work: we abandon it (for now)... (we're still in
 		// poc...)
 
 		/*
