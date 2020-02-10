@@ -199,7 +199,13 @@
 						url : "https://chess4four.io/tomcat/resign/?id=${board.playerHash}",
 						async : false,
 						success : function(text) {
-							alert('you resigned');
+						
+							if (confirm("You resigned...\nDo you want to stick around?\nClick 'ok' to stay,\nclick 'cancel' to leave.") != true) {
+								
+								//TODO: delete king
+								
+								window.location.assign("https://www.google.be");
+							}
 						}
 					});
 		}

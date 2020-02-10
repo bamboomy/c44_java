@@ -103,11 +103,8 @@ public class Player {
 	private void initYellow(Board board) {
 
 		for (int i = 0; i < 8; i++) {
-			
-			if(i != 5) {
-				
-				piecez.add(new Pawn(board.getPlacez()[i + 2][10], color, 0, -1, this));	
-			}
+
+			piecez.add(new Pawn(board.getPlacez()[i + 2][10], color, 0, -1, this));
 		}
 
 		piecez.add(new Tower(board.getPlacez()[2][11], color, this));
@@ -128,10 +125,7 @@ public class Player {
 
 		for (int i = 0; i < 8; i++) {
 
-			if (i != 4 && i != 5) {
-
-				piecez.add(new Pawn(board.getPlacez()[10][i + 2], color, -1, 0, this));
-			}
+			piecez.add(new Pawn(board.getPlacez()[10][i + 2], color, -1, 0, this));
 		}
 
 		piecez.add(new Tower(board.getPlacez()[11][2], color, this));
