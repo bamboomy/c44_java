@@ -604,7 +604,7 @@ public class Board {
 
 		if (timeOutzArray[number] != null) {
 
-			result += "<span class='red'>" + timeOutzArray[number] + "</span>";
+			result += " <span class='red'>" + timeOutzArray[number] + "</span>";
 		}
 
 		return result;
