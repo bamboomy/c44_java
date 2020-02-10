@@ -600,5 +600,7 @@ public class Board {
 		}
 
 		playerz[color] = new Player(color, this, true);
+		
+		botSet = true;
 	}
 }
