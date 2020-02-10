@@ -33,7 +33,7 @@
 		alert('${board.resignText}');
 	</script>
 </c:if>
-
+<!--
 <c:if test="${board.isNewGUIDead()}">
 	<script>
 		if (confirm("You resigned...\nDo you want to stick around?\nClick 'ok' to stay,\nclick 'cancel' to leave.") != true) {
@@ -42,7 +42,7 @@
 		}
 	</script>
 </c:if>
-
+-->
 <c:if test="${board.isFinished()}">
 	<script>
 		finished = true;

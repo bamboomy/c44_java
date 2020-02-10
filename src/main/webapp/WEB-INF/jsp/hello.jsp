@@ -191,7 +191,7 @@
 	function resign() {
 
 		if (window
-				.confirm("Are you sure?\n(This is an irriversible action\nthat will change your life forever!!!)")) {
+				.confirm("Are you sure?\n(This is an irriversible action\nwhich will change your life forever!!!)")) {
 
 			$
 					.ajax({
