@@ -89,6 +89,12 @@ public class Board {
 
 	private boolean botSet = false;
 
+	private String[] places = new String[4];
+
+	private String[] playerPlaces = new String[4];
+
+	private int placesCounter = 0;
+
 	public Board(String hash) {
 
 		System.out.println("board created...");
@@ -153,6 +159,11 @@ public class Board {
 
 			resignRead[i] = true;
 		}
+
+		places[0] = "4th";
+		places[1] = "3rd";
+		places[2] = "2nd";
+		places[3] = "1st";
 	}
 
 	private int getCurrentTimeOfCurrentPlayer() {
@@ -350,7 +361,14 @@ public class Board {
 
 	public void removeMe() {
 
-		deadPlayers.add(turn);
+		remove(turn);
+	}
+
+	public void remove(int number) {
+
+		deadPlayers.add(number);
+
+		playerPlaces[number] = places[placesCounter++];
 	}
 
 	public boolean isCheckingCheck() {
@@ -570,7 +588,7 @@ public class Board {
 			}
 		}
 
-		deadPlayers.add(colorInt);
+		remove(colorInt);
 
 		System.out.println(colorInt + " resigned...");
 
@@ -600,11 +618,20 @@ public class Board {
 
 	public String getPlayerString(int number) {
 
-		String result = getTimeArray(number);
+		String result;
 
-		if (timeOutzArray[number] != null) {
+		if (playerPlaces[number] != null) {
 
-			result += " <span class='red'>" + timeOutzArray[number] + "</span>";
+			result = playerPlaces[number];
+
+		} else {
+
+			result = getTimeArray(number);
+
+			if (timeOutzArray[number] != null) {
+
+				result += " <span class='red'>" + timeOutzArray[number] + "</span>";
+			}
 		}
 
 		return result;
