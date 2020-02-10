@@ -597,4 +597,9 @@ public class Board {
 
 		botSet = true;
 	}
+
+	public String getPlayerString(int number) {
+
+		return getTimeArray(number) + "<span class='red'>" + timeOutzArray[number] + "</span>";
+	}
 }
