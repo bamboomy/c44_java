@@ -159,6 +159,8 @@ public class HelloController {
 			result.setToken(getToken());
 
 			gameResultRepository.save(result);
+			
+			board.next();
 		}
 
 		model.addAttribute("board", board);

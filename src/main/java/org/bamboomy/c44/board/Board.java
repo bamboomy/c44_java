@@ -157,11 +157,7 @@ public class Board {
 
 	private int getCurrentTimeOfCurrentPlayer() {
 
-		long now = System.currentTimeMillis();
-
-		// long millisUntilFinished = (reference + (2 * 60000) - now);
-
-		long millisUntilFinished = delta + (reference + (2 * 60 * 1000) - now);
+		long millisUntilFinished = delta + (reference + (2 * 60 * 1000) - System.currentTimeMillis());
 
 		playSound = false;
 
@@ -355,8 +351,6 @@ public class Board {
 	public void removeMe() {
 
 		deadPlayers.add(turn);
-
-		next();
 	}
 
 	public boolean isCheckingCheck() {
