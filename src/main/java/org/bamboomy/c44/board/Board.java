@@ -600,6 +600,13 @@ public class Board {
 
 	public String getPlayerString(int number) {
 
-		return getTimeArray(number) + "<span class='red'>" + timeOutzArray[number] + "</span>";
+		String result = getTimeArray(number);
+
+		if (timeOutzArray[number] != null) {
+
+			result += "<span class='red'>" + timeOutzArray[number] + "</span>";
+		}
+
+		return result;
 	}
 }
