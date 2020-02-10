@@ -590,6 +590,11 @@ public class Board {
 
 			resignRead[i] = false;
 		}
+
+		if (turn == colorInt) {
+
+			next();
+		}
 	}
 
 	public void setRandom(int color) {
@@ -600,7 +605,7 @@ public class Board {
 		}
 
 		playerz[color] = new Player(color, this, true);
-		
+
 		botSet = true;
 	}
 }
