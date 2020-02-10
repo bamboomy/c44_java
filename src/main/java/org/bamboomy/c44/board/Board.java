@@ -87,6 +87,8 @@ public class Board {
 	@Getter
 	private ReentrantLock lock = new ReentrantLock();
 
+	private boolean botSet = false;
+
 	public Board(String hash) {
 
 		System.out.println("board created...");
@@ -177,7 +179,7 @@ public class Board {
 			if (timeOutzIntz[turn] <= 0) {
 
 				removeMe();
-				
+
 				resignText = buildResignText(turn);
 
 				checkFinish();
@@ -214,11 +216,11 @@ public class Board {
 
 		result += Player.getColorNamez()[playerz[player].getColor()] + " has resigned,\\n";
 
-		//TODO: refactor so the name (and not 'You') is used when building resign text
-		// -> 1 possible tactic: build resigntext upon read... 
-		
-		//result += nameArray[playerz[player].getColor()];
-		//result += ") 
+		// TODO: refactor so the name (and not 'You') is used when building resign text
+		// -> 1 possible tactic: build resigntext upon read...
+
+		// result += nameArray[playerz[player].getColor()];
+		// result += ")
 
 		if (deadPlayers.size() < 3) {
 
@@ -577,7 +579,7 @@ public class Board {
 		deadPlayers.add(colorInt);
 
 		System.out.println(colorInt + " resigned...");
-		
+
 		resignText = buildResignText(colorInt);
 
 		countDead();
@@ -588,5 +590,15 @@ public class Board {
 
 			resignRead[i] = false;
 		}
+	}
+
+	public void setRandom(int color) {
+
+		if (botSet) {
+
+			return;
+		}
+
+		playerz[color] = new Player(color, this, true);
 	}
 }

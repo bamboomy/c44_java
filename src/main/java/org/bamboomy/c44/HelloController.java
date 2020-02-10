@@ -7,6 +7,7 @@ import java.security.NoSuchAlgorithmException;
 import javax.xml.bind.DatatypeConverter;
 
 import org.bamboomy.c44.board.Board;
+import org.bamboomy.c44.board.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -109,7 +110,7 @@ public class HelloController {
 
 				} else {
 
-					board.setRedName(userColor.getName());
+					board.setRedName(detectBot(userColor.getName(), Player.RED, board));
 				}
 
 			} else if (userColor.getColor().equalsIgnoreCase("green")) {
@@ -120,7 +121,7 @@ public class HelloController {
 
 				} else {
 
-					board.setGreenName(userColor.getName());
+					board.setGreenName(detectBot(userColor.getName(), Player.GREEN, board));
 				}
 
 			} else if (userColor.getColor().equalsIgnoreCase("blue")) {
@@ -131,7 +132,7 @@ public class HelloController {
 
 				} else {
 
-					board.setBlueName(userColor.getName());
+					board.setBlueName(detectBot(userColor.getName(), Player.BLUE, board));
 				}
 
 			} else if (userColor.getColor().equalsIgnoreCase("yellow")) {
@@ -142,7 +143,7 @@ public class HelloController {
 
 				} else {
 
-					board.setYellowName(userColor.getName());
+					board.setYellowName(detectBot(userColor.getName(), Player.YELLOW, board));
 				}
 			}
 		}
@@ -164,6 +165,23 @@ public class HelloController {
 		model.addAttribute("user", user);
 
 		return "judge";
+	}
+
+	private String detectBot(String name, int color, Board board) {
+
+		if (name.equalsIgnoreCase("Random85247")) {
+			
+			board.setRandom(color);
+
+			return "Random";
+		}
+
+		if (name.equalsIgnoreCase("Dubious85247")) {
+
+			return "Dubious";
+		}
+
+		return name;
 	}
 
 	@GetMapping({ "/resign/" })

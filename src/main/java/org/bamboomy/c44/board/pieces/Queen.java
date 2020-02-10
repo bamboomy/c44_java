@@ -39,9 +39,9 @@ public class Queen extends Piece {
 	public void setAttackablePlaces(boolean unused, boolean addMove) {
 
 		int counter = 0;
-		
+
 		attackableMoves = new ArrayList<Move>();
-		
+
 		for (int i = currentPlace.getX(); i < 12; i++) {
 
 			if (currentPlace.getY() - counter < 0) {
@@ -66,6 +66,9 @@ public class Queen extends Piece {
 
 					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 				}
+			} else if (otherPlace == null) {
+
+				break;
 			}
 
 			counter++;
@@ -97,6 +100,9 @@ public class Queen extends Piece {
 
 					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 				}
+			} else if (otherPlace == null) {
+
+				break;
 			}
 
 			counter++;
@@ -128,6 +134,9 @@ public class Queen extends Piece {
 
 					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 				}
+			} else if (otherPlace == null) {
+
+				break;
 			}
 
 			counter++;
@@ -159,6 +168,9 @@ public class Queen extends Piece {
 
 					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 				}
+			} else if (otherPlace == null) {
+
+				break;
 			}
 
 			counter++;
@@ -176,7 +188,7 @@ public class Queen extends Piece {
 
 						attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 					}
-					
+
 					break;
 
 				} else {
@@ -198,7 +210,7 @@ public class Queen extends Piece {
 
 						attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 					}
-					
+
 					break;
 
 				} else {
@@ -220,7 +232,7 @@ public class Queen extends Piece {
 
 						attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 					}
-					
+
 					break;
 
 				} else {
@@ -242,7 +254,7 @@ public class Queen extends Piece {
 
 						attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 					}
-					
+
 					break;
 
 				} else {
