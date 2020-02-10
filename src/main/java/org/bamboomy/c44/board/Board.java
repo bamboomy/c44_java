@@ -584,11 +584,6 @@ public class Board {
 
 			resignRead[i] = false;
 		}
-
-		if (turn == colorInt) {
-
-			next();
-		}
 	}
 
 	public void setRandom(int color) {
