@@ -107,8 +107,6 @@ public abstract class Piece {
 
 	public void click(boolean canTakeKing) {
 
-		System.out.println(getPieceName());
-
 		recalculateHash();
 
 		if (!selected) {

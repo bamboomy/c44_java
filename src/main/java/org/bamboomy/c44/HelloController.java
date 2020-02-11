@@ -83,8 +83,6 @@ public class HelloController {
 	public String judge(Model model,
 			@RequestParam(value = "id", required = true, defaultValue = "World") final String hash) {
 
-		System.out.println(hash);
-
 		ColorsTaken user = colorsTakenRepository.findByHash(hash);
 
 		if (user == null) {
@@ -179,6 +177,8 @@ public class HelloController {
 		}
 
 		if (name.equalsIgnoreCase("Dubious85247")) {
+			
+			board.setDubious(color);
 
 			return "Dubious";
 		}

@@ -87,11 +87,18 @@ public class Board {
 
 	private boolean botSet = false;
 
+	@Getter
+	private boolean dubiousSet = false;
+
 	private String[] places = new String[4];
 
 	private String[] playerPlaces = new String[4];
 
 	private int placesCounter = 0;
+
+	private String dubiousColor = null;
+
+	private Dubious dubious = null;
 
 	public Board(String hash) {
 
@@ -312,6 +319,11 @@ public class Board {
 
 		timeArrayInt[turn] = Math.max((int) (delta + (reference + (2 * 60 * 1000) - System.currentTimeMillis())), 0);
 
+		if (playerz[turn] == dubious) {
+
+			dubious.next();
+		}
+
 		turn = (turn + 1) % 4;
 
 		delta = timeArrayInt[turn];
@@ -384,15 +396,22 @@ public class Board {
 
 	public Place[][] getRotatedPlacez(String color) {
 
-		if (color.equalsIgnoreCase("red")) {
+		String adaptedColor = color;
+
+		if (dubiousColor != null && dubiousColor.equalsIgnoreCase(color)) {
+
+			adaptedColor = dubious.getCurrent();
+		}
+
+		if (adaptedColor.equalsIgnoreCase("red")) {
 
 			return getRedPlacez();
 
-		} else if (color.equalsIgnoreCase("yellow")) {
+		} else if (adaptedColor.equalsIgnoreCase("yellow")) {
 
 			return getYellozPlacez();
 
-		} else if (color.equalsIgnoreCase("blue")) {
+		} else if (adaptedColor.equalsIgnoreCase("blue")) {
 
 			return getBluePlacez();
 		}
@@ -596,7 +615,7 @@ public class Board {
 		}
 
 		playerz[color] = new Player(color, this, true);
-		
+
 		if (playerz[turn].isRobot()) {
 
 			playerz[turn].playRandomMove(performedMoves);
@@ -624,5 +643,39 @@ public class Board {
 		}
 
 		return result;
+	}
+
+	public void setDubious(int color) {
+
+		if (dubiousSet) {
+
+			return;
+		}
+
+		Player[] others = new Player[3];
+
+		int counter = 2;
+
+		int index = 0;
+
+		for (int i = 0; i < 4; i++) {
+
+			if (color != counter) {
+
+				others[index++] = playerz[counter];
+			}
+
+			counter++;
+
+			counter %= 4;
+		}
+
+		playerz[color] = new Dubious(color, this, false, others);
+
+		dubiousColor = Player.getColorNamez()[color];
+
+		dubious = (Dubious) playerz[color];
+
+		dubiousSet = true;
 	}
 }
