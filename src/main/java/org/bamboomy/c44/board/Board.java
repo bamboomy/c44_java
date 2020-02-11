@@ -597,9 +597,9 @@ public class Board {
 
 		playerz[color] = new Player(color, this, true);
 		
-		if (currentPlayer.isRobot()) {
+		if (playerz[turn].isRobot()) {
 
-			currentPlayer.playRandomMove(performedMoves);
+			playerz[turn].playRandomMove(performedMoves);
 		}
 
 		botSet = true;
