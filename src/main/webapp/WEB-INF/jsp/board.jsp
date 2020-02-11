@@ -31,6 +31,13 @@
 		}
 	</script>
 </c:if>
+<c:if
+	test="${!board.isPlayerIsMoving() && board.getCurrentPlayer().checkCheck() 
+	&& board.isRenderingCurrentPlayer(user.color) && !board.getCurrentPlayer().canPrevent()}">
+	<script type="text/javascript">
+			alert('you can't prevent...');
+	</script>
+</c:if>
 <c:if test="${board.isWouldBeCheck() && board.isRenderingCurrentPlayer(user.color)}">
 	<script type="text/javascript">
 		if (!cantMoveShown) {
