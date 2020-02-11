@@ -184,7 +184,7 @@ public class Player {
 
 				board.setWouldBeCheck(false);
 
-				if (piece.checkWouldBeCheck()) {
+				if ((checkCheck() && canPrevent() || !checkCheck()) && piece.checkWouldBeCheck()) {
 
 					board.setWouldBeCheck(true);
 				}
