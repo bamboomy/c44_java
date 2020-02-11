@@ -272,6 +272,8 @@ public class Player {
 
 						player.setChekcingCheck(false);
 
+						lock.unlock();
+						
 						return true;
 					}
 
