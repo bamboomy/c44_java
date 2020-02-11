@@ -3,6 +3,8 @@ package org.bamboomy.c44.board;
 import java.util.ArrayList;
 import java.util.concurrent.locks.ReentrantLock;
 
+import org.bamboomy.c44.ColorsTaken;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -677,5 +679,22 @@ public class Board {
 		dubious = (Dubious) playerz[color];
 
 		dubiousSet = true;
+	}
+
+	public ColorsTaken getUserColor(ColorsTaken user, Iterable<ColorsTaken> iterable) {
+
+		if (playerz[turn] == dubious) {
+
+			for (ColorsTaken color : iterable) {
+
+				if (dubious.getCurrent().equalsIgnoreCase(color.getColor())) {
+
+					return color;
+				}
+			}
+
+		}
+
+		return user;
 	}
 }

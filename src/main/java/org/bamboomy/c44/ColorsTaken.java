@@ -14,13 +14,13 @@ public class ColorsTaken {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	
-private String game;
-	
+
+	private String game;
+
 	private String color;
-	
+
 	private String name;
-	
+
 	private String javaHash;
 
-	}
+}

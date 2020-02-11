@@ -72,9 +72,11 @@ public class HelloController {
 		String gameHash = user.getGame();
 
 		Board board = BoardController.getInstance().getBoard(gameHash);
+		
+		ColorsTaken mutated = board.getUserColor(user, colorsTakenRepository.findByGameHash(gameHash));
 
 		model.addAttribute("board", board);
-		model.addAttribute("user", user);
+		model.addAttribute("user", mutated);
 
 		return "board";
 	}
