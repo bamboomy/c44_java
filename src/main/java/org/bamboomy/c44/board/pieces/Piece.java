@@ -105,7 +105,7 @@ public abstract class Piece {
 
 	public abstract String getPieceIdentifier();
 
-	public void click() {
+	public void click(boolean canTakeKing) {
 
 		System.out.println(getPieceName());
 
@@ -115,7 +115,14 @@ public abstract class Piece {
 
 			currentPlace.getBoard().getCurrentPlayer().setSelected(this);
 
-			setAttackablePlaces(true, true);
+			if(canTakeKing) {
+
+				attackableMoves = kingMovez;
+				
+			} else {
+			
+				setAttackablePlaces(true, true);
+			}
 
 			for (Move move : attackableMoves) {
 

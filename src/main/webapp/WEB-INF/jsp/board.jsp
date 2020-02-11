@@ -35,7 +35,18 @@
 	test="${!board.isPlayerIsMoving() && board.getCurrentPlayer().checkCheck() 
 	&& board.isRenderingCurrentPlayer(user.color) && !board.getCurrentPlayer().canPrevent()}">
 	<script type="text/javascript">
-			alert('you can't prevent...');
+		if (!cantPreventShown){
+			
+			alert("and you can't prevent...");
+			
+			var txt = "You are check mate but your king\n";
+			txt += "can utter one final command...\n";
+			txt += "Make it a worthy one!!!" 
+			
+			alert(txt);
+			
+			cantPreventShown = true;
+		}
 	</script>
 </c:if>
 <c:if test="${board.isWouldBeCheck() && board.isRenderingCurrentPlayer(user.color)}">

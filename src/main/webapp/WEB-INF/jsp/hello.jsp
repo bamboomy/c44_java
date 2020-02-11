@@ -35,6 +35,8 @@
 	var checkShown = false;
 	
 	var cantMoveShown = false;
+	
+	var cantPreventShown = false;
 
 	var myId;
 
@@ -55,6 +57,8 @@
 				checkShown = false;
 				
 				cantMoveShown = false;
+				
+				cantPreventShown = false;
 			}
 		});
 	}

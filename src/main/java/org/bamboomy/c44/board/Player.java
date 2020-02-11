@@ -49,7 +49,7 @@ public class Player {
 
 	// TODO: pat
 	private boolean pat = false;
-	
+
 	private ReentrantLock lock = new ReentrantLock();
 
 	public Player(int color, Board board, boolean isRobot) {
@@ -177,7 +177,10 @@ public class Player {
 
 				board.setPlayerIsMoving(true);
 
-				piece.click();
+				if (!canTakeKing() || (canTakeKing() && kingTakerz.contains(piece))) {
+
+					piece.click(canTakeKing());
+				}
 
 				board.setWouldBeCheck(false);
 
@@ -257,7 +260,7 @@ public class Player {
 	}
 
 	public boolean checkCheck() {
-		
+
 		lock.lock();
 
 		for (Player player : board.getPlayerz()) {
@@ -273,7 +276,7 @@ public class Player {
 						player.setChekcingCheck(false);
 
 						lock.unlock();
-						
+
 						return true;
 					}
 
@@ -281,7 +284,7 @@ public class Player {
 				}
 			}
 		}
-		
+
 		lock.unlock();
 
 		return false;
