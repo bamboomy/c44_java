@@ -364,8 +364,6 @@ public class Player {
 		movable.get((int) (Math.random() * movable.size())).kamikaze(performedMoves);
 
 		die(false);
-
-		board.next();
 	}
 
 	public void setAttackedPlaces(boolean checkRocade) {

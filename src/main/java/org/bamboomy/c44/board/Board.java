@@ -46,9 +46,7 @@ public class Board {
 
 	private ArrayList<Integer> deadPlayers = new ArrayList<>();
 
-	private ArrayList<Integer> deadNotifiedPlayers = new ArrayList<>();
-
-	private ArrayList<Integer> deadGUINotifiedPlayers = new ArrayList<>();
+	private ArrayList<Integer> recordedDeadPlayers = new ArrayList<>();
 
 	@Getter
 	@Setter
@@ -541,23 +539,9 @@ public class Board {
 
 		boolean result = false;
 
-		if (deadPlayers.contains(turn) && !deadNotifiedPlayers.contains(turn)) {
+		if (deadPlayers.contains(turn) && !recordedDeadPlayers.contains(turn)) {
 
-			deadNotifiedPlayers.add(turn);
-
-			result = true;
-		}
-
-		return result;
-	}
-
-	public boolean isNewGUIDead() {
-
-		boolean result = false;
-
-		if (deadPlayers.contains(turn) && !deadGUINotifiedPlayers.contains(turn)) {
-
-			deadGUINotifiedPlayers.add(turn);
+			recordedDeadPlayers.add(turn);
 
 			result = true;
 		}
