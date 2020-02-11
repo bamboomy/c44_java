@@ -162,11 +162,6 @@ public class Board {
 		places[1] = "3rd";
 		places[2] = "2nd";
 		places[3] = "1st";
-
-		if (currentPlayer.isRobot()) {
-
-			currentPlayer.playRandomMove(performedMoves);
-		}
 	}
 
 	private int getCurrentTimeOfCurrentPlayer() {
@@ -601,6 +596,11 @@ public class Board {
 		}
 
 		playerz[color] = new Player(color, this, true);
+		
+		if (currentPlayer.isRobot()) {
+
+			currentPlayer.playRandomMove(performedMoves);
+		}
 
 		botSet = true;
 	}
