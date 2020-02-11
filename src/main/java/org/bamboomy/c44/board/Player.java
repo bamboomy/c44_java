@@ -1,6 +1,7 @@
 package org.bamboomy.c44.board;
 
 import java.util.ArrayList;
+import java.util.concurrent.locks.ReentrantLock;
 
 import org.bamboomy.c44.board.pieces.Bisshop;
 import org.bamboomy.c44.board.pieces.Horse;
@@ -48,6 +49,8 @@ public class Player {
 
 	// TODO: pat
 	private boolean pat = false;
+	
+	private ReentrantLock lock = new ReentrantLock();
 
 	public Player(int color, Board board, boolean isRobot) {
 
@@ -254,6 +257,8 @@ public class Player {
 	}
 
 	public boolean checkCheck() {
+		
+		lock.lock();
 
 		for (Player player : board.getPlayerz()) {
 
@@ -274,6 +279,8 @@ public class Player {
 				}
 			}
 		}
+		
+		lock.unlock();
 
 		return false;
 	}
