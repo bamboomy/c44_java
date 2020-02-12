@@ -176,7 +176,7 @@ public class Board {
 
 	private int getCurrentTimeOfCurrentPlayer() {
 
-		long millisUntilFinished = delta + (reference + (2 * 60 * 1000) - System.currentTimeMillis());
+		long millisUntilFinished = delta + (reference + (60 * 1000) - System.currentTimeMillis());
 
 		playSound = false;
 
@@ -327,7 +327,7 @@ public class Board {
 
 		playerIsMoving = false;
 
-		timeArrayInt[turn] = Math.max((int) (delta + (reference + (2 * 60 * 1000) - System.currentTimeMillis())), 0);
+		timeArrayInt[turn] = Math.max((int) (delta + (reference + (60 * 1000) - System.currentTimeMillis())), 0);
 
 		if (playerz[turn] == dubious) {
 
