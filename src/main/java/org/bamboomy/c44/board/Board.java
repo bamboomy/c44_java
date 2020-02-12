@@ -176,7 +176,7 @@ public class Board {
 
 	private int getCurrentTimeOfCurrentPlayer() {
 
-		long millisUntilFinished = (reference + (60 * 1000) - System.currentTimeMillis());
+		long millisUntilFinished = (reference + (2 * 60 * 1000) - System.currentTimeMillis());
 
 		playSound = false;
 
