@@ -193,7 +193,14 @@ public class Board {
 
 			if (timeOutzIntz[turn] <= 0) {
 
-				removeMe();
+				if (currentPlayer == dubious && dubious.removeCurrent()) {
+
+					removeMe();
+
+				} else {
+
+					removeMe();
+				}
 
 				resignText = buildResignText(turn);
 
@@ -323,15 +330,15 @@ public class Board {
 		timeArrayInt[turn] = Math.max((int) (delta + (reference + (2 * 60 * 1000) - System.currentTimeMillis())), 0);
 
 		if (playerz[turn] == dubious) {
-			
+
 			dubious.storeTimeOut(timeOutzIntz[turn], timeOutzArray[turn], timeArrayInt[turn]);
 
 			dubious.next();
-			
+
 			timeOutzIntz[turn] = dubious.getCurrentTimeOutzIntz();
-			
+
 			timeOutzArray[turn] = dubious.getCurrentTimeOutzArray();
-			
+
 			timeArrayInt[turn] = dubious.getCurrentTimeArrayInt();
 		}
 

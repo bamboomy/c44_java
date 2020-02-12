@@ -1,5 +1,7 @@
 package org.bamboomy.c44.board;
 
+import java.util.ArrayList;
+
 public class Dubious extends Player {
 
 	private Player[] others = new Player[3];
@@ -11,6 +13,8 @@ public class Dubious extends Player {
 	private int[] timeOutzIntz = new int[3];
 
 	private int[] timeArrayInt = new int[3];
+
+	private ArrayList<Integer> timeOutz = new ArrayList<Integer>();
 
 	public Dubious(int color, Board board, boolean isRobot, Player[] others) {
 
@@ -33,6 +37,17 @@ public class Dubious extends Player {
 		turn++;
 
 		turn %= 3;
+
+		int counter = 0;
+
+		while (timeOutz.contains(turn) && counter < 3) {
+
+			turn++;
+
+			turn %= 3;
+
+			counter++;
+		}
 	}
 
 	public void storeTimeOut(int timeOutzIntzValue, String timeOutzArrayValue, int timeArrayIntValue) {
@@ -57,5 +72,12 @@ public class Dubious extends Player {
 	public int getCurrentTimeArrayInt() {
 
 		return timeArrayInt[turn];
+	}
+
+	public boolean removeCurrent() {
+
+		timeOutz.add(turn);
+
+		return timeOutz.size() >= 3;
 	}
 }
