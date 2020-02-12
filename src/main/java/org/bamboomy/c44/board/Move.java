@@ -23,7 +23,7 @@ public class Move {
 	protected boolean isRocade = false;
 
 	protected ArrayList<Move> performedMoves;
-	
+
 	protected boolean rememberMoved;
 
 	public Move(Place from, Place to, Piece piece, boolean addMove) {
@@ -61,9 +61,9 @@ public class Move {
 
 			this.performedMoves = performedMoves;
 		}
-		
+
 		rememberMoved = piece.isMoved();
-		
+
 		piece.setMoved(true);
 	}
 
@@ -76,6 +76,8 @@ public class Move {
 			to.setPiece(takenPiece);
 
 			takenPiece.getPlayer().getPiecez().add(takenPiece);
+
+			takenPiece.setCurrentPlace(to);
 
 		} else {
 
@@ -90,7 +92,7 @@ public class Move {
 
 			performedMoves.remove(performedMoves.indexOf(this));
 		}
-		
+
 		piece.setMoved(rememberMoved);
 	}
 }
