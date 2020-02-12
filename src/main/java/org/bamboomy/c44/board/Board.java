@@ -616,6 +616,8 @@ public class Board {
 				remove(colorInt);
 			}
 
+			next();
+
 		} else {
 
 			remove(colorInt);
