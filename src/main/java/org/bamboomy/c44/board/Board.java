@@ -678,14 +678,20 @@ public class Board {
 
 		if (playerz[turn] == dubious) {
 
+			ColorsTaken dubiousTaken = null;
+
 			for (ColorsTaken color : iterable) {
 
-				if (dubious.getCurrent().equalsIgnoreCase(color.getColor())) {
+				if (color.getColor().equalsIgnoreCase(dubiousColor)) {
 
-					return color;
+					dubiousTaken = color;
 				}
 			}
 
+			if (dubious.getCurrent().equalsIgnoreCase(user.getColor())) {
+
+				return dubiousTaken;
+			}
 		}
 
 		return user;
