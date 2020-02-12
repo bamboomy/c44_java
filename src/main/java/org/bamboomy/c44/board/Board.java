@@ -103,6 +103,8 @@ public class Board {
 	@Getter
 	private Dubious dubious = null;
 
+	private int dubiousTurn = -1;
+
 	public Board(String hash) {
 
 		System.out.println("board created...");
@@ -193,14 +195,7 @@ public class Board {
 
 			if (timeOutzIntz[turn] <= 0) {
 
-				if (currentPlayer == dubious && dubious.removeCurrent()) {
-
-					removeMe();
-
-				} else {
-
-					removeMe();
-				}
+				removeMe();
 
 				resignText = buildResignText(turn);
 
@@ -388,6 +383,18 @@ public class Board {
 	}
 
 	public void removeMe() {
+
+		if (currentPlayer == dubious && dubious.removeCurrent()) {
+
+			remove(turn);
+
+		} else {
+
+			remove(turn);
+		}
+	}
+
+	public void removeMeWithoutDubiousCheck() {
 
 		remove(turn);
 	}
@@ -602,7 +609,17 @@ public class Board {
 			}
 		}
 
-		remove(colorInt);
+		if (turn == dubiousTurn && dubious.getCurrent().equalsIgnoreCase(color)) {
+
+			if (dubious.removeCurrent()) {
+
+				remove(colorInt);
+			}
+
+		} else {
+
+			remove(colorInt);
+		}
 
 		System.out.println(colorInt + " resigned...");
 
@@ -686,6 +703,8 @@ public class Board {
 		dubiousColor = Player.getColorNamez()[color];
 
 		dubious = (Dubious) playerz[color];
+
+		dubiousTurn = color;
 
 		dubiousSet = true;
 	}
