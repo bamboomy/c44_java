@@ -26,6 +26,11 @@
 	margin-right: auto;
 	width: 100%;
 }
+
+.center {
+  margin: 0 auto;
+  text-align: center;
+}
 </style>
 
 
@@ -226,15 +231,16 @@
 
 	<div id="judge"></div>
 
-	<center>
+	
 		<div class="outer">
 			<div class="middle">
-				<div class="inner">
-					<div id="board"></div>
+				<div class="inner center">
+					<center>
+						<div id="board"></div>
+					</center>
 				</div>
 			</div>
 		</div>
-	</center>
 
 	<div id="resign">
 
