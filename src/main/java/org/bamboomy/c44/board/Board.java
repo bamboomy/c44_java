@@ -100,6 +100,7 @@ public class Board {
 
 	private String dubiousColor = null;
 
+	@Getter
 	private Dubious dubious = null;
 
 	public Board(String hash) {

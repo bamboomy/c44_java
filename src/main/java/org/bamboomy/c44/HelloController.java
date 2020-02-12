@@ -72,7 +72,7 @@ public class HelloController {
 		String gameHash = user.getGame();
 
 		Board board = BoardController.getInstance().getBoard(gameHash);
-		
+
 		ColorsTaken mutated = board.getUserColor(user, colorsTakenRepository.findByGameHash(gameHash));
 
 		model.addAttribute("board", board);
@@ -100,6 +100,8 @@ public class HelloController {
 
 		Iterable<ColorsTaken> userIterable = colorsTakenRepository.findByGameHash(gameHash);
 
+		Iterable<ColorsTaken> dubiousIterable = colorsTakenRepository.findByGameHash(gameHash);
+
 		for (ColorsTaken userColor : userIterable) {
 
 			if (userColor.getColor().equalsIgnoreCase("red")) {
@@ -110,7 +112,7 @@ public class HelloController {
 
 				} else {
 
-					board.setRedName(detectBot(userColor.getName(), Player.RED, board));
+					board.setRedName(detectBot(userColor.getName(), Player.RED, board, dubiousIterable));
 				}
 
 			} else if (userColor.getColor().equalsIgnoreCase("green")) {
@@ -121,7 +123,7 @@ public class HelloController {
 
 				} else {
 
-					board.setGreenName(detectBot(userColor.getName(), Player.GREEN, board));
+					board.setGreenName(detectBot(userColor.getName(), Player.GREEN, board, dubiousIterable));
 				}
 
 			} else if (userColor.getColor().equalsIgnoreCase("blue")) {
@@ -132,7 +134,7 @@ public class HelloController {
 
 				} else {
 
-					board.setBlueName(detectBot(userColor.getName(), Player.BLUE, board));
+					board.setBlueName(detectBot(userColor.getName(), Player.BLUE, board, dubiousIterable));
 				}
 
 			} else if (userColor.getColor().equalsIgnoreCase("yellow")) {
@@ -143,7 +145,7 @@ public class HelloController {
 
 				} else {
 
-					board.setYellowName(detectBot(userColor.getName(), Player.YELLOW, board));
+					board.setYellowName(detectBot(userColor.getName(), Player.YELLOW, board, dubiousIterable));
 				}
 			}
 		}
@@ -159,7 +161,7 @@ public class HelloController {
 			result.setToken(getToken());
 
 			gameResultRepository.save(result);
-			
+
 			board.next();
 		}
 
@@ -169,20 +171,30 @@ public class HelloController {
 		return "judge";
 	}
 
-	private String detectBot(String name, int color, Board board) {
+	private String detectBot(String name, int color, Board board, Iterable<ColorsTaken> dubiousIterable) {
 
 		if (name.equalsIgnoreCase("Random85247")) {
-			
+
 			board.setRandom(color);
 
 			return "Random";
 		}
 
 		if (name.equalsIgnoreCase("Dubious85247")) {
-			
+
 			board.setDubious(color);
 
-			return "Dubious";
+			String dubiousName = "Dubious: ";
+
+			for (ColorsTaken otherName : dubiousIterable) {
+
+				if (board.getDubious().getCurrent().equalsIgnoreCase(otherName.getColor())) {
+
+					dubiousName += otherName.getName();	
+				}
+			}
+
+			return dubiousName;
 		}
 
 		return name;
