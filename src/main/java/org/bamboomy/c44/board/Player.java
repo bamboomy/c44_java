@@ -256,7 +256,7 @@ public class Player {
 
 		this.pat = pat;
 
-		board.removeMe();
+		board.removeMeWithoutDubiousCheck();
 	}
 
 	public boolean checkCheck() {
