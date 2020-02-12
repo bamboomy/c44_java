@@ -82,8 +82,6 @@ public class Board {
 	@Getter
 	private boolean finished;
 
-	private int delta;
-
 	@Getter
 	private ReentrantLock lock = new ReentrantLock();
 
@@ -178,7 +176,7 @@ public class Board {
 
 	private int getCurrentTimeOfCurrentPlayer() {
 
-		long millisUntilFinished = delta + (reference + (60 * 1000) - System.currentTimeMillis());
+		long millisUntilFinished = (reference + (2 * 60 * 1000) - System.currentTimeMillis());
 
 		playSound = false;
 
@@ -322,7 +320,7 @@ public class Board {
 
 		playerIsMoving = false;
 
-		timeArrayInt[turn] = Math.max((int) (delta + (reference + (60 * 1000) - System.currentTimeMillis())), 0);
+		timeArrayInt[turn] = 0;
 
 		if (playerz[turn] == dubious) {
 
@@ -338,8 +336,6 @@ public class Board {
 		}
 
 		turn = (turn + 1) % 4;
-
-		delta = timeArrayInt[turn];
 
 		resetTimer();
 
