@@ -228,15 +228,7 @@
 
 	<center>
 
-		<div class="outer">
-			<div class="middle">
-				<div class="inner">
-
 					<div id="board"></div>
-
-				</div>
-			</div>
-		</div>
 	</center>
 
 	<div id="resign">
