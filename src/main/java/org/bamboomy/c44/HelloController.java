@@ -112,7 +112,7 @@ public class HelloController {
 
 				} else {
 
-					board.setRedName(detectBot(userColor.getName(), Player.RED, board, dubiousIterable));
+					board.setRedName(detectBot(userColor.getName(), Player.RED, board, dubiousIterable, user.getColor()));
 				}
 
 			} else if (userColor.getColor().equalsIgnoreCase("green")) {
@@ -123,7 +123,7 @@ public class HelloController {
 
 				} else {
 
-					board.setGreenName(detectBot(userColor.getName(), Player.GREEN, board, dubiousIterable));
+					board.setGreenName(detectBot(userColor.getName(), Player.GREEN, board, dubiousIterable, user.getColor()));
 				}
 
 			} else if (userColor.getColor().equalsIgnoreCase("blue")) {
@@ -134,7 +134,7 @@ public class HelloController {
 
 				} else {
 
-					board.setBlueName(detectBot(userColor.getName(), Player.BLUE, board, dubiousIterable));
+					board.setBlueName(detectBot(userColor.getName(), Player.BLUE, board, dubiousIterable, user.getColor()));
 				}
 
 			} else if (userColor.getColor().equalsIgnoreCase("yellow")) {
@@ -145,7 +145,7 @@ public class HelloController {
 
 				} else {
 
-					board.setYellowName(detectBot(userColor.getName(), Player.YELLOW, board, dubiousIterable));
+					board.setYellowName(detectBot(userColor.getName(), Player.YELLOW, board, dubiousIterable, user.getColor()));
 				}
 			}
 		}
@@ -171,7 +171,7 @@ public class HelloController {
 		return "judge";
 	}
 
-	private String detectBot(String name, int color, Board board, Iterable<ColorsTaken> dubiousIterable) {
+	private String detectBot(String name, int color, Board board, Iterable<ColorsTaken> dubiousIterable, String userColor) {
 
 		if (name.equalsIgnoreCase("Random85247")) {
 
@@ -189,8 +189,15 @@ public class HelloController {
 			for (ColorsTaken otherName : dubiousIterable) {
 
 				if (board.getDubious().getCurrent().equalsIgnoreCase(otherName.getColor())) {
-
-					dubiousName += otherName.getName();	
+					
+					if(userColor.equalsIgnoreCase(otherName.getColor())) {
+						
+						dubiousName += "You";
+						
+					} else {
+						
+						dubiousName += otherName.getName();	
+					}
 				}
 			}
 
