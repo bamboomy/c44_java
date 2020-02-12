@@ -26,11 +26,6 @@
 	margin-right: auto;
 	width: 100%;
 }
-
-.center {
-  margin: 0 auto;
-  text-align: center;
-}
 </style>
 
 
@@ -234,10 +229,8 @@
 	<center>
 		<div class="outer">
 			<div class="middle">
-				<div class="inner center">
-
+				<div class="inner">
 					<div id="board"></div>
-					
 				</div>
 			</div>
 		</div>
