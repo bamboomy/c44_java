@@ -398,22 +398,15 @@ public class Board {
 
 	public Place[][] getRotatedPlacez(String color) {
 
-		String adaptedColor = color;
-
-		if (dubiousColor != null && dubiousColor.equalsIgnoreCase(color)) {
-
-			adaptedColor = dubious.getCurrent();
-		}
-
-		if (adaptedColor.equalsIgnoreCase("red")) {
+		if (color.equalsIgnoreCase("red")) {
 
 			return getRedPlacez();
 
-		} else if (adaptedColor.equalsIgnoreCase("yellow")) {
+		} else if (color.equalsIgnoreCase("yellow")) {
 
 			return getYellozPlacez();
 
-		} else if (adaptedColor.equalsIgnoreCase("blue")) {
+		} else if (color.equalsIgnoreCase("blue")) {
 
 			return getBluePlacez();
 		}
