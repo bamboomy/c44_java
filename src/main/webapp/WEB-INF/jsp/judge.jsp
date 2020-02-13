@@ -12,11 +12,9 @@
 
 </div>
 
-<c:if test="${board.playSound}">
+<c:if test="${board.readSound(user.color)}">
 	<script>
-		var x = document.getElementById("myAudio");
-
-		//x.play();
+		document.getElementById("myAudio").play();
 	</script>
 </c:if>
 

@@ -32,11 +32,9 @@ public class Board {
 	@Setter
 	private String redName, greenName, blueName, yellowName, gameName, playerHash;
 
-	private int turn = 2;
+	private boolean[] beginTurn = new boolean[4];
 
-	/*
-	 * @Getter private String[] timeArray = new String[4];
-	 */
+	private int turn = 2;
 
 	private int[] timeArrayInt = new int[4];
 
@@ -166,24 +164,21 @@ public class Board {
 			timeOutzIntz[i] = 3;
 
 			resignRead[i] = true;
+
+			beginTurn[i] = false;
 		}
 
 		places[0] = "4th";
 		places[1] = "3rd";
 		places[2] = "2nd";
 		places[3] = "1st";
+
+		beginTurn[turn] = true;
 	}
 
 	private int getCurrentTimeOfCurrentPlayer() {
 
 		long millisUntilFinished = (reference + (2 * 60 * 1000) - System.currentTimeMillis());
-
-		playSound = false;
-
-		if (((millisUntilFinished % 60000 / 1000) < 10 && ((millisUntilFinished / 60000) == 0))) {
-
-			playSound = true;
-		}
 
 		if (millisUntilFinished <= 0) {
 
@@ -728,5 +723,41 @@ public class Board {
 		}
 
 		return user;
+	}
+
+	public boolean readSound(String color) {
+
+		System.out.println("readin...");
+
+		boolean result = false;
+
+		if (color.equalsIgnoreCase("red")) {
+
+			result = beginTurn[Player.RED];
+
+			beginTurn[Player.RED] = false;
+
+		} else if (color.equalsIgnoreCase("green")) {
+
+			result = beginTurn[Player.GREEN];
+
+			beginTurn[Player.GREEN] = false;
+
+		} else if (color.equalsIgnoreCase("blue")) {
+
+			result = beginTurn[Player.BLUE];
+
+			beginTurn[Player.BLUE] = false;
+
+		} else if (color.equalsIgnoreCase("yellow")) {
+
+			result = beginTurn[Player.YELLOW];
+
+			beginTurn[Player.YELLOW] = false;
+		}
+
+		System.out.println(result);
+
+		return result;
 	}
 }
