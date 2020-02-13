@@ -32,6 +32,11 @@ public class Dubious extends Player {
 		return Player.getColorNamez()[others[turn].getColor()];
 	}
 
+	public int getCurrentNumber() {
+
+		return others[turn].getColor();
+	}
+
 	public void next() {
 
 		turn++;
