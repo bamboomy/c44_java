@@ -331,6 +331,8 @@ public class Board {
 		}
 
 		turn = (turn + 1) % 4;
+		
+		beginTurn[turn] = true;
 
 		resetTimer();
 

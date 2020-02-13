@@ -14,7 +14,9 @@
 
 <c:if test="${board.readSound(user.color)}">
 	<script>
-		document.getElementById("myAudio").play();
+		var x = document.getElementById("myAudio");
+
+		x.play();
 	</script>
 </c:if>
 
