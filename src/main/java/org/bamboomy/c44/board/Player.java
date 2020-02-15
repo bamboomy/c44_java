@@ -180,6 +180,10 @@ public class Player {
 				if (!canTakeKing() || (canTakeKing() && kingTakerz.contains(piece))) {
 
 					piece.click(canTakeKing());
+
+					board.setWouldBeCheck(false);
+
+					return true;
 				}
 
 				board.setWouldBeCheck(false);
