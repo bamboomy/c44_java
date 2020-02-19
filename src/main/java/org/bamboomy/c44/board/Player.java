@@ -168,7 +168,7 @@ public class Player {
 	boolean click(String md5) {
 
 		System.out.println("player");
-
+ 
 		for (Piece piece : piecez) {
 
 			if (md5.equalsIgnoreCase(piece.getMd5())) {

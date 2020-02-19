@@ -230,6 +230,8 @@
 	</audio>
 
 	<div id="judge"></div>
+	
+	<div id="messages"></div>
 
 	
 		<div class="outer">
