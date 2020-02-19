@@ -236,7 +236,7 @@
 		<div class="outer">
 			<div class="middle">
 				<div class="inner">
-					Messages:
+					<h3>Messages:</h3>
 					<p id="message">test</p>				
 				</div>
 			</div>
