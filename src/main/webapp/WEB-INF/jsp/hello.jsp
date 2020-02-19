@@ -231,7 +231,18 @@
 
 	<div id="judge"></div>
 	
-	<div id="messages"></div>
+	<div id="messages">
+
+		<div class="outer">
+			<div class="middle">
+				<div class="inner">
+					Messages:
+					<p id="message">test</p>				
+				</div>
+			</div>
+		</div>
+	
+	</div>
 
 	
 		<div class="outer">
