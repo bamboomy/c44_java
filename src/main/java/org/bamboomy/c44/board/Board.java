@@ -10,7 +10,7 @@ import org.springframework.context.annotation.PropertySource;
 import lombok.Getter;
 import lombok.Setter;
 
-@PropertySource({ "env.properties" })
+@PropertySource({ "classpath:application-${envTarget}.properties" })
 public class Board {
 
 	@Value("${path}")
