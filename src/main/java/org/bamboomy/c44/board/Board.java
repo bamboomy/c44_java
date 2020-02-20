@@ -5,14 +5,11 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import org.bamboomy.c44.ColorsTaken;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 
 import lombok.Getter;
 import lombok.Setter;
 
-@PropertySource({ "classpath:env.properties" })
 public class Board {
 
 	@Autowired
