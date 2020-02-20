@@ -20,7 +20,7 @@ public class Application extends SpringBootServletInitializer {
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(Application.class, args);
 
-		new Application.Helper().setPaths();
+		(new Application.Helper()).setPaths();
 	}
 
 	private static class Helper implements EnvironmentAware {
