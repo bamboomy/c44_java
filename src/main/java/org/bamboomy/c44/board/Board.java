@@ -14,6 +14,7 @@ import lombok.Setter;
 public class Board {
 
 	@Value("${path}")
+	@Getter
 	private String path;
 
 	@Getter
