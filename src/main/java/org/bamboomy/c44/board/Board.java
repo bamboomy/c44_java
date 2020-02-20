@@ -4,16 +4,19 @@ import java.util.ArrayList;
 import java.util.concurrent.locks.ReentrantLock;
 
 import org.bamboomy.c44.ColorsTaken;
+import org.springframework.beans.factory.annotation.Value;
 
 import lombok.Getter;
 import lombok.Setter;
 
 public class Board {
 
-	public static String staticPiecePath, staticTomcatPath;
-
 	@Getter
-	private String piecePath, tomcatPath;
+	@Value( "${peace.path}" )
+	private String piecePath;
+	
+	@Getter
+	private String tomcatPath;
 
 	@Getter
 	private Place[][] placez = new Place[12][12];
@@ -107,10 +110,6 @@ public class Board {
 	private int dubiousTurn = -1;
 
 	public Board(String hash) {
-
-		piecePath = staticPiecePath;
-
-		tomcatPath = staticPiecePath;
 
 		System.out.println("board created...");
 
