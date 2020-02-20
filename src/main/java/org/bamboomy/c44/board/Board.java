@@ -4,16 +4,13 @@ import java.util.ArrayList;
 import java.util.concurrent.locks.ReentrantLock;
 
 import org.bamboomy.c44.ColorsTaken;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
 
 import lombok.Getter;
 import lombok.Setter;
 
 public class Board {
 
-	@Autowired
-	private Environment env;
+	public static String staticPiecePath, staticTomcatPath;
 
 	@Getter
 	private String piecePath, tomcatPath;
@@ -111,9 +108,9 @@ public class Board {
 
 	public Board(String hash) {
 
-		piecePath = env.getProperty("peace.path");
+		piecePath = staticPiecePath;
 
-		tomcatPath = env.getProperty("tomcat.path");
+		tomcatPath = staticPiecePath;
 
 		System.out.println("board created...");
 
