@@ -4,21 +4,17 @@ import java.util.ArrayList;
 import java.util.concurrent.locks.ReentrantLock;
 
 import org.bamboomy.c44.ColorsTaken;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 
 import lombok.Getter;
 import lombok.Setter;
 
-@PropertySource("classpath:application.properties")
 public class Board {
 
 	@Getter
-	@Value( "${peace.path}" )
-	private String piecePath;
+	private String piecePath = "/peace/";
 	
 	@Getter
-	private String tomcatPath;
+	private String tomcatPath = "/tomcat/";
 
 	@Getter
 	private Place[][] placez = new Place[12][12];
