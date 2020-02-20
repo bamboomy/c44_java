@@ -28,19 +28,18 @@
 }
 
 .center {
-  margin: 0 auto;
-  text-align: center;
+	margin: 0 auto;
+	text-align: center;
 }
 </style>
 
 
 <script src="/js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
-
 	var checkShown = false;
-	
+
 	var cantMoveShown = false;
-	
+
 	var cantPreventShown = false;
 
 	var myId;
@@ -55,14 +54,28 @@
 
 		$.ajax({
 			type : "GET",
-			'url' : '${board.path}' + md5 + "/" + userHash,
+			'url' : '/peace/' + md5 + "/" + userHash,
 			success : function(text) {
 				fill();
-				
+
 				checkShown = false;
-				
+
 				cantMoveShown = false;
-				
+
+				cantPreventShown = false;
+			}
+		});
+
+		$.ajax({
+			type : "GET",
+			'url' : '/dev/peace/' + md5 + "/" + userHash,
+			success : function(text) {
+				fill();
+
+				checkShown = false;
+
+				cantMoveShown = false;
+
 				cantPreventShown = false;
 			}
 		});
@@ -208,11 +221,11 @@
 						url : "https://chess4four.io/tomcat/resign/?id=${board.playerHash}",
 						async : false,
 						success : function(text) {
-						
+
 							if (confirm("You resigned...\nDo you want to stick around?\nClick 'ok' to stay,\nclick 'cancel' to leave.") != true) {
-								
+
 								//TODO: delete king
-								
+
 								window.location.assign("https://www.google.be");
 							}
 						}
@@ -230,30 +243,30 @@
 	</audio>
 
 	<div id="judge"></div>
-	
+
 	<div id="messages">
 
 		<div class="outer">
 			<div class="middle">
 				<div class="inner">
 					<div style="text-align: center; font-size: larger;">Messages:</div>
-					<p id="message">test</p>				
+					<p id="message">test</p>
 				</div>
 			</div>
 		</div>
-	
+
 	</div>
 
-	
-		<div class="outer">
-			<div class="middle">
-				<div class="inner center">
-					<center>
-						<div id="board"></div>
-					</center>
-				</div>
+
+	<div class="outer">
+		<div class="middle">
+			<div class="inner center">
+				<center>
+					<div id="board"></div>
+				</center>
 			</div>
 		</div>
+	</div>
 
 	<div id="resign">
 
