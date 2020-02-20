@@ -14,7 +14,7 @@ import lombok.Setter;
 public class Board {
 
 	@Value("${path}")
-	private static String path;
+	private String path;
 
 	@Getter
 	private Place[][] placez = new Place[12][12];

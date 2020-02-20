@@ -55,7 +55,7 @@
 
 		$.ajax({
 			type : "GET",
-			'url' : '${Board.path}' + md5 + "/" + userHash,
+			'url' : '${board.path}' + md5 + "/" + userHash,
 			success : function(text) {
 				fill();
 				
