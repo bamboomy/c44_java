@@ -54,21 +54,7 @@
 
 		$.ajax({
 			type : "GET",
-			'url' : '/peace/' + md5 + "/" + userHash,
-			success : function(text) {
-				fill();
-
-				checkShown = false;
-
-				cantMoveShown = false;
-
-				cantPreventShown = false;
-			}
-		});
-
-		$.ajax({
-			type : "GET",
-			'url' : '/dev/peace/' + md5 + "/" + userHash,
+			'url' : '${board.piecePath}' + md5 + "/" + userHash,
 			success : function(text) {
 				fill();
 

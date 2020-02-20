@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.concurrent.locks.ReentrantLock;
 
 import org.bamboomy.c44.ColorsTaken;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -13,9 +15,11 @@ import lombok.Setter;
 @PropertySource({ "classpath:env.properties" })
 public class Board {
 
-	@Value("${path}")
+	@Autowired
+	private Environment env;
+
 	@Getter
-	private String path;
+	private String piecePath, tomcatPath;
 
 	@Getter
 	private Place[][] placez = new Place[12][12];
@@ -109,6 +113,10 @@ public class Board {
 	private int dubiousTurn = -1;
 
 	public Board(String hash) {
+
+		piecePath = env.getProperty("peace.path");
+
+		tomcatPath = env.getProperty("tomcat.path");
 
 		System.out.println("board created...");
 
