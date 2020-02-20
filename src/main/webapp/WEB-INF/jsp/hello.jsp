@@ -55,7 +55,7 @@
 
 		$.ajax({
 			type : "GET",
-			'url' : '/peace/' + md5 + "/" + userHash,
+			'url' : '${Board.path}' + md5 + "/" + userHash,
 			success : function(text) {
 				fill();
 				
