@@ -14,7 +14,7 @@ public class Board {
 	private String piecePath = "/peace/";
 	
 	@Getter
-	private String tomcatPath = "/tomcat/";
+	private String tomcatPath = "tomcat";
 
 	@Getter
 	private Place[][] placez = new Place[12][12];

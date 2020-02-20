@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Hello ${name}!</title>
-<link href="/tomcat/css/main.css" rel="stylesheet">
+<link href="/${board.tomcatPath}/css/main.css" rel="stylesheet">
 
 <style>
 .outer {
@@ -71,7 +71,7 @@
 
 		$.ajax({
 			type : "GET",
-			url : "https://chess4four.io/tomcat/board/?id=${board.playerHash}",
+			url : "https://chess4four.io/${board.tomcatPath}/board/?id=${board.playerHash}",
 			async : false,
 			success : function(text) {
 				$('#board').html(text);
@@ -168,7 +168,7 @@
 
 		$.ajax({
 			type : "GET",
-			url : "https://chess4four.io/tomcat/judge/?id=${board.playerHash}",
+			url : "https://chess4four.io/${board.tomcatPath}/judge/?id=${board.playerHash}",
 			async : false,
 			success : function(text) {
 				$('#judge').html(text);
@@ -204,7 +204,7 @@
 			$
 					.ajax({
 						type : "GET",
-						url : "https://chess4four.io/tomcat/resign/?id=${board.playerHash}",
+						url : "https://chess4four.io/${board.tomcatPath}/resign/?id=${board.playerHash}",
 						async : false,
 						success : function(text) {
 
@@ -224,7 +224,7 @@
 <body>
 
 	<audio id="myAudio">
-		<source src="/tomcat/soundz/tik.mp3" type="audio/mpeg">
+		<source src="/${board.tomcatPath}/soundz/tik.mp3" type="audio/mpeg">
 		Your browser does not support the audio element.
 	</audio>
 
