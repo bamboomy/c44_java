@@ -15,6 +15,8 @@ public class ChessComponent {
 	public ChessComponent() {
 		
 		Board.staticProfile = profile;
+		
+		System.out.println(profile);
 	}
 
 }
