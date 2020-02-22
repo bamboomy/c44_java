@@ -1,16 +1,13 @@
 package org.bamboomy.c44.board;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-import lombok.Getter;
-
 @Component
+@Profile("dev")
 public class ChessComponent {
 	
-	@Value("${profile}")
-	@Getter
-	private String profile;
+	private String profile = "dev";
 	
 	public ChessComponent() {
 		
