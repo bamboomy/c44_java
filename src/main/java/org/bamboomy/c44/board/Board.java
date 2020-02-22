@@ -10,16 +10,13 @@ import org.springframework.stereotype.Component;
 import lombok.Getter;
 import lombok.Setter;
 
-@Component
 public class Board {
 
-	@Value("${profile}")
-	@Getter
-	private String profile;
-	
+	public static String staticProfile;
+
 	@Getter
 	private String piecePath = "/peace/";
-	
+
 	@Getter
 	private String tomcatPath = "tomcat";
 
@@ -114,7 +111,12 @@ public class Board {
 
 	private int dubiousTurn = -1;
 
+	@Getter
+	private String profile;
+
 	public Board(String hash) {
+
+		profile = staticProfile;
 
 		System.out.println("board created...");
 
