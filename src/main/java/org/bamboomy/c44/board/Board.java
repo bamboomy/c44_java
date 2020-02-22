@@ -12,7 +12,7 @@ import lombok.Setter;
 
 public class Board {
 
-	public static String staticProfile;
+	public static String staticProfile = "prod";
 
 	@Getter
 	private String piecePath = "/peace/";
