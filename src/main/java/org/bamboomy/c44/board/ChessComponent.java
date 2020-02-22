@@ -8,7 +8,7 @@ import lombok.Getter;
 @Component
 public class ChessComponent {
 	
-	@Value("${server.port}")
+	@Value("${profile}")
 	@Getter
 	private String profile;
 	
