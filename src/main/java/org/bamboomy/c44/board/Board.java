@@ -4,12 +4,17 @@ import java.util.ArrayList;
 import java.util.concurrent.locks.ReentrantLock;
 
 import org.bamboomy.c44.ColorsTaken;
+import org.springframework.beans.factory.annotation.Value;
 
 import lombok.Getter;
 import lombok.Setter;
 
 public class Board {
 
+	@Value("${profile}")
+	@Getter
+	private String profile;
+	
 	@Getter
 	private String piecePath = "/peace/";
 	

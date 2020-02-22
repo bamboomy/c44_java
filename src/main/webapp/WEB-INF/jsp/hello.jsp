@@ -227,6 +227,8 @@
 		<source src="/${board.tomcatPath}/soundz/tik.mp3" type="audio/mpeg">
 		Your browser does not support the audio element.
 	</audio>
+	
+	<center><h1>${board.profile}</h1></center>
 
 	<div id="judge"></div>
 
