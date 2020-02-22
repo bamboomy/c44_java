@@ -115,6 +115,8 @@ public class Board {
 	private String profile;
 
 	public Board(String hash) {
+		
+		new ChessComponent();
 
 		profile = staticProfile;
 
