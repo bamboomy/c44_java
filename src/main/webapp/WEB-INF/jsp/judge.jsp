@@ -12,13 +12,6 @@
 
 </div>
 
-	<script>
-		var x = document.getElementById("myAudio");
-
-		x.play();
-	</script>
-
-
 <c:if test="${board.readSound(user.color)}">
 	<script>
 		var x = document.getElementById("myAudio");
