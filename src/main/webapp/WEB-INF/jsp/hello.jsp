@@ -224,7 +224,7 @@
 <body>
 
 	<audio id="myAudio">
-		<source src="/${board.tomcatPath}/soundz/tik.mp3" type="audio/mpeg">
+		<source src="#{resource['/${board.tomcatPath}/soundz/tik.mp3']}" type="audio/mpeg">
 		Your browser does not support the audio element.
 	</audio>
 	
