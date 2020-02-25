@@ -12,13 +12,17 @@ import lombok.Setter;
 
 public class Board {
 
-	public static String staticProfile = "prod";
+	public static String staticProfile = "";
+
+	public static String staticPiecePath = "/peace/";
+
+	public static String staticTomcatPath = "tomcat";
 
 	@Getter
-	private String piecePath = "/peace/";
+	private String piecePath = staticPiecePath;
 
 	@Getter
-	private String tomcatPath = "tomcat";
+	private String tomcatPath = staticTomcatPath;
 
 	@Getter
 	private Place[][] placez = new Place[12][12];

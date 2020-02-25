@@ -13,6 +13,10 @@ public class ChessComponent {
 		
 		Board.staticProfile = profile;
 		
+		Board.staticPiecePath = "/dev/peace/";
+		
+		Board.staticTomcatPath = "dev/tomcat";
+		
 		System.out.println(profile);
 	}
 
