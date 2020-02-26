@@ -224,7 +224,7 @@
 <body>
 
 	<audio id="myAudio">
-		<source src="/tomcat/soundz/tik.mp3" type="audio/mpeg">
+		<source src="https://chess4four.io/bin/tik.mp3" type="audio/mpeg">
 		Your browser does not support the audio element.
 	</audio>
 	
