@@ -77,13 +77,13 @@
 								<c:when test="${place.isVisuallyAttacked()}">
 									<c:choose>
 										<c:when test="${place.hasPiece()}">
-											<img img/="${place.getCssName()}"
+											<img class="${place.getCssName()}"
 												src="${place.getPiece().getPieceName()}" width="35px"
 												height="35px"
 												onclick="clickToServer('${place.getMd5WithBoard()}', '${user.javaHash}')" />
 										</c:when>
 										<c:otherwise>
-											<img img/="${place.getCssName()}"
+											<img class="${place.getCssName()}"
 												src="img/transparent.png" width="35px" height="35px"
 												onclick="clickToServer('${place.getMd5WithBoard()}', '${user.javaHash}')" />
 										</c:otherwise>
@@ -92,13 +92,13 @@
 								<c:otherwise>
 									<c:choose>
 										<c:when test="${place.hasPiece()}">
-											<img img/="${place.getCssName()}"
+											<img class="${place.getCssName()}"
 												src="${place.getPiece().getPieceName()}" width="35px"
 												height="35px"
 												onclick="clickToServer('${place.getPiece().getMd5WithBoard()}', '${user.javaHash}')" />
 										</c:when>
 										<c:otherwise>
-											<img img/="${place.getCssName()}"
+											<img class="${place.getCssName()}"
 												src="img/transparent.png" width="35px" height="35px" />
 										</c:otherwise>
 									</c:choose>

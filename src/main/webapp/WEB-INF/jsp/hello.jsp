@@ -274,7 +274,7 @@
 		<div id="chatText"></div>
 
 		<div class="bottom">
-			<input id="chatField" type="text" img/="fill" /><input
+			<input id="chatField" type="text" class="fill" /><input
 				type="button" value="Send" onclick="sendMessage();" />
 		</div>
 
