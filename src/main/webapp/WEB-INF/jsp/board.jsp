@@ -62,14 +62,14 @@
 <div>
 	<c:forEach items="${board.getRotatedPlacez(user.color)}" var="row">
 
-		<div img/="row">
+		<div class="row">
 
 			<c:forEach items="${row}" var="place">
 
 				<c:choose>
 					<c:when test="${place != null}">
 
-						<div img/="square">
+						<div class="square">
 
 							<img src="img/blank.png" width="35px" height="35px" />
 
@@ -108,7 +108,7 @@
 						</div>
 					</c:when>
 					<c:otherwise>
-						<div img/="square">
+						<div class="square">
 							<img src="img/blank.png" width="35px" height="35px" />
 						</div>
 					</c:otherwise>

@@ -30,9 +30,9 @@
 </style>
 </head>
 <body>
-<div img/="outer">
-  <div img/="middle">
-    <div img/="inner">
+<div class="outer">
+  <div class="middle">
+    <div class="inner">
 	<center>
 		<div>
 			<h1>That's a negative...</h1>
