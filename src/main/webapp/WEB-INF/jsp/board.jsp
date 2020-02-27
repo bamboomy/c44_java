@@ -62,14 +62,14 @@
 <div>
 	<c:forEach items="${board.getRotatedPlacez(user.color)}" var="row">
 
-		<div class="row">
+		<div img/="row">
 
 			<c:forEach items="${row}" var="place">
 
 				<c:choose>
 					<c:when test="${place != null}">
 
-						<div class="square">
+						<div img/="square">
 
 							<img src="../img/blank.png" width="35px" height="35px" />
 
@@ -77,13 +77,13 @@
 								<c:when test="${place.isVisuallyAttacked()}">
 									<c:choose>
 										<c:when test="${place.hasPiece()}">
-											<img class="${place.getCssName()}"
+											<img img/="${place.getCssName()}"
 												src="${place.getPiece().getPieceName()}" width="35px"
 												height="35px"
 												onclick="clickToServer('${place.getMd5WithBoard()}', '${user.javaHash}')" />
 										</c:when>
 										<c:otherwise>
-											<img class="${place.getCssName()}"
+											<img img/="${place.getCssName()}"
 												src="../img/transparent.png" width="35px" height="35px"
 												onclick="clickToServer('${place.getMd5WithBoard()}', '${user.javaHash}')" />
 										</c:otherwise>
@@ -92,13 +92,13 @@
 								<c:otherwise>
 									<c:choose>
 										<c:when test="${place.hasPiece()}">
-											<img class="${place.getCssName()}"
+											<img img/="${place.getCssName()}"
 												src="${place.getPiece().getPieceName()}" width="35px"
 												height="35px"
 												onclick="clickToServer('${place.getPiece().getMd5WithBoard()}', '${user.javaHash}')" />
 										</c:when>
 										<c:otherwise>
-											<img class="${place.getCssName()}"
+											<img img/="${place.getCssName()}"
 												src="../img/transparent.png" width="35px" height="35px" />
 										</c:otherwise>
 									</c:choose>
@@ -108,7 +108,7 @@
 						</div>
 					</c:when>
 					<c:otherwise>
-						<div class="square">
+						<div img/="square">
 							<img src="../img/blank.png" width="35px" height="35px" />
 						</div>
 					</c:otherwise>

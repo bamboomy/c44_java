@@ -234,9 +234,9 @@
 
 	<div id="messages">
 
-		<div class="outer">
-			<div class="middle">
-				<div class="inner">
+		<div img/="outer">
+			<div img/="middle">
+				<div img/="inner">
 					<div style="text-align: center; font-size: larger;">Messages:</div>
 					<p id="message">test</p>
 				</div>
@@ -246,9 +246,9 @@
 	</div>
 
 
-	<div class="outer">
-		<div class="middle">
-			<div class="inner center">
+	<div img/="outer">
+		<div img/="middle">
+			<div img/="inner center">
 				<center>
 					<div id="board"></div>
 				</center>
@@ -258,9 +258,9 @@
 
 	<div id="resign">
 
-		<div class="outer">
-			<div class="middle">
-				<div class="inner">
+		<div img/="outer">
+			<div img/="middle">
+				<div img/="inner">
 					<input type="button" onclick="resign();" value="resign" />
 				</div>
 			</div>
@@ -273,8 +273,8 @@
 		<div style="text-align: center; font-size: larger;">Chat</div>
 		<div id="chatText"></div>
 
-		<div class="bottom">
-			<input id="chatField" type="text" class="fill" /><input
+		<div img/="bottom">
+			<input id="chatField" type="text" img/="fill" /><input
 				type="button" value="Send" onclick="sendMessage();" />
 		</div>
 
