@@ -25,19 +25,19 @@ public class King extends Piece {
 
 		if (color == Player.RED) {
 
-			return "../img/king_red.png";
+			return "img/king_red.png";
 
 		} else if (color == Player.YELLOW) {
 
-			return "../img/king_yellow.png";
+			return "img/king_yellow.png";
 
 		} else if (color == Player.GREEN) {
 
-			return "../img/king_green.png";
+			return "img/king_green.png";
 
 		} else if (color == Player.BLUE) {
 
-			return "../img/king_blue.png";
+			return "img/king_blue.png";
 		}
 
 		throw new RuntimeException("invalid color in king");

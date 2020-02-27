@@ -17,19 +17,19 @@ public class Tower extends Piece {
 
 		if (color == Player.RED) {
 
-			return "../img/tower_red.png";
+			return "img/tower_red.png";
 
 		} else if (color == Player.YELLOW) {
 
-			return "../img/tower_yellow.png";
+			return "img/tower_yellow.png";
 
 		} else if (color == Player.GREEN) {
 
-			return "../img/tower_green.png";
+			return "img/tower_green.png";
 
 		} else if (color == Player.BLUE) {
 
-			return "../img/tower_blue.png";
+			return "img/tower_blue.png";
 		}
 
 		throw new RuntimeException("invalid color in tower");

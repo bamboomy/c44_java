@@ -17,19 +17,19 @@ public class Horse extends Piece {
 
 		if (color == Player.RED) {
 
-			return "../img/horse_red.png";
+			return "img/horse_red.png";
 
 		} else if (color == Player.YELLOW) {
 
-			return "../img/horse_yellow.png";
+			return "img/horse_yellow.png";
 
 		} else if (color == Player.GREEN) {
 
-			return "../img/horse_green.png";
+			return "img/horse_green.png";
 
 		} else if (color == Player.BLUE) {
 
-			return "../img/horse_blue.png";
+			return "img/horse_blue.png";
 		}
 
 		throw new RuntimeException("invalid color in horse");

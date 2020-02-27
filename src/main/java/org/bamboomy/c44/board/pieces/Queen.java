@@ -17,19 +17,19 @@ public class Queen extends Piece {
 
 		if (color == Player.RED) {
 
-			return "../img/queen_red.png";
+			return "img/queen_red.png";
 
 		} else if (color == Player.YELLOW) {
 
-			return "../img/queen_yellow.png";
+			return "img/queen_yellow.png";
 
 		} else if (color == Player.GREEN) {
 
-			return "../img/queen_green.png";
+			return "img/queen_green.png";
 
 		} else if (color == Player.BLUE) {
 
-			return "../img/queen_blue.png";
+			return "img/queen_blue.png";
 		}
 
 		throw new RuntimeException("invalid color in queen");
