@@ -232,20 +232,6 @@
 
 	<div id="judge"></div>
 
-	<div id="messages">
-
-		<div class="outer">
-			<div class="middle">
-				<div class="inner">
-					<div style="text-align: center; font-size: larger;">Messages:</div>
-					<p id="message">test</p>
-				</div>
-			</div>
-		</div>
-
-	</div>
-
-
 	<div class="outer">
 		<div class="middle">
 			<div class="inner center">

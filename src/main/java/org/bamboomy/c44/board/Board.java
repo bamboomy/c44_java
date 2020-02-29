@@ -387,6 +387,8 @@ public class Board {
 
 			currentPlayer.playRandomMove(performedMoves);
 		}
+		
+		checkState();
 	}
 
 	private void countDead() {
@@ -397,6 +399,11 @@ public class Board {
 
 			finished = true;
 		}
+	}
+	
+	private void checkState() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	public void removeMe() {
