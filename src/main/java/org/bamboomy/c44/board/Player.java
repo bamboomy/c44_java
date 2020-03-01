@@ -87,7 +87,7 @@ public class Player {
 
 		for (int i = 0; i < 8; i++) {
 
-			if (i >= 4 && i <= 6) {
+			if (i >= 2 && i <= 4) {
 
 				piecez.add(new Pawn(board.getPlacez()[1][i + 2], color, 1, 0, this));
 			}
@@ -115,7 +115,7 @@ public class Player {
 
 			// piecez.add(new Pawn(board.getPlacez()[i + 2][10], color, 0, -1, this));
 
-			if (i >= 5 && i <= 6) {
+			if (i >= 3 && i <= 4) {
 
 				piecez.add(new Pawn(board.getPlacez()[i + 2][10], color, 0, -1, this));
 			}
@@ -139,7 +139,7 @@ public class Player {
 
 		for (int i = 0; i < 8; i++) {
 
-			if (i == 7 || i == 5) {
+			if (i == 5 || i == 3) {
 
 				piecez.add(new Pawn(board.getPlacez()[10][i + 2], color, -1, 0, this));
 			}
@@ -165,7 +165,7 @@ public class Player {
 
 		for (int i = 0; i < 8; i++) {
 			
-			if (i == 7 || i == 6) {
+			if (i == 5 || i == 4) {
 
 				piecez.add(new Pawn(board.getPlacez()[i + 2][1], color, 0, 1, this));
 			}
