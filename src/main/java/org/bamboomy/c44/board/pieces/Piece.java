@@ -113,12 +113,12 @@ public abstract class Piece {
 
 			currentPlace.getBoard().getCurrentPlayer().setSelected(this);
 
-			if(canTakeKing) {
+			if (canTakeKing) {
 
 				attackableMoves = kingMovez;
-				
+
 			} else {
-			
+
 				setAttackablePlaces(true, true);
 			}
 
@@ -312,12 +312,17 @@ public abstract class Piece {
 
 		ArrayList<Move> unsetList = new ArrayList<>();
 
-		ArrayList<Move> attackableMovesCopy = attackableMoves;
+		ArrayList<Move> attackableMovesCopy = new ArrayList<>();
+
+		for (Move move : attackableMoves) {
+
+			attackableMovesCopy.add(move);
+		}
 
 		for (Move move : attackableMovesCopy) {
 
 			if (move.isRocade()) {
-				
+
 				filtered.add(move);
 
 				continue;
