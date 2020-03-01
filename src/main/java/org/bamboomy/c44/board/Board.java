@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.concurrent.locks.ReentrantLock;
 
 import org.bamboomy.c44.ColorsTaken;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -117,9 +115,15 @@ public class Board {
 
 	@Getter
 	private String profile;
-	
+
 	@Getter
-	private String statusMessages = "tost";
+	private String statusMessages = "";
+
+	private boolean usersSet = false;
+
+	private ColorsTaken[] colorsTaken = new ColorsTaken[4];
+
+	private static String[] colorStrings = { "red", "brown", "greem", "blue" };
 
 	public Board(String hash) {
 
@@ -390,7 +394,7 @@ public class Board {
 
 			currentPlayer.playRandomMove(performedMoves);
 		}
-		
+
 		checkState();
 	}
 
@@ -403,10 +407,24 @@ public class Board {
 			finished = true;
 		}
 	}
-	
+
 	private void checkState() {
-		// TODO Auto-generated method stub
-		
+
+		if (getCurrentPlayer().checkCheck()) {
+
+			statusMessages += "<span style='color:"+colorStrings[turn]+";'>";
+
+			statusMessages += colorsTaken[turn].getName() + "</span><span style='color: red;'> is in check!</span><br/>";
+			
+			if(getCurrentPlayer().canPrevent()) {
+				
+				statusMessages += colorsTaken[turn].getName() + "<span style='color: green;'>...but can prevent... (for now)</span><br/>";
+				
+			} else {
+				
+				statusMessages += colorsTaken[turn].getName() + "<span style='color: red;'>and can't prevent :-(</span><br/>";
+			}
+		}
 	}
 
 	public void removeMe() {
@@ -795,5 +813,35 @@ public class Board {
 		System.out.println(result);
 
 		return result;
+	}
+
+	public void setColorsTaken(Iterable<ColorsTaken> userIterable) {
+
+		if (usersSet) {
+
+			return;
+		}
+
+		for (ColorsTaken userColor : userIterable) {
+
+			if (userColor.getColor().equalsIgnoreCase("red")) {
+
+				colorsTaken[0] = userColor;
+
+			} else if (userColor.getColor().equalsIgnoreCase("yellow")) {
+
+				colorsTaken[1] = userColor;
+
+			} else if (userColor.getColor().equalsIgnoreCase("green")) {
+
+				colorsTaken[2] = userColor;
+
+			} else if (userColor.getColor().equalsIgnoreCase("blue")) {
+
+				colorsTaken[3] = userColor;
+			}
+		}
+
+		usersSet = true;
 	}
 }

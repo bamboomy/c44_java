@@ -101,6 +101,8 @@ public class HelloController {
 		Iterable<ColorsTaken> userIterable = colorsTakenRepository.findByGameHash(gameHash);
 
 		Iterable<ColorsTaken> dubiousIterable = colorsTakenRepository.findByGameHash(gameHash);
+		
+		board.setColorsTaken(userIterable);
 
 		for (ColorsTaken userColor : userIterable) {
 

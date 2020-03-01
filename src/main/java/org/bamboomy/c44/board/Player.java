@@ -86,89 +86,111 @@ public class Player {
 	private void initRed(Board board) {
 
 		for (int i = 0; i < 8; i++) {
-			piecez.add(new Pawn(board.getPlacez()[1][i + 2], color, 1, 0, this));
+
+			if (i >= 4 && i <= 6) {
+
+				piecez.add(new Pawn(board.getPlacez()[1][i + 2], color, 1, 0, this));
+			}
+
+			// piecez.add(new Pawn(board.getPlacez()[1][i + 2], color, 1, 0, this));
 		}
 
-		piecez.add(new Tower(board.getPlacez()[0][2], color, this));
-		piecez.add(new Horse(board.getPlacez()[0][3], color, this));
-		piecez.add(new Bisshop(board.getPlacez()[0][4], color, this));
+		// piecez.add(new Tower(board.getPlacez()[0][2], color, this));
+		// piecez.add(new Horse(board.getPlacez()[0][3], color, this));
+		// piecez.add(new Bisshop(board.getPlacez()[0][4], color, this));
 
 		king = new King(board.getPlacez()[0][5], color, 1, 0, this);
 
 		piecez.add(king);
-		piecez.add(new Queen(board.getPlacez()[0][6], color, this));
+		// piecez.add(new Queen(board.getPlacez()[0][6], color, this));
 
-		piecez.add(new Bisshop(board.getPlacez()[0][7], color, this));
-		piecez.add(new Horse(board.getPlacez()[0][8], color, this));
-		piecez.add(new Tower(board.getPlacez()[0][9], color, this));
+		// piecez.add(new Bisshop(board.getPlacez()[0][7], color, this));
+		// piecez.add(new Horse(board.getPlacez()[0][8], color, this));
+		// piecez.add(new Tower(board.getPlacez()[0][9], color, this));
 	}
 
 	private void initYellow(Board board) {
 
 		for (int i = 0; i < 8; i++) {
 
-			piecez.add(new Pawn(board.getPlacez()[i + 2][10], color, 0, -1, this));
+			// piecez.add(new Pawn(board.getPlacez()[i + 2][10], color, 0, -1, this));
+
+			if (i >= 5 && i <= 6) {
+
+				piecez.add(new Pawn(board.getPlacez()[1][i + 2], color, 1, 0, this));
+			}
 		}
 
-		piecez.add(new Tower(board.getPlacez()[2][11], color, this));
-		piecez.add(new Horse(board.getPlacez()[3][11], color, this));
-		piecez.add(new Bisshop(board.getPlacez()[4][11], color, this));
+		// piecez.add(new Tower(board.getPlacez()[2][11], color, this));
+		// piecez.add(new Horse(board.getPlacez()[3][11], color, this));
+		// piecez.add(new Bisshop(board.getPlacez()[4][11], color, this));
 
 		king = new King(board.getPlacez()[5][11], color, 0, -1, this);
 
 		piecez.add(king);
 		piecez.add(new Queen(board.getPlacez()[6][11], color, this));
 
-		piecez.add(new Bisshop(board.getPlacez()[7][11], color, this));
-		piecez.add(new Horse(board.getPlacez()[8][11], color, this));
-		piecez.add(new Tower(board.getPlacez()[9][11], color, this));
+		// piecez.add(new Bisshop(board.getPlacez()[7][11], color, this));
+		// piecez.add(new Horse(board.getPlacez()[8][11], color, this));
+		// piecez.add(new Tower(board.getPlacez()[9][11], color, this));
 	}
 
 	private void initGreen(Board board) {
 
 		for (int i = 0; i < 8; i++) {
 
-			piecez.add(new Pawn(board.getPlacez()[10][i + 2], color, -1, 0, this));
+			if (i == 7 || i == 5) {
+
+				piecez.add(new Pawn(board.getPlacez()[1][i + 2], color, 1, 0, this));
+			}
+
+			// piecez.add(new Pawn(board.getPlacez()[10][i + 2], color, -1, 0, this));
 		}
 
-		piecez.add(new Tower(board.getPlacez()[11][2], color, this));
-		piecez.add(new Horse(board.getPlacez()[11][3], color, this));
-		piecez.add(new Bisshop(board.getPlacez()[11][4], color, this));
+		// piecez.add(new Tower(board.getPlacez()[11][2], color, this));
+		// piecez.add(new Horse(board.getPlacez()[11][3], color, this));
+		// piecez.add(new Bisshop(board.getPlacez()[11][4], color, this));
 
 		king = new King(board.getPlacez()[11][6], color, -1, 0, this);
 
 		piecez.add(new Queen(board.getPlacez()[11][5], color, this));
 		piecez.add(king);
 
-		piecez.add(new Bisshop(board.getPlacez()[11][7], color, this));
-		piecez.add(new Horse(board.getPlacez()[11][8], color, this));
-		piecez.add(new Tower(board.getPlacez()[11][9], color, this));
+		// piecez.add(new Bisshop(board.getPlacez()[11][7], color, this));
+		// piecez.add(new Horse(board.getPlacez()[11][8], color, this));
+		// piecez.add(new Tower(board.getPlacez()[11][9], color, this));
 	}
 
 	private void initBlue(Board board) {
 
 		for (int i = 0; i < 8; i++) {
-			piecez.add(new Pawn(board.getPlacez()[i + 2][1], color, 0, 1, this));
+			
+			if (i == 7 || i == 6) {
+
+				piecez.add(new Pawn(board.getPlacez()[1][i + 2], color, 1, 0, this));
+			}
+
+			//piecez.add(new Pawn(board.getPlacez()[i + 2][1], color, 0, 1, this));
 		}
 
-		piecez.add(new Tower(board.getPlacez()[2][0], color, this));
-		piecez.add(new Horse(board.getPlacez()[3][0], color, this));
-		piecez.add(new Bisshop(board.getPlacez()[4][0], color, this));
+		//piecez.add(new Tower(board.getPlacez()[2][0], color, this));
+		//piecez.add(new Horse(board.getPlacez()[3][0], color, this));
+		//piecez.add(new Bisshop(board.getPlacez()[4][0], color, this));
 
 		king = new King(board.getPlacez()[6][0], color, 0, 1, this);
 
 		piecez.add(new Queen(board.getPlacez()[5][0], color, this));
 		piecez.add(king);
 
-		piecez.add(new Bisshop(board.getPlacez()[7][0], color, this));
-		piecez.add(new Horse(board.getPlacez()[8][0], color, this));
-		piecez.add(new Tower(board.getPlacez()[9][0], color, this));
+		//piecez.add(new Bisshop(board.getPlacez()[7][0], color, this));
+		//piecez.add(new Horse(board.getPlacez()[8][0], color, this));
+		//piecez.add(new Tower(board.getPlacez()[9][0], color, this));
 	}
 
 	boolean click(String md5) {
 
 		System.out.println("player");
- 
+
 		for (Piece piece : piecez) {
 
 			if (md5.equalsIgnoreCase(piece.getMd5())) {

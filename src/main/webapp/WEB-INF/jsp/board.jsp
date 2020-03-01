@@ -7,7 +7,7 @@
 		myId = $('form').attr('myattribute');
 	});
 </script>
-<c:if
+<!--  c:if
 	test="${!board.isPlayerIsMoving() && board.isRenderingCurrentPlayer(user.color) 
 	&& board.getCurrentPlayer().checkCheck() }">
 	<script type="text/javascript">
@@ -48,7 +48,7 @@
 			cantPreventShown = true;
 		}
 	</script>
-</c:if>
+</c:if-->
 <c:if test="${board.isWouldBeCheck() && board.isRenderingCurrentPlayer(user.color)}">
 	<script type="text/javascript">
 		if (!cantMoveShown) {
