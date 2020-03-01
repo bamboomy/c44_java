@@ -66,7 +66,7 @@
 		<div class="middle">
 			<div class="inner">
 				<div style="text-align: center; font-size: larger;">Messages:</div>
-				<p id="message">test</p>
+				<p id="message">${board.statusMessages}</p>
 			</div>
 		</div>
 	</div>

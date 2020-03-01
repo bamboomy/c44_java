@@ -117,6 +117,9 @@ public class Board {
 
 	@Getter
 	private String profile;
+	
+	@Getter
+	private String statusMessages = "tost";
 
 	public Board(String hash) {
 
