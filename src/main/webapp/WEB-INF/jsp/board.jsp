@@ -7,48 +7,7 @@
 		myId = $('form').attr('myattribute');
 	});
 </script>
-<!--  c:if
-	test="${!board.isPlayerIsMoving() && board.isRenderingCurrentPlayer(user.color) 
-	&& board.getCurrentPlayer().checkCheck() }">
-	<script type="text/javascript">
-		if (!checkShown) {
 
-			alert('check!!!');
-
-			checkShown = true;
-		}
-	</script>
-</c:if>
-<c:if
-	test="${!board.isPlayerIsMoving() && board.getCurrentPlayer().checkCheck() 
-	&& board.isRenderingCurrentPlayer(user.color) && board.getCurrentPlayer().canPrevent()}">
-	<script type="text/javascript">
-		if (!cantMoveShown) {
-
-			alert('... but you can prevent...');
-			
-			cantMoveShown = true;
-		}
-	</script>
-</c:if>
-<c:if
-	test="${!board.isPlayerIsMoving() && board.getCurrentPlayer().checkCheck() 
-	&& board.isRenderingCurrentPlayer(user.color) && !board.getCurrentPlayer().canPrevent()}">
-	<script type="text/javascript">
-		if (!cantPreventShown){
-			
-			alert("and you can't prevent...");
-			
-			var txt = "You are check mate but your king\n";
-			txt += "can utter one final command...\n";
-			txt += "Make it a worthy one!!!" 
-			
-			alert(txt);
-			
-			cantPreventShown = true;
-		}
-	</script>
-</c:if-->
 <c:if test="${board.isWouldBeCheck() && board.isRenderingCurrentPlayer(user.color)}">
 	<script type="text/javascript">
 		if (!cantMoveShown) {
