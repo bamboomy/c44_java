@@ -62,10 +62,6 @@ public class Board {
 
 	@Getter
 	@Setter
-	private boolean playerIsMoving = false;
-
-	@Getter
-	@Setter
 	private boolean wouldBeCheck = false;
 
 	@Getter
@@ -338,8 +334,6 @@ public class Board {
 	}
 
 	public void next() {
-
-		playerIsMoving = false;
 
 		timeArrayInt[turn] = 0;
 

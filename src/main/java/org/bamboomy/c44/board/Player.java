@@ -197,19 +197,6 @@ public class Player {
 
 				System.out.println(piece.getPieceName());
 
-				board.setPlayerIsMoving(true);
-
-				if (!canTakeKing() || (canTakeKing() && kingTakerz.contains(piece))) {
-					
-					System.out.println("can take king");
-
-					piece.click(canTakeKing());
-
-					board.setWouldBeCheck(false);
-
-					return true;
-				}
-
 				board.setWouldBeCheck(false);
 
 				if (piece.checkWouldBeCheck()) {
