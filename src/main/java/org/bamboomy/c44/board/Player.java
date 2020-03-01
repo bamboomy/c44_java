@@ -200,6 +200,8 @@ public class Player {
 				board.setPlayerIsMoving(true);
 
 				if (!canTakeKing() || (canTakeKing() && kingTakerz.contains(piece))) {
+					
+					System.out.println("can take king");
 
 					piece.click(canTakeKing());
 
