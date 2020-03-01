@@ -378,7 +378,8 @@ public abstract class Piece {
 			for (Move move : attackableMoves) {
 
 				if (move.getTo().getPiece() != null
-						&& move.getTo().getPiece().getPieceIdentifier().equalsIgnoreCase(KING)) {
+						&& move.getTo().getPiece().getPieceIdentifier().equalsIgnoreCase(KING)
+						&& getColor() != move.getTo().getPiece().getColor()) {
 
 					kingMovez.add(move);
 				}
