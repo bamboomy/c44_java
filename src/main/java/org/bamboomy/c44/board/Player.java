@@ -210,7 +210,7 @@ public class Player {
 
 				board.setWouldBeCheck(false);
 
-				if ((checkCheck() && canPrevent() || !checkCheck()) && piece.checkWouldBeCheck()) {
+				if (piece.checkWouldBeCheck()) {
 
 					board.setWouldBeCheck(true);
 				}

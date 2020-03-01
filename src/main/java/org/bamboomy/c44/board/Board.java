@@ -123,7 +123,7 @@ public class Board {
 
 	private ColorsTaken[] colorsTaken = new ColorsTaken[4];
 
-	private static String[] colorStrings = { "red", "brown", "greem", "blue" };
+	private static String[] colorStrings = { "red", "brown", "green", "blue" };
 
 	public Board(String hash) {
 
