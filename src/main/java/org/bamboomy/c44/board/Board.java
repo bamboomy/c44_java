@@ -418,11 +418,11 @@ public class Board {
 			
 			if(getCurrentPlayer().canPrevent()) {
 				
-				statusMessages += colorsTaken[turn].getName() + "<span style='color: green;'>...but can prevent... (for now)</span><br/>";
+				statusMessages += "<span style='color: green;'>...but can prevent... (for now)</span><br/>";
 				
 			} else {
 				
-				statusMessages += colorsTaken[turn].getName() + "<span style='color: red;'>and can't prevent :-(</span><br/>";
+				statusMessages += "<span style='color: red;'>and can't prevent :-(</span><br/>";
 			}
 		}
 	}
