@@ -6,8 +6,7 @@
 <title>Hello ${name}!</title>
 <link href="/${board.tomcatPath}/css/main.css" rel="stylesheet">
 
-<link href="/${board.tomcatPath}/bootstrap-4.4.1-dist/css/bootstrap.css"
-	rel="stylesheet">
+<link href="/${board.tomcatPath}/bootstrap-4.4.1-dist/css/bootstrap.css" rel="stylesheet">
 
 <style>
 .outer {
@@ -38,10 +37,6 @@
 
 
 <script src="/${board.tomcatPath}/js/jquery-3.4.1.min.js"></script>
-
-
-<script
-	src="/${board.tomcatPath}/bootstrap-4.4.1-dist/js/bootstrap.bundle.js"></script>
 
 <script type="text/javascript">
 	var checkShown = false;
