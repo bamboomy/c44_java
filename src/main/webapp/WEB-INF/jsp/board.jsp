@@ -47,12 +47,20 @@
 
 				<!-- Modal Header -->
 				<div class="modal-header">
-					<h4 class="modal-title">Modal Heading</h4>
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Waiting until everyone is there...</h4>
 				</div>
 
 				<!-- Modal body -->
-				<div class="modal-body">Modal body..</div>
+				<div class="modal-body">
+					Zenafi<br/>
+					<br/>
+					You<br/>
+					<br/>
+					Anefi<br/>
+					<br/>
+					Dubious<br/>
+					<br/>
+				</div>
 
 			</div>
 		</div>
