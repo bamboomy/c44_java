@@ -71,6 +71,8 @@
 	}
 
 	function fill() {
+		
+		$('#myModal').modal('hide');
 
 		$
 				.ajax({
