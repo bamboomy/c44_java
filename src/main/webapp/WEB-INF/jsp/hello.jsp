@@ -172,7 +172,6 @@
 			}
 		});
 
-		document.getElementById("myModal").showModal();
 	});
 
 	function callJudge() {
