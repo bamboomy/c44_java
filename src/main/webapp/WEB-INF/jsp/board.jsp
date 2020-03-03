@@ -8,7 +8,8 @@
 	});
 </script>
 
-<c:if test="${board.isWouldBeCheck() && board.isRenderingCurrentPlayer(user.color)}">
+<c:if
+	test="${board.isWouldBeCheck() && board.isRenderingCurrentPlayer(user.color)}">
 	<script type="text/javascript">
 		if (!cantMoveShown) {
 
@@ -32,63 +33,90 @@
 
 </div>
 
+<div class="container">
 
-<div>
-	<c:forEach items="${board.getRotatedPlacez(user.color)}" var="row">
+	<!-- The Modal -->
+	<div class="modal" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
 
-		<div class="row">
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Modal Heading</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
 
-			<c:forEach items="${row}" var="place">
+				<!-- Modal body -->
+				<div class="modal-body">Modal body..</div>
 
-				<c:choose>
-					<c:when test="${place != null}">
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				</div>
 
-						<div class="square">
-
-							<img src="img/blank.png" width="35px" height="35px" />
-
-							<c:choose>
-								<c:when test="${place.isVisuallyAttacked()}">
-									<c:choose>
-										<c:when test="${place.hasPiece()}">
-											<img class="${place.getCssName()}"
-												src="${place.getPiece().getPieceName()}" width="35px"
-												height="35px"
-												onclick="clickToServer('${place.getMd5WithBoard()}', '${user.javaHash}')" />
-										</c:when>
-										<c:otherwise>
-											<img class="${place.getCssName()}"
-												src="img/transparent.png" width="35px" height="35px"
-												onclick="clickToServer('${place.getMd5WithBoard()}', '${user.javaHash}')" />
-										</c:otherwise>
-									</c:choose>
-								</c:when>
-								<c:otherwise>
-									<c:choose>
-										<c:when test="${place.hasPiece()}">
-											<img class="${place.getCssName()}"
-												src="${place.getPiece().getPieceName()}" width="35px"
-												height="35px"
-												onclick="clickToServer('${place.getPiece().getMd5WithBoard()}', '${user.javaHash}')" />
-										</c:when>
-										<c:otherwise>
-											<img class="${place.getCssName()}"
-												src="img/transparent.png" width="35px" height="35px" />
-										</c:otherwise>
-									</c:choose>
-								</c:otherwise>
-							</c:choose>
-
-						</div>
-					</c:when>
-					<c:otherwise>
-						<div class="square">
-							<img src="img/blank.png" width="35px" height="35px" />
-						</div>
-					</c:otherwise>
-				</c:choose>
-			</c:forEach>
-
+			</div>
 		</div>
-	</c:forEach>
+	</div>
+
+
+	<div>
+		<c:forEach items="${board.getRotatedPlacez(user.color)}" var="row">
+
+			<div class="row">
+
+				<c:forEach items="${row}" var="place">
+
+					<c:choose>
+						<c:when test="${place != null}">
+
+							<div class="square">
+
+								<img src="img/blank.png" width="35px" height="35px" />
+
+								<c:choose>
+									<c:when test="${place.isVisuallyAttacked()}">
+										<c:choose>
+											<c:when test="${place.hasPiece()}">
+												<img class="${place.getCssName()}"
+													src="${place.getPiece().getPieceName()}" width="35px"
+													height="35px"
+													onclick="clickToServer('${place.getMd5WithBoard()}', '${user.javaHash}')" />
+											</c:when>
+											<c:otherwise>
+												<img class="${place.getCssName()}" src="img/transparent.png"
+													width="35px" height="35px"
+													onclick="clickToServer('${place.getMd5WithBoard()}', '${user.javaHash}')" />
+											</c:otherwise>
+										</c:choose>
+									</c:when>
+									<c:otherwise>
+										<c:choose>
+											<c:when test="${place.hasPiece()}">
+												<img class="${place.getCssName()}"
+													src="${place.getPiece().getPieceName()}" width="35px"
+													height="35px"
+													onclick="clickToServer('${place.getPiece().getMd5WithBoard()}', '${user.javaHash}')" />
+											</c:when>
+											<c:otherwise>
+												<img class="${place.getCssName()}" src="img/transparent.png"
+													width="35px" height="35px" />
+											</c:otherwise>
+										</c:choose>
+									</c:otherwise>
+								</c:choose>
+
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="square">
+								<img src="img/blank.png" width="35px" height="35px" />
+							</div>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+
+			</div>
+		</c:forEach>
+	</div>
+
 </div>
