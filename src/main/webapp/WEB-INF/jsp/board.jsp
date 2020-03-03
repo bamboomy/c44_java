@@ -9,6 +9,8 @@
 	$(document).ready(function() {
 		myId = $('form').attr('myattribute');
 		
+		$('#myModal').modal('hide');
+		
 		$('#myModal').modal('show');
 	});
 </script>
