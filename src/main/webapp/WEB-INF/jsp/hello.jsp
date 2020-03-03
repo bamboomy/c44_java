@@ -6,7 +6,8 @@
 <title>Hello ${name}!</title>
 <link href="/${board.tomcatPath}/css/main.css" rel="stylesheet">
 
-<link href="/${board.tomcatPath}/bootstrap-4.4.1-dist/css/bootstrap.css" rel="stylesheet">
+<link href="/${board.tomcatPath}/bootstrap-4.4.1-dist/css/bootstrap.css"
+	rel="stylesheet">
 
 <style>
 .outer {
@@ -39,7 +40,8 @@
 <script src="/${board.tomcatPath}/js/jquery-3.4.1.min.js"></script>
 
 
-<script src="/${board.tomcatPath}/bootstrap-4.4.1-dist/js/bootstrap.bundle.js"></script>
+<script
+	src="/${board.tomcatPath}/bootstrap-4.4.1-dist/js/bootstrap.bundle.js"></script>
 
 <script type="text/javascript">
 	var checkShown = false;
@@ -75,14 +77,15 @@
 
 	function fill() {
 
-		$.ajax({
-			type : "GET",
-			url : "https://chess4four.io/${board.tomcatPath}/board/?id=${board.playerHash}",
-			async : false,
-			success : function(text) {
-				$('#board').html(text);
-			}
-		});
+		$
+				.ajax({
+					type : "GET",
+					url : "https://chess4four.io/${board.tomcatPath}/board/?id=${board.playerHash}",
+					async : false,
+					success : function(text) {
+						$('#board').html(text);
+					}
+				});
 	}
 
 	function again() {
@@ -168,18 +171,21 @@
 				sendMessage();
 			}
 		});
+		
+		document.getElementById("modal").showModal();
 	});
 
 	function callJudge() {
 
-		$.ajax({
-			type : "GET",
-			url : "https://chess4four.io/${board.tomcatPath}/judge/?id=${board.playerHash}",
-			async : false,
-			success : function(text) {
-				$('#judge').html(text);
-			}
-		});
+		$
+				.ajax({
+					type : "GET",
+					url : "https://chess4four.io/${board.tomcatPath}/judge/?id=${board.playerHash}",
+					async : false,
+					success : function(text) {
+						$('#judge').html(text);
+					}
+				});
 	}
 
 	function judge() {
@@ -224,37 +230,42 @@
 					});
 		}
 	}
+
 </script>
 
 </head>
 <body>
 
-<div class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+	<div class="modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Modal title</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>Modal body text goes here.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary">Save changes</button>
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<audio id="myAudio">
 		<source src="https://chess4four.io/bin/tik.mp3" type="audio/mpeg">
 		Your browser does not support the audio element.
 	</audio>
-	
-	<center><h1>${board.profile}</h1></center>
+
+	<center>
+		<h1>${board.profile}</h1>
+	</center>
 
 	<div id="judge"></div>
 
