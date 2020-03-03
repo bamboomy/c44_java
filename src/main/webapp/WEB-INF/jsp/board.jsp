@@ -6,7 +6,7 @@
 	$(document).ready(function() {
 		myId = $('form').attr('myattribute');
 		
-		document.getElementById("myModal").showModal();
+		$('#myModal').modal('show');
 	});
 </script>
 
