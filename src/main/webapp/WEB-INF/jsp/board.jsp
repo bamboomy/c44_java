@@ -52,13 +52,13 @@
 
 				<!-- Modal body -->
 				<div class="modal-body">
-					Zenafi<br/>
+					Zenafi&nbsp;<img src="/${board.tomcatPath}/img/spinner.gif" alt="Smiley face" height="42" width="42"><br/>
 					<br/>
-					You<br/>
+					You&nbsp;<img src="/${board.tomcatPath}/img/spinner.gif" alt="Smiley face" height="42" width="42"><br/>
 					<br/>
-					Anefi<br/>
+					Anefi&nbsp;<img src="/${board.tomcatPath}/img/spinner.gif" alt="Smiley face" height="42" width="42"><br/>
 					<br/>
-					Dubious<br/>
+					Dubious&nbsp;<img src="/${board.tomcatPath}/img/spinner.gif" alt="Smiley face" height="42" width="42"><br/>
 					<br/>
 				</div>
 
