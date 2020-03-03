@@ -172,7 +172,7 @@
 			}
 		});
 
-		document.getElementById("modal").showModal();
+		document.getElementById("myModal").showModal();
 	});
 
 	function callJudge() {
