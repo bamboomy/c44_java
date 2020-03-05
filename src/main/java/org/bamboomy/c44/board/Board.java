@@ -41,6 +41,9 @@ public class Board {
 	private Player currentPlayer;
 
 	@Getter
+	private int[] timestamps = new int[4];
+
+	@Getter
 	@Setter
 	private String redName, greenName, blueName, yellowName, gameName, playerHash;
 
@@ -188,6 +191,8 @@ public class Board {
 			resignRead[i] = true;
 
 			beginTurn[i] = false;
+
+			timestamps[i] = -1;
 		}
 
 		places[0] = "4th";
@@ -406,16 +411,17 @@ public class Board {
 
 		if (getCurrentPlayer().checkCheck()) {
 
-			statusMessages += "<span style='color:"+colorStrings[turn]+";'>";
+			statusMessages += "<span style='color:" + colorStrings[turn] + ";'>";
 
-			statusMessages += colorsTaken[turn].getName() + "</span><span style='color: red;'> is in check!</span><br/>";
-			
-			if(getCurrentPlayer().canPrevent()) {
-				
+			statusMessages += colorsTaken[turn].getName()
+					+ "</span><span style='color: red;'> is in check!</span><br/>";
+
+			if (getCurrentPlayer().canPrevent()) {
+
 				statusMessages += "<span style='color: green;'>...but can prevent... (for now)</span><br/>";
-				
+
 			} else {
-				
+
 				statusMessages += "<span style='color: red;'>and can't prevent :-(</span><br/>";
 			}
 		}

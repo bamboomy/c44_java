@@ -1,7 +1,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="/js/jquery-3.4.1.min.js"></script>
 
-<script src="/${board.tomcatPath}/bootstrap-4.4.1-dist/js/bootstrap.bundle.js"></script>
+<script
+	src="/${board.tomcatPath}/bootstrap-4.4.1-dist/js/bootstrap.bundle.js"></script>
 
 <script type="text/javascript">
 	var myId;
@@ -52,16 +53,52 @@
 
 				<!-- Modal body -->
 				<div class="modal-body">
-					${board.greenName}&nbsp;<img src="/${board.tomcatPath}/img/spinner.gif" alt="Smiley face" height="42" width="42"><br/>
-					<br/>
-					${board.blueName}&nbsp;<img src="/${board.tomcatPath}/img/spinner.gif" alt="Smiley face" height="42" width="42"><br/>
-					<br/>
-					${board.redName}&nbsp;<img src="/${board.tomcatPath}/img/spinner.gif" alt="Smiley face" height="42" width="42"><br/>
-					<br/>
-					${board.yellowName}&nbsp;<img src="/${board.tomcatPath}/img/spinner.gif" alt="Smiley face" height="42" width="42"><br/>
-					<br/>
+					${board.greenName}&nbsp;
+					<c:if test="${board.timestamps[0] != -1}">
+						<img src="/${board.tomcatPath}/img/spinner.gif" alt="Smiley face"
+							height="42" width="42">
+						<br />
+					</c:if>
+					<c:else>
+						<img src="/${board.tomcatPath}/img/check.png" alt="Smiley face"
+							height="42" width="42">
+						<br />
+					</c:else>
+					<br /> ${board.blueName}&nbsp;
+					<c:if test="${board.timestamps[1] != -1}">
+						<img src="/${board.tomcatPath}/img/spinner.gif" alt="Smiley face"
+							height="42" width="42">
+						<br />
+					</c:if>
+					<c:else>
+						<img src="/${board.tomcatPath}/img/check.png" alt="Smiley face"
+							height="42" width="42">
+						<br />
+					</c:else>
+					${board.redName}&nbsp;
+					<c:if test="${board.timestamps[2] != -1}">
+						<img src="/${board.tomcatPath}/img/spinner.gif" alt="Smiley face"
+							height="42" width="42">
+						<br />
+					</c:if>
+					<c:else>
+						<img src="/${board.tomcatPath}/img/check.png" alt="Smiley face"
+							height="42" width="42">
+						<br />
+					</c:else>
+					<br /> ${board.yellowName}&nbsp;
+					<c:if test="${board.timestamps[3] != -1}">
+						<img src="/${board.tomcatPath}/img/spinner.gif" alt="Smiley face"
+							height="42" width="42">
+						<br />
+					</c:if>
+					<c:else>
+						<img src="/${board.tomcatPath}/img/check.png" alt="Smiley face"
+							height="42" width="42">
+						<br />
+					</c:else>
+					<br />
 				</div>
-
 			</div>
 		</div>
 	</div>
