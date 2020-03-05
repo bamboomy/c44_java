@@ -54,49 +54,57 @@
 				<!-- Modal body -->
 				<div class="modal-body">
 					${board.greenName}&nbsp;
-					<c:if test="${board.timestamps[0] != -1}">
-						<img src="/${board.tomcatPath}/img/spinner.gif" alt="Smiley face"
-							height="42" width="42">
-						<br />
-					</c:if>
-					<c:else>
-						<img src="/${board.tomcatPath}/img/check.png" alt="Smiley face"
-							height="42" width="42">
-						<br />
-					</c:else>
+					<c:choose>
+						<c:when test="${board.timestamps[0] != -1}">
+							<img src="/${board.tomcatPath}/img/spinner.gif" alt="Smiley face"
+								height="42" width="42">
+							<br />
+						</c:when>
+						<c:otherwise>
+							<img src="/${board.tomcatPath}/img/check.png" alt="Smiley face"
+								height="42" width="42">
+							<br />
+						</c:otherwise>
+					</c:choose>
 					<br /> ${board.blueName}&nbsp;
-					<c:if test="${board.timestamps[1] != -1}">
-						<img src="/${board.tomcatPath}/img/spinner.gif" alt="Smiley face"
-							height="42" width="42">
-						<br />
-					</c:if>
-					<c:else>
-						<img src="/${board.tomcatPath}/img/check.png" alt="Smiley face"
-							height="42" width="42">
-						<br />
-					</c:else>
+					<c:choose>
+						<c:when test="${board.timestamps[1] != -1}">
+							<img src="/${board.tomcatPath}/img/spinner.gif" alt="Smiley face"
+								height="42" width="42">
+							<br />
+						</c:when>
+						<c:otherwise>
+							<img src="/${board.tomcatPath}/img/check.png" alt="Smiley face"
+								height="42" width="42">
+							<br />
+						</c:otherwise>
+					</c:choose>
 					${board.redName}&nbsp;
-					<c:if test="${board.timestamps[2] != -1}">
-						<img src="/${board.tomcatPath}/img/spinner.gif" alt="Smiley face"
-							height="42" width="42">
-						<br />
-					</c:if>
-					<c:else>
-						<img src="/${board.tomcatPath}/img/check.png" alt="Smiley face"
-							height="42" width="42">
-						<br />
-					</c:else>
+					<c:choose>
+						<c:when test="${board.timestamps[2] != -1}">
+							<img src="/${board.tomcatPath}/img/spinner.gif" alt="Smiley face"
+								height="42" width="42">
+							<br />
+						</c:when>
+						<c:otherwise>
+							<img src="/${board.tomcatPath}/img/check.png" alt="Smiley face"
+								height="42" width="42">
+							<br />
+						</c:otherwise>
+					</c:choose>
 					<br /> ${board.yellowName}&nbsp;
-					<c:if test="${board.timestamps[3] != -1}">
-						<img src="/${board.tomcatPath}/img/spinner.gif" alt="Smiley face"
-							height="42" width="42">
-						<br />
-					</c:if>
-					<c:else>
-						<img src="/${board.tomcatPath}/img/check.png" alt="Smiley face"
-							height="42" width="42">
-						<br />
-					</c:else>
+					<c:choose>
+						<c:when test="${board.timestamps[3] != -1}">
+							<img src="/${board.tomcatPath}/img/spinner.gif" alt="Smiley face"
+								height="42" width="42">
+							<br />
+						</c:when>
+						<c:otherwise>
+							<img src="/${board.tomcatPath}/img/check.png" alt="Smiley face"
+								height="42" width="42">
+							<br />
+						</c:otherwise>
+					</c:choose>
 					<br />
 				</div>
 			</div>
