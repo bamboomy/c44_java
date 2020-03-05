@@ -79,7 +79,7 @@
 							<br />
 						</c:otherwise>
 					</c:choose>
-					${board.redName}&nbsp;
+					<br /> ${board.redName}&nbsp;
 					<c:choose>
 						<c:when test="${board.timestamps[2] != -1}">
 							<img src="/${board.tomcatPath}/img/spinner.gif" alt="Smiley face"
