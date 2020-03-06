@@ -131,7 +131,7 @@
 
 				<!-- Modal Header -->
 				<div class="modal-header">
-					<h4 class="modal-title">Start the clock!</h4>
+					<h4 class="modal-title text-center">Start the clock!</h4>
 				</div>
 
 			</div>
