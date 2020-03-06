@@ -11,6 +11,19 @@
 		myId = $('form').attr('myattribute');
 
 		$('#myModal').modal('show');
+		
+		<c:if test="${board.isClockStarting() || board.isClockRunning()}">
+		
+			$('#myModal').modal('hide');
+		
+			<c:if test="${!board.isClockRunning()}">
+		
+				$('#clockStartModal').modal('show');
+		
+			</c:if>
+		
+		</c:if>
+		
 	});
 </script>
 
@@ -41,7 +54,7 @@
 
 <div class="container">
 
-	<!-- The Modal -->
+	<!-- The Waiting Modal -->
 	<div class="modal" id="myModal">
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content">
@@ -111,6 +124,19 @@
 		</div>
 	</div>
 
+	<!-- The Start the Clock Modal -->
+	<div class="modal" id="clockStartModal">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Start the clock!</h4>
+				</div>
+
+			</div>
+		</div>
+	</div>
 
 	<div>
 		<c:forEach items="${board.getRotatedPlacez(user.color)}" var="row">

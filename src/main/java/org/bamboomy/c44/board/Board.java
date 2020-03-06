@@ -127,6 +127,10 @@ public class Board {
 	@Getter
 	private boolean clockRunning = false;
 
+	private boolean clockStarting = false;
+
+	private long clockStartedInMillis;
+
 	public Board(String hash) {
 
 		profile = staticProfile;
@@ -846,5 +850,31 @@ public class Board {
 		}
 
 		usersSet = true;
+	}
+
+	public boolean isClockStarting() {
+
+		boolean allThere = true;
+
+		for (long time : timestamps) {
+
+			allThere &= time != -1;
+		}
+
+		if (!clockStarting && allThere) {
+
+			clockStarting = true;
+
+			clockStartedInMillis = System.currentTimeMillis() + (10 * 1000);
+		}
+
+		if (System.currentTimeMillis() > clockStartedInMillis) {
+
+			clockRunning = true;
+
+			resetTimer();
+		}
+
+		return clockStarting;
 	}
 }
