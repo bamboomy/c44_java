@@ -101,7 +101,7 @@ public class HelloController {
 		Iterable<ColorsTaken> userIterable = colorsTakenRepository.findByGameHash(gameHash);
 
 		Iterable<ColorsTaken> dubiousIterable = colorsTakenRepository.findByGameHash(gameHash);
-		
+
 		board.setColorsTaken(userIterable);
 
 		for (ColorsTaken userColor : userIterable) {
@@ -112,9 +112,12 @@ public class HelloController {
 
 					board.setRedName("You");
 
+					board.getTimestamps()[0] = System.currentTimeMillis();
+
 				} else {
 
-					board.setRedName(detectBot(userColor.getName(), Player.RED, board, dubiousIterable, user.getColor()));
+					board.setRedName(
+							detectBot(userColor.getName(), Player.RED, board, dubiousIterable, user.getColor(), 0));
 				}
 
 			} else if (userColor.getColor().equalsIgnoreCase("green")) {
@@ -123,9 +126,12 @@ public class HelloController {
 
 					board.setGreenName("You");
 
+					board.getTimestamps()[2] = System.currentTimeMillis();
+
 				} else {
 
-					board.setGreenName(detectBot(userColor.getName(), Player.GREEN, board, dubiousIterable, user.getColor()));
+					board.setGreenName(
+							detectBot(userColor.getName(), Player.GREEN, board, dubiousIterable, user.getColor(), 2));
 				}
 
 			} else if (userColor.getColor().equalsIgnoreCase("blue")) {
@@ -134,9 +140,12 @@ public class HelloController {
 
 					board.setBlueName("You");
 
+					board.getTimestamps()[3] = System.currentTimeMillis();
+
 				} else {
 
-					board.setBlueName(detectBot(userColor.getName(), Player.BLUE, board, dubiousIterable, user.getColor()));
+					board.setBlueName(
+							detectBot(userColor.getName(), Player.BLUE, board, dubiousIterable, user.getColor(), 3));
 				}
 
 			} else if (userColor.getColor().equalsIgnoreCase("yellow")) {
@@ -145,9 +154,12 @@ public class HelloController {
 
 					board.setYellowName("You");
 
+					board.getTimestamps()[1] = System.currentTimeMillis();
+
 				} else {
 
-					board.setYellowName(detectBot(userColor.getName(), Player.YELLOW, board, dubiousIterable, user.getColor()));
+					board.setYellowName(
+							detectBot(userColor.getName(), Player.YELLOW, board, dubiousIterable, user.getColor(), 1));
 				}
 			}
 		}
@@ -173,16 +185,21 @@ public class HelloController {
 		return "judge";
 	}
 
-	private String detectBot(String name, int color, Board board, Iterable<ColorsTaken> dubiousIterable, String userColor) {
+	private String detectBot(String name, int color, Board board, Iterable<ColorsTaken> dubiousIterable,
+			String userColor, int index) {
 
 		if (name.equalsIgnoreCase("Random85247")) {
 
 			board.setRandom(color);
 
+			board.getTimestamps()[index] = System.currentTimeMillis();
+
 			return "Random";
 		}
 
 		if (name.equalsIgnoreCase("Dubious85247")) {
+
+			board.getTimestamps()[index] = System.currentTimeMillis();
 
 			board.setDubious(color);
 
@@ -191,14 +208,14 @@ public class HelloController {
 			for (ColorsTaken otherName : dubiousIterable) {
 
 				if (board.getDubious().getCurrent().equalsIgnoreCase(otherName.getColor())) {
-					
-					if(userColor.equalsIgnoreCase(otherName.getColor())) {
-						
+
+					if (userColor.equalsIgnoreCase(otherName.getColor())) {
+
 						dubiousName += "You";
-						
+
 					} else {
-						
-						dubiousName += otherName.getName();	
+
+						dubiousName += otherName.getName();
 					}
 				}
 			}

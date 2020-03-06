@@ -41,7 +41,7 @@ public class Board {
 	private Player currentPlayer;
 
 	@Getter
-	private int[] timestamps = new int[4];
+	private long[] timestamps = new long[4];
 
 	@Getter
 	@Setter
