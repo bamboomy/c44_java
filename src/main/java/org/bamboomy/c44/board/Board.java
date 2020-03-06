@@ -868,7 +868,7 @@ public class Board {
 			clockStartedInMillis = System.currentTimeMillis() + (10 * 1000);
 		}
 
-		if (System.currentTimeMillis() > clockStartedInMillis) {
+		if (System.currentTimeMillis() > clockStartedInMillis && clockStarting) {
 
 			clockRunning = true;
 
