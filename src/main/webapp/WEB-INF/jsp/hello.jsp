@@ -75,6 +75,8 @@
 	function fill() {
 		
 		$('#myModal').modal('hide');
+		
+		$('#clockStartModal').modal('hide');
 
 		$
 				.ajax({
