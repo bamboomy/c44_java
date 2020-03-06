@@ -124,6 +124,9 @@ public class Board {
 
 	private static String[] colorStrings = { "red", "brown", "green", "blue" };
 
+	@Getter
+	private boolean clockRunning = false;
+
 	public Board(String hash) {
 
 		profile = staticProfile;

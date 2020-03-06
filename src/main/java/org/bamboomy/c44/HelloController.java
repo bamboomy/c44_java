@@ -164,7 +164,10 @@ public class HelloController {
 			}
 		}
 
-		board.updateTime();
+		if (board.isClockRunning()) {
+
+			board.updateTime();
+		}
 
 		if (board.isNewDead()) {
 
