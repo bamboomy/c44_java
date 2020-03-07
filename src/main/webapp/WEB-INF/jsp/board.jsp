@@ -12,19 +12,28 @@
 
 		$('#myModal').modal('show');
 		
-		<c:if test="${board.isClockStarting() || board.isClockRunning()}">
-		
+		<c:if test="${board.isClockStarting() || board.isClockRunning() || board.clockStopped}">
+
 			$('#myModal').modal('hide');
-		
-			<c:if test="${!board.isClockRunning()}">
+
+			<c:if test="${!board.isClockRunning() && !board.clockStopped}">
 		
 				$('#clockStartModal').modal('show');
+		
+			</c:if>
+
+			<c:if test="${board.clockStopped}">
+		
+				$('#clockStopModal').modal('show');
 		
 			</c:if>
 		
 		</c:if>
 		
 	});
+	
+	<!--c:if test="${board.clockStopped}"-->
+	
 </script>
 
 <c:if

@@ -133,7 +133,7 @@ public class Board {
 	private long clockStartedInMillis, clockStoppedInMillis;
 
 	@Getter
-	private boolean clockStopped;
+	private boolean clockStopped = false;
 
 	public Board(String hash) {
 
