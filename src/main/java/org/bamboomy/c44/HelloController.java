@@ -198,14 +198,14 @@ public class HelloController {
 
 			board.setRandom(color.getSeq());
 			
-			board.setTimestamp(index, System.currentTimeMillis());
+			board.setTimestamp(color.getSeq(), System.currentTimeMillis());
 
 			return "Random";
 		}
 
 		if (name.equalsIgnoreCase("Dubious85247")) {
 
-			board.setTimestamp(index, System.currentTimeMillis());
+			board.setTimestamp(color.getSeq(), System.currentTimeMillis());
 
 			board.setDubious(color.getSeq());
 
