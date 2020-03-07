@@ -29,12 +29,12 @@ public class Dubious extends Player {
 
 	public String getCurrent() {
 
-		return Player.getColorNamez()[others[turn].getColor()];
+		return Color.getBySeq(turn).getName();
 	}
 
 	public int getCurrentNumber() {
 
-		return others[turn].getColor();
+		return others[turn].getColor().getSeq();
 	}
 
 	public void next() {
