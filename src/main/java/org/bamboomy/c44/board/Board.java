@@ -835,6 +835,20 @@ public class Board {
 
 	public int getRemainingStopSecs() {
 
+		boolean back = true;
+
+		for (Player player : playerz) {
+
+			back &= player.getTimestamp() + (30 * 1000) < System.currentTimeMillis();
+		}
+
+		if (back) {
+			
+			clockStopped = false;
+
+			return 50;
+		}
+
 		return (int) (clockStoppedInMillis + (50 * 1000) - System.currentTimeMillis()) / 1000;
 	}
 }
