@@ -131,7 +131,7 @@ public class Board {
 	private boolean clockStarting = false;
 
 	private long clockStartedInMillis;
-	
+
 	@Getter
 	private long clockStoppedInMillis;
 
@@ -329,7 +329,7 @@ public class Board {
 		System.out.println(md5);
 
 		if (!currentPlayer.getColor().getName().equalsIgnoreCase(color)) {
-			
+
 			System.out.println("wrong color");
 
 			return;
@@ -532,7 +532,7 @@ public class Board {
 			gone |= player.getTimestamp() + (30 * 1000) < System.currentTimeMillis();
 		}
 
-		if (gone) {
+		if (gone && !clockStopped) {
 
 			stopClock();
 		}
@@ -832,9 +832,9 @@ public class Board {
 
 		playerz[i].setTimestamp(currentTimeMillis);
 	}
-	
+
 	public int getRemainingStopSecs() {
 
-		return (int)(clockStoppedInMillis + (50 * 1000) - System.currentTimeMillis());
+		return (int) (clockStoppedInMillis + (50 * 1000) - System.currentTimeMillis()) / 1000;
 	}
 }
