@@ -780,7 +780,7 @@ public class Board {
 			clockStartedInMillis = System.currentTimeMillis() + (10 * 1000);
 		}
 
-		if (System.currentTimeMillis() > clockStartedInMillis && clockStarting) {
+		if (System.currentTimeMillis() > clockStartedInMillis && clockStarting && !clockRunning) {
 
 			clockRunning = true;
 

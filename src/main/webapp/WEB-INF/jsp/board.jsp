@@ -138,6 +138,39 @@
 		</div>
 	</div>
 
+	<!-- The Stop the Clock Modal -->
+	<div class="modal" id="clockStopModal">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title text-center">Stop the clock!</h4>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					
+					<p>
+					Someone has left (our lost connectivity),<br/>
+					<br/>
+					(s)he has 50s to return...<br/>
+					<br/>
+					If too late, his/hers place will be taken by an available chatter<br/>
+					<br/>
+					or a Random bot.
+					</p>
+					
+					<p>
+					50s remaining...
+					</p>
+					
+				</div>
+
+			</div>
+		</div>
+	</div>
+
 	<div>
 		<c:forEach items="${board.getRotatedPlacez(user.color)}" var="row">
 
