@@ -77,6 +77,8 @@
 		$('#myModal').modal('hide');
 		
 		$('#clockStartModal').modal('hide');
+		
+		$('#clockStopModal').modal('hide');
 
 		$
 				.ajax({
