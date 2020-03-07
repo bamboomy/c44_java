@@ -130,7 +130,10 @@ public class Board {
 
 	private boolean clockStarting = false;
 
-	private long clockStartedInMillis;
+	private long clockStartedInMillis, clockStoppedInMillis;
+
+	@Getter
+	private boolean clockStopped;
 
 	public Board(String hash) {
 
@@ -323,6 +326,8 @@ public class Board {
 		System.out.println(md5);
 
 		if (!currentPlayer.getColor().getName().equalsIgnoreCase(color)) {
+			
+			System.out.println("wrong color");
 
 			return;
 		}
@@ -517,7 +522,30 @@ public class Board {
 
 	public void updateTime() {
 
+		boolean gone = false;
+
+		for (Player player : playerz) {
+
+			gone |= player.getTimestamp() + (30 * 1000) < System.currentTimeMillis();
+		}
+
+		if (gone) {
+
+			stopClock();
+		}
+
 		timeArrayInt[turn] = getCurrentTimeOfCurrentPlayer();
+	}
+
+	private void stopClock() {
+
+		clockRunning = false;
+
+		clockStarting = false;
+
+		clockStopped = true;
+
+		clockStoppedInMillis = System.currentTimeMillis();
 	}
 
 	public boolean isRenderingCurrentPlayer(String color) {
