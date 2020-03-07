@@ -171,7 +171,7 @@
 					</p>
 					
 					<p>
-					${(int)(board.clockStoppedInMillis + (50 * 1000) - System.currentTimeMillis())}s remaining...
+					${board.getRemainingStopSecs()}s remaining...
 					</p>
 					
 				</div>
