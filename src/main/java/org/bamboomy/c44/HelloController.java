@@ -7,6 +7,7 @@ import java.security.NoSuchAlgorithmException;
 import javax.xml.bind.DatatypeConverter;
 
 import org.bamboomy.c44.board.Board;
+import org.bamboomy.c44.board.Color;
 import org.bamboomy.c44.board.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -114,12 +115,12 @@ public class HelloController {
 
 					board.setRedName("You");
 
-					board.getTimestamps()[0] = System.currentTimeMillis();
+					board.setTimestamp(Color.RED.getSeq(), System.currentTimeMillis());
 
 				} else {
 
 					board.setRedName(
-							detectBot(userColor.getName(), Player.RED, board, dubiousIterable, user.getColor(), 0));
+							detectBot(userColor.getName(), Color.RED, board, dubiousIterable, user.getColor(), 0));
 				}
 
 			} else if (userColor.getColor().equalsIgnoreCase("green")) {
@@ -128,12 +129,12 @@ public class HelloController {
 
 					board.setGreenName("You");
 
-					board.getTimestamps()[2] = System.currentTimeMillis();
+					board.setTimestamp(Color.GREEN.getSeq(), System.currentTimeMillis());
 
 				} else {
 
 					board.setGreenName(
-							detectBot(userColor.getName(), Player.GREEN, board, dubiousIterable, user.getColor(), 2));
+							detectBot(userColor.getName(), Color.GREEN, board, dubiousIterable, user.getColor(), 2));
 				}
 
 			} else if (userColor.getColor().equalsIgnoreCase("blue")) {
@@ -142,12 +143,12 @@ public class HelloController {
 
 					board.setBlueName("You");
 
-					board.getTimestamps()[3] = System.currentTimeMillis();
+					board.setTimestamp(Color.BLUE.getSeq(), System.currentTimeMillis());
 
 				} else {
 
 					board.setBlueName(
-							detectBot(userColor.getName(), Player.BLUE, board, dubiousIterable, user.getColor(), 3));
+							detectBot(userColor.getName(), Color.BLUE, board, dubiousIterable, user.getColor(), 3));
 				}
 
 			} else if (userColor.getColor().equalsIgnoreCase("yellow")) {
@@ -156,12 +157,12 @@ public class HelloController {
 
 					board.setYellowName("You");
 
-					board.getTimestamps()[1] = System.currentTimeMillis();
+					board.setTimestamp(Color.YELLOW.getSeq(), System.currentTimeMillis());
 
 				} else {
 
 					board.setYellowName(
-							detectBot(userColor.getName(), Player.YELLOW, board, dubiousIterable, user.getColor(), 1));
+							detectBot(userColor.getName(), Color.YELLOW, board, dubiousIterable, user.getColor(), 1));
 				}
 			}
 		}
@@ -190,23 +191,23 @@ public class HelloController {
 		return "judge";
 	}
 
-	private String detectBot(String name, int color, Board board, Iterable<ColorsTaken> dubiousIterable,
+	private String detectBot(String name, Color color, Board board, Iterable<ColorsTaken> dubiousIterable,
 			String userColor, int index) {
 
 		if (name.equalsIgnoreCase("Random85247")) {
 
-			board.setRandom(color);
-
-			board.getTimestamps()[index] = System.currentTimeMillis();
+			board.setRandom(color.getSeq());
+			
+			board.setTimestamp(index, System.currentTimeMillis());
 
 			return "Random";
 		}
 
 		if (name.equalsIgnoreCase("Dubious85247")) {
 
-			board.getTimestamps()[index] = System.currentTimeMillis();
+			board.setTimestamp(index, System.currentTimeMillis());
 
-			board.setDubious(color);
+			board.setDubious(color.getSeq());
 
 			String dubiousName = "Dubious: ";
 

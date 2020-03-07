@@ -134,26 +134,36 @@ public class Place {
 		calculateHash();
 
 		visuallyAttacked = true;
-
-		if (attackingColor == Player.RED) {
-
+		
+		switch(Color.getBySeq(attackingColor)) {
+		
+		case RED:
+			
 			blackString = "piece_on_black_red";
 			whiteString = "piece_on_white_red";
-
-		} else if (attackingColor == Player.GREEN) {
-
-			blackString = "piece_on_black_green";
-			whiteString = "piece_on_white_green";
-
-		} else if (attackingColor == Player.YELLOW) {
-
+			
+			break;
+			
+		case YELLOW:
+			
 			blackString = "piece_on_black_yellow";
 			whiteString = "piece_on_white_yellow";
-
-		} else if (attackingColor == Player.BLUE) {
-
+			
+			break;
+			
+		case GREEN:
+			
+			blackString = "piece_on_black_green";
+			whiteString = "piece_on_white_green";
+			
+			break;
+			
+		case BLUE:
+			
 			blackString = "piece_on_black_blue";
 			whiteString = "piece_on_white_blue";
+			
+			break;
 		}
 	}
 

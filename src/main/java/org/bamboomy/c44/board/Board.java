@@ -796,4 +796,9 @@ public class Board {
 
 		playerz[color.getSeq()].setColorTaken(user);
 	}
+
+	public void setTimestamp(int i, long currentTimeMillis) {
+
+		playerz[i].setTimestamp(currentTimeMillis);
+	}
 }
