@@ -68,7 +68,7 @@
 				<div class="modal-body">
 					${board.greenName}&nbsp;
 					<c:choose>
-						<c:when test="${board.timestamps[0] == -1}">
+						<c:when test="${board.playerz[0].timestamp == -1}">
 							<img src="/${board.tomcatPath}/img/spinner.gif" alt="Smiley face"
 								height="42" width="42">
 							<br />
@@ -81,7 +81,7 @@
 					</c:choose>
 					<br /> ${board.blueName}&nbsp;
 					<c:choose>
-						<c:when test="${board.timestamps[1] == -1}">
+						<c:when test="${board.playerz[1].timestamp == -1}">
 							<img src="/${board.tomcatPath}/img/spinner.gif" alt="Smiley face"
 								height="42" width="42">
 							<br />
@@ -94,7 +94,7 @@
 					</c:choose>
 					<br /> ${board.redName}&nbsp;
 					<c:choose>
-						<c:when test="${board.timestamps[2] == -1}">
+						<c:when test="${board.playerz[2].timestamp == -1}">
 							<img src="/${board.tomcatPath}/img/spinner.gif" alt="Smiley face"
 								height="42" width="42">
 							<br />
@@ -107,7 +107,7 @@
 					</c:choose>
 					<br /> ${board.yellowName}&nbsp;
 					<c:choose>
-						<c:when test="${board.timestamps[3] == -1}">
+						<c:when test="${board.playerz[3].timestamp == -1}">
 							<img src="/${board.tomcatPath}/img/spinner.gif" alt="Smiley face"
 								height="42" width="42">
 							<br />
