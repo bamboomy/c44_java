@@ -833,7 +833,7 @@ public class Board {
 		playerz[i].setTimestamp(currentTimeMillis);
 	}
 	
-	private int getRemainingStopSecs() {
+	public int getRemainingStopSecs() {
 
 		return (int)(clockStoppedInMillis + (50 * 1000) - System.currentTimeMillis());
 	}
