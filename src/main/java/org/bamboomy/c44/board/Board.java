@@ -839,7 +839,7 @@ public class Board {
 
 		for (Player player : playerz) {
 
-			back &= player.getTimestamp() + (30 * 1000) < System.currentTimeMillis();
+			back &= player.getTimestamp() + (30 * 1000) > System.currentTimeMillis();
 		}
 
 		if (back) {
