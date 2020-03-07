@@ -95,6 +95,8 @@ public class HelloController {
 		String gameHash = user.getGame();
 
 		Board board = BoardController.getInstance().getBoard(gameHash);
+		
+		board.setColorTaken(user);
 
 		board.getLock().lock();
 

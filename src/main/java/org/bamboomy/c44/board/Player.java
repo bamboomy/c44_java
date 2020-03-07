@@ -3,6 +3,7 @@ package org.bamboomy.c44.board;
 import java.util.ArrayList;
 import java.util.concurrent.locks.ReentrantLock;
 
+import org.bamboomy.c44.ColorsTaken;
 import org.bamboomy.c44.board.pieces.Bisshop;
 import org.bamboomy.c44.board.pieces.Horse;
 import org.bamboomy.c44.board.pieces.King;
@@ -17,12 +18,14 @@ import lombok.Setter;
 public class Player {
 
 	@Getter
-	private int color;
+	private Color color;
 
-	public static final int RED = 0, YELLOW = 1, GREEN = 2, BLUE = 3;
-
-	@Getter
-	private static String[] colorNamez = { "Red", "Yellow", "Green", "Blue" };
+	/*
+	 * public static final int RED = 0, YELLOW = 1, GREEN = 2, BLUE = 3;
+	 * 
+	 * @Getter private static String[] colorNamez = { "Red", "Yellow", "Green",
+	 * "Blue" };
+	 */
 
 	@Getter
 	private ArrayList<Piece> piecez = new ArrayList<Piece>();
@@ -52,30 +55,38 @@ public class Player {
 
 	private ReentrantLock lock = new ReentrantLock();
 
+	@Getter
+	@Setter
+	private long timestamp = -1;
+
+	private ColorsTaken colorsTaken;
+
 	public Player(int color, Board board, boolean isRobot) {
 
-		if (color != RED && color != BLUE && color != GREEN && color != YELLOW) {
+		if (Color.getBySeq(color) == null) {
 
 			throw new RuntimeException("invalid color: " + color);
 		}
 
-		this.color = color;
+		this.color = Color.getBySeq(color);
 
-		if (color == RED) {
+		switch (this.color) {
 
+		case RED:
 			initRed(board);
+			break;
 
-		} else if (color == YELLOW) {
-
+		case YELLOW:
 			initYellow(board);
+			break;
 
-		} else if (color == GREEN) {
-
+		case GREEN:
 			initGreen(board);
+			break;
 
-		} else if (color == BLUE) {
-
+		case BLUE:
 			initBlue(board);
+			break;
 		}
 
 		robot = isRobot;
@@ -89,7 +100,7 @@ public class Player {
 
 			if (i >= 2 && i <= 4) {
 
-				piecez.add(new Pawn(board.getPlacez()[1][i + 2], color, 1, 0, this));
+				piecez.add(new Pawn(board.getPlacez()[1][i + 2], color.getSeq(), 1, 0, this));
 			}
 
 			// piecez.add(new Pawn(board.getPlacez()[1][i + 2], color, 1, 0, this));
@@ -99,40 +110,41 @@ public class Player {
 		// piecez.add(new Horse(board.getPlacez()[0][3], color, this));
 		// piecez.add(new Bisshop(board.getPlacez()[0][4], color, this));
 
-		king = new King(board.getPlacez()[0][5], color, 1, 0, this);
+		king = new King(board.getPlacez()[0][5], color.getSeq(), 1, 0, this);
 
 		piecez.add(king);
-		// piecez.add(new Queen(board.getPlacez()[0][6], color, this));
+		// piecez.add(new Queen(board.getPlacez()[0][6], color.getSeq(), this));
 
-		// piecez.add(new Bisshop(board.getPlacez()[0][7], color, this));
-		// piecez.add(new Horse(board.getPlacez()[0][8], color, this));
-		// piecez.add(new Tower(board.getPlacez()[0][9], color, this));
+		// piecez.add(new Bisshop(board.getPlacez()[0][7], color.getSeq(), this));
+		// piecez.add(new Horse(board.getPlacez()[0][8], color.getSeq(), this));
+		// piecez.add(new Tower(board.getPlacez()[0][9], color.getSeq(), this));
 	}
 
 	private void initYellow(Board board) {
 
 		for (int i = 0; i < 8; i++) {
 
-			// piecez.add(new Pawn(board.getPlacez()[i + 2][10], color, 0, -1, this));
+			// piecez.add(new Pawn(board.getPlacez()[i + 2][10], color.getSeq(), 0, -1,
+			// this));
 
 			if (i >= 3 && i <= 4) {
 
-				piecez.add(new Pawn(board.getPlacez()[i + 2][10], color, 0, -1, this));
+				piecez.add(new Pawn(board.getPlacez()[i + 2][10], color.getSeq(), 0, -1, this));
 			}
 		}
 
-		// piecez.add(new Tower(board.getPlacez()[2][11], color, this));
-		// piecez.add(new Horse(board.getPlacez()[3][11], color, this));
-		// piecez.add(new Bisshop(board.getPlacez()[4][11], color, this));
+		// piecez.add(new Tower(board.getPlacez()[2][11], color.getSeq(), this));
+		// piecez.add(new Horse(board.getPlacez()[3][11], color.getSeq(), this));
+		// piecez.add(new Bisshop(board.getPlacez()[4][11], color.getSeq(), this));
 
-		king = new King(board.getPlacez()[5][11], color, 0, -1, this);
+		king = new King(board.getPlacez()[5][11], color.getSeq(), 0, -1, this);
 
 		piecez.add(king);
-		piecez.add(new Queen(board.getPlacez()[6][11], color, this));
+		piecez.add(new Queen(board.getPlacez()[6][11], color.getSeq(), this));
 
-		// piecez.add(new Bisshop(board.getPlacez()[7][11], color, this));
-		// piecez.add(new Horse(board.getPlacez()[8][11], color, this));
-		// piecez.add(new Tower(board.getPlacez()[9][11], color, this));
+		// piecez.add(new Bisshop(board.getPlacez()[7][11], color.getSeq(), this));
+		// piecez.add(new Horse(board.getPlacez()[8][11], color.getSeq(), this));
+		// piecez.add(new Tower(board.getPlacez()[9][11], color.getSeq(), this));
 	}
 
 	private void initGreen(Board board) {
@@ -141,50 +153,52 @@ public class Player {
 
 			if (i == 5 || i == 3) {
 
-				piecez.add(new Pawn(board.getPlacez()[10][i + 2], color, -1, 0, this));
+				piecez.add(new Pawn(board.getPlacez()[10][i + 2], color.getSeq(), -1, 0, this));
 			}
 
-			// piecez.add(new Pawn(board.getPlacez()[10][i + 2], color, -1, 0, this));
+			// piecez.add(new Pawn(board.getPlacez()[10][i + 2], color.getSeq(), -1, 0,
+			// this));
 		}
 
-		// piecez.add(new Tower(board.getPlacez()[11][2], color, this));
-		// piecez.add(new Horse(board.getPlacez()[11][3], color, this));
-		// piecez.add(new Bisshop(board.getPlacez()[11][4], color, this));
+		// piecez.add(new Tower(board.getPlacez()[11][2], color.getSeq(), this));
+		// piecez.add(new Horse(board.getPlacez()[11][3], color.getSeq(), this));
+		// piecez.add(new Bisshop(board.getPlacez()[11][4], color.getSeq(), this));
 
-		king = new King(board.getPlacez()[11][6], color, -1, 0, this);
+		king = new King(board.getPlacez()[11][6], color.getSeq(), -1, 0, this);
 
-		piecez.add(new Queen(board.getPlacez()[11][5], color, this));
+		piecez.add(new Queen(board.getPlacez()[11][5], color.getSeq(), this));
 		piecez.add(king);
 
-		// piecez.add(new Bisshop(board.getPlacez()[11][7], color, this));
-		// piecez.add(new Horse(board.getPlacez()[11][8], color, this));
-		// piecez.add(new Tower(board.getPlacez()[11][9], color, this));
+		// piecez.add(new Bisshop(board.getPlacez()[11][7], color.getSeq(), this));
+		// piecez.add(new Horse(board.getPlacez()[11][8], color.getSeq(), this));
+		// piecez.add(new Tower(board.getPlacez()[11][9], color.getSeq(), this));
 	}
 
 	private void initBlue(Board board) {
 
 		for (int i = 0; i < 8; i++) {
-			
+
 			if (i == 5 || i == 4) {
 
-				piecez.add(new Pawn(board.getPlacez()[i + 2][1], color, 0, 1, this));
+				piecez.add(new Pawn(board.getPlacez()[i + 2][1], color.getSeq(), 0, 1, this));
 			}
 
-			//piecez.add(new Pawn(board.getPlacez()[i + 2][1], color, 0, 1, this));
+			// piecez.add(new Pawn(board.getPlacez()[i + 2][1], color.getSeq(), 0, 1,
+			// this));
 		}
 
-		//piecez.add(new Tower(board.getPlacez()[2][0], color, this));
-		//piecez.add(new Horse(board.getPlacez()[3][0], color, this));
-		//piecez.add(new Bisshop(board.getPlacez()[4][0], color, this));
+		// piecez.add(new Tower(board.getPlacez()[2][0], color.getSeq(), this));
+		// piecez.add(new Horse(board.getPlacez()[3][0], color.getSeq(), this));
+		// piecez.add(new Bisshop(board.getPlacez()[4][0], color.getSeq(), this));
 
-		king = new King(board.getPlacez()[6][0], color, 0, 1, this);
+		king = new King(board.getPlacez()[6][0], color.getSeq(), 0, 1, this);
 
-		piecez.add(new Queen(board.getPlacez()[5][0], color, this));
+		piecez.add(new Queen(board.getPlacez()[5][0], color.getSeq(), this));
 		piecez.add(king);
 
-		//piecez.add(new Bisshop(board.getPlacez()[7][0], color, this));
-		//piecez.add(new Horse(board.getPlacez()[8][0], color, this));
-		//piecez.add(new Tower(board.getPlacez()[9][0], color, this));
+		// piecez.add(new Bisshop(board.getPlacez()[7][0], color.getSeq(), this));
+		// piecez.add(new Horse(board.getPlacez()[8][0], color.getSeq(), this));
+		// piecez.add(new Tower(board.getPlacez()[9][0], color.getSeq(), this));
 	}
 
 	boolean click(String md5) {
@@ -196,7 +210,7 @@ public class Player {
 			if (md5.equalsIgnoreCase(piece.getMd5())) {
 
 				System.out.println(piece.getPieceName());
-				
+
 				piece.click();
 
 				board.setWouldBeCheck(false);
@@ -433,6 +447,14 @@ public class Player {
 
 				generateRandomMove(performedMoves);
 			}
+		}
+	}
+
+	public void setColorTaken(ColorsTaken user) {
+
+		if (colorsTaken == null) {
+
+			colorsTaken = user;
 		}
 	}
 

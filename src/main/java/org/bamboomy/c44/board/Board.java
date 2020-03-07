@@ -40,8 +40,9 @@ public class Board {
 	@Getter
 	private Player currentPlayer;
 
-	@Getter
-	private long[] timestamps = new long[4];
+	/*
+	 * @Getter private long[] timestamps = new long[4];
+	 */
 
 	@Getter
 	@Setter
@@ -198,8 +199,6 @@ public class Board {
 			resignRead[i] = true;
 
 			beginTurn[i] = false;
-
-			timestamps[i] = -1;
 		}
 
 		places[0] = "4th";
@@ -250,7 +249,8 @@ public class Board {
 
 		if (finished) {
 
-			resignText = Player.getColorNamez()[playerz[turn].getColor()] + " has won the game :)";
+			// resignText = Player.getColorNamez()[playerz[turn].getColor()] + " has won the
+			// game :)";
 		}
 	}
 
@@ -258,7 +258,8 @@ public class Board {
 
 		String result = "";
 
-		result += Player.getColorNamez()[playerz[player].getColor()] + " has resigned,\\n";
+		// result += Player.getColorNamez()[playerz[player].getColor()] + " has
+		// resigned,\\n";
 
 		// TODO: refactor so the name (and not 'You') is used when building resign text
 		// -> 1 possible tactic: build resigntext upon read...
@@ -321,10 +322,8 @@ public class Board {
 
 		System.out.println(md5);
 
-		if ((currentPlayer.getColor() == Player.RED && !color.equalsIgnoreCase("red"))
-				|| (currentPlayer.getColor() == Player.GREEN && !color.equalsIgnoreCase("green"))
-				|| (currentPlayer.getColor() == Player.BLUE && !color.equalsIgnoreCase("blue"))
-				|| (currentPlayer.getColor() == Player.YELLOW && !color.equalsIgnoreCase("yellow"))) {
+		if (!currentPlayer.getColor().getName().equalsIgnoreCase(color)) {
+
 			return;
 		}
 
@@ -495,7 +494,7 @@ public class Board {
 
 		for (Player player : playerz) {
 
-			if (player.getColor() != color) {
+			if (player.getColor().getSeq() != color) {
 
 				player.setAttackedPlaces(false);
 			}
@@ -523,19 +522,7 @@ public class Board {
 
 	public boolean isRenderingCurrentPlayer(String color) {
 
-		if (playerz[turn].getColor() == Player.RED && color.equalsIgnoreCase("red")) {
-
-			return true;
-
-		} else if (playerz[turn].getColor() == Player.GREEN && color.equalsIgnoreCase("green")) {
-
-			return true;
-
-		} else if (playerz[turn].getColor() == Player.BLUE && color.equalsIgnoreCase("blue")) {
-
-			return true;
-
-		} else if (playerz[turn].getColor() == Player.YELLOW && color.equalsIgnoreCase("yellow")) {
+		if (playerz[turn].getColor().getName().equalsIgnoreCase(color)) {
 
 			return true;
 		}
@@ -547,30 +534,9 @@ public class Board {
 
 		boolean result = false;
 
-		if (color.equalsIgnoreCase("red")) {
+		result = timeOut[Color.getByName(color).getSeq()];
 
-			result = timeOut[Player.RED];
-
-			timeOut[Player.RED] = false;
-
-		} else if (color.equalsIgnoreCase("green")) {
-
-			result = timeOut[Player.GREEN];
-
-			timeOut[Player.GREEN] = false;
-
-		} else if (color.equalsIgnoreCase("blue")) {
-
-			result = timeOut[Player.BLUE];
-
-			timeOut[Player.BLUE] = false;
-
-		} else if (color.equalsIgnoreCase("yellow")) {
-
-			result = timeOut[Player.YELLOW];
-
-			timeOut[Player.YELLOW] = false;
-		}
+		timeOut[Color.getByName(color).getSeq()] = false;
 
 		return result;
 	}
@@ -581,30 +547,9 @@ public class Board {
 
 		boolean result = true;
 
-		if (color.equalsIgnoreCase("red")) {
+		result = resignRead[Color.getByName(color).getSeq()];
 
-			result = resignRead[Player.RED];
-
-			resignRead[Player.RED] = true;
-
-		} else if (color.equalsIgnoreCase("green")) {
-
-			result = resignRead[Player.GREEN];
-
-			resignRead[Player.GREEN] = true;
-
-		} else if (color.equalsIgnoreCase("blue")) {
-
-			result = resignRead[Player.BLUE];
-
-			resignRead[Player.BLUE] = true;
-
-		} else if (color.equalsIgnoreCase("yellow")) {
-
-			result = resignRead[Player.YELLOW];
-
-			resignRead[Player.YELLOW] = true;
-		}
+		resignRead[Color.getByName(color).getSeq()] = true;
 
 		System.out.println(result);
 
@@ -647,19 +592,7 @@ public class Board {
 
 	public void resign(String color) {
 
-		int colorInt = 0;
-
-		String[] colorNames = Player.getColorNamez();
-
-		for (int i = 0; i < 4; i++) {
-
-			if (colorNames[i].equalsIgnoreCase(color)) {
-
-				colorInt = i;
-
-				break;
-			}
-		}
+		int colorInt = Color.getByName(color).getSeq();
 
 		if (turn == dubiousTurn && dubious.getCurrent().equalsIgnoreCase(color)) {
 
@@ -754,7 +687,7 @@ public class Board {
 
 		playerz[color] = new Dubious(color, this, false, others);
 
-		dubiousColor = Player.getColorNamez()[color];
+		dubiousColor = Color.getBySeq(color).getName();
 
 		dubious = (Dubious) playerz[color];
 
@@ -792,30 +725,9 @@ public class Board {
 
 		boolean result = false;
 
-		if (color.equalsIgnoreCase("red")) {
+		result = beginTurn[Color.getByName(color).getSeq()];
 
-			result = beginTurn[Player.RED];
-
-			beginTurn[Player.RED] = false;
-
-		} else if (color.equalsIgnoreCase("green")) {
-
-			result = beginTurn[Player.GREEN];
-
-			beginTurn[Player.GREEN] = false;
-
-		} else if (color.equalsIgnoreCase("blue")) {
-
-			result = beginTurn[Player.BLUE];
-
-			beginTurn[Player.BLUE] = false;
-
-		} else if (color.equalsIgnoreCase("yellow")) {
-
-			result = beginTurn[Player.YELLOW];
-
-			beginTurn[Player.YELLOW] = false;
-		}
+		beginTurn[Color.getByName(color).getSeq()] = false;
 
 		System.out.println(result);
 
@@ -856,9 +768,9 @@ public class Board {
 
 		boolean allThere = true;
 
-		for (long time : timestamps) {
+		for (Player player : playerz) {
 
-			allThere &= time != -1;
+			allThere &= player.getTimestamp() != -1;
 		}
 
 		if (!clockStarting && allThere) {
@@ -876,5 +788,12 @@ public class Board {
 		}
 
 		return clockStarting;
+	}
+
+	public void setColorTaken(ColorsTaken user) {
+
+		Color color = Color.getByName(user.getColor());
+
+		playerz[color.getSeq()].setColorTaken(user);
 	}
 }

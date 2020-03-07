@@ -2,6 +2,7 @@ package org.bamboomy.c44.board.pieces;
 
 import java.util.ArrayList;
 
+import org.bamboomy.c44.board.Color;
 import org.bamboomy.c44.board.Move;
 import org.bamboomy.c44.board.Place;
 import org.bamboomy.c44.board.Player;
@@ -14,21 +15,23 @@ public class Horse extends Piece {
 
 	@Override
 	public String getPieceName() {
-
-		if (color == Player.RED) {
-
+		
+		switch(Color.getBySeq(color)) {
+		
+		case RED:
+			
 			return "img/horse_red.png";
-
-		} else if (color == Player.YELLOW) {
-
+			
+		case YELLOW:
+			
 			return "img/horse_yellow.png";
-
-		} else if (color == Player.GREEN) {
-
+			
+		case GREEN:
+			
 			return "img/horse_green.png";
-
-		} else if (color == Player.BLUE) {
-
+			
+		case BLUE:
+			
 			return "img/horse_blue.png";
 		}
 
