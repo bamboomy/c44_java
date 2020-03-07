@@ -130,7 +130,10 @@ public class Board {
 
 	private boolean clockStarting = false;
 
-	private long clockStartedInMillis, clockStoppedInMillis;
+	private long clockStartedInMillis;
+	
+	@Getter
+	private long clockStoppedInMillis;
 
 	@Getter
 	private boolean clockStopped = false;
