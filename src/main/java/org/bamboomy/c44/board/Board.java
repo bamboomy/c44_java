@@ -146,6 +146,9 @@ public class Board {
 	@Getter
 	private boolean promote = false;
 
+	@Getter
+	private String horseHash = "", queenHash = "";
+
 	public Board(String hash) {
 
 		profile = staticProfile;

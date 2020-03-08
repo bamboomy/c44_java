@@ -56,11 +56,15 @@
 	</script>
 </c:if>
 
-<c:if test="${board.promote}">
+<c:if test="${board.promote && board.isRenderingCurrentPlayer(user.color)}">
 
 	<script type="text/javascript">
+	
+		$(document).ready(function() {
 
-		alert('promotion');
+			$('#promoteModal').modal('show');
+			
+		});
 
 	</script>
 
@@ -190,6 +194,34 @@
 					
 					<p>
 					${board.getRemainingStopSecs()}s remaining...
+					</p>
+					
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- The Promote Modal -->
+	<div class="modal" id="promoteModal">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title text-center">Choose your vice...</h4>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+				
+					<img src="queen.jpg" height="200" width="200" onclick="clickToServer('${board.queenHash}', '${user.javaHash}')" />
+					<img src="horse.jpg" height="200" width="200" onclick="clickToServer('${board.horseHash}', '${user.javaHash}')" /><br/>
+					<br/>
+					<p>
+					We only give the choice between a knight and a queen<br/>
+					because with a queen you can do any move of a rook or bishop...<br/>
+					<br/>
 					</p>
 					
 				</div>
