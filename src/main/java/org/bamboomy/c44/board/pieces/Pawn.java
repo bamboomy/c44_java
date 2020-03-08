@@ -83,7 +83,7 @@ public class Pawn extends Piece {
 			}
 		}
 
-		if (xDelta != 0 && currentPlace.getY() + 1 < 12) {
+		if (xDelta != 0 && currentPlace.getY() + 1 < 11) {
 
 			otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() + xDelta][currentPlace.getY() + 1];
 
@@ -92,7 +92,7 @@ public class Pawn extends Piece {
 				attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 			}
 
-		} else if (xDelta != 0 && currentPlace.getY() + 1 == 12) {
+		} else if (xDelta != 0 && currentPlace.getY() + 1 == 11) {
 
 			// promotion
 
@@ -125,7 +125,7 @@ public class Pawn extends Piece {
 			}
 		}
 
-		if (yDelta != 0 && currentPlace.getX() + 1 < 12) {
+		if (yDelta != 0 && currentPlace.getX() + 1 < 11) {
 
 			otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() + 1][currentPlace.getY() + yDelta];
 
@@ -134,7 +134,7 @@ public class Pawn extends Piece {
 				attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 			}
 
-		} else if (yDelta != 0 && currentPlace.getX() + 1 == 12) {
+		} else if (yDelta != 0 && currentPlace.getX() + 1 == 11) {
 
 			// promotion
 
