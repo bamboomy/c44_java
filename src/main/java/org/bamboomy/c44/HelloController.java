@@ -97,9 +97,17 @@ public class HelloController {
 
 		Board board = BoardController.getInstance().getBoard(gameHash);
 		
-		board.setColorTaken(user);
-
 		board.getLock().lock();
+		
+		if(user.getColor().equalsIgnoreCase("chat")) {
+			
+			model.addAttribute("board", board);
+			model.addAttribute("user", user);
+
+			return "judge";
+		}
+		
+		board.setColorTaken(user);
 
 		Iterable<ColorsTaken> userIterable = colorsTakenRepository.findByGameHash(gameHash);
 
