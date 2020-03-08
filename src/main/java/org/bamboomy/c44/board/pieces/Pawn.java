@@ -6,6 +6,7 @@ import org.bamboomy.c44.board.Color;
 import org.bamboomy.c44.board.Move;
 import org.bamboomy.c44.board.Place;
 import org.bamboomy.c44.board.Player;
+import org.bamboomy.c44.board.Promotion;
 
 public class Pawn extends Piece {
 
@@ -81,10 +82,8 @@ public class Pawn extends Piece {
 				}
 			}
 		}
-		
-		otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() + xDelta][12];
 
-		if (xDelta != 0 && currentPlace.getY() + 2 < 12) {
+		if (xDelta != 0 && currentPlace.getY() + 1 < 12) {
 
 			otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() + xDelta][currentPlace.getY() + 1];
 
@@ -101,7 +100,7 @@ public class Pawn extends Piece {
 
 			if (otherPlace != null && otherPlace.getPiece() != null && otherPlace.getPiece().getColor() != color) {
 
-				attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
+				attackableMoves.add(new Promotion(currentPlace, otherPlace, this, addMove));
 			}
 		}
 
@@ -122,7 +121,7 @@ public class Pawn extends Piece {
 
 			if (otherPlace != null && otherPlace.getPiece() != null && otherPlace.getPiece().getColor() != color) {
 
-				attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
+				attackableMoves.add(new Promotion(currentPlace, otherPlace, this, addMove));
 			}
 		}
 
@@ -135,7 +134,7 @@ public class Pawn extends Piece {
 				attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 			}
 
-		} else if (yDelta != 0 && currentPlace.getX() + 1 < 12) {
+		} else if (yDelta != 0 && currentPlace.getX() + 1 == 12) {
 
 			// promotion
 
@@ -143,11 +142,11 @@ public class Pawn extends Piece {
 
 			if (otherPlace != null && otherPlace.getPiece() != null && otherPlace.getPiece().getColor() != color) {
 
-				attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
+				attackableMoves.add(new Promotion(currentPlace, otherPlace, this, addMove));
 			}
 		}
 
-		if (yDelta != 0 && currentPlace.getX() - 1 >= 0) {
+		if (yDelta != 0 && currentPlace.getX() - 1 > 0) {
 
 			otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() - 1][currentPlace.getY() + yDelta];
 
@@ -156,7 +155,7 @@ public class Pawn extends Piece {
 				attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 			}
 
-		} else if (yDelta != 0 && currentPlace.getX() - 1 >= 0) {
+		} else if (yDelta != 0 && currentPlace.getX() - 1 == 0) {
 			
 			// promotion
 
@@ -164,7 +163,7 @@ public class Pawn extends Piece {
 
 			if (otherPlace != null && otherPlace.getPiece() != null && otherPlace.getPiece().getColor() != color) {
 
-				attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
+				attackableMoves.add(new Promotion(currentPlace, otherPlace, this, addMove));
 			}
 		}
 
