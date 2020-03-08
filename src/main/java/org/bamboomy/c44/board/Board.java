@@ -7,11 +7,13 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.concurrent.locks.ReentrantLock;
 
-import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
 import javax.xml.bind.DatatypeConverter;
 
 import org.bamboomy.c44.ColorsTaken;
+import org.bamboomy.c44.board.pieces.Horse;
+import org.bamboomy.c44.board.pieces.Pawn;
 import org.bamboomy.c44.board.pieces.Piece;
+import org.bamboomy.c44.board.pieces.Queen;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -153,8 +155,12 @@ public class Board {
 
 	@Getter
 	private String horseHash = "", queenHash = "";
-	
+
 	private SecureRandom secureRandom = new SecureRandom("955B55F2455675B715F50F14821C250D".getBytes());
+
+	private Pawn promotingPawn = null;
+
+	private Place promotingPlace = null;
 
 	public Board(String hash) {
 
@@ -353,6 +359,20 @@ public class Board {
 			return;
 		}
 
+		if (md5.equalsIgnoreCase(horseHash)) {
+
+			horse();
+
+			return;
+		}
+
+		if (md5.equalsIgnoreCase(queenHash)) {
+
+			queen();
+
+			return;
+		}
+
 		if (!currentPlayer.click(md5)) {
 
 			System.out.println("not piece");
@@ -368,6 +388,33 @@ public class Board {
 				}
 			}
 		}
+	}
+
+	private void queen() {
+
+		Color playerColor = Color.getBySeq(promotingPawn.getColor());
+
+		promotingPlace.remove(promotingPawn);
+
+		putPromotingPiece(playerColor, new Queen(promotingPlace, playerColor.getSeq(), playerz[playerColor.getSeq()]));
+
+		next();
+	}
+
+	private void horse() {
+
+		Color playerColor = Color.getBySeq(promotingPawn.getColor());
+
+		promotingPlace.remove(promotingPawn);
+
+		putPromotingPiece(playerColor, new Horse(promotingPlace, playerColor.getSeq(), playerz[playerColor.getSeq()]));
+	}
+
+	private void putPromotingPiece(Color playerColor, Piece newPiece) {
+
+		playerz[playerColor.getSeq()].getPiecez().add(newPiece);
+
+		next();
 	}
 
 	public void next() {
@@ -883,14 +930,18 @@ public class Board {
 
 	public void promote(Piece piece, Place place) {
 
+		promotingPawn = (Pawn) piece;
+
+		promotingPlace = place;
+
 		promote = true;
 
 		String timeQ = System.currentTimeMillis() + "FCE41CFA81F3035C5A36C2DB0F04FF55";
-		
+
 		String timeH = System.currentTimeMillis() + "50DE8CAA507BA8E8953CEEEC9570F88D";
 
 		timeQ += (secureRandom.nextDouble() * 58452);
-		
+
 		timeH += (secureRandom.nextDouble() * 4758652);
 
 		try {
