@@ -50,6 +50,37 @@ public class HelloController {
 
 		board.setPlayerHash(hash);
 
+		board.setColorTaken(user);
+
+		Iterable<ColorsTaken> userIterable = colorsTakenRepository.findByGameHash(gameHash);
+
+		Iterable<ColorsTaken> dubiousIterable = colorsTakenRepository.findByGameHash(gameHash);
+
+		board.setColorsTaken(userIterable);
+
+		for (ColorsTaken userColor : userIterable) {
+
+			if (userColor.getColor().equalsIgnoreCase("red")) {
+
+				board.setRedName(detectBot(userColor.getName(), Color.RED, board, dubiousIterable, user.getColor(), 0));
+
+			} else if (userColor.getColor().equalsIgnoreCase("green")) {
+
+				board.setGreenName(
+						detectBot(userColor.getName(), Color.GREEN, board, dubiousIterable, user.getColor(), 2));
+
+			} else if (userColor.getColor().equalsIgnoreCase("blue")) {
+
+				board.setBlueName(
+						detectBot(userColor.getName(), Color.BLUE, board, dubiousIterable, user.getColor(), 3));
+
+			} else if (userColor.getColor().equalsIgnoreCase("yellow")) {
+
+				board.setYellowName(
+						detectBot(userColor.getName(), Color.YELLOW, board, dubiousIterable, user.getColor(), 1));
+			}
+		}
+
 		model.addAttribute("board", board);
 
 		board.syncNames();
@@ -96,84 +127,18 @@ public class HelloController {
 		String gameHash = user.getGame();
 
 		Board board = BoardController.getInstance().getBoard(gameHash);
-		
+
 		board.getLock().lock();
-		
-		if(user.getColor().equalsIgnoreCase("chat")) {
-			
+
+		if (user.getColor().equalsIgnoreCase("chat")) {
+
 			model.addAttribute("board", board);
 			model.addAttribute("user", user);
 
 			return "judge";
 		}
-		
-		board.setColorTaken(user);
 
-		Iterable<ColorsTaken> userIterable = colorsTakenRepository.findByGameHash(gameHash);
-
-		Iterable<ColorsTaken> dubiousIterable = colorsTakenRepository.findByGameHash(gameHash);
-
-		board.setColorsTaken(userIterable);
-
-		for (ColorsTaken userColor : userIterable) {
-
-			if (userColor.getColor().equalsIgnoreCase("red")) {
-
-				if (userColor.getColor().equalsIgnoreCase(user.getColor())) {
-
-					board.setRedName("You");
-
-					board.setTimestamp(Color.RED.getSeq(), System.currentTimeMillis());
-
-				} else {
-
-					board.setRedName(
-							detectBot(userColor.getName(), Color.RED, board, dubiousIterable, user.getColor(), 0));
-				}
-
-			} else if (userColor.getColor().equalsIgnoreCase("green")) {
-
-				if (userColor.getColor().equalsIgnoreCase(user.getColor())) {
-
-					board.setGreenName("You");
-
-					board.setTimestamp(Color.GREEN.getSeq(), System.currentTimeMillis());
-
-				} else {
-
-					board.setGreenName(
-							detectBot(userColor.getName(), Color.GREEN, board, dubiousIterable, user.getColor(), 2));
-				}
-
-			} else if (userColor.getColor().equalsIgnoreCase("blue")) {
-
-				if (userColor.getColor().equalsIgnoreCase(user.getColor())) {
-
-					board.setBlueName("You");
-
-					board.setTimestamp(Color.BLUE.getSeq(), System.currentTimeMillis());
-
-				} else {
-
-					board.setBlueName(
-							detectBot(userColor.getName(), Color.BLUE, board, dubiousIterable, user.getColor(), 3));
-				}
-
-			} else if (userColor.getColor().equalsIgnoreCase("yellow")) {
-
-				if (userColor.getColor().equalsIgnoreCase(user.getColor())) {
-
-					board.setYellowName("You");
-
-					board.setTimestamp(Color.YELLOW.getSeq(), System.currentTimeMillis());
-
-				} else {
-
-					board.setYellowName(
-							detectBot(userColor.getName(), Color.YELLOW, board, dubiousIterable, user.getColor(), 1));
-				}
-			}
-		}
+		board.setTimestamp(Color.getByName(user.getColor()).getSeq(), System.currentTimeMillis());
 
 		if (board.isClockRunning()) {
 
@@ -205,7 +170,7 @@ public class HelloController {
 		if (name.equalsIgnoreCase("Random85247")) {
 
 			board.setRandom(color.getSeq());
-			
+
 			board.setTimestamp(color.getSeq(), System.currentTimeMillis());
 
 			return "Random";

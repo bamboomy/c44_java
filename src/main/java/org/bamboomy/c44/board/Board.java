@@ -3,6 +3,8 @@ package org.bamboomy.c44.board;
 import java.util.ArrayList;
 import java.util.concurrent.locks.ReentrantLock;
 
+import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
+
 import org.bamboomy.c44.ColorsTaken;
 
 import lombok.Getter;
@@ -818,7 +820,7 @@ public class Board {
 
 		for (Player player : playerz) {
 
-			allThere &= player.getTimestamp() != -1;
+			allThere &= player.getTimestamp() != -1 || player instanceof Dubious || player.isRobot();
 		}
 
 		if (!clockStarting && allThere) {
@@ -855,8 +857,8 @@ public class Board {
 		boolean back = true;
 
 		for (Player player : playerz) {
-
-			back &= player.getTimestamp() + (30 * 1000) > System.currentTimeMillis();
+			
+			back &= player.getTimestamp() + (30 * 1000) > System.currentTimeMillis() || player instanceof Dubious || player.isRobot();
 		}
 
 		if (back) {
