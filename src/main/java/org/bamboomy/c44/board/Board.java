@@ -531,7 +531,7 @@ public class Board {
 
 		for (Player player : playerz) {
 
-			gone |= player.getTimestamp() + (30 * 1000) < System.currentTimeMillis() || player instanceof Dubious || player.isRobot();
+			gone |= player.getTimestamp() + (30 * 1000) < System.currentTimeMillis() && !(player instanceof Dubious) && !player.isRobot();
 		}
 
 		if (gone && !clockStopped) {
