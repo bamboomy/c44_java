@@ -139,6 +139,10 @@ public class Board {
 
 	@Getter
 	private boolean clockStopped = false;
+	
+	@Getter
+	@Setter
+	private boolean playerIsMoving = false;
 
 	public Board(String hash) {
 
@@ -357,6 +361,8 @@ public class Board {
 	public void next() {
 
 		timeArrayInt[turn] = 0;
+		
+		playerIsMoving = false;
 
 		if (playerz[turn] == dubious) {
 
