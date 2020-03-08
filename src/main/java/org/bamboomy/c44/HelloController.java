@@ -3,12 +3,12 @@ package org.bamboomy.c44;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 
 import javax.xml.bind.DatatypeConverter;
 
 import org.bamboomy.c44.board.Board;
 import org.bamboomy.c44.board.Color;
-import org.bamboomy.c44.board.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +26,8 @@ public class HelloController {
 
 	@Autowired
 	private GameResultRepository gameResultRepository;
+
+	private SecureRandom secureRandom = new SecureRandom("50DE8CAA507BA8E8953CEEEC9570F88D".getBytes());
 
 	@GetMapping({ "/" })
 	public String hello(Model model,
@@ -231,7 +233,7 @@ public class HelloController {
 
 		String time = System.currentTimeMillis() + "6";
 
-		time += (Math.random() * 999);
+		time += (secureRandom.nextDouble() * 458712);
 
 		try {
 

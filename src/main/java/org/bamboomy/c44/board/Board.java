@@ -1,9 +1,14 @@
 package org.bamboomy.c44.board;
 
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.concurrent.locks.ReentrantLock;
 
 import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
+import javax.xml.bind.DatatypeConverter;
 
 import org.bamboomy.c44.ColorsTaken;
 import org.bamboomy.c44.board.pieces.Piece;
@@ -148,6 +153,8 @@ public class Board {
 
 	@Getter
 	private String horseHash = "", queenHash = "";
+	
+	private SecureRandom secureRandom = new SecureRandom("955B55F2455675B715F50F14821C250D".getBytes());
 
 	public Board(String hash) {
 
@@ -877,5 +884,39 @@ public class Board {
 	public void promote(Piece piece, Place place) {
 
 		promote = true;
+
+		String timeQ = System.currentTimeMillis() + "FCE41CFA81F3035C5A36C2DB0F04FF55";
+		
+		String timeH = System.currentTimeMillis() + "50DE8CAA507BA8E8953CEEEC9570F88D";
+
+		timeQ += (secureRandom.nextDouble() * 58452);
+		
+		timeH += (secureRandom.nextDouble() * 4758652);
+
+		try {
+
+			byte[] bytesOfMessage = timeQ.getBytes("UTF-8");
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			byte[] thedigest = md.digest(bytesOfMessage);
+
+			queenHash = DatatypeConverter.printHexBinary(thedigest).toUpperCase();
+
+			bytesOfMessage = timeH.getBytes("UTF-8");
+			thedigest = md.digest(bytesOfMessage);
+
+			horseHash = DatatypeConverter.printHexBinary(thedigest).toUpperCase();
+
+		} catch (UnsupportedEncodingException e) {
+
+			e.printStackTrace();
+
+			throw new RuntimeException(e);
+
+		} catch (NoSuchAlgorithmException e) {
+
+			e.printStackTrace();
+
+			throw new RuntimeException(e);
+		}
 	}
 }
