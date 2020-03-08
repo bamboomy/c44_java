@@ -754,6 +754,13 @@ public class Board {
 
 		System.out.println("readin...");
 
+		if (color.equalsIgnoreCase("chat")) {
+			
+			System.out.println("chat :)");
+
+			return false;
+		}
+
 		boolean result = false;
 
 		result = beginTurn[Color.getByName(color).getSeq()];
@@ -843,7 +850,7 @@ public class Board {
 		}
 
 		if (back) {
-			
+
 			clockStopped = false;
 
 			return 50;
