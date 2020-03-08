@@ -6,6 +6,7 @@ import java.util.concurrent.locks.ReentrantLock;
 import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
 
 import org.bamboomy.c44.ColorsTaken;
+import org.bamboomy.c44.board.pieces.Piece;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -141,6 +142,9 @@ public class Board {
 	@Getter
 	@Setter
 	private boolean playerIsMoving = false;
+
+	@Getter
+	private boolean promote = false;
 
 	public Board(String hash) {
 
@@ -865,5 +869,10 @@ public class Board {
 		}
 
 		return (int) (clockStoppedInMillis + (50 * 1000) - System.currentTimeMillis()) / 1000;
+	}
+
+	public void promote(Piece piece, Place place) {
+
+		promote = true;
 	}
 }

@@ -56,6 +56,16 @@
 	</script>
 </c:if>
 
+<c:if test="${board.promote}">
+
+	<script type="text/javascript">
+
+		alert('promotion');
+
+	</script>
+
+</c:if>
+
 <div id="messages">
 
 	<div class="outer">

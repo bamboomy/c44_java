@@ -134,35 +134,35 @@ public class Place {
 		calculateHash();
 
 		visuallyAttacked = true;
-		
-		switch(Color.getBySeq(attackingColor)) {
-		
+
+		switch (Color.getBySeq(attackingColor)) {
+
 		case RED:
-			
+
 			blackString = "piece_on_black_red";
 			whiteString = "piece_on_white_red";
-			
+
 			break;
-			
+
 		case YELLOW:
-			
+
 			blackString = "piece_on_black_yellow";
 			whiteString = "piece_on_white_yellow";
-			
+
 			break;
-			
+
 		case GREEN:
-			
+
 			blackString = "piece_on_black_green";
 			whiteString = "piece_on_white_green";
-			
+
 			break;
-			
+
 		case BLUE:
-			
+
 			blackString = "piece_on_black_blue";
 			whiteString = "piece_on_white_blue";
-			
+
 			break;
 		}
 	}
@@ -180,9 +180,9 @@ public class Place {
 		System.out.println(getX() + ", " + getY() + ": " + getCssName());
 
 		move.execute(performedMoves);
-		
+
 		move.getPiece().unselect();
-		
+
 		move.getPiece().setMoved(true);
 
 		/*
@@ -229,7 +229,14 @@ public class Place {
 		 * }
 		 */
 
-		board.next();
+		if (move instanceof Promotion) {
+
+			board.promote(move.getPiece(), this);
+
+		} else {
+
+			board.next();
+		}
 	}
 
 	public void remove(Piece oldPiece) {
