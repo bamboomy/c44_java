@@ -31,9 +31,7 @@
 		</c:if>
 		
 	});
-	
-	<!--c:if test="${board.clockStopped}"-->
-	
+
 </script>
 
 <c:if
