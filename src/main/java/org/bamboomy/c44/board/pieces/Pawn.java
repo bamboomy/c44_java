@@ -47,6 +47,11 @@ public class Pawn extends Piece {
 	@Override
 	public void setAttackablePlaces(boolean unused, boolean addMove) {
 
+		System.out.println("xDelta: " + xDelta + ", currentPlace.getY() + 1 " + (currentPlace.getY() + 1)
+				+ ", currentPlace.getY() - 1 " + (currentPlace.getY() - 1));
+		System.out.println("yDelta: " + yDelta + ", currentPlace.getX() + 1 " + (currentPlace.getX() + 1)
+				+ ", currentPlace.getX() - 1 " + (currentPlace.getX() - 1));
+
 		attackableMoves = new ArrayList<Move>();
 
 		Place otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() + xDelta][currentPlace.getY()
@@ -93,7 +98,7 @@ public class Pawn extends Piece {
 			}
 
 		} else if (xDelta != 0 && currentPlace.getY() + 1 == 11) {
-			
+
 			System.out.println("promotion possible");
 
 			// promotion
@@ -116,7 +121,7 @@ public class Pawn extends Piece {
 			}
 
 		} else if (xDelta != 0 && currentPlace.getY() - 1 == 0) {
-			
+
 			System.out.println("promotion possible");
 
 			// promotion
@@ -139,7 +144,7 @@ public class Pawn extends Piece {
 			}
 
 		} else if (yDelta != 0 && currentPlace.getX() + 1 == 11) {
-			
+
 			System.out.println("promotion possible");
 
 			// promotion
@@ -162,9 +167,9 @@ public class Pawn extends Piece {
 			}
 
 		} else if (yDelta != 0 && currentPlace.getX() - 1 == 0) {
-			
+
 			System.out.println("promotion possible");
-			
+
 			// promotion
 
 			otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() - 1][currentPlace.getY() + yDelta];
