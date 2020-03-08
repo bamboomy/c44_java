@@ -115,7 +115,15 @@ public class Pawn extends Piece {
 
 			if (otherPlace != null && otherPlace.getPiece() != null && otherPlace.getPiece().getColor() != color) {
 
-				attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
+				if ((currentPlace.getX() + xDelta != 0 && currentPlace.getX() + xDelta != 11)
+						|| (currentPlace.getY() + yDelta != 0 && currentPlace.getY() + yDelta != 11)) {
+
+					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
+
+				} else {
+
+					attackableMoves.add(new Promotion(currentPlace, otherPlace, this, addMove));
+				}
 			}
 		}
 
