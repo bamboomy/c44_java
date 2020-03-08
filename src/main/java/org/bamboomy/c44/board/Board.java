@@ -841,6 +841,11 @@ public class Board {
 	}
 
 	public void setColorTaken(ColorsTaken user) {
+		
+		if(user.getColor().equalsIgnoreCase("chat")) {
+			
+			return;
+		}
 
 		Color color = Color.getByName(user.getColor());
 
