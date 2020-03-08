@@ -4,7 +4,7 @@ import lombok.Getter;
 
 public enum Color {
 
-	GREEN(0, "Green"), BLUE(1, "Blue"), RED(2, "Red"), YELLOW(3, "Yellow");
+	GREEN(0, "Green", "green"), BLUE(1, "Blue", "blue"), RED(2, "Red", "red"), YELLOW(3, "Yellow", "brown");
 
 	@Getter
 	private final int seq;
@@ -12,9 +12,13 @@ public enum Color {
 	@Getter
 	private final String name;
 
-	Color(int seq, String name) {
+	@Getter
+	private final String cssColor;
+
+	Color(int seq, String name, String cssColor) {
 		this.seq = seq;
 		this.name = name;
+		this.cssColor = cssColor;
 	}
 
 	public static Color getByName(String name) {

@@ -125,8 +125,6 @@ public class Board {
 
 	private ColorsTaken[] colorsTaken = new ColorsTaken[4];
 
-	private static String[] colorStrings = { "red", "brown", "green", "blue" };
-
 	@Getter
 	private boolean clockRunning = false;
 
@@ -139,7 +137,7 @@ public class Board {
 
 	@Getter
 	private boolean clockStopped = false;
-	
+
 	@Getter
 	@Setter
 	private boolean playerIsMoving = false;
@@ -361,7 +359,7 @@ public class Board {
 	public void next() {
 
 		timeArrayInt[turn] = 0;
-		
+
 		playerIsMoving = false;
 
 		if (playerz[turn] == dubious) {
@@ -433,14 +431,14 @@ public class Board {
 
 		if (getCurrentPlayer().checkCheck()) {
 
-			statusMessages += "<span style='color:" + colorStrings[turn] + ";'>";
+			statusMessages += "<span style='color:" + Color.getBySeq(turn).getCssColor() + ";'>";
 
 			statusMessages += colorsTaken[turn].getName()
 					+ "</span><span style='color: red;'> is in check!</span><br/>";
 
 			if (getCurrentPlayer().canPrevent()) {
 
-				statusMessages += "<span style='color: green;'>...but can prevent... (for now)</span><br/>";
+				statusMessages += "...but can prevent... (for now)<br/>";
 
 			} else {
 
@@ -537,7 +535,8 @@ public class Board {
 
 		for (Player player : playerz) {
 
-			gone |= player.getTimestamp() + (30 * 1000) < System.currentTimeMillis() && !(player instanceof Dubious) && !player.isRobot();
+			gone |= player.getTimestamp() + (30 * 1000) < System.currentTimeMillis() && !(player instanceof Dubious)
+					&& !player.isRobot();
 		}
 
 		if (gone && !clockStopped) {
@@ -847,9 +846,9 @@ public class Board {
 	}
 
 	public void setColorTaken(ColorsTaken user) {
-		
-		if(user.getColor().equalsIgnoreCase("chat")) {
-			
+
+		if (user.getColor().equalsIgnoreCase("chat")) {
+
 			return;
 		}
 
@@ -868,8 +867,9 @@ public class Board {
 		boolean back = true;
 
 		for (Player player : playerz) {
-			
-			back &= player.getTimestamp() + (30 * 1000) > System.currentTimeMillis() || player instanceof Dubious || player.isRobot();
+
+			back &= player.getTimestamp() + (30 * 1000) > System.currentTimeMillis() || player instanceof Dubious
+					|| player.isRobot();
 		}
 
 		if (back) {
