@@ -581,7 +581,7 @@ public class Board {
 
 		if (color.equalsIgnoreCase("chat")) {
 
-			return false;
+			return true;
 		}
 
 		System.out.println("readin...");
