@@ -93,6 +93,8 @@ public class Pawn extends Piece {
 			}
 
 		} else if (xDelta != 0 && currentPlace.getY() + 1 == 11) {
+			
+			System.out.println("promotion possible");
 
 			// promotion
 
@@ -114,6 +116,8 @@ public class Pawn extends Piece {
 			}
 
 		} else if (xDelta != 0 && currentPlace.getY() - 1 == 0) {
+			
+			System.out.println("promotion possible");
 
 			// promotion
 
@@ -135,6 +139,8 @@ public class Pawn extends Piece {
 			}
 
 		} else if (yDelta != 0 && currentPlace.getX() + 1 == 11) {
+			
+			System.out.println("promotion possible");
 
 			// promotion
 
@@ -156,6 +162,8 @@ public class Pawn extends Piece {
 			}
 
 		} else if (yDelta != 0 && currentPlace.getX() - 1 == 0) {
+			
+			System.out.println("promotion possible");
 			
 			// promotion
 
