@@ -217,7 +217,7 @@
 					<center>
 						<img src="/${board.tomcatPath}/img/queen.jpg" height="200" width="200" onclick="clickToServer('${board.queenHash}', '${user.javaHash}')" />
 						<img src="/${board.tomcatPath}/img/horse.jpg" height="200" width="200" onclick="clickToServer('${board.horseHash}', '${user.javaHash}')" /><br/>
-					</center>
+					</center>	
 					<br/>
 					<p>
 					We only give the choice between a knight and a queen<br/>

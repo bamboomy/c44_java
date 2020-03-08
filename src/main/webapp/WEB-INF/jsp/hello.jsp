@@ -79,6 +79,8 @@
 		$('#clockStartModal').modal('hide');
 		
 		$('#clockStopModal').modal('hide');
+		
+		$('#promoteModal').modal('hide');
 
 		$
 				.ajax({
