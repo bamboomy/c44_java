@@ -100,7 +100,12 @@ public class Player {
 			 * this)); }
 			 */
 
-			piecez.add(new Pawn(board.getPlacez()[1][i + 2], color.getSeq(), 1, 0, this));
+			// piecez.add(new Pawn(board.getPlacez()[1][i + 2], color.getSeq(), 1, 0,
+			// this));
+
+			if (i > 4) {
+				piecez.add(new Pawn(board.getPlacez()[1][i + 2], color.getSeq(), 1, 0, this));
+			}
 		}
 
 		piecez.add(new Tower(board.getPlacez()[0][2], color.getSeq(), this));
@@ -121,7 +126,8 @@ public class Player {
 
 		for (int i = 0; i < 8; i++) {
 
-			piecez.add(new Pawn(board.getPlacez()[i + 2][10], color.getSeq(), 0, -1, this));
+			// piecez.add(new Pawn(board.getPlacez()[i + 2][10], color.getSeq(), 0, -1,
+			// this));
 
 			// endgame debug
 
@@ -131,6 +137,11 @@ public class Player {
 			 * piecez.add(new Pawn(board.getPlacez()[i + 2][10], color.getSeq(), 0, -1,
 			 * this)); }
 			 */
+
+			if (i < 4) {
+
+				piecez.add(new Pawn(board.getPlacez()[i + 2][10], color.getSeq(), 0, -1, this));
+			}
 		}
 
 		piecez.add(new Tower(board.getPlacez()[2][11], color.getSeq(), this));
@@ -160,7 +171,13 @@ public class Player {
 			 * this)); }
 			 */
 
-			piecez.add(new Pawn(board.getPlacez()[10][i + 2], color.getSeq(), -1, 0, this));
+			// piecez.add(new Pawn(board.getPlacez()[10][i + 2], color.getSeq(), -1, 0,
+			// this));
+
+			if (i < 3) {
+
+				piecez.add(new Pawn(board.getPlacez()[10][i + 2], color.getSeq(), -1, 0, this));
+			}
 		}
 
 		piecez.add(new Tower(board.getPlacez()[11][2], color.getSeq(), this));
@@ -189,7 +206,14 @@ public class Player {
 			 * this)); }
 			 */
 
-			piecez.add(new Pawn(board.getPlacez()[i + 2][1], color.getSeq(), 0, 1, this));
+			// piecez.add(new Pawn(board.getPlacez()[i + 2][1], color.getSeq(), 0, 1,
+			// this));
+
+			if (i > 4) {
+
+				piecez.add(new Pawn(board.getPlacez()[i + 2][1], color.getSeq(), 0, 1, this));
+			}
+
 		}
 
 		piecez.add(new Tower(board.getPlacez()[2][0], color.getSeq(), this));
