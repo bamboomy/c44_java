@@ -47,11 +47,6 @@ public class Pawn extends Piece {
 	@Override
 	public void setAttackablePlaces(boolean unused, boolean addMove) {
 
-		System.out.println("xDelta: " + xDelta + ", currentPlace.getY() + 1 " + (currentPlace.getY() + 1)
-				+ ", currentPlace.getY() - 1 " + (currentPlace.getY() - 1));
-		System.out.println("yDelta: " + yDelta + ", currentPlace.getX() + 1 " + (currentPlace.getX() + 1)
-				+ ", currentPlace.getX() - 1 " + (currentPlace.getX() - 1));
-
 		attackableMoves = new ArrayList<Move>();
 
 		Place otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() + xDelta][currentPlace.getY()
@@ -59,7 +54,15 @@ public class Pawn extends Piece {
 
 		if (otherPlace != null && !otherPlace.hasPiece()) {
 
-			attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
+			if ((currentPlace.getX() + xDelta != 0 && currentPlace.getX() + xDelta != 11)
+					|| (currentPlace.getY() + yDelta != 0 && currentPlace.getY() + yDelta != 11)) {
+
+				attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
+
+			} else {
+
+				attackableMoves.add(new Promotion(currentPlace, otherPlace, this, addMove));
+			}
 
 			if (!isMoved()) {
 
@@ -88,30 +91,25 @@ public class Pawn extends Piece {
 			}
 		}
 
-		if (xDelta != 0 && currentPlace.getY() + 1 < 11) {
+		if (xDelta != 0 && currentPlace.getY() + 1 < 12) {
 
 			otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() + xDelta][currentPlace.getY() + 1];
 
 			if (otherPlace != null && otherPlace.getPiece() != null && otherPlace.getPiece().getColor() != color) {
 
-				attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
-			}
+				if ((currentPlace.getX() + xDelta != 0 && currentPlace.getX() + xDelta != 11)
+						|| (currentPlace.getY() + yDelta != 0 && currentPlace.getY() + yDelta != 11)) {
 
-		} else if (xDelta != 0 && currentPlace.getY() + 1 == 11) {
+					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 
-			System.out.println("promotion possible");
+				} else {
 
-			// promotion
-
-			otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() + xDelta][currentPlace.getY() + 1];
-
-			if (otherPlace != null && otherPlace.getPiece() != null && otherPlace.getPiece().getColor() != color) {
-
-				attackableMoves.add(new Promotion(currentPlace, otherPlace, this, addMove));
+					attackableMoves.add(new Promotion(currentPlace, otherPlace, this, addMove));
+				}
 			}
 		}
 
-		if (xDelta != 0 && currentPlace.getY() - 1 > 0) {
+		if (xDelta != 0 && currentPlace.getY() - 1 >= 0) {
 
 			otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() + xDelta][currentPlace.getY() - 1];
 
@@ -119,68 +117,45 @@ public class Pawn extends Piece {
 
 				attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 			}
-
-		} else if (xDelta != 0 && currentPlace.getY() - 1 == 0) {
-
-			System.out.println("promotion possible");
-
-			// promotion
-
-			otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() + xDelta][currentPlace.getY() - 1];
-
-			if (otherPlace != null && otherPlace.getPiece() != null && otherPlace.getPiece().getColor() != color) {
-
-				attackableMoves.add(new Promotion(currentPlace, otherPlace, this, addMove));
-			}
 		}
 
-		if (yDelta != 0 && currentPlace.getX() + 1 < 11) {
+		if (yDelta != 0 && currentPlace.getX() + 1 < 12) {
 
 			otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() + 1][currentPlace.getY() + yDelta];
 
 			if (otherPlace != null && otherPlace.getPiece() != null && otherPlace.getPiece().getColor() != color) {
 
-				attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
-			}
+				if ((currentPlace.getX() + xDelta != 0 && currentPlace.getX() + xDelta != 11)
+						|| (currentPlace.getY() + yDelta != 0 && currentPlace.getY() + yDelta != 11)) {
 
-		} else if (yDelta != 0 && currentPlace.getX() + 1 == 11) {
+					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 
-			System.out.println("promotion possible");
+				} else {
 
-			// promotion
-
-			otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() + 1][currentPlace.getY() + yDelta];
-
-			if (otherPlace != null && otherPlace.getPiece() != null && otherPlace.getPiece().getColor() != color) {
-
-				attackableMoves.add(new Promotion(currentPlace, otherPlace, this, addMove));
+					attackableMoves.add(new Promotion(currentPlace, otherPlace, this, addMove));
+				}
 			}
 		}
 
-		if (yDelta != 0 && currentPlace.getX() - 1 > 0) {
+		if (yDelta != 0 && currentPlace.getX() - 1 >= 0) {
 
 			otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() - 1][currentPlace.getY() + yDelta];
 
 			if (otherPlace != null && otherPlace.getPiece() != null && otherPlace.getPiece().getColor() != color) {
 
-				attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
-			}
+				if ((currentPlace.getX() + xDelta != 0 && currentPlace.getX() + xDelta != 11)
+						|| (currentPlace.getY() + yDelta != 0 && currentPlace.getY() + yDelta != 11)) {
 
-		} else if (yDelta != 0 && currentPlace.getX() - 1 == 0) {
+					attackableMoves.add(new Move(currentPlace, otherPlace, this, addMove));
 
-			System.out.println("promotion possible");
+				} else {
 
-			// promotion
-
-			otherPlace = currentPlace.getBoard().getPlacez()[currentPlace.getX() - 1][currentPlace.getY() + yDelta];
-
-			if (otherPlace != null && otherPlace.getPiece() != null && otherPlace.getPiece().getColor() != color) {
-
-				attackableMoves.add(new Promotion(currentPlace, otherPlace, this, addMove));
+					attackableMoves.add(new Promotion(currentPlace, otherPlace, this, addMove));
+				}
 			}
 		}
 
-		// en passant -> it doesn't work: we abandon it (for now)... (we're still in
+		// em passant -> it doesn't work: we abandon it (for now)... (we're still in
 		// poc...)
 
 		/*
