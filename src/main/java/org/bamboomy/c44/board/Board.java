@@ -798,22 +798,7 @@ public class Board {
 
 		for (ColorsTaken userColor : userIterable) {
 
-			if (userColor.getColor().equalsIgnoreCase("red")) {
-
-				colorsTaken[0] = userColor;
-
-			} else if (userColor.getColor().equalsIgnoreCase("yellow")) {
-
-				colorsTaken[1] = userColor;
-
-			} else if (userColor.getColor().equalsIgnoreCase("green")) {
-
-				colorsTaken[2] = userColor;
-
-			} else if (userColor.getColor().equalsIgnoreCase("blue")) {
-
-				colorsTaken[3] = userColor;
-			}
+			colorsTaken[Color.getByName(userColor.getColor()).getSeq()] = userColor;
 		}
 
 		usersSet = true;
