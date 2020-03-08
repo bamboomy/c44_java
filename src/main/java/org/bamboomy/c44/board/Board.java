@@ -579,6 +579,11 @@ public class Board {
 
 	public boolean readResign(String color) {
 
+		if (color.equalsIgnoreCase("chat")) {
+
+			return false;
+		}
+
 		System.out.println("readin...");
 
 		boolean result = true;
