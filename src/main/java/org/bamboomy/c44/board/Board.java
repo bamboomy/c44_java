@@ -563,6 +563,11 @@ public class Board {
 
 	public boolean isTimeOut(String color) {
 
+		if (color.equalsIgnoreCase("chat")) {
+
+			return false;
+		}
+
 		boolean result = false;
 
 		result = timeOut[Color.getByName(color).getSeq()];
@@ -755,7 +760,7 @@ public class Board {
 		System.out.println("readin...");
 
 		if (color.equalsIgnoreCase("chat")) {
-			
+
 			System.out.println("chat :)");
 
 			return false;
