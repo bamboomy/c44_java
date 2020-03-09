@@ -395,6 +395,8 @@ public class Board {
 		Color playerColor = Color.getBySeq(promotingMove.getPiece().getColor());
 		
 		promotingMove.execute(performedMoves);
+		
+		playerz[playerColor.getSeq()].getPiecez().remove(promotingMove.getPiece());
 
 		putPromotingPiece(playerColor,
 				new Queen(promotingMove.getTo(), playerColor.getSeq(), playerz[playerColor.getSeq()]));
@@ -405,6 +407,8 @@ public class Board {
 		Color playerColor = Color.getBySeq(promotingMove.getPiece().getColor());
 		
 		promotingMove.execute(performedMoves);
+		
+		playerz[playerColor.getSeq()].getPiecez().remove(promotingMove.getPiece());
 
 		putPromotingPiece(playerColor,
 				new Horse(promotingMove.getTo(), playerColor.getSeq(), playerz[playerColor.getSeq()]));
@@ -413,7 +417,7 @@ public class Board {
 	private void putPromotingPiece(Color playerColor, Piece newPiece) {
 
 		promote = false;
-
+		
 		playerz[playerColor.getSeq()].getPiecez().add(newPiece);
 
 		next();
