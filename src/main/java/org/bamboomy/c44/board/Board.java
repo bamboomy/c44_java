@@ -160,6 +160,8 @@ public class Board {
 
 	private Move promotingMove = null;
 
+	private String horseMD5, queenMD5;
+
 	public Board(String hash) {
 
 		profile = staticProfile;
@@ -357,14 +359,14 @@ public class Board {
 			return;
 		}
 
-		if (md5.equalsIgnoreCase(horseHash)) {
+		if (md5.equalsIgnoreCase(horseMD5)) {
 
 			horse();
 
 			return;
 		}
 
-		if (md5.equalsIgnoreCase(queenHash)) {
+		if (md5.equalsIgnoreCase(queenMD5)) {
 
 			queen();
 
@@ -405,7 +407,7 @@ public class Board {
 	}
 
 	private void putPromotingPiece(Color playerColor, Piece newPiece) {
-		
+
 		promote = false;
 
 		playerz[playerColor.getSeq()].getPiecez().add(newPiece);
@@ -944,12 +946,16 @@ public class Board {
 			MessageDigest md = MessageDigest.getInstance("MD5");
 			byte[] thedigest = md.digest(bytesOfMessage);
 
-			queenHash = DatatypeConverter.printHexBinary(thedigest).toUpperCase();
+			queenMD5 = DatatypeConverter.printHexBinary(thedigest).toUpperCase();
+
+			queenHash = queenMD5 + "/" + hash;
 
 			bytesOfMessage = timeH.getBytes("UTF-8");
 			thedigest = md.digest(bytesOfMessage);
 
-			horseHash = DatatypeConverter.printHexBinary(thedigest).toUpperCase();
+			horseMD5 = DatatypeConverter.printHexBinary(thedigest).toUpperCase();
+
+			horseHash = horseMD5 + "/" + hash;
 
 		} catch (UnsupportedEncodingException e) {
 
