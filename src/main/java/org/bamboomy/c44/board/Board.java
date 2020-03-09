@@ -396,6 +396,8 @@ public class Board {
 		
 		promotingMove.execute(performedMoves);
 		
+		promotingMove.getPiece().unselect();
+		
 		playerz[playerColor.getSeq()].getPiecez().remove(promotingMove.getPiece());
 
 		putPromotingPiece(playerColor,
@@ -405,8 +407,10 @@ public class Board {
 	private void horse() {
 
 		Color playerColor = Color.getBySeq(promotingMove.getPiece().getColor());
-		
+
 		promotingMove.execute(performedMoves);
+		
+		promotingMove.getPiece().unselect();
 		
 		playerz[playerColor.getSeq()].getPiecez().remove(promotingMove.getPiece());
 
