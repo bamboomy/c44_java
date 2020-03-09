@@ -393,6 +393,8 @@ public class Board {
 	private void queen() {
 
 		Color playerColor = Color.getBySeq(promotingMove.getPiece().getColor());
+		
+		promotingMove.execute(performedMoves);
 
 		putPromotingPiece(playerColor,
 				new Queen(promotingMove.getTo(), playerColor.getSeq(), playerz[playerColor.getSeq()]));
@@ -401,6 +403,8 @@ public class Board {
 	private void horse() {
 
 		Color playerColor = Color.getBySeq(promotingMove.getPiece().getColor());
+		
+		promotingMove.execute(performedMoves);
 
 		putPromotingPiece(playerColor,
 				new Horse(promotingMove.getTo(), playerColor.getSeq(), playerz[playerColor.getSeq()]));
