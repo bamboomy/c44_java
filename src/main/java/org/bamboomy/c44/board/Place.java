@@ -182,12 +182,6 @@ public class Place {
 
 		System.out.println(getX() + ", " + getY() + ": " + getCssName());
 
-		move.execute(performedMoves);
-
-		move.getPiece().unselect();
-
-		move.getPiece().setMoved(true);
-
 		/*
 		 * selectedPiece = board.getCurrentPlayer().getSelectedPiece();
 		 * 
@@ -234,9 +228,15 @@ public class Place {
 
 		if (move instanceof Promotion) {
 
-			board.promote(move.getPiece(), this);
+			board.promote(move);
 
 		} else {
+
+			move.execute(performedMoves);
+
+			move.getPiece().unselect();
+
+			move.getPiece().setMoved(true);
 
 			board.next();
 		}

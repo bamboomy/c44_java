@@ -158,9 +158,7 @@ public class Board {
 
 	private SecureRandom secureRandom = new SecureRandom("955B55F2455675B715F50F14821C250D".getBytes());
 
-	private Pawn promotingPawn = null;
-
-	private Place promotingPlace = null;
+	private Move promotingMove = null;
 
 	public Board(String hash) {
 
@@ -392,22 +390,18 @@ public class Board {
 
 	private void queen() {
 
-		Color playerColor = Color.getBySeq(promotingPawn.getColor());
+		Color playerColor = Color.getBySeq(promotingMove.getPiece().getColor());
 
-		promotingPlace.remove(promotingPawn);
-
-		putPromotingPiece(playerColor, new Queen(promotingPlace, playerColor.getSeq(), playerz[playerColor.getSeq()]));
-
-		next();
+		putPromotingPiece(playerColor,
+				new Queen(promotingMove.getTo(), playerColor.getSeq(), playerz[playerColor.getSeq()]));
 	}
 
 	private void horse() {
 
-		Color playerColor = Color.getBySeq(promotingPawn.getColor());
+		Color playerColor = Color.getBySeq(promotingMove.getPiece().getColor());
 
-		promotingPlace.remove(promotingPawn);
-
-		putPromotingPiece(playerColor, new Horse(promotingPlace, playerColor.getSeq(), playerz[playerColor.getSeq()]));
+		putPromotingPiece(playerColor,
+				new Horse(promotingMove.getTo(), playerColor.getSeq(), playerz[playerColor.getSeq()]));
 	}
 
 	private void putPromotingPiece(Color playerColor, Piece newPiece) {
@@ -928,11 +922,9 @@ public class Board {
 		return (int) (clockStoppedInMillis + (50 * 1000) - System.currentTimeMillis()) / 1000;
 	}
 
-	public void promote(Piece piece, Place place) {
+	public void promote(Move move) {
 
-		promotingPawn = (Pawn) piece;
-
-		promotingPlace = place;
+		promotingMove = move;
 
 		promote = true;
 
