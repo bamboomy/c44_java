@@ -405,6 +405,8 @@ public class Board {
 	}
 
 	private void putPromotingPiece(Color playerColor, Piece newPiece) {
+		
+		promote = false;
 
 		playerz[playerColor.getSeq()].getPiecez().add(newPiece);
 
