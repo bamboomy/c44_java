@@ -393,11 +393,11 @@ public class Board {
 	private void queen() {
 
 		Color playerColor = Color.getBySeq(promotingMove.getPiece().getColor());
-		
+
 		promotingMove.execute(performedMoves);
-		
+
 		promotingMove.getPiece().unselect();
-		
+
 		playerz[playerColor.getSeq()].getPiecez().remove(promotingMove.getPiece());
 
 		putPromotingPiece(playerColor,
@@ -409,9 +409,9 @@ public class Board {
 		Color playerColor = Color.getBySeq(promotingMove.getPiece().getColor());
 
 		promotingMove.execute(performedMoves);
-		
+
 		promotingMove.getPiece().unselect();
-		
+
 		playerz[playerColor.getSeq()].getPiecez().remove(promotingMove.getPiece());
 
 		putPromotingPiece(playerColor,
@@ -421,7 +421,7 @@ public class Board {
 	private void putPromotingPiece(Color playerColor, Piece newPiece) {
 
 		promote = false;
-		
+
 		playerz[playerColor.getSeq()].getPiecez().add(newPiece);
 
 		next();
@@ -705,6 +705,11 @@ public class Board {
 	public String getTimeArray(int index) {
 
 		String result = String.format("%02d:%02d", timeArrayInt[index] / 60000, timeArrayInt[index] % 60000 / 1000);
+
+		if ((timeArrayInt[index] / 60000) % 2 == 0) {
+
+			result = "";
+		}
 
 		return result;
 	}
