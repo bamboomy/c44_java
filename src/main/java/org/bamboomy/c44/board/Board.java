@@ -706,7 +706,7 @@ public class Board {
 
 		String result = String.format("%02d:%02d", timeArrayInt[index] / 60000, timeArrayInt[index] % 60000 / 1000);
 
-		if ((timeArrayInt[index] / 1000) % 2 == 0) {
+		if ((timeArrayInt[index] / 1000) % 2 == 0 && index == turn) {
 
 			result = "";
 		}
