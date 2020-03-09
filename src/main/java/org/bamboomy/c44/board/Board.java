@@ -702,11 +702,11 @@ public class Board {
 		return result;
 	}
 
-	public String getTimeArray(int index) {
+	public String getTimeArray(int index, ColorsTaken user) {
 
 		String result = String.format("%02d:%02d", timeArrayInt[index] / 60000, timeArrayInt[index] % 60000 / 1000);
 
-		if ((timeArrayInt[index] / 1000) % 2 == 0 && index == turn) {
+		if ((timeArrayInt[index] / 1000) % 2 == 0 && Color.getByName(user.getColor()).getSeq() == index) {
 
 			result = "";
 		}
@@ -763,7 +763,7 @@ public class Board {
 		botSet = true;
 	}
 
-	public String getPlayerString(int number) {
+	public String getPlayerString(int number, ColorsTaken user) {
 
 		String result;
 
@@ -773,7 +773,7 @@ public class Board {
 
 		} else {
 
-			result = getTimeArray(number);
+			result = getTimeArray(number, user);
 
 			if (timeOutzArray[number] != null) {
 

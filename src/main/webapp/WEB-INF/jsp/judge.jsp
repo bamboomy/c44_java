@@ -5,10 +5,10 @@
 
 	<h3>${board.gameName}</h3>
 
-	Green: ${board.greenName}: ${board.getPlayerString(0)}<br /> <br /> 
-	Blue: ${board.blueName}: ${board.getPlayerString(1)}<br /> <br /> 
-	Red: ${board.redName}: ${board.getPlayerString(2)}<br />	<br /> 
-	Yellow: ${board.yellowName}: ${board.getPlayerString(3)}<br /> <br />
+	Green: ${board.greenName}: ${board.getPlayerString(0, user)}<br /> <br /> 
+	Blue: ${board.blueName}: ${board.getPlayerString(1, user)}<br /> <br /> 
+	Red: ${board.redName}: ${board.getPlayerString(2, user)}<br />	<br /> 
+	Yellow: ${board.yellowName}: ${board.getPlayerString(3, user)}<br /> <br />
 
 </div>
 
