@@ -525,7 +525,7 @@ public class Board {
 
 		if (getCurrentPlayer().checkCheck()) {
 
-			statusMessages += "<span style='color:" + Color.getBySeq(turn).getCssColor() + ";'>";
+			statusMessages = "<span style='color:" + Color.getBySeq(turn).getCssColor() + ";'>";
 
 			statusMessages += colorsTaken[turn].getName()
 					+ "</span><span style='color: red;'> is in check!</span><br/>";
