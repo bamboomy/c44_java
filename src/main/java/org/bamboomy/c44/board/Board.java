@@ -248,9 +248,7 @@ public class Board {
 
 			timeOutzArray[turn] = timeOutzIntz[turn] + " timeouts left...";
 
-			if (timeOutzIntz[turn] <= 0) {
-
-				removeMe();
+			if (timeOutzIntz[turn] <= 0 && removeMe()) {
 
 				resignText = buildResignText(turn);
 
@@ -543,19 +541,26 @@ public class Board {
 		}
 	}
 
-	public void removeMe() {
+	public boolean removeMe() {
 
 		if (currentPlayer == dubious) {
 
 			if (dubious.removeCurrent()) {
-				
+
 				remove(turn);
+
+				return true;
+
 			}
 
 		} else {
 
 			remove(turn);
+
+			return true;
 		}
+
+		return false;
 	}
 
 	public void removeMeWithoutDubiousCheck() {
