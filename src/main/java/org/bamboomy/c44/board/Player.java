@@ -116,7 +116,7 @@ public class Player {
 		king = new King(board.getPlacez()[0][5], color.getSeq(), 1, 0, this);
 
 		piecez.add(king);
-		// piecez.add(new Queen(board.getPlacez()[0][6], color.getSeq(), this));
+		piecez.add(new Queen(board.getPlacez()[0][6], color.getSeq(), this));
 
 		// piecez.add(new Bisshop(board.getPlacez()[0][7], color.getSeq(), this));
 		// piecez.add(new Horse(board.getPlacez()[0][8], color.getSeq(), this));
@@ -155,7 +155,7 @@ public class Player {
 		king = new King(board.getPlacez()[5][11], color.getSeq(), 0, -1, this);
 
 		piecez.add(king);
-		// piecez.add(new Queen(board.getPlacez()[6][11], color.getSeq(), this));
+		piecez.add(new Queen(board.getPlacez()[6][11], color.getSeq(), this));
 
 		// piecez.add(new Bisshop(board.getPlacez()[7][11], color.getSeq(), this));
 		// piecez.add(new Horse(board.getPlacez()[8][11], color.getSeq(), this));
@@ -193,7 +193,7 @@ public class Player {
 
 		king = new King(board.getPlacez()[11][6], color.getSeq(), -1, 0, this);
 
-		// piecez.add(new Queen(board.getPlacez()[11][5], color.getSeq(), this));
+		piecez.add(new Queen(board.getPlacez()[11][5], color.getSeq(), this));
 		piecez.add(king);
 
 		// piecez.add(new Bisshop(board.getPlacez()[11][7], color.getSeq(), this));
@@ -232,7 +232,7 @@ public class Player {
 
 		king = new King(board.getPlacez()[6][0], color.getSeq(), 0, 1, this);
 
-		// piecez.add(new Queen(board.getPlacez()[5][0], color.getSeq(), this));
+		piecez.add(new Queen(board.getPlacez()[5][0], color.getSeq(), this));
 		piecez.add(king);
 
 		// piecez.add(new Bisshop(board.getPlacez()[7][0], color.getSeq(), this));
