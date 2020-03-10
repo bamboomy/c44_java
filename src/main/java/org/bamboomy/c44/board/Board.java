@@ -514,6 +514,8 @@ public class Board {
 			} else {
 
 				statusMessages += "<span style='color: red;'>and can't prevent :-(</span><br/>";
+				
+				remove(turn);
 			}
 		}
 	}
