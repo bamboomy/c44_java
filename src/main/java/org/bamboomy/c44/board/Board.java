@@ -443,7 +443,7 @@ public class Board {
 			timeOutzArray[turn] = dubious.getCurrentTimeOutzArray();
 
 			timeArrayInt[turn] = dubious.getCurrentTimeArrayInt();
-			
+
 			setDubiousName();
 		}
 
@@ -545,9 +545,12 @@ public class Board {
 
 	public void removeMe() {
 
-		if (currentPlayer == dubious && dubious.removeCurrent()) {
+		if (currentPlayer == dubious) {
 
-			remove(turn);
+			if (dubious.removeCurrent()) {
+				
+				remove(turn);
+			}
 
 		} else {
 
@@ -563,7 +566,7 @@ public class Board {
 	public void remove(int number) {
 
 		deadPlayers.add(number);
-		
+
 		playerz[number].setDead(true);
 
 		playerPlaces[number] = places[placesCounter++];
