@@ -52,6 +52,7 @@ public class Player {
 	@Setter
 	private long timestamp = -1;
 
+	@Getter
 	private ColorsTaken colorsTaken;
 
 	public Player(int color, Board board, boolean isRobot) {

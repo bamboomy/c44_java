@@ -444,6 +444,8 @@ public class Board {
 			timeOutzArray[turn] = dubious.getCurrentTimeOutzArray();
 
 			timeArrayInt[turn] = dubious.getCurrentTimeArrayInt();
+
+			setDubiousName();
 		}
 
 		turn = (turn + 1) % 4;
@@ -488,6 +490,27 @@ public class Board {
 		checkState();
 	}
 
+	private void setDubiousName() {
+
+		switch (dubious.color) {
+
+		case RED:
+			redName = "Dubious: " + dubious.getCurrentName();
+			break;
+
+		case YELLOW:
+			yellowName = "Dubious: " + dubious.getCurrentName();
+			break;
+
+		case GREEN:
+			greenName = "Dubious: " + dubious.getCurrentName();
+			break;
+
+		case BLUE:
+			blueName = "Dubious: " + dubious.getCurrentName();
+			break;
+	}
+
 	private void countDead() {
 
 		if (deadPlayers.size() >= 3) {
@@ -514,7 +537,7 @@ public class Board {
 			} else {
 
 				statusMessages += "<span style='color: red;'>and can't prevent :-(</span><br/>";
-				
+
 				remove(turn);
 			}
 		}
