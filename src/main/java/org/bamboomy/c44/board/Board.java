@@ -441,8 +441,6 @@ public class Board {
 			timeOutzArray[turn] = dubious.getCurrentTimeOutzArray();
 
 			timeArrayInt[turn] = dubious.getCurrentTimeArrayInt();
-
-			setDubiousName();
 		}
 
 		turn = (turn + 1) % 4;
@@ -452,6 +450,8 @@ public class Board {
 		if (playerz[turn] == dubious) {
 
 			beginTurn[dubious.getCurrentNumber()] = true;
+
+			setDubiousName();
 		}
 
 		resetTimer();
