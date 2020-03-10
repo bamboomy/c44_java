@@ -30,6 +30,9 @@
 		
 		</c:if>
 		
+		var objDiv = document.getElementById("message");
+		objDiv.scrollTop = objDiv.scrollHeight;
+
 	});
 
 </script>
