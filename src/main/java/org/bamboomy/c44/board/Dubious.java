@@ -94,7 +94,10 @@ public class Dubious extends Player {
 
 	public boolean removeCurrent() {
 
-		timeOutz.add(turn);
+		if (!timeOutz.contains(turn)) {
+			
+			timeOutz.add(turn);
+		}
 
 		return timeOutz.size() >= 3;
 	}
