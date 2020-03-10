@@ -563,6 +563,8 @@ public class Board {
 	public void remove(int number) {
 
 		deadPlayers.add(number);
+		
+		playerz[number].setDead(true);
 
 		playerPlaces[number] = places[placesCounter++];
 	}

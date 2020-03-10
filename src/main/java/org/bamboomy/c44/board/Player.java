@@ -54,6 +54,10 @@ public class Player {
 
 	@Getter
 	private ColorsTaken colorsTaken;
+	
+	@Setter
+	@Getter
+	private boolean dead;
 
 	public Player(int color, Board board, boolean isRobot) {
 
@@ -338,7 +342,7 @@ public class Player {
 
 		for (Player player : board.getPlayerz()) {
 
-			if (player != this) {
+			if (player != this && !player.isDead()) {
 
 				for (Piece piece : player.getPiecez()) {
 
