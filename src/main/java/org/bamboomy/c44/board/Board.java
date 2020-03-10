@@ -11,7 +11,6 @@ import javax.xml.bind.DatatypeConverter;
 
 import org.bamboomy.c44.ColorsTaken;
 import org.bamboomy.c44.board.pieces.Horse;
-import org.bamboomy.c44.board.pieces.Pawn;
 import org.bamboomy.c44.board.pieces.Piece;
 import org.bamboomy.c44.board.pieces.Queen;
 
@@ -492,7 +491,7 @@ public class Board {
 
 	private void setDubiousName() {
 
-		switch (dubious.color) {
+		switch (dubious.getColor()) {
 
 		case RED:
 			redName = "Dubious: " + dubious.getCurrentName();
@@ -509,6 +508,7 @@ public class Board {
 		case BLUE:
 			blueName = "Dubious: " + dubious.getCurrentName();
 			break;
+		}
 	}
 
 	private void countDead() {
