@@ -34,7 +34,8 @@
 
 </script>
 
-<c:if test="${!board.isPlayerIsMoving() && board.isRenderingCurrentPlayer(user.color) 
+<c:if
+	test="${!board.isPlayerIsMoving() && board.isRenderingCurrentPlayer(user.color) 
 	&& board.getCurrentPlayer().checkCheck() }">
 	<script type="text/javascript">
 		if (!checkShown) {
@@ -56,7 +57,8 @@
 	</script>
 </c:if>
 
-<c:if test="${board.promote && board.isRenderingCurrentPlayer(user.color)}">
+<c:if
+	test="${board.promote && board.isRenderingCurrentPlayer(user.color)}">
 
 	<script type="text/javascript">
 	
@@ -72,14 +74,8 @@
 
 <div id="messages">
 
-	<div class="outer">
-		<div class="middle">
-			<div class="inner">
-				<div style="text-align: center; font-size: larger;">Messages:</div>
-				<p id="message">${board.statusMessages}</p>
-			</div>
-		</div>
-	</div>
+	<div style="text-align: center; font-size: larger;">Messages:</div>
+	<p id="message">${board.statusMessages}</p>
 
 </div>
 
@@ -181,21 +177,15 @@
 
 				<!-- Modal body -->
 				<div class="modal-body">
-					
+
 					<p>
-					Someone has left (our lost connectivity),<br/>
-					<br/>
-					(s)he has 50s to return...<br/>
-					<br/>
-					If too late, his/hers place will be taken by an available chatter<br/>
-					<br/>
-					or a Random bot.
+						Someone has left (our lost connectivity),<br /> <br /> (s)he has
+						50s to return...<br /> <br /> If too late, his/hers place will be
+						taken by an available chatter<br /> <br /> or a Random bot.
 					</p>
-					
-					<p>
-					${board.getRemainingStopSecs()}s remaining...
-					</p>
-					
+
+					<p>${board.getRemainingStopSecs()}s remaining...</p>
+
 				</div>
 
 			</div>
@@ -215,16 +205,19 @@
 				<!-- Modal body -->
 				<div class="modal-body">
 					<center>
-						<img src="/${board.tomcatPath}/img/queen.jpg" height="200" width="200" onclick="clickToServer('${board.queenHash}', '${user.javaHash}')" />
-						<img src="/${board.tomcatPath}/img/horse.jpg" height="200" width="200" onclick="clickToServer('${board.horseHash}', '${user.javaHash}')" /><br/>
-					</center>	
-					<br/>
+						<img src="/${board.tomcatPath}/img/queen.jpg" height="200"
+							width="200"
+							onclick="clickToServer('${board.queenHash}', '${user.javaHash}')" />
+						<img src="/${board.tomcatPath}/img/horse.jpg" height="200"
+							width="200"
+							onclick="clickToServer('${board.horseHash}', '${user.javaHash}')" /><br />
+					</center>
+					<br />
 					<p>
-					We only give the choice between a knight and a queen<br/>
-					because with a queen you can do any move of a rook or bishop...<br/>
-					<br/>
+						We only give the choice between a knight and a queen<br /> because
+						with a queen you can do any move of a rook or bishop...<br /> <br />
 					</p>
-					
+
 				</div>
 
 			</div>
