@@ -6,7 +6,7 @@ public class Dubious extends Player {
 
 	private Player[] others = new Player[3];
 
-	private int turn = 2;
+	private int turn = 0;
 
 	private String[] timeOutzArray = new String[3];
 
