@@ -59,7 +59,7 @@ public class Board {
 
 	private boolean[] beginTurn = new boolean[4];
 
-	private int turn = 4;
+	private int turn = 3;
 
 	private int[] timeArrayInt = new int[4];
 
