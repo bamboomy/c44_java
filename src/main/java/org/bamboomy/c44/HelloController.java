@@ -190,14 +190,7 @@ public class HelloController {
 
 				if (board.getDubious().getCurrent().equalsIgnoreCase(otherName.getColor())) {
 
-					if (userColor.equalsIgnoreCase(otherName.getColor())) {
-
-						dubiousName += "You";
-
-					} else {
-
-						dubiousName += otherName.getName();
-					}
+					dubiousName += otherName.getName();
 				}
 			}
 
