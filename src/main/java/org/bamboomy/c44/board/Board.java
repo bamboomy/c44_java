@@ -433,6 +433,8 @@ public class Board {
 		if (playerz[turn] == dubious) {
 
 			dubious.storeTimeOut(timeOutzIntz[turn], timeOutzArray[turn], timeArrayInt[turn]);
+			
+			setDubiousName();
 
 			dubious.next();
 
@@ -441,8 +443,6 @@ public class Board {
 			timeOutzArray[turn] = dubious.getCurrentTimeOutzArray();
 
 			timeArrayInt[turn] = dubious.getCurrentTimeArrayInt();
-			
-			setDubiousName();
 		}
 
 		turn = (turn + 1) % 4;
