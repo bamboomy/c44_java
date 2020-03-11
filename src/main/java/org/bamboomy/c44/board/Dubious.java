@@ -37,7 +37,7 @@ public class Dubious extends Player {
 
 	public String getCurrent() {
 
-		return Color.getBySeq(turn).getName();
+		return others[turn].getColor().getName();
 	}
 
 	public int getCurrentNumber() {
