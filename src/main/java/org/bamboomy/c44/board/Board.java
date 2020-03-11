@@ -59,7 +59,7 @@ public class Board {
 
 	private boolean[] beginTurn = new boolean[4];
 
-	private int turn = 0;
+	private int turn = 4;
 
 	private int[] timeArrayInt = new int[4];
 
@@ -236,6 +236,8 @@ public class Board {
 		places[3] = "1st";
 
 		beginTurn[turn] = true;
+		
+		next();
 	}
 
 	private int getCurrentTimeOfCurrentPlayer() {
