@@ -1040,4 +1040,13 @@ public class Board {
 		return playerHashes.get(playerHash);
 	}
 
+	public String filter(String name, ColorsTaken user) {
+
+		if (name.equalsIgnoreCase(user.getName())) {
+
+			return "You";
+		}
+
+		return name;
+	}
 }
