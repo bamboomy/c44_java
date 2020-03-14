@@ -17,6 +17,8 @@
 		var x = document.getElementById("myAudio");
 
 		x.play();
+		
+		alert("It's your turn!");
 	</script>
 </c:if>
 
