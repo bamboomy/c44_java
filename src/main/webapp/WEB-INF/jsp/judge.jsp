@@ -5,10 +5,10 @@
 
 	<h3>${board.gameName}</h3>
 
-	Green: ${board.filter(greenName, user)}: ${board.getPlayerString(0, user)}<br /> <br /> 
-	Blue: ${board.filter(blueName, user)}: ${board.getPlayerString(1, user)}<br /> <br /> 
-	Red: ${board.filter(redName, user)}: ${board.getPlayerString(2, user)}<br />	<br /> 
-	Yellow: ${board.filter(yellowName, user)}: ${board.getPlayerString(3, user)}<br /> <br />
+	Green: ${board.filter(board.greenName, user)}: ${board.getPlayerString(0, user)}<br /> <br /> 
+	Blue: ${board.filter(board.blueName, user)}: ${board.getPlayerString(1, user)}<br /> <br /> 
+	Red: ${board.filter(board.redName, user)}: ${board.getPlayerString(2, user)}<br />	<br /> 
+	Yellow: ${board.filter(board.yellowName, user)}: ${board.getPlayerString(3, user)}<br /> <br />
 
 </div>
 
