@@ -46,7 +46,7 @@ public class HelloController {
 
 		Board board = BoardController.getInstance().getBoard(gameHash);
 		
-		board.putPlayerHash(hash, user);
+		//board.putPlayerHash(hash, user);
 
 		Game game = gameRepository.findByHash(gameHash);
 

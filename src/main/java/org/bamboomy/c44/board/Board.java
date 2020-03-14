@@ -917,6 +917,8 @@ public class Board {
 		for (ColorsTaken userColor : userIterable) {
 
 			colorsTaken[Color.getByName(userColor.getColor()).getSeq()] = userColor;
+			
+			putPlayerHash(userColor.getJavaHash(), userColor);
 		}
 
 		usersSet = true;
