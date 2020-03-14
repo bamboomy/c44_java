@@ -51,7 +51,7 @@
 
 	var finished = false;
 	
-	var waitingCounter = 10;
+	var waitingCounter = 7;
 
 	$(document).ready(function() {
 		myId = $('form').attr('myattribute');
