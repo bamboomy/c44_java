@@ -65,7 +65,9 @@ public class BoardController {
 
 		Iterator<Board> boardz = GAMEZ.values().iterator();
 
-		for (Board board : boardz) {
+		while(boardz.hasNext()) {
+			
+			Board board = boardz.next();
 
 			if (board.getColorsTaken(hash) != null) {
 
