@@ -236,7 +236,7 @@ public class Board {
 		places[3] = "1st";
 
 		beginTurn[turn] = true;
-		
+
 		next();
 	}
 
@@ -435,7 +435,7 @@ public class Board {
 		if (playerz[turn] == dubious) {
 
 			dubious.storeTimeOut(timeOutzIntz[turn], timeOutzArray[turn], timeArrayInt[turn]);
-			
+
 			dubious.next();
 
 			timeOutzIntz[turn] = dubious.getCurrentTimeOutzIntz();
@@ -443,7 +443,7 @@ public class Board {
 			timeOutzArray[turn] = dubious.getCurrentTimeOutzArray();
 
 			timeArrayInt[turn] = dubious.getCurrentTimeArrayInt();
-			
+
 			setDubiousName();
 		}
 
@@ -644,7 +644,7 @@ public class Board {
 		for (Player player : playerz) {
 
 			gone |= player.getTimestamp() + (30 * 1000) < System.currentTimeMillis() && !(player instanceof Dubious)
-					&& !player.isRobot();
+					&& !player.isRobot() && !player.isDead();
 		}
 
 		if (gone && !clockStopped) {
@@ -923,7 +923,7 @@ public class Board {
 
 		for (Player player : playerz) {
 
-			allThere &= player.getTimestamp() != -1 || player instanceof Dubious || player.isRobot();
+			allThere &= player.getTimestamp() != -1 || player instanceof Dubious || player.isRobot() || player.isDead();
 		}
 
 		if (!clockStarting && allThere) {
@@ -967,7 +967,7 @@ public class Board {
 		for (Player player : playerz) {
 
 			back &= player.getTimestamp() + (30 * 1000) > System.currentTimeMillis() || player instanceof Dubious
-					|| player.isRobot();
+					|| player.isRobot() || player.isDead();
 		}
 
 		if (back) {
