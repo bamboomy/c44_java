@@ -45,6 +45,8 @@ public class HelloController {
 		String gameHash = user.getGame();
 
 		Board board = BoardController.getInstance().getBoard(gameHash);
+		
+		board.putPlayerHash(hash, user);
 
 		Game game = gameRepository.findByHash(gameHash);
 
@@ -96,18 +98,22 @@ public class HelloController {
 
 		System.out.println(hash);
 
-		ColorsTaken user = colorsTakenRepository.findByHash(hash);
+		//ColorsTaken user = colorsTakenRepository.findByHash(hash);
+		
+		Board board = BoardController.getInstance().getBoardByPlayerHash(hash);
 
-		if (user == null) {
+		if (board == null) {
 
 			return "negative";
 		}
 
-		String gameHash = user.getGame();
+		//String gameHash = user.getGame();
 
-		Board board = BoardController.getInstance().getBoard(gameHash);
+		//Board board = BoardController.getInstance().getBoard(gameHash);
+		
+		ColorsTaken user = board.getColorsTaken(hash);
 
-		ColorsTaken mutated = board.getUserColor(user, colorsTakenRepository.findByGameHash(gameHash));
+		ColorsTaken mutated = board.getUserColor(user, colorsTakenRepository.findByGameHash(user.getGame()));
 
 		model.addAttribute("board", board);
 		model.addAttribute("user", mutated);
@@ -119,16 +125,20 @@ public class HelloController {
 	public String judge(Model model,
 			@RequestParam(value = "id", required = true, defaultValue = "World") final String hash) {
 
-		ColorsTaken user = colorsTakenRepository.findByHash(hash);
+		//ColorsTaken user = colorsTakenRepository.findByHash(hash);
+		
+		Board board = BoardController.getInstance().getBoardByPlayerHash(hash);
 
-		if (user == null) {
+		if (board == null) {
 
 			return "negative";
 		}
+		
+		ColorsTaken user = board.getColorsTaken(hash);
 
-		String gameHash = user.getGame();
+		//String gameHash = user.getGame();
 
-		Board board = BoardController.getInstance().getBoard(gameHash);
+		//Board board = BoardController.getInstance().getBoard(gameHash);
 
 		board.getLock().lock();
 
@@ -151,7 +161,7 @@ public class HelloController {
 
 			GameResult result = new GameResult();
 
-			result.setGame(gameHash);
+			result.setGame(user.getGame());
 			result.setPlayer(hash);
 			result.setToken(getToken());
 
@@ -206,16 +216,20 @@ public class HelloController {
 
 		System.out.println(hash + "calling resign...");
 
-		ColorsTaken user = colorsTakenRepository.findByHash(hash);
+		//ColorsTaken user = colorsTakenRepository.findByHash(hash);
+		
+		Board board = BoardController.getInstance().getBoardByPlayerHash(hash);
 
-		if (user == null) {
+		if (board == null) {
 
 			return "negative";
 		}
+		
+		ColorsTaken user = board.getColorsTaken(hash);
 
 		String gameHash = user.getGame();
 
-		Board board = BoardController.getInstance().getBoard(gameHash);
+		//Board board = BoardController.getInstance().getBoard(gameHash);
 
 		board.resign(user.getColor());
 

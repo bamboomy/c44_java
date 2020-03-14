@@ -5,6 +5,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.locks.ReentrantLock;
 
 import javax.xml.bind.DatatypeConverter;
@@ -160,6 +163,8 @@ public class Board {
 	private Move promotingMove = null;
 
 	private String horseMD5, queenMD5;
+
+	private HashMap<String, ColorsTaken> playerHashes = new HashMap();
 
 	public Board(String hash) {
 
@@ -1024,4 +1029,15 @@ public class Board {
 			throw new RuntimeException(e);
 		}
 	}
+
+	public void putPlayerHash(String playerHash, ColorsTaken user) {
+
+		playerHashes.put(playerHash, user);
+	}
+
+	public ColorsTaken getColorsTaken(String playerHash) {
+
+		return playerHashes.get(playerHash);
+	}
+
 }

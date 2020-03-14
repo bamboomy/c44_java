@@ -1,6 +1,7 @@
 package org.bamboomy.c44;
 
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -58,5 +59,20 @@ public class BoardController {
 		}
 
 		return result;
+	}
+
+	public Board getBoardByPlayerHash(String hash) {
+
+		Iterator<Board> boardz = GAMEZ.values().iterator();
+
+		for (Board board : boardz) {
+
+			if (board.getColorsTaken(hash) != null) {
+
+				return board;
+			}
+		}
+
+		return null;
 	}
 }
