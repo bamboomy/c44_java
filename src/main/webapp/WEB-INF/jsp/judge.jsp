@@ -14,7 +14,7 @@
 
 <c:if test="${board.readSound(user.color)}">
 	<script>
-		var x = document.getElementById("myAudio");
+		var x = document.getElementById("tik");
 
 		x.play();
 		

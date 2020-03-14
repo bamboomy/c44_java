@@ -50,6 +50,8 @@
 	var myId;
 
 	var finished = false;
+	
+	var waitingCounter = 10;
 
 	$(document).ready(function() {
 		myId = $('form').attr('myattribute');
@@ -240,9 +242,17 @@
 <body>
 
 
-	<audio id="myAudio">
+	<audio id="tik">
 		<source src="https://chess4four.io/bin/tik.mp3" type="audio/mpeg">
 		Your browser does not support the audio element.
+	</audio>
+	
+	<audio id="check">
+		<source src="https://chess4four.io/bin/check.mp3" type="audio/mpeg">
+	</audio>
+
+	<audio id="end">
+		<source src="https://chess4four.io/bin/end.mp3" type="audio/mpeg">
 	</audio>
 
 	<center>

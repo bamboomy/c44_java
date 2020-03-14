@@ -12,23 +12,35 @@
 
 		$('#myModal').modal('show');
 		
-		<c:if test="${board.isClockStarting() || board.isClockRunning() || board.clockStopped}">
+		<c:choose>
+			<c:when test="${board.isClockStarting() || board.isClockRunning() || board.clockStopped}">
 
-			$('#myModal').modal('hide');
-
-			<c:if test="${!board.isClockRunning() && !board.clockStopped}">
-		
-				$('#clockStartModal').modal('show');
-		
-			</c:if>
-
-			<c:if test="${board.clockStopped}">
-		
-				$('#clockStopModal').modal('show');
-		
-			</c:if>
-		
-		</c:if>
+				$('#myModal').modal('hide');
+	
+				<c:if test="${!board.isClockRunning() && !board.clockStopped}">
+			
+					$('#clockStartModal').modal('show');
+			
+				</c:if>
+	
+				<c:if test="${board.clockStopped}">
+			
+					$('#clockStopModal').modal('show');
+			
+				</c:if>
+			
+			</c:when>
+			<c:otherwise>
+			
+				waitingCounter--;
+				
+				if(waitingCounter <= 0){
+					
+					location.reload();
+				}
+			
+			</c:otherwise>
+		</c:choose>
 		
 		var objDiv = document.getElementById("message");
 		objDiv.scrollTop = objDiv.scrollHeight;
@@ -42,6 +54,11 @@
 	&& board.getCurrentPlayer().checkCheck() }">
 	<script type="text/javascript">
 		if (!checkShown) {
+			
+			var y = document.getElementById("check");
+
+			y.play();
+			
 			alert('check!!!');
 			checkShown = true;
 		}
