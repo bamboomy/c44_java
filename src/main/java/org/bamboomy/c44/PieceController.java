@@ -24,7 +24,9 @@ public class PieceController {
 
 		Board board = BoardController.getInstance().getBoard(hash);
 		
-		ColorsTaken user = colorsTakenRepository.findByHash(userHash);
+		ColorsTaken user = board.getColorsTaken(hash);
+		
+		//ColorsTaken user = colorsTakenRepository.findByHash(userHash);
 
 		board.click(md5, user.getColor());
 
