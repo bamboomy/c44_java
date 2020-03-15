@@ -320,6 +320,8 @@ public class Player {
 		if (selectedPlaces.size() == moves.size()) {
 
 			die(true);
+			
+			board.next();
 
 		} else {
 
@@ -480,19 +482,14 @@ public class Player {
 
 			} else {
 
-				kamikaze(performedMoves);
+				board.removeMe();
+
+				board.next();
 			}
 
 		} else {
 
-			if (canTakeKing()) {
-
-				takeAKing(performedMoves);
-
-			} else {
-
-				generateRandomMove(performedMoves);
-			}
+			generateRandomMove(performedMoves);
 		}
 	}
 
