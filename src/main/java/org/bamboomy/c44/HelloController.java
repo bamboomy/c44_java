@@ -52,7 +52,7 @@ public class HelloController {
 
 		board.setGameName(game.getSentence());
 
-		board.setPlayerHash(hash);
+		//board.setPlayerHash(hash);
 
 		board.setColorTaken(user);
 
@@ -86,6 +86,7 @@ public class HelloController {
 		}
 
 		model.addAttribute("board", board);
+		model.addAttribute("user", user);
 
 		board.syncNames();
 

@@ -58,7 +58,7 @@ public class Board {
 
 	@Getter
 	@Setter
-	private String redName, greenName, blueName, yellowName, gameName, playerHash;
+	private String redName, greenName, blueName, yellowName, gameName;//, playerHash;
 
 	private boolean[] beginTurn = new boolean[4];
 

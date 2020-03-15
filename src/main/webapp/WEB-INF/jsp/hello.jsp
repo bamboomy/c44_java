@@ -87,7 +87,7 @@
 		$
 				.ajax({
 					type : "GET",
-					url : "https://chess4four.io/${board.tomcatPath}/board/?id=${board.playerHash}",
+					url : "https://chess4four.io/${board.tomcatPath}/board/?id=${user.javaHash}",
 					async : false,
 					success : function(text) {
 						$('#board').html(text);
@@ -118,7 +118,7 @@
 					xhrFields : {
 						withCredentials : true
 					},
-					url : "https://chess4four.io/java/chatText.php?board=${board.playerHash}",
+					url : "https://chess4four.io/java/chatText.php?board=${user.javaHash}",
 					success : function(text) {
 
 						if (text != "clean") {
@@ -144,7 +144,7 @@
 					xhrFields : {
 						withCredentials : true
 					},
-					url : "https://chess4four.io/java/chat.php?board=${board.playerHash}",
+					url : "https://chess4four.io/java/chat.php?board=${user.javaHash}",
 					data : {
 						text : chat
 					},
@@ -186,7 +186,7 @@
 		$
 				.ajax({
 					type : "GET",
-					url : "https://chess4four.io/${board.tomcatPath}/judge/?id=${board.playerHash}",
+					url : "https://chess4four.io/${board.tomcatPath}/judge/?id=${user.javaHash}",
 					async : false,
 					success : function(text) {
 						$('#judge').html(text);
@@ -222,7 +222,7 @@
 			$
 					.ajax({
 						type : "GET",
-						url : "https://chess4four.io/${board.tomcatPath}/resign/?id=${board.playerHash}",
+						url : "https://chess4four.io/${board.tomcatPath}/resign/?id=${user.javaHash}",
 						async : false,
 						success : function(text) {
 
