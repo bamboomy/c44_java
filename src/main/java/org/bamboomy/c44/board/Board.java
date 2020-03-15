@@ -62,7 +62,7 @@ public class Board {
 
 	private boolean[] beginTurn = new boolean[4];
 
-	private int turn = 3;
+	private int turn = 0;
 
 	private int[] timeArrayInt = new int[4];
 
@@ -215,8 +215,6 @@ public class Board {
 
 		playerz[3] = new Player(3, this, false);
 
-		currentPlayer = playerz[turn];
-
 		this.hash = hash;
 
 		initRedPlaces();
@@ -246,8 +244,8 @@ public class Board {
 		places[3] = "1st";
 
 		beginTurn[turn] = true;
-
-		next();
+		
+		currentPlayer = playerz[turn];
 	}
 
 	private int getCurrentTimeOfCurrentPlayer() {
@@ -842,7 +840,7 @@ public class Board {
 
 		Player[] others = new Player[3];
 
-		int counter = 2;
+		int counter = 0;
 
 		int index = 0;
 
@@ -867,6 +865,9 @@ public class Board {
 		dubiousTurn = color;
 
 		dubiousSet = true;
+		
+		// we set it here again for the case where the first player is dubious 
+		currentPlayer = playerz[turn];
 	}
 
 	public ColorsTaken getUserColor(ColorsTaken user, Iterable<ColorsTaken> iterable) {
