@@ -44,6 +44,12 @@
 		
 		var objDiv = document.getElementById("message");
 		objDiv.scrollTop = objDiv.scrollHeight;
+		
+		<c:if test="${board.isFinished()}">
+		
+			$('#finishModal').modal('show');
+
+		</c:if>
 
 	});
 
@@ -200,11 +206,11 @@
 
 					<p>
 						Someone has left (our lost connectivity),<br /> <br /> (s)he has
-						50s to return...<br /> <br /> If too late, his/hers place will be
-						taken by an available chatter<br /> <br /> or a Random bot.
+						50s to return...<br /> <br /> If too late, his/hers place will
+						be taken by an available chatter<br /> <br /> or a Random bot.
 					</p>
 
-					<p>${board.getRemainingStopSecs()}s remaining...</p>
+					<p>${board.getRemainingStopSecs()}sremaining...</p>
 
 				</div>
 
@@ -234,12 +240,33 @@
 					</center>
 					<br />
 					<p>
-						We only give the choice between a knight and a queen<br /> because
-						with a queen you can do any move of a rook or bishop...<br /> <br />
+						We only give the choice between a knight and a queen<br />
+						because with a queen you can do any move of a rook or bishop...<br />
+						<br />
 					</p>
 
 				</div>
 
+			</div>
+		</div>
+	</div>
+
+	<!-- The Waiting Modal -->
+	<div class="modal" id="finishModal">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">That's all folks...</h4>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					1st: ${board.placesNames[0]}<br /> <br /> 2nd:
+					${board.placesNames[1]}<br /> <br /> 3rd: ${board.placesNames[2]}<br />
+					<br /> 4th: ${board.placesNames[3]}<br /> <br />
+				</div>
 			</div>
 		</div>
 	</div>

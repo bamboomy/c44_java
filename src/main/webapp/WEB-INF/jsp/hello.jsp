@@ -83,6 +83,8 @@
 		$('#clockStopModal').modal('hide');
 		
 		$('#promoteModal').modal('hide');
+		
+		$('#finishModal').modal('hide');
 
 		$
 				.ajax({

@@ -58,7 +58,7 @@ public class Board {
 
 	@Getter
 	@Setter
-	private String redName, greenName, blueName, yellowName, gameName;//, playerHash;
+	private String redName, greenName, blueName, yellowName, gameName;// , playerHash;
 
 	private boolean[] beginTurn = new boolean[4];
 
@@ -165,6 +165,11 @@ public class Board {
 	private String horseMD5, queenMD5;
 
 	private HashMap<String, ColorsTaken> playerHashes = new HashMap();
+
+	@Getter
+	private String[] placesNames = new String[4];
+
+	private int placesNameCounter = 3;
 
 	public Board(String hash) {
 
@@ -582,6 +587,8 @@ public class Board {
 		playerz[number].setDead(true);
 
 		playerPlaces[number] = places[placesCounter++];
+
+		placesNames[placesNameCounter--] = playerz[number].getColorsTaken().getName();
 	}
 
 	public boolean isCheckingCheck() {
@@ -917,7 +924,7 @@ public class Board {
 		for (ColorsTaken userColor : userIterable) {
 
 			colorsTaken[Color.getByName(userColor.getColor()).getSeq()] = userColor;
-			
+
 			putPlayerHash(userColor.getJavaHash(), userColor);
 		}
 
