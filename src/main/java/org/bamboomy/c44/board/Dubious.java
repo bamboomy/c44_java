@@ -22,13 +22,10 @@ public class Dubious extends Player {
 
 		this.others = others;
 
-		// leave for now, first solve the other problem...
+		for (int i = 0; i < 3; i++) {
 
-		/*
-		 * for (int i = 0; i < 3; i++) {
-		 * 
-		 * timeOutzIntz[i] = 3; }
-		 */
+			timeOutzIntz[i] = 3;
+		}
 	}
 
 	private Dubious(int color, Board board, boolean isRobot) {
@@ -95,7 +92,7 @@ public class Dubious extends Player {
 	public boolean removeCurrent() {
 
 		if (!timeOutz.contains(turn)) {
-			
+
 			timeOutz.add(turn);
 		}
 
