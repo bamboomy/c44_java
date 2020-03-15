@@ -45,14 +45,10 @@ public class HelloController {
 		String gameHash = user.getGame();
 
 		Board board = BoardController.getInstance().getBoard(gameHash);
-		
-		//board.putPlayerHash(hash, user);
 
 		Game game = gameRepository.findByHash(gameHash);
 
 		board.setGameName(game.getSentence());
-
-		//board.setPlayerHash(hash);
 
 		board.setColorTaken(user);
 
@@ -66,22 +62,19 @@ public class HelloController {
 
 			if (userColor.getColor().equalsIgnoreCase("red")) {
 
-				board.setRedName(detectBot(userColor.getName(), Color.RED, board, dubiousIterable, user.getColor(), 0));
+				board.setRedName(detectBot(userColor.getName(), board, dubiousIterable, userColor));
 
 			} else if (userColor.getColor().equalsIgnoreCase("green")) {
 
-				board.setGreenName(
-						detectBot(userColor.getName(), Color.GREEN, board, dubiousIterable, user.getColor(), 2));
+				board.setGreenName(detectBot(userColor.getName(), board, dubiousIterable, userColor));
 
 			} else if (userColor.getColor().equalsIgnoreCase("blue")) {
 
-				board.setBlueName(
-						detectBot(userColor.getName(), Color.BLUE, board, dubiousIterable, user.getColor(), 3));
+				board.setBlueName(detectBot(userColor.getName(), board, dubiousIterable, userColor));
 
 			} else if (userColor.getColor().equalsIgnoreCase("yellow")) {
 
-				board.setYellowName(
-						detectBot(userColor.getName(), Color.YELLOW, board, dubiousIterable, user.getColor(), 1));
+				board.setYellowName(detectBot(userColor.getName(), board, dubiousIterable, userColor));
 			}
 		}
 
@@ -99,8 +92,6 @@ public class HelloController {
 
 		System.out.println(hash);
 
-		//ColorsTaken user = colorsTakenRepository.findByHash(hash);
-		
 		Board board = BoardController.getInstance().getBoardByPlayerHash(hash);
 
 		if (board == null) {
@@ -108,10 +99,6 @@ public class HelloController {
 			return "negative";
 		}
 
-		//String gameHash = user.getGame();
-
-		//Board board = BoardController.getInstance().getBoard(gameHash);
-		
 		ColorsTaken user = board.getColorsTaken(hash);
 
 		ColorsTaken mutated = board.getUserColor(user, colorsTakenRepository.findByGameHash(user.getGame()));
@@ -126,20 +113,14 @@ public class HelloController {
 	public String judge(Model model,
 			@RequestParam(value = "id", required = true, defaultValue = "World") final String hash) {
 
-		//ColorsTaken user = colorsTakenRepository.findByHash(hash);
-		
 		Board board = BoardController.getInstance().getBoardByPlayerHash(hash);
 
 		if (board == null) {
 
 			return "negative";
 		}
-		
+
 		ColorsTaken user = board.getColorsTaken(hash);
-
-		//String gameHash = user.getGame();
-
-		//Board board = BoardController.getInstance().getBoard(gameHash);
 
 		board.getLock().lock();
 
@@ -177,23 +158,28 @@ public class HelloController {
 		return "judge";
 	}
 
-	private String detectBot(String name, Color color, Board board, Iterable<ColorsTaken> dubiousIterable,
-			String userColor, int index) {
+	private String detectBot(String name, Board board, Iterable<ColorsTaken> dubiousIterable, ColorsTaken user) {
+
+		int seq = Color.getByName(user.getColor()).getSeq();
 
 		if (name.equalsIgnoreCase("Random85247")) {
 
-			board.setRandom(color.getSeq());
+			user.setName("Random8");
 
-			board.setTimestamp(color.getSeq(), System.currentTimeMillis());
+			board.setRandom(seq, user);
+
+			board.setTimestamp(seq, System.currentTimeMillis());
 
 			return "Random";
 		}
 
 		if (name.equalsIgnoreCase("Dubious85247")) {
 
-			board.setTimestamp(color.getSeq(), System.currentTimeMillis());
+			board.setTimestamp(seq, System.currentTimeMillis());
 
-			board.setDubious(color.getSeq());
+			user.setName("Dubious");
+
+			board.setDubious(seq, user);
 
 			String dubiousName = "Dubious: ";
 
@@ -217,20 +203,14 @@ public class HelloController {
 
 		System.out.println(hash + "calling resign...");
 
-		//ColorsTaken user = colorsTakenRepository.findByHash(hash);
-		
 		Board board = BoardController.getInstance().getBoardByPlayerHash(hash);
 
 		if (board == null) {
 
 			return "negative";
 		}
-		
+
 		ColorsTaken user = board.getColorsTaken(hash);
-
-		String gameHash = user.getGame();
-
-		//Board board = BoardController.getInstance().getBoard(gameHash);
 
 		board.resign(user.getColor());
 

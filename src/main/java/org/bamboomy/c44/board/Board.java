@@ -244,7 +244,7 @@ public class Board {
 		places[3] = "1st";
 
 		beginTurn[turn] = true;
-		
+
 		currentPlayer = playerz[turn];
 	}
 
@@ -535,7 +535,7 @@ public class Board {
 
 			statusMessages = "<span style='color:" + Color.getBySeq(turn).getCssColor() + ";'>";
 
-			statusMessages += colorsTaken[turn].getName()
+			statusMessages += playerz[turn].getColorsTaken().getName()
 					+ "</span><span style='color: red;'> is in check!</span><br/>";
 
 			if (getCurrentPlayer().canPrevent()) {
@@ -793,7 +793,7 @@ public class Board {
 		}
 	}
 
-	public void setRandom(int color) {
+	public void setRandom(int color, ColorsTaken user) {
 
 		if (botSet) {
 
@@ -806,6 +806,8 @@ public class Board {
 
 			playerz[turn].playRandomMove(performedMoves);
 		}
+
+		playerz[turn].setColorTaken(user);
 
 		botSet = true;
 	}
@@ -831,7 +833,7 @@ public class Board {
 		return result;
 	}
 
-	public void setDubious(int color) {
+	public void setDubious(int color, ColorsTaken user) {
 
 		if (dubiousSet) {
 
@@ -865,9 +867,11 @@ public class Board {
 		dubiousTurn = color;
 
 		dubiousSet = true;
-		
-		// we set it here again for the case where the first player is dubious 
+
+		// we set it here again for the case where the first player is dubious
 		currentPlayer = playerz[turn];
+
+		dubious.setColorTaken(user);
 	}
 
 	public ColorsTaken getUserColor(ColorsTaken user, Iterable<ColorsTaken> iterable) {
