@@ -139,18 +139,18 @@ public class HelloController {
 			board.updateTime();
 		}
 
-		/*
-		 * if (board.isNewDead()) {
-		 * 
-		 * GameResult result = new GameResult();
-		 * 
-		 * result.setGame(user.getGame()); result.setPlayer(hash);
-		 * result.setToken(getToken());
-		 * 
-		 * gameResultRepository.save(result);
-		 * 
-		 * board.next(); }
-		 */
+		if (board.isNewDead()) {
+
+			GameResult result = new GameResult();
+
+			result.setGame(user.getGame());
+			result.setPlayer(hash);
+			result.setToken(getToken());
+
+			gameResultRepository.save(result);
+
+			board.next();
+		}
 
 		model.addAttribute("board", board);
 		model.addAttribute("user", user);
