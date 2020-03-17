@@ -46,13 +46,6 @@
 
 </c:if>
 
-<div id="messages">
-
-	<div style="text-align: center; font-size: larger;">Messages:</div>
-	<p id="message">${board.statusMessages}</p>
-
-</div>
-
 <div class="container">
 
 	<!-- The Promote Modal -->
