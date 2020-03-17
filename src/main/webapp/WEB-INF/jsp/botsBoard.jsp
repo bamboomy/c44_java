@@ -100,7 +100,7 @@
 
 							<div class="square">
 
-								<img src="img/blank.png" width="35px" height="35px" />
+								<img src="../img/blank.png" width="35px" height="35px" />
 
 								<c:choose>
 									<c:when test="${place.isVisuallyAttacked()}">
@@ -112,7 +112,7 @@
 													onclick="clickToServer('${place.getMd5WithBoard()}', '${user.javaHash}')" />
 											</c:when>
 											<c:otherwise>
-												<img class="${place.getCssName()}" src="img/transparent.png"
+												<img class="${place.getCssName()}" src="../img/transparent.png"
 													width="35px" height="35px"
 													onclick="clickToServer('${place.getMd5WithBoard()}', '${user.javaHash}')" />
 											</c:otherwise>
@@ -127,7 +127,7 @@
 													onclick="clickToServer('${place.getPiece().getMd5WithBoard()}', '${user.javaHash}')" />
 											</c:when>
 											<c:otherwise>
-												<img class="${place.getCssName()}" src="img/transparent.png"
+												<img class="${place.getCssName()}" src="../img/transparent.png"
 													width="35px" height="35px" />
 											</c:otherwise>
 										</c:choose>
@@ -138,7 +138,7 @@
 						</c:when>
 						<c:otherwise>
 							<div class="square">
-								<img src="img/blank.png" width="35px" height="35px" />
+								<img src="../img/blank.png" width="35px" height="35px" />
 							</div>
 						</c:otherwise>
 					</c:choose>
