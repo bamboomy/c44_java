@@ -15,8 +15,7 @@
 </script>
 
 <c:if
-	test="${!board.isPlayerIsMoving() && board.isRenderingCurrentPlayer(user.color) 
-	&& board.getCurrentPlayer().checkCheck() }">
+	test="${!board.isPlayerIsMoving() && board.getCurrentPlayer().checkCheck()}">
 	<script type="text/javascript">
 		var y = document.getElementById("check");
 
@@ -26,8 +25,7 @@
 	</script>
 </c:if>
 
-<c:if
-	test="${board.isWouldBeCheck() && board.isRenderingCurrentPlayer(user.color)}">
+<c:if test="${board.isWouldBeCheck()}">
 	<script type="text/javascript">
 		alert('You can\'t move that piece!!! (you would be check...)');
 	</script>
@@ -105,8 +103,8 @@
 													onclick="clickToServer('${place.getMd5WithBoard()}', '${user.javaHash}')" />
 											</c:when>
 											<c:otherwise>
-												<img class="${place.getCssName()}" src="../img/transparent.png"
-													width="35px" height="35px"
+												<img class="${place.getCssName()}"
+													src="../img/transparent.png" width="35px" height="35px"
 													onclick="clickToServer('${place.getMd5WithBoard()}', '${user.javaHash}')" />
 											</c:otherwise>
 										</c:choose>
@@ -120,8 +118,8 @@
 													onclick="clickToServer('${place.getPiece().getMd5WithBoard()}', '${user.javaHash}')" />
 											</c:when>
 											<c:otherwise>
-												<img class="${place.getCssName()}" src="../img/transparent.png"
-													width="35px" height="35px" />
+												<img class="${place.getCssName()}"
+													src="../img/transparent.png" width="35px" height="35px" />
 											</c:otherwise>
 										</c:choose>
 									</c:otherwise>
