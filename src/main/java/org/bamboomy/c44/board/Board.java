@@ -28,6 +28,8 @@ public class Board {
 
 	public static String staticTomcatPath = "tomcat";
 
+	public static String BOTS = "bots";
+
 	@Getter
 	private String piecePath = staticPiecePath;
 
@@ -359,7 +361,7 @@ public class Board {
 
 		System.out.println(md5);
 
-		if (!currentPlayer.getColor().getName().equalsIgnoreCase(color)) {
+		if (!color.equalsIgnoreCase(BOTS) && !currentPlayer.getColor().getName().equalsIgnoreCase(color)) {
 
 			System.out.println("wrong color");
 
@@ -965,6 +967,20 @@ public class Board {
 	public void setColorTaken(ColorsTaken user) {
 
 		if (user.getColor().equalsIgnoreCase("chat")) {
+
+			return;
+		}
+
+		if (user.getColor().equalsIgnoreCase(BOTS)) {
+
+			Color color = Color.GREEN;
+			playerz[color.getSeq()].setColorTaken(user);
+
+			putPlayerHash(user.getJavaHash(), user);
+
+			playerz[1] = new Player(1, this, true);
+			playerz[2] = new Player(2, this, true);
+			playerz[3] = new Player(3, this, true);
 
 			return;
 		}

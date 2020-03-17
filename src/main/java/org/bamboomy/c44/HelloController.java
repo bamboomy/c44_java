@@ -86,6 +86,25 @@ public class HelloController {
 		return "hello";
 	}
 
+	@GetMapping({ "/bots/" })
+	public String bots(Model model,
+			@RequestParam(value = "id", required = true, defaultValue = "World") final String gameHash) {
+
+		Board board = BoardController.getInstance().getBoard(gameHash);
+
+		ColorsTaken user = new ColorsTaken();
+
+		user.setColor(Board.BOTS);
+		user.setJavaHash(getToken());
+
+		board.setColorTaken(user);
+
+		model.addAttribute("board", board);
+		model.addAttribute("user", user);
+
+		return "bots";
+	}
+
 	@GetMapping({ "/board/" })
 	public String board(Model model,
 			@RequestParam(value = "id", required = true, defaultValue = "World") final String hash) {
@@ -107,6 +126,29 @@ public class HelloController {
 		model.addAttribute("user", mutated);
 
 		return "board";
+	}
+
+	@GetMapping({ "/botsBoard/" })
+	public String botsBoard(Model model,
+			@RequestParam(value = "id", required = true, defaultValue = "World") final String hash) {
+
+		System.out.println(hash);
+
+		Board board = BoardController.getInstance().getBoardByPlayerHash(hash);
+
+		if (board == null) {
+
+			return "negative";
+		}
+
+		ColorsTaken user = board.getColorsTaken(hash);
+
+		ColorsTaken mutated = board.getUserColor(user, colorsTakenRepository.findByGameHash(user.getGame()));
+
+		model.addAttribute("board", board);
+		model.addAttribute("user", mutated);
+
+		return "botsBoard";
 	}
 
 	@GetMapping({ "/judge/" })
