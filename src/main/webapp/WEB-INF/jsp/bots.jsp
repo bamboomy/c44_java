@@ -50,6 +50,8 @@
 	});
 
 	function clickToServer(md5, userHash) {
+		
+		$('#promoteModal').modal('hide');
 
 		$.ajax({
 			type : "GET",
