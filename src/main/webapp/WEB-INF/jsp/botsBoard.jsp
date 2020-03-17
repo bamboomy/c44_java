@@ -32,7 +32,7 @@
 </c:if>
 
 <c:if
-	test="${board.promote && board.isRenderingCurrentPlayer(user.color)}">
+	test="${board.promote}">
 
 	<script type="text/javascript">
 		$(document).ready(function() {
