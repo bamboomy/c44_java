@@ -43,7 +43,10 @@
 <script type="text/javascript">
 
 	$(document).ready(function() {
+		
 		myId = $('form').attr('myattribute');
+		
+		fill();
 	});
 
 	function clickToServer(md5, userHash) {
