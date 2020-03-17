@@ -17,6 +17,7 @@ import org.bamboomy.c44.board.pieces.Horse;
 import org.bamboomy.c44.board.pieces.Piece;
 import org.bamboomy.c44.board.pieces.Queen;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
