@@ -6,7 +6,8 @@
 <title>Hello ${name}!</title>
 <link href="/${board.tomcatPath}/css/main.css" rel="stylesheet">
 
-<link href="/${board.tomcatPath}/bootstrap-4.4.1-dist/css/bootstrap.css" rel="stylesheet">
+<link href="/${board.tomcatPath}/bootstrap-4.4.1-dist/css/bootstrap.css"
+	rel="stylesheet">
 
 <style>
 .outer {
@@ -38,7 +39,8 @@
 
 <script src="/${board.tomcatPath}/js/jquery-3.4.1.min.js"></script>
 
-<script src="/${board.tomcatPath}/bootstrap-4.4.1-dist/js/bootstrap.bundle.js"></script>
+<script
+	src="/${board.tomcatPath}/bootstrap-4.4.1-dist/js/bootstrap.bundle.js"></script>
 
 <script type="text/javascript">
 	var checkShown = false;
@@ -50,7 +52,7 @@
 	var myId;
 
 	var finished = false;
-	
+
 	var waitingCounter = 7;
 
 	$(document).ready(function() {
@@ -75,15 +77,15 @@
 	}
 
 	function fill() {
-		
+
 		$('#myModal').modal('hide');
-		
+
 		$('#clockStartModal').modal('hide');
-		
+
 		$('#clockStopModal').modal('hide');
-		
+
 		$('#promoteModal').modal('hide');
-		
+
 		$('#finishModal').modal('hide');
 
 		$
@@ -248,7 +250,7 @@
 		<source src="https://chess4four.org/bin/tik.mp3" type="audio/mpeg">
 		Your browser does not support the audio element.
 	</audio>
-	
+
 	<audio id="check">
 		<source src="https://chess4four.org/bin/check.mp3" type="audio/mpeg">
 	</audio>
@@ -291,8 +293,11 @@
 		<div id="chatText"></div>
 
 		<div class="bottom">
-			<input id="chatField" type="text" class="fill" autocomplete="false" /><input
-				type="button" value="Send" onclick="sendMessage();" />
+			<form>
+				<input type="hidden" autocomplete="false" /> <input id="chatField"
+					type="text" class="fill" /><input type="button" value="Send"
+					onclick="sendMessage();" />
+			</form>
 		</div>
 
 	</div>
