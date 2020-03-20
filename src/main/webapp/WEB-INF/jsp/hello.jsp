@@ -138,9 +138,9 @@
 
 	function sendMessage() {
 
-		var chat = $("#chatField").val();
+		var chat = $("#chatField${board.chatId}").val();
 
-		$("#chatField").val("");
+		$("#chatField${board.chatId}").val("");
 
 		$
 				.ajax({
@@ -175,7 +175,7 @@
 
 	$(document).ready(function() {
 
-		$("#chatField").on("keydown", function(e) {
+		$("#chatField${board.chatId}").on("keydown", function(e) {
 
 			if (e.which == 13) {
 
@@ -293,7 +293,7 @@
 		<div id="chatText"></div>
 
 		<div class="bottom">
-				 <input id="chatField"
+				 <input id="chatField${board.chatId}"
 					type="text" class="fill" autocomplete="false" /><input type="button" value="Send"
 					onclick="sendMessage();" />
 		</div>

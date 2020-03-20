@@ -3,6 +3,7 @@ package org.bamboomy.c44.board.pieces;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 
 import javax.xml.bind.DatatypeConverter;
@@ -59,6 +60,8 @@ public abstract class Piece {
 	@Setter
 	private boolean moved = false;
 
+	private SecureRandom secureRandom = new SecureRandom("49357FE6D3EC4D9658996CDF440223E0".getBytes());
+
 	public Piece(Place place, int color, Player player) {
 
 		this.currentPlace = place;
@@ -74,9 +77,9 @@ public abstract class Piece {
 
 	private void recalculateHash() {
 
-		String time = System.currentTimeMillis() + "6";
+		String time = System.currentTimeMillis() + "6+time.getBytes(\"UTF-8\");";
 
-		time += (Math.random() * 777);
+		time += (secureRandom.nextDouble() * 777);
 
 		try {
 

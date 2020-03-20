@@ -178,6 +178,38 @@ public class Board {
 	private String[] placesNames = new String[4];
 
 	private int placesNameCounter = 3;
+	
+	@Getter
+	private String chatId;
+	
+	{
+		
+		String time = System.currentTimeMillis() + "6+time.getBytes(\"UTF-8\");";
+
+		time += (secureRandom.nextDouble() * 777);
+
+		try {
+
+			byte[] bytesOfMessage = time.getBytes("UTF-8");
+
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			byte[] thedigest = md.digest(bytesOfMessage);
+
+			chatId = DatatypeConverter.printHexBinary(thedigest).toUpperCase();
+
+		} catch (UnsupportedEncodingException e) {
+
+			e.printStackTrace();
+
+			throw new RuntimeException(e);
+
+		} catch (NoSuchAlgorithmException e) {
+
+			e.printStackTrace();
+
+			throw new RuntimeException(e);
+		}
+	}
 
 	public Board(String hash) {
 
