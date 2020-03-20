@@ -17,6 +17,8 @@ public class ChessComponent {
 		
 		Board.staticTomcatPath = "dev/tomcat";
 		
+		Board.staticJavaPath = "dev/java";
+		
 		System.out.println(profile);
 	}
 

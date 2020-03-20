@@ -120,7 +120,7 @@
 					xhrFields : {
 						withCredentials : true
 					},
-					url : "https://chess4four.org/java/chatText.php?board=${user.javaHash}",
+					url : "https://chess4four.org/${board.javaPath}/chatText.php?board=${user.javaHash}",
 					success : function(text) {
 
 						if (text != "clean") {
@@ -146,7 +146,7 @@
 					xhrFields : {
 						withCredentials : true
 					},
-					url : "https://chess4four.org/java/chat.php?board=${user.javaHash}",
+					url : "https://chess4four.org/${board.javaPath}/chat.php?board=${user.javaHash}",
 					data : {
 						text : chat
 					},

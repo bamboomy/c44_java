@@ -29,6 +29,8 @@ public class Board {
 
 	public static String staticTomcatPath = "tomcat";
 
+	public static String staticJavaPath = "java";
+
 	public static String BOTS = "bots";
 
 	@Getter
@@ -36,6 +38,9 @@ public class Board {
 
 	@Getter
 	private String tomcatPath = staticTomcatPath;
+
+	@Getter
+	private String javaPath = staticJavaPath;
 
 	@Getter
 	private Place[][] placez = new Place[12][12];
