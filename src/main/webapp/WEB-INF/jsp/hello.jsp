@@ -294,7 +294,7 @@
 
 		<div class="bottom">
 				 <input id="chatField"
-					type="text" class="fill" autocomplete="new-password" /><input type="button" value="Send"
+					type="text" class="fill" autocomplete="false" /><input type="button" value="Send"
 					onclick="sendMessage();" />
 		</div>
 
