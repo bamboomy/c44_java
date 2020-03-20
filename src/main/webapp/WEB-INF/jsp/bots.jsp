@@ -68,7 +68,7 @@
 		$
 				.ajax({
 					type : "GET",
-					url : "https://chess4four.io/${board.tomcatPath}/botsBoard/?id=${user.javaHash}",
+					url : "https://chess4four.org/${board.tomcatPath}/botsBoard/?id=${user.javaHash}",
 					async : false,
 					success : function(text) {
 						$('#board').html(text);
@@ -82,11 +82,11 @@
 <body>
 
 	<audio id="check">
-		<source src="https://chess4four.io/bin/check.mp3" type="audio/mpeg">
+		<source src="https://chess4four.org/bin/check.mp3" type="audio/mpeg">
 	</audio>
 
 	<audio id="end">
-		<source src="https://chess4four.io/bin/end.mp3" type="audio/mpeg">
+		<source src="https://chess4four.org/bin/end.mp3" type="audio/mpeg">
 	</audio>
 
 	<center>

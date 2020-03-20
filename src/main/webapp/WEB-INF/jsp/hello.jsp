@@ -89,7 +89,7 @@
 		$
 				.ajax({
 					type : "GET",
-					url : "https://chess4four.io/${board.tomcatPath}/board/?id=${user.javaHash}",
+					url : "https://chess4four.org/${board.tomcatPath}/board/?id=${user.javaHash}",
 					async : false,
 					success : function(text) {
 						$('#board').html(text);
@@ -120,7 +120,7 @@
 					xhrFields : {
 						withCredentials : true
 					},
-					url : "https://chess4four.io/java/chatText.php?board=${user.javaHash}",
+					url : "https://chess4four.org/java/chatText.php?board=${user.javaHash}",
 					success : function(text) {
 
 						if (text != "clean") {
@@ -146,7 +146,7 @@
 					xhrFields : {
 						withCredentials : true
 					},
-					url : "https://chess4four.io/java/chat.php?board=${user.javaHash}",
+					url : "https://chess4four.org/java/chat.php?board=${user.javaHash}",
 					data : {
 						text : chat
 					},
@@ -188,7 +188,7 @@
 		$
 				.ajax({
 					type : "GET",
-					url : "https://chess4four.io/${board.tomcatPath}/judge/?id=${user.javaHash}",
+					url : "https://chess4four.org/${board.tomcatPath}/judge/?id=${user.javaHash}",
 					async : false,
 					success : function(text) {
 						$('#judge').html(text);
@@ -224,7 +224,7 @@
 			$
 					.ajax({
 						type : "GET",
-						url : "https://chess4four.io/${board.tomcatPath}/resign/?id=${user.javaHash}",
+						url : "https://chess4four.org/${board.tomcatPath}/resign/?id=${user.javaHash}",
 						async : false,
 						success : function(text) {
 
@@ -245,16 +245,16 @@
 
 
 	<audio id="tik">
-		<source src="https://chess4four.io/bin/tik.mp3" type="audio/mpeg">
+		<source src="https://chess4four.org/bin/tik.mp3" type="audio/mpeg">
 		Your browser does not support the audio element.
 	</audio>
 	
 	<audio id="check">
-		<source src="https://chess4four.io/bin/check.mp3" type="audio/mpeg">
+		<source src="https://chess4four.org/bin/check.mp3" type="audio/mpeg">
 	</audio>
 
 	<audio id="end">
-		<source src="https://chess4four.io/bin/end.mp3" type="audio/mpeg">
+		<source src="https://chess4four.org/bin/end.mp3" type="audio/mpeg">
 	</audio>
 
 	<center>
@@ -291,7 +291,7 @@
 		<div id="chatText"></div>
 
 		<div class="bottom">
-			<input id="chatField" type="text" class="fill" /><input
+			<input id="chatField" type="text" class="fill" autocomplete="false" /><input
 				type="button" value="Send" onclick="sendMessage();" />
 		</div>
 
