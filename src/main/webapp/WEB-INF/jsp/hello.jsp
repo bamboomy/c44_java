@@ -293,11 +293,9 @@
 		<div id="chatText"></div>
 
 		<div class="bottom">
-			<form>
-				<input type="hidden" autocomplete="false" /> <input id="chatField"
-					type="text" class="fill" /><input type="button" value="Send"
+				 <input id="chatField"
+					type="text" class="fill" autocomplete="off" /><input type="button" value="Send"
 					onclick="sendMessage();" />
-			</form>
 		</div>
 
 	</div>
