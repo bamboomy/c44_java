@@ -67,8 +67,11 @@ public class Place {
 	 */
 
 	// private EnPassant backupEnpassant = null;
-	
+
 	private SecureRandom secureRandom = new SecureRandom("49357FE6D3EC4D9658996CDF440223E0".getBytes());
+
+	@Getter
+	private boolean border;
 
 	public Place(int color, Board board, int i, int j) {
 
@@ -117,13 +120,20 @@ public class Place {
 
 	public String getCssName() {
 
+		String last = "";
+
+		if (border) {
+
+			last = " last";
+		}
+
 		if (color == BLACK) {
 
-			return blackString;
+			return blackString + last;
 
 		} else {
 
-			return whiteString;
+			return whiteString + last;
 		}
 	}
 
@@ -312,6 +322,11 @@ public class Place {
 	public void addMove(Move move) {
 
 		this.move = move;
+	}
+
+	void setBorder(boolean border) {
+
+		this.border = border;
 	}
 
 	/*

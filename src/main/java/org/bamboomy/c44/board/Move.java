@@ -95,4 +95,10 @@ public class Move {
 
 		piece.setMoved(rememberMoved);
 	}
+	
+	void show() {
+		
+		to.setBorder(true);
+		from.setBorder(true);
+	}
 }

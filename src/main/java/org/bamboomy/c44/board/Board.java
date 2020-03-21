@@ -182,6 +182,8 @@ public class Board {
 	@Getter
 	private String chatId;
 
+	private Move[] lastMoves = new Move[4];
+
 	{
 
 		String time = System.currentTimeMillis() + "6+time.getBytes(\"UTF-8\");";
