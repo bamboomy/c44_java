@@ -178,12 +178,12 @@ public class Board {
 	private String[] placesNames = new String[4];
 
 	private int placesNameCounter = 3;
-	
+
 	@Getter
 	private String chatId;
-	
+
 	{
-		
+
 		String time = System.currentTimeMillis() + "6+time.getBytes(\"UTF-8\");";
 
 		time += (secureRandom.nextDouble() * 777);
@@ -514,6 +514,18 @@ public class Board {
 		countDead();
 
 		if (finished) {
+
+			for (Player player : playerz) {
+
+				if (!player.isDead()) {
+
+					placesNames[placesNameCounter] = player.getColorsTaken().getName();
+
+					player.setDead(true);
+
+					break;
+				}
+			}
 
 			return;
 		}
