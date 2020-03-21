@@ -221,7 +221,7 @@
 	function resign() {
 
 		if (window
-				.confirm("Are you sure?\n(This is an irriversible action\nwhich will change your life forever!!!)")) {
+				.confirm("Are you sure?")) {
 
 			$
 					.ajax({
@@ -232,9 +232,11 @@
 
 							if (confirm("You resigned...\nDo you want to stick around?\nClick 'ok' to stay,\nclick 'cancel' to leave.") != true) {
 
-								//TODO: delete king
-
 								window.location.assign("https://www.google.be");
+								
+							} else {
+								
+								//TODO: feedback modal
 							}
 						}
 					});
