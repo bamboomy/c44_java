@@ -304,7 +304,7 @@
 									<c:otherwise>
 										<c:choose>
 											<c:when test="${place.hasPiece()}">
-												<img class="${place.getCssName()}"
+												<img class="${place.getCssName()} last"
 													src="${place.getPiece().getPieceName()}" width="35px"
 													height="35px"
 													onclick="clickToServer('${place.getPiece().getMd5WithBoard()}', '${user.javaHash}')" />
