@@ -497,6 +497,8 @@ public class Board {
 			setDubiousName();
 		}
 
+		performedMoves.get(performedMoves.size() - 1).show();
+
 		turn = (turn + 1) % 4;
 
 		beginTurn[turn] = true;
