@@ -522,13 +522,6 @@ public class Board {
 			beginTurn[dubious.getCurrentNumber()] = true;
 		}
 
-		if (playerz[turn].isPat() && !playerz[turn].isDead()) {
-
-			remove(turn);
-
-			playerPlaces[turn] = "pat";
-		}
-
 		resetTimer();
 
 		for (Integer i : deadPlayers) {
@@ -629,6 +622,15 @@ public class Board {
 
 					endRead[i] = false;
 				}
+			}
+
+		} else {
+
+			if (playerz[turn].isPat()) {
+
+				remove(turn);
+
+				playerPlaces[turn] = "pat";
 			}
 		}
 	}
