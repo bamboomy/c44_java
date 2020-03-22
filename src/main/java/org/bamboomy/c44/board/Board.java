@@ -504,7 +504,7 @@ public class Board {
 		
 		lastMoves[turn] = performedMoves.get(performedMoves.size() - 1);
 
-		lastMoves[turn].show();
+		lastMoves[turn].show(playerz[turn].getColor());
 
 		turn = (turn + 1) % 4;
 

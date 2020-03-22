@@ -96,10 +96,10 @@ public class Move {
 		piece.setMoved(rememberMoved);
 	}
 	
-	void show() {
+	void show(Color color) {
 		
-		to.setBorder(true);
-		from.setBorder(true);
+		to.setBorder(true, color);
+		from.setBorder(true, color);
 	}
 
 	void hide() {

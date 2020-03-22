@@ -73,6 +73,8 @@ public class Place {
 	@Getter
 	private boolean border;
 
+	private Color borderColor;
+
 	public Place(int color, Board board, int i, int j) {
 
 		if (color != BLACK && color != WHITE) {
@@ -123,8 +125,36 @@ public class Place {
 		String last = "";
 
 		if (border) {
+			
+			switch (borderColor) {
+			
+			case GREEN:
+				
+				last = " greenLast";
+				
+				break;
 
-			last = " last";
+			case RED:
+				
+				last = " redLast";
+				
+				break;
+
+			case BLUE:
+				
+				last = " blueLast";
+				
+				break;
+
+			case YELLOW:
+				
+				last = " yellowLast";
+				
+				break;
+
+			default:
+				throw new RuntimeException("wrong color");
+			}
 		}
 
 		if (color == BLACK) {
@@ -324,9 +354,11 @@ public class Place {
 		this.move = move;
 	}
 
-	void setBorder(boolean border) {
+	void setBorder(boolean border, Color color) {
 
 		this.border = border;
+
+		borderColor = color;
 	}
 
 	/*

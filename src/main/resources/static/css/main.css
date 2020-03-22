@@ -1,134 +1,122 @@
-
 .square {
-  float: left;
+	float: left;
 }
 
-.row{
+.row {
 	width: 420px;
 }
 
-.piece_on_black{
-  width: 35px;
-  height: 35px;
-  z-index: 1;
-  position: absolute;
-  float: left;
-  background-image: url(../img/black.png);
+.piece_on_black {
+	width: 35px;
+	height: 35px;
+	z-index: 1;
+	position: absolute;
+	float: left;
+	background-image: url(../img/black.png);
 }
 
-.piece_on_white{
-  width: 35px;
-  height: 35px;
-  z-index: 1;
-  position: absolute;
-  float: left;
-  background-image: url(../img/white.png);
+.piece_on_white {
+	width: 35px;
+	height: 35px;
+	z-index: 1;
+	position: absolute;
+	float: left;
+	background-image: url(../img/white.png);
 }
 
-.piece_on_black_red{
-  width: 35px;
-  height: 35px;
-  z-index: 1;
-  position: absolute;
-  float: left;
-  background-image: url(../img/black_red.png);
+.piece_on_black_red {
+	width: 35px;
+	height: 35px;
+	z-index: 1;
+	position: absolute;
+	float: left;
+	background-image: url(../img/black_red.png);
 }
 
-.piece_on_white_red{
-  width: 35px;
-  height: 35px;
-  z-index: 1;
-  position: absolute;
-  float: left;
-  background-image: url(../img/white_red.png);
+.piece_on_white_red {
+	width: 35px;
+	height: 35px;
+	z-index: 1;
+	position: absolute;
+	float: left;
+	background-image: url(../img/white_red.png);
 }
 
-.piece_on_black_yellow{
-  width: 35px;
-  height: 35px;
-  z-index: 1;
-  position: absolute;
-  float: left;
-  background-image: url(../img/black_yellow.png);
+.piece_on_black_yellow {
+	width: 35px;
+	height: 35px;
+	z-index: 1;
+	position: absolute;
+	float: left;
+	background-image: url(../img/black_yellow.png);
 }
 
-.piece_on_white_yellow{
-  width: 35px;
-  height: 35px;
-  z-index: 1;
-  position: absolute;
-  float: left;
-  background-image: url(../img/white_yellown.png);
+.piece_on_white_yellow {
+	width: 35px;
+	height: 35px;
+	z-index: 1;
+	position: absolute;
+	float: left;
+	background-image: url(../img/white_yellown.png);
 }
 
-.piece_on_black_blue{
-  width: 35px;
-  height: 35px;
-  z-index: 1;
-  position: absolute;
-  float: left;
-  background-image: url(../img/black_blue.png);
+.piece_on_black_blue {
+	width: 35px;
+	height: 35px;
+	z-index: 1;
+	position: absolute;
+	float: left;
+	background-image: url(../img/black_blue.png);
 }
 
-.piece_on_white_blue{
-  width: 35px;
-  height: 35px;
-  z-index: 1;
-  position: absolute;
-  float: left;
-  background-image: url(../img/white_blue.png);
+.piece_on_white_blue {
+	width: 35px;
+	height: 35px;
+	z-index: 1;
+	position: absolute;
+	float: left;
+	background-image: url(../img/white_blue.png);
 }
 
-.piece_on_black_green{
-  width: 35px;
-  height: 35px;
-  z-index: 1;
-  position: absolute;
-  float: left;
-  background-image: url(../img/black_green.png);
+.piece_on_black_green {
+	width: 35px;
+	height: 35px;
+	z-index: 1;
+	position: absolute;
+	float: left;
+	background-image: url(../img/black_green.png);
 }
 
-.piece_on_white_green{
-  width: 35px;
-  height: 35px;
-  z-index: 1;
-  position: absolute;
-  float: left;
-  background-image: url(../img/white_green.png);
+.piece_on_white_green {
+	width: 35px;
+	height: 35px;
+	z-index: 1;
+	position: absolute;
+	float: left;
+	background-image: url(../img/white_green.png);
 }
 
 #status {
-
 	position: absolute;
-	
 	top: 20px;
 	left: 20px;
-	
 	width: 300px;
 	height: 400px;
-	
 	border: 1px solid;
-	
 	padding: 10px;
 }
 
 #chat {
-
 	position: absolute;
-	
 	bottom: 20px;
 	right: 20px;
-	
 	width: 300px;
 	height: 300px;
-	
 	border: 1px solid;
-	
 	padding: 10px;
 }
 
 .bottom {
-
 	position: absolute;
 	bottom: 10px;
 	right: 10px;
@@ -136,64 +124,59 @@
 }
 
 .fill {
-
 	width: 75%;
 }
 
 #resign {
-
 	position: absolute;
 	top: 20px;
 	right: 20px;
-
 	width: 300px;
 	height: 50px;
-	
 	border: 1px solid;
-	
 	padding: 10px;
-	
 	text-align: center;
 }
 
 #chatText {
-
-	overflow-y:auto;
+	overflow-y: auto;
 	height: 80%;
 }
 
 .red {
-
 	color: red;
 }
 
 #messages {
-
 	position: absolute;
 	top: 110px;
 	right: 20px;
-
 	width: 300px;
 	height: 150px;
-	
 	border: 1px solid;
-	
 	padding: 10px;
-	
 	text-align: center;
 }
 
 #message {
-	
 	margin: 10px;
-	
 	text-align: left;
-	
-	overflow-y:auto;
+	overflow-y: auto;
 	height: 70%;
 }
 
-.last {
+.greenLast {
+	border: 2px solid green;
+}
 
-	border:2px solid black;
+.redLast {
+	border: 2px solid red;
+}
+
+.blueLast {
+	border: 2px solid blue;
+}
+
+.yellowLast {
+	border: 2px solid orange;
 }
