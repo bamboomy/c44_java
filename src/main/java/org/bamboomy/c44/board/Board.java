@@ -506,9 +506,12 @@ public class Board {
 			lastMoves[turn].hide();
 		}
 
-		lastMoves[turn] = performedMoves.get(performedMoves.size() - 1);
+		if (performedMoves.size() >= 1) {
 
-		lastMoves[turn].show(playerz[turn].getColor());
+			lastMoves[turn] = performedMoves.get(performedMoves.size() - 1);
+
+			lastMoves[turn].show(playerz[turn].getColor());
+		}
 
 		turn = (turn + 1) % 4;
 
