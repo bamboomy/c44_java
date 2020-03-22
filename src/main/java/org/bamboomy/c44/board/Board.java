@@ -501,7 +501,7 @@ public class Board {
 
 			lastMoves[turn].hide();
 		}
-		
+
 		lastMoves[turn] = performedMoves.get(performedMoves.size() - 1);
 
 		lastMoves[turn].show(playerz[turn].getColor());
@@ -649,7 +649,10 @@ public class Board {
 
 		playerPlaces[number] = places[placesCounter++];
 
-		placesNames[placesNameCounter--] = playerz[number].getColorsTaken().getName();
+		if (playerz[number].getColorsTaken() != null) {
+
+			placesNames[placesNameCounter--] = playerz[number].getColorsTaken().getName();
+		}
 	}
 
 	public boolean isCheckingCheck() {
