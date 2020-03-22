@@ -93,6 +93,8 @@ public class HelloController {
 		Board board;
 
 		for (int i = 0; i < 50 * 1000; i++) {
+			
+			System.out.println(i);
 
 			board = BoardController.getInstance().getBoard(getToken());
 		}
