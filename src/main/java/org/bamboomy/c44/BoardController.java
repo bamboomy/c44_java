@@ -13,7 +13,7 @@ public class BoardController {
 
 	static final Map<String, Board> GAMEZ;
 
-	private static final int MAX_ENTRIES = 10 * 1000;
+	private static final int MAX_ENTRIES = 100 * 1000;
 
 	static {
 
