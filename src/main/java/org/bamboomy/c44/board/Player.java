@@ -116,7 +116,7 @@ public class Player {
 		}
 
 		//piecez.add(new Tower(board.getPlacez()[0][2], color.getSeq(), this));
-		/piecez.add(new Horse(board.getPlacez()[0][3], color.getSeq(), this));
+		//piecez.add(new Horse(board.getPlacez()[0][3], color.getSeq(), this));
 		//piecez.add(new Bisshop(board.getPlacez()[0][4], color.getSeq(), this));
 
 		king = new King(board.getPlacez()[0][5], color.getSeq(), 1, 0, this);
@@ -125,7 +125,7 @@ public class Player {
 		piecez.add(new Queen(board.getPlacez()[0][6], color.getSeq(), this));
 
 		//piecez.add(new Bisshop(board.getPlacez()[0][7], color.getSeq(), this));
-		/piecez.add(new Horse(board.getPlacez()[0][8], color.getSeq(), this));
+		//piecez.add(new Horse(board.getPlacez()[0][8], color.getSeq(), this));
 		//piecez.add(new Tower(board.getPlacez()[0][9], color.getSeq(), this));
 	}
 
@@ -158,7 +158,7 @@ public class Player {
 		}
 
 		//piecez.add(new Tower(board.getPlacez()[2][11], color.getSeq(), this));
-		/piecez.add(new Horse(board.getPlacez()[3][11], color.getSeq(), this));
+		//piecez.add(new Horse(board.getPlacez()[3][11], color.getSeq(), this));
 		//piecez.add(new Bisshop(board.getPlacez()[4][11], color.getSeq(), this));
 
 		king = new King(board.getPlacez()[5][11], color.getSeq(), 0, -1, this);
@@ -167,7 +167,7 @@ public class Player {
 		piecez.add(new Queen(board.getPlacez()[6][11], color.getSeq(), this));
 
 		//piecez.add(new Bisshop(board.getPlacez()[7][11], color.getSeq(), this));
-		/piecez.add(new Horse(board.getPlacez()[8][11], color.getSeq(), this));
+		//piecez.add(new Horse(board.getPlacez()[8][11], color.getSeq(), this));
 		//piecez.add(new Tower(board.getPlacez()[9][11], color.getSeq(), this));
 	}
 
@@ -200,7 +200,7 @@ public class Player {
 		}
 
 		//piecez.add(new Tower(board.getPlacez()[11][2], color.getSeq(), this));
-		/piecez.add(new Horse(board.getPlacez()[11][3], color.getSeq(), this));
+		//piecez.add(new Horse(board.getPlacez()[11][3], color.getSeq(), this));
 		//piecez.add(new Bisshop(board.getPlacez()[11][4], color.getSeq(), this));
 
 		king = new King(board.getPlacez()[11][6], color.getSeq(), -1, 0, this);
@@ -209,7 +209,7 @@ public class Player {
 		piecez.add(king);
 
 		//piecez.add(new Bisshop(board.getPlacez()[11][7], color.getSeq(), this));
-		/piecez.add(new Horse(board.getPlacez()[11][8], color.getSeq(), this));
+		//piecez.add(new Horse(board.getPlacez()[11][8], color.getSeq(), this));
 		//piecez.add(new Tower(board.getPlacez()[11][9], color.getSeq(), this));
 	}
 
@@ -242,7 +242,7 @@ public class Player {
 		}
 
 		//piecez.add(new Tower(board.getPlacez()[2][0], color.getSeq(), this));
-		/piecez.add(new Horse(board.getPlacez()[3][0], color.getSeq(), this));
+		//piecez.add(new Horse(board.getPlacez()[3][0], color.getSeq(), this));
 		//piecez.add(new Bisshop(board.getPlacez()[4][0], color.getSeq(), this));
 
 		king = new King(board.getPlacez()[6][0], color.getSeq(), 0, 1, this);
@@ -251,7 +251,7 @@ public class Player {
 		piecez.add(king);
 
 		//piecez.add(new Bisshop(board.getPlacez()[7][0], color.getSeq(), this));
-		/piecez.add(new Horse(board.getPlacez()[8][0], color.getSeq(), this));
+		//piecez.add(new Horse(board.getPlacez()[8][0], color.getSeq(), this));
 		//piecez.add(new Tower(board.getPlacez()[9][0], color.getSeq(), this));
 	}
 
