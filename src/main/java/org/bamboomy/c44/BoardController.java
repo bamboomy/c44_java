@@ -13,7 +13,7 @@ public class BoardController {
 
 	static final Map<String, Board> GAMEZ;
 
-	private static final int MAX_ENTRIES = 20000;
+	private static final int MAX_ENTRIES = 10 * 1000;
 
 	static {
 
@@ -24,9 +24,9 @@ public class BoardController {
 			// This method is called just after a new entry has been added
 			public boolean removeEldestEntry(Map.Entry eldest) {
 
-				System.out.println("cache removal?");
-
 				boolean remove = size() > MAX_ENTRIES;
+
+				System.out.println("cache removal? -> " + remove);
 
 				return remove;
 			}
@@ -65,8 +65,8 @@ public class BoardController {
 
 		Iterator<Board> boardz = GAMEZ.values().iterator();
 
-		while(boardz.hasNext()) {
-			
+		while (boardz.hasNext()) {
+
 			Board board = boardz.next();
 
 			if (board.getColorsTaken(hash) != null) {
