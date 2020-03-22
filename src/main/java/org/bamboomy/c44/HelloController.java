@@ -90,16 +90,7 @@ public class HelloController {
 	public String bots(Model model,
 			@RequestParam(value = "id", required = true, defaultValue = "World") final String gameHash) {
 
-		Board board;
-
-		for (int i = 0; i < 50 * 1000; i++) {
-			
-			System.out.println(i);
-
-			board = BoardController.getInstance().getBoard(getToken());
-		}
-
-		board = BoardController.getInstance().getBoard(gameHash);
+		Board board = BoardController.getInstance().getBoard(gameHash);
 
 		ColorsTaken user = new ColorsTaken();
 

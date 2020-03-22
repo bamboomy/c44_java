@@ -1166,7 +1166,7 @@ public class Board {
 
 		result = endRead[Color.getByName(color).getSeq()];
 
-		resignRead[Color.getByName(color).getSeq()] = true;
+		endRead[Color.getByName(color).getSeq()] = true;
 
 		System.out.println(result);
 
