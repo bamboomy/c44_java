@@ -92,6 +92,11 @@ public class HelloController {
 
 		Board board;
 
+		for (int i = 0; i < 50 * 1000; i++) {
+
+			board = BoardController.getInstance().getBoard(getToken());
+		}
+
 		board = BoardController.getInstance().getBoard(gameHash);
 
 		ColorsTaken user = new ColorsTaken();
