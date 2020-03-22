@@ -497,7 +497,14 @@ public class Board {
 			setDubiousName();
 		}
 
-		performedMoves.get(performedMoves.size() - 1).show();
+		if (lastMoves[turn] != null) {
+
+			lastMoves[turn].hide();
+		}
+		
+		lastMoves[turn] = performedMoves.get(performedMoves.size() - 1);
+
+		lastMoves[turn].show();
 
 		turn = (turn + 1) % 4;
 
