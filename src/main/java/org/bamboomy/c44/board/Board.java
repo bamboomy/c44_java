@@ -1085,7 +1085,25 @@ public class Board {
 			return 50;
 		}
 
-		return (int) (clockStoppedInMillis + (50 * 1000) - System.currentTimeMillis()) / 1000;
+		int result = (int) (clockStoppedInMillis + (50 * 1000) - System.currentTimeMillis()) / 1000;
+
+		if (result < 0) {
+
+			for (int i = 0; i < 4; i++) {
+
+				Player player = playerz[i];
+
+				if (player.getTimestamp() + (30 * 1000) < System.currentTimeMillis() && !(player instanceof Dubious)
+						&& !player.isRobot() && !player.isDead()) {
+
+					remove(i);
+
+					return 0;
+				}
+			}
+		}
+
+		return result;
 	}
 
 	public void promote(Move move) {

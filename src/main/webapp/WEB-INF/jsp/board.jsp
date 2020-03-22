@@ -216,9 +216,9 @@
 				<div class="modal-body">
 
 					<p>
-						Someone has left (our lost connectivity),<br /> <br /> (s)he has
-						50s to return...<br /> <br /> If too late, his/hers place will
-						be taken by an available chatter<br /> <br /> or a Random bot.
+						Someone has left (our lost connectivity),<br /> <br />(s)he has
+						50s to return...<br /> <br />If too late, the player get's
+						removed<br /> from the game...
 					</p>
 
 					<p>${board.getRemainingStopSecs()}sremaining...</p>
