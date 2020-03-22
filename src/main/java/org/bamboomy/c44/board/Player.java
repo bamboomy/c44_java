@@ -98,10 +98,12 @@ public class Player {
 
 			// endgame debug
 
-			if (i >= 2 && i <= 4) {
-
-				piecez.add(new Pawn(board.getPlacez()[1][i + 2], color.getSeq(), 1, 0, this));
-			}
+			/*
+			 * if (i >= 2 && i <= 4) {
+			 * 
+			 * piecez.add(new Pawn(board.getPlacez()[1][i + 2], color.getSeq(), 1, 0,
+			 * this)); }
+			 */
 
 			// piecez.add(new Pawn(board.getPlacez()[1][i + 2], color.getSeq(), 1, 0,
 			// this));
@@ -121,7 +123,7 @@ public class Player {
 		king = new King(board.getPlacez()[0][5], color.getSeq(), 1, 0, this);
 
 		piecez.add(king);
-		piecez.add(new Queen(board.getPlacez()[0][6], color.getSeq(), this));
+		// piecez.add(new Queen(board.getPlacez()[0][6], color.getSeq(), this));
 
 		// piecez.add(new Bisshop(board.getPlacez()[0][7], color.getSeq(), this));
 		// piecez.add(new Horse(board.getPlacez()[0][8], color.getSeq(), this));
