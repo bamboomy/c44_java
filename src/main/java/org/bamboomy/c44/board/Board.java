@@ -522,7 +522,7 @@ public class Board {
 			beginTurn[dubious.getCurrentNumber()] = true;
 		}
 
-		if (playerz[turn].isPat()) {
+		if (playerz[turn].isPat() && !playerz[turn].isDead()) {
 
 			remove(turn);
 
