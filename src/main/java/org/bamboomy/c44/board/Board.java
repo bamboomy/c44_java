@@ -1100,6 +1100,10 @@ public class Board {
 						&& !player.isRobot() && !player.isDead()) {
 
 					remove(i);
+					
+					clockRunning = false;
+
+					clockStarting = false;
 
 					return 0;
 				}

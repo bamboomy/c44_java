@@ -221,7 +221,7 @@
 						removed<br /> from the game...
 					</p>
 
-					<p>${board.getRemainingStopSecs()}sremaining...</p>
+					<p>${board.getRemainingStopSecs()}s remaining...</p>
 
 				</div>
 
