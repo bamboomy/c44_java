@@ -104,7 +104,7 @@ public class Move {
 
 	void hide() {
 
-		to.setBorder(false);
-		from.setBorder(false);
+		to.setBorder(false, null);
+		from.setBorder(false, null);
 	}
 }
