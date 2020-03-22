@@ -1090,7 +1090,7 @@ public class Board {
 
 		int result = (int) (clockStoppedInMillis + (50 * 1000) - System.currentTimeMillis()) / 1000;
 
-		if (result < 0) {
+		if (clockStopped && result < 0) {
 
 			for (int i = 0; i < 4; i++) {
 
