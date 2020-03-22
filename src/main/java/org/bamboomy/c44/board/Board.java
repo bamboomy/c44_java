@@ -184,6 +184,8 @@ public class Board {
 
 	private Move[] lastMoves = new Move[4];
 
+	private boolean[] endRead = new boolean[4];
+
 	{
 
 		String time = System.currentTimeMillis() + "6+time.getBytes(\"UTF-8\");";
@@ -278,6 +280,8 @@ public class Board {
 			resignRead[i] = true;
 
 			beginTurn[i] = false;
+
+			endRead[i] = true;
 		}
 
 		places[0] = "4th";
@@ -610,6 +614,11 @@ public class Board {
 				statusMessages += "<span style='color: red;'>and can't prevent :-(</span><br/>";
 
 				remove(turn);
+
+				for (int i = 0; i < 4; i++) {
+
+					endRead[i] = false;
+				}
 			}
 		}
 	}
@@ -1143,4 +1152,25 @@ public class Board {
 
 		return name;
 	}
+
+	public boolean readEnd(String color) {
+
+		if (color.equalsIgnoreCase("chat")) {
+
+			return true;
+		}
+
+		System.out.println("readin end sound...");
+
+		boolean result = true;
+
+		result = endRead[Color.getByName(color).getSeq()];
+
+		resignRead[Color.getByName(color).getSeq()] = true;
+
+		System.out.println(result);
+
+		return result;
+	}
+
 }

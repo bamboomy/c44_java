@@ -71,6 +71,17 @@
 	</script>
 </c:if>
 
+<c:if test="${!board.readEnd(user.color)}">
+	<script type="text/javascript">
+
+			var z = document.getElementById("end");
+
+			z.play();
+			
+	</script>
+</c:if>
+
+
 <c:if
 	test="${board.isWouldBeCheck() && board.isRenderingCurrentPlayer(user.color)}">
 	<script type="text/javascript">
