@@ -212,13 +212,14 @@ public class Player {
 
 			// endgame debug
 
-			if (i == 5 || i == 4) {
+			/*
+			 * if (i == 5 || i == 4) {
+			 * 
+			 * piecez.add(new Pawn(board.getPlacez()[i + 2][1], color.getSeq(), 0, 1,
+			 * this)); }
+			 */
 
-				piecez.add(new Pawn(board.getPlacez()[i + 2][1], color.getSeq(), 0, 1, this));
-			}
-
-			// piecez.add(new Pawn(board.getPlacez()[i + 2][1], color.getSeq(), 0, 1,
-			// this));
+			piecez.add(new Pawn(board.getPlacez()[i + 2][1], color.getSeq(), 0, 1, this));
 
 			// en passant debug
 
