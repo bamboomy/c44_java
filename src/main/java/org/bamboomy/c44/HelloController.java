@@ -176,7 +176,7 @@ public class HelloController {
 
 		board.setTimestamp(Color.getByName(user.getColor()).getSeq(), System.currentTimeMillis());
 
-		if (!board.isClockStopped()) {
+		if (board.isClockRunning()) {
 
 			board.updateTime();
 		}

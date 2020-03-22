@@ -1101,9 +1101,7 @@ public class Board {
 
 					remove(i);
 					
-					clockRunning = false;
-
-					clockStarting = false;
+					clockStopped = false;
 
 					return 0;
 				}
