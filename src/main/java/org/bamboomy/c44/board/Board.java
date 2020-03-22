@@ -522,6 +522,13 @@ public class Board {
 			beginTurn[dubious.getCurrentNumber()] = true;
 		}
 
+		if (playerz[turn].isPat()) {
+
+			remove(turn);
+
+			playerPlaces[turn] = "pat";
+		}
+
 		resetTimer();
 
 		for (Integer i : deadPlayers) {
@@ -1100,7 +1107,7 @@ public class Board {
 						&& !player.isRobot() && !player.isDead()) {
 
 					remove(i);
-					
+
 					clockStopped = false;
 
 					return 0;

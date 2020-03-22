@@ -334,6 +334,43 @@ public class Player {
 		}
 	}
 
+	boolean isPat() {
+
+		ArrayList<Move> moves = new ArrayList<>();
+
+		for (Piece piece : piecez) {
+
+			if (piece.canMove()) {
+
+				moves.addAll(piece.getAttackableMoves());
+			}
+		}
+
+		ArrayList<Integer> selectedPlaces = new ArrayList<>();
+
+		int index = (int) (Math.random() * moves.size());
+
+		boolean check = true;
+
+		while (check && selectedPlaces.size() < moves.size()) {
+
+			selectedPlaces.add(index);
+
+			moves.get(index).execute(null);
+
+			check = checkCheck();
+
+			moves.get(index).rollBack();
+
+			while (check && selectedPlaces.contains(index) && selectedPlaces.size() < moves.size()) {
+
+				index = (int) (Math.random() * moves.size());
+			}
+		}
+
+		return selectedPlaces.size() == moves.size();
+	}
+
 	private void die(boolean pat) {
 
 		this.pat = pat;
