@@ -181,19 +181,22 @@ public class HelloController {
 			board.updateTime();
 		}
 
-		if (board.isNewDead()) {
+		synchronized (board) {
 
-			GameResult result = new GameResult();
+			if (board.isNewDead()) {
 
-			result.setGame(user.getGame());
-			result.setPlayer(hash);
-			result.setToken(getToken());
-			
-			result.setResult(board.getLastResult());
+				GameResult result = new GameResult();
 
-			gameResultRepository.save(result);
+				result.setGame(user.getGame());
+				result.setPlayer(hash);
+				result.setToken(getToken());
 
-			board.next();
+				result.setResult(board.getLastResult());
+
+				gameResultRepository.save(result);
+
+				board.next();
+			}
 		}
 
 		model.addAttribute("board", board);
