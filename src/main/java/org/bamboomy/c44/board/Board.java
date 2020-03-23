@@ -1261,8 +1261,4 @@ public class Board {
 
 		return playerPlaces[turn];
 	}
-
-	public boolean hasResign() {
-
-	}
 }
