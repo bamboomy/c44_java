@@ -898,7 +898,7 @@ public class Board {
 
 			result.setResult("resigned");
 
-			gameResultRepository.save(result);
+			HelloController.gameResultRepository.save(result);
 		}
 
 		System.out.println(colorInt + " resigned...");
