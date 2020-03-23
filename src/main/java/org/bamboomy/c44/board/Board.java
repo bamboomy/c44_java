@@ -1152,17 +1152,23 @@ public class Board {
 				if (player.getTimestamp() + (30 * 1000) < System.currentTimeMillis() && !(player instanceof Dubious)
 						&& !player.isRobot() && !player.isDead()) {
 
-					abandonLock.writeLock().lock();
-
 					remove(i);
 
 					playerPlaces[i] = "abandonned";
 
-					abandonLock.writeLock().unlock();
-
 					dubious.remove(i);
 
 					clockStopped = false;
+
+					GameResult abandon = new GameResult();
+
+					abandon.setGame(playerz[i].getColorsTaken().getGame());
+					abandon.setPlayer(playerz[i].getColorsTaken().getJavaHash());
+					abandon.setToken(HelloController.getToken());
+
+					abandon.setResult("abandonned");
+
+					gameResultRepository.save(abandon);
 
 					return 0;
 				}
