@@ -858,6 +858,8 @@ public class Board {
 	public void resign(String color) {
 
 		int colorInt = Color.getByName(color).getSeq();
+		
+		abandonLock.writeLock().lock();
 
 		if (turn == dubiousTurn && dubious.getCurrent().equalsIgnoreCase(color)) {
 
@@ -876,6 +878,8 @@ public class Board {
 
 			playerPlaces[colorInt] = "resigned";
 		}
+		
+		abandonLock.writeLock().unlock();
 
 		System.out.println(colorInt + " resigned...");
 
