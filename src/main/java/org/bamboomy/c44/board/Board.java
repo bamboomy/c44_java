@@ -116,7 +116,7 @@ public class Board {
 	@Getter
 	private ReentrantLock lock = new ReentrantLock();
 
-	private ReentrantReadWriteLock abandonLock = new ReentrantLock();
+	private ReentrantReadWriteLock abandonLock = new ReentrantReadWriteLock();
 
 	private boolean botSet = false;
 
