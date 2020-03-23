@@ -857,6 +857,8 @@ public class Board {
 			if (dubious.removeCurrent()) {
 
 				remove(colorInt);
+
+				playerPlaces[colorInt] = "resigned";
 			}
 
 			next();
@@ -864,6 +866,8 @@ public class Board {
 		} else {
 
 			remove(colorInt);
+
+			playerPlaces[colorInt] = "resigned";
 		}
 
 		System.out.println(colorInt + " resigned...");
@@ -1080,7 +1084,7 @@ public class Board {
 		playerz[i].setTimestamp(currentTimeMillis);
 	}
 
-	public int getRemainingStopSecs() {
+	public synchronized int getRemainingStopSecs() {
 
 		boolean back = true;
 
@@ -1109,6 +1113,8 @@ public class Board {
 						&& !player.isRobot() && !player.isDead()) {
 
 					remove(i);
+
+					playerPlaces[i] = "abandonned";
 
 					clockStopped = false;
 

@@ -188,6 +188,8 @@ public class HelloController {
 			result.setGame(user.getGame());
 			result.setPlayer(hash);
 			result.setToken(getToken());
+			
+			result.setResult(board.getLastResult());
 
 			gameResultRepository.save(result);
 
