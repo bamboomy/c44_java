@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import javax.xml.bind.DatatypeConverter;
 
@@ -114,6 +115,8 @@ public class Board {
 
 	@Getter
 	private ReentrantLock lock = new ReentrantLock();
+
+	private ReentrantReadWriteLock abandonLock = new ReentrantLock();
 
 	private boolean botSet = false;
 
@@ -824,6 +827,8 @@ public class Board {
 
 	public synchronized boolean isNewDead() {
 
+		abandonLock.readLock().lock();
+
 		boolean result = false;
 
 		if (deadPlayers.contains(turn) && !recordedDeadPlayers.contains(turn)) {
@@ -832,6 +837,8 @@ public class Board {
 
 			result = true;
 		}
+
+		abandonLock.readLock().unlock();
 
 		return result;
 	}
@@ -1118,9 +1125,13 @@ public class Board {
 				if (player.getTimestamp() + (30 * 1000) < System.currentTimeMillis() && !(player instanceof Dubious)
 						&& !player.isRobot() && !player.isDead()) {
 
+					abandonLock.writeLock().lock();
+
 					remove(i);
 
 					playerPlaces[i] = "abandonned";
+
+					abandonLock.writeLock().unlock();
 
 					dubious.remove(i);
 
