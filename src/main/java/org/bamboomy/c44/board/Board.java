@@ -550,6 +550,16 @@ public class Board {
 					placesNames[placesNameCounter] = player.getColorsTaken().getName();
 
 					player.setDead(true);
+					
+					GameResult result = new GameResult();
+
+					result.setGame(player.getColorsTaken().getGame());
+					result.setPlayer(player.getColorsTaken().getJavaHash());
+					result.setToken(HelloController.getToken());
+
+					result.setResult("resigned");
+
+					gameResultRepository.save(result);
 
 					break;
 				}
@@ -679,19 +689,6 @@ public class Board {
 		playerz[number].setDead(true);
 
 		playerPlaces[number] = places[placesCounter++];
-
-		if (placesCounter == 4) {
-
-			GameResult result = new GameResult();
-
-			result.setGame(playerz[number].getColorsTaken().getGame());
-			result.setPlayer(playerz[number].getColorsTaken().getJavaHash());
-			result.setToken(HelloController.getToken());
-
-			result.setResult("resigned");
-
-			gameResultRepository.save(result);
-		}
 
 		if (playerz[number].getColorsTaken() != null) {
 
