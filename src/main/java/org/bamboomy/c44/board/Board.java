@@ -680,6 +680,19 @@ public class Board {
 
 		playerPlaces[number] = places[placesCounter++];
 
+		if (placesCounter == 4) {
+
+			GameResult result = new GameResult();
+
+			result.setGame(playerz[number].getColorsTaken().getGame());
+			result.setPlayer(playerz[number].getColorsTaken().getJavaHash());
+			result.setToken(HelloController.getToken());
+
+			result.setResult("resigned");
+
+			gameResultRepository.save(result);
+		}
+
 		if (playerz[number].getColorsTaken() != null) {
 
 			placesNames[placesNameCounter--] = playerz[number].getColorsTaken().getName();
