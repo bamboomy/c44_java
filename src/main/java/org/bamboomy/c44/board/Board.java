@@ -21,6 +21,7 @@ import org.bamboomy.c44.board.pieces.Horse;
 import org.bamboomy.c44.board.pieces.Piece;
 import org.bamboomy.c44.board.pieces.Queen;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 
 import lombok.Data;
 import lombok.Getter;
@@ -192,6 +193,8 @@ public class Board {
 	private Move[] lastMoves = new Move[4];
 
 	private boolean[] endRead = new boolean[4];
+
+	public static GameResultRepository gameResultRepository;
 
 	{
 
@@ -879,7 +882,7 @@ public class Board {
 
 				result.setResult("resigned");
 
-				HelloController.gameResultRepository.save(result);
+				gameResultRepository.save(result);
 			}
 
 			next();
@@ -898,7 +901,7 @@ public class Board {
 
 			result.setResult("resigned");
 
-			HelloController.gameResultRepository.save(result);
+			gameResultRepository.save(result);
 		}
 
 		System.out.println(colorInt + " resigned...");

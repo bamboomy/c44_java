@@ -25,7 +25,7 @@ public class HelloController {
 	private ColorsTakenRepository colorsTakenRepository;
 
 	@Autowired
-	public static GameResultRepository gameResultRepository;
+	public GameResultRepository gameResultRepository;
 
 	private static SecureRandom secureRandom = new SecureRandom("50DE8CAA507BA8E8953CEEEC9570F88D".getBytes());
 
@@ -34,6 +34,8 @@ public class HelloController {
 			@RequestParam(value = "id", required = true, defaultValue = "World") final String hash) {
 
 		System.out.println(hash);
+		
+		Board.gameResultRepository = gameResultRepository;
 
 		ColorsTaken user = colorsTakenRepository.findByHash(hash);
 
