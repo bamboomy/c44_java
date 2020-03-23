@@ -16,7 +16,9 @@ public class Dubious extends Player {
 
 	private ArrayList<Integer> timeOutz = new ArrayList<Integer>();
 
-	public Dubious(int color, Board board, boolean isRobot, Player[] others) {
+	private Integer[] indexes;
+
+	public Dubious(int color, Board board, boolean isRobot, Player[] others, Integer[] indexes) {
 
 		this(color, board, isRobot);
 
@@ -26,6 +28,8 @@ public class Dubious extends Player {
 
 			timeOutzIntz[i] = 3;
 		}
+
+		this.indexes = indexes;
 	}
 
 	private Dubious(int color, Board board, boolean isRobot) {
@@ -97,5 +101,10 @@ public class Dubious extends Player {
 		}
 
 		return timeOutz.size() >= 3;
+	}
+
+	public void remove(int i) {
+
+		timeOutz.add(indexes[i]);
 	}
 }

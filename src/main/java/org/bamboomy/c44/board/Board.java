@@ -937,11 +937,17 @@ public class Board {
 
 		int index = 0;
 
+		Integer[] indexes = new Integer[4];
+
 		for (int i = 0; i < 4; i++) {
 
 			if (color != counter) {
 
-				others[index++] = playerz[counter];
+				others[index] = playerz[counter];
+
+				indexes[counter] = index;
+
+				index++;
 			}
 
 			counter++;
@@ -949,7 +955,7 @@ public class Board {
 			counter %= 4;
 		}
 
-		playerz[color] = new Dubious(color, this, false, others);
+		playerz[color] = new Dubious(color, this, false, others, indexes);
 
 		dubiousColor = Color.getBySeq(color).getName();
 
@@ -1115,6 +1121,8 @@ public class Board {
 					remove(i);
 
 					playerPlaces[i] = "abandonned";
+
+					dubious.remove(i);
 
 					clockStopped = false;
 
