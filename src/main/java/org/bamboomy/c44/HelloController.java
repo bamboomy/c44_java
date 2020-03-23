@@ -27,7 +27,7 @@ public class HelloController {
 	@Autowired
 	private GameResultRepository gameResultRepository;
 
-	private SecureRandom secureRandom = new SecureRandom("50DE8CAA507BA8E8953CEEEC9570F88D".getBytes());
+	private static SecureRandom secureRandom = new SecureRandom("50DE8CAA507BA8E8953CEEEC9570F88D".getBytes());
 
 	@GetMapping({ "/" })
 	public String hello(Model model,
@@ -264,7 +264,7 @@ public class HelloController {
 		return "ok";
 	}
 
-	private String getToken() {
+	public static String getToken() {
 
 		String time = System.currentTimeMillis() + "6";
 

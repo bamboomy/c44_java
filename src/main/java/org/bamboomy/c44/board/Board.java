@@ -14,9 +14,13 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import javax.xml.bind.DatatypeConverter;
 
 import org.bamboomy.c44.ColorsTaken;
+import org.bamboomy.c44.GameResult;
+import org.bamboomy.c44.GameResultRepository;
+import org.bamboomy.c44.HelloController;
 import org.bamboomy.c44.board.pieces.Horse;
 import org.bamboomy.c44.board.pieces.Piece;
 import org.bamboomy.c44.board.pieces.Queen;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import lombok.Data;
 import lombok.Getter;
@@ -188,6 +192,9 @@ public class Board {
 	private Move[] lastMoves = new Move[4];
 
 	private boolean[] endRead = new boolean[4];
+
+	@Autowired
+	private GameResultRepository gameResultRepository;
 
 	{
 
@@ -858,8 +865,6 @@ public class Board {
 	public void resign(String color) {
 
 		int colorInt = Color.getByName(color).getSeq();
-		
-		abandonLock.writeLock().lock();
 
 		if (turn == dubiousTurn && dubious.getCurrent().equalsIgnoreCase(color)) {
 
@@ -868,6 +873,16 @@ public class Board {
 				remove(colorInt);
 
 				playerPlaces[colorInt] = "resigned";
+
+				GameResult result = new GameResult();
+
+				result.setGame(dubious.getColorsTaken().getGame());
+				result.setPlayer(dubious.getColorsTaken().getJavaHash());
+				result.setToken(HelloController.getToken());
+
+				result.setResult("resigned");
+
+				gameResultRepository.save(result);
 			}
 
 			next();
@@ -877,9 +892,17 @@ public class Board {
 			remove(colorInt);
 
 			playerPlaces[colorInt] = "resigned";
+
+			GameResult result = new GameResult();
+
+			result.setGame(playerz[colorInt].getColorsTaken().getGame());
+			result.setPlayer(playerz[colorInt].getColorsTaken().getJavaHash());
+			result.setToken(HelloController.getToken());
+
+			result.setResult("resigned");
+
+			gameResultRepository.save(result);
 		}
-		
-		abandonLock.writeLock().unlock();
 
 		System.out.println(colorInt + " resigned...");
 
@@ -1239,4 +1262,7 @@ public class Board {
 		return playerPlaces[turn];
 	}
 
+	public boolean hasResign() {
+
+	}
 }
