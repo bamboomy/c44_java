@@ -822,7 +822,7 @@ public class Board {
 		return deadPlayers.contains(turn);
 	}
 
-	public boolean isNewDead() {
+	public synchronized boolean isNewDead() {
 
 		boolean result = false;
 
