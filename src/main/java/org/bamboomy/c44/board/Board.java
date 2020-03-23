@@ -1205,4 +1205,9 @@ public class Board {
 		return result;
 	}
 
+	public String getLastResult() {
+
+		return playerPlaces[turn];
+	}
+
 }

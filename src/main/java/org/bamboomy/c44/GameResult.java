@@ -20,5 +20,7 @@ public class GameResult {
 	private String player;
 	
 	private String token;
+	
+	private String result;
 
 }
