@@ -193,9 +193,6 @@ public class Board {
 
 	private boolean[] endRead = new boolean[4];
 
-	@Autowired
-	private GameResultRepository gameResultRepository;
-
 	{
 
 		String time = System.currentTimeMillis() + "6+time.getBytes(\"UTF-8\");";
@@ -882,7 +879,7 @@ public class Board {
 
 				result.setResult("resigned");
 
-				gameResultRepository.save(result);
+				HelloController.gameResultRepository.save(result);
 			}
 
 			next();

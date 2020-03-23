@@ -25,7 +25,7 @@ public class HelloController {
 	private ColorsTakenRepository colorsTakenRepository;
 
 	@Autowired
-	private GameResultRepository gameResultRepository;
+	public static GameResultRepository gameResultRepository;
 
 	private static SecureRandom secureRandom = new SecureRandom("50DE8CAA507BA8E8953CEEEC9570F88D".getBytes());
 
