@@ -144,11 +144,11 @@
 		<div style="text-align: center; font-size: larger;">Notice:</div>
 
 		<p>
-			These (random) bots play way more irresonsibly then your friends would...<br/>
+			These (random) bots play way more irresponsibly then your friends would...<br/>
 			<br/>
 			C44 is best played with friends (that know the rules of chess),<br/>
 			<br/>
-			you only need 2 of them...<br/>
+			(as a minimum) you only need 1 other player...<br/>
 			<br/>
 			register here!!!
 		</p>
