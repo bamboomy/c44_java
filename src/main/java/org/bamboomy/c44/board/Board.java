@@ -557,7 +557,7 @@ public class Board {
 					result.setPlayer(player.getColorsTaken().getJavaHash());
 					result.setToken(HelloController.getToken());
 
-					result.setResult("resigned");
+					result.setResult("1st");
 
 					gameResultRepository.save(result);
 

@@ -139,4 +139,21 @@
 		</c:forEach>
 	</div>
 
+	<div id="chat">
+
+		<div style="text-align: center; font-size: larger;">Notice:</div>
+
+		<p>
+			These (random) bots play way more irresonsibly then your friends would...<br/>
+			<br/>
+			C44 is best played with friends (that know the rules of chess),<br/>
+			<br/>
+			you only need 2 of them...<br/>
+			<br/>
+			register here!!!
+		</p>
+
+	</div>
+
+
 </div>
