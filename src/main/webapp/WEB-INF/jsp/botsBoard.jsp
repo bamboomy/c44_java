@@ -148,12 +148,11 @@
 			<br/>
 			C44 is best played with friends (that know the rules of chess),<br/>
 			<br/>
-			(as a minimum) you only need 1 other player...<br/>
+			(as a minimum) you need 2 other players...<br/>
 			<br/>
-			register here!!!
+			<a href="${board.PHPPath}/pagez/welcome.php">register here!!!</a>
 		</p>
 
 	</div>
-
 
 </div>

@@ -19,6 +19,8 @@ public class ChessComponent {
 		
 		Board.staticJavaPath = "dev/java";
 		
+		Board.staticPHPPath = "/dev";
+		
 		System.out.println(profile);
 	}
 
