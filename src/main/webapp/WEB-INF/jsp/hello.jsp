@@ -136,6 +136,59 @@
 				});
 	}
 
+	function sendFeedback() {
+
+		$
+				.ajax({
+					type : "POST",
+					xhrFields : {
+						withCredentials : true
+					},
+					url : "https://chess4four.org/${board.javaPath}/good.php?user=${user.javaHash}",
+					data : {
+						good : $('#good').val()
+					},
+					success : function(text) {
+						
+						if(text != 'fail'){
+							
+							//goodSaved();
+							
+							alert('good saved...');
+							
+						} else {
+							
+							alert('we couldnt save the complimentz');
+						}
+					}
+				});
+
+		$
+				.ajax({
+					type : "POST",
+					xhrFields : {
+						withCredentials : true
+					},
+					url : "https://chess4four.org/${board.javaPath}/bad.php?user=${user.javaHash}",
+					data : {
+						bad : $('#bad').val()
+					},
+					success : function(text) {
+						
+						if(text != 'fail'){
+							
+							//badSaved();
+							
+							alert('bad saved...');
+							
+						} else {
+							
+							alert('we couldnt save your wows...');
+						}
+					}
+				});
+	}
+
 	function sendMessage() {
 
 		var chat = $("#chatField${board.chatId}").val();
@@ -282,16 +335,14 @@
 
 					What was good?
 
-					<textarea id="good" name="good" rows="3" cols="50">
-						</textarea>
-						
-						<br/><br/>
+					<textarea id="good" name="good" rows="3" cols="50"></textarea>
 
-					What can we do to improve?
+					<br /> <br /> What can we do to improve?
 
-					<textarea id="bad" name="bad" rows="3" cols="50">
-						</textarea>
-					<br /> <br /> <input type="submit" onclick='send();' value="Send">
+					<textarea id="bad" name="bad" rows="3" cols="50"></textarea>
+
+					<br /> <br /> <input type="submit" onclick='sendFeedback();'
+						value="Send">
 					</form>
 				</div>
 			</div>
