@@ -146,9 +146,9 @@
 		<p>
 			These (random) bots play way more irresponsibly then your friends would...<br/>
 			<br/>
-			C44 is best played with friends (that know the rules of chess),<br/>
+			C44 is best played with friends<br/>(that know the rules of chess),<br/>
 			<br/>
-			(as a minimum) you just need 2 other players...<br/>
+			(as a minimum) you just need<br/>2 other players...<br/>
 			<br/>
 			<a href="${board.PHPPath}/pagez/welcome.php">register here!!!</a>
 		</p>
