@@ -148,7 +148,7 @@
 			<br/>
 			C44 is best played with friends (that know the rules of chess),<br/>
 			<br/>
-			(as a minimum) you need 2 other players...<br/>
+			(as a minimum) you just need 2 other players...<br/>
 			<br/>
 			<a href="${board.PHPPath}/pagez/welcome.php">register here!!!</a>
 		</p>
