@@ -12,6 +12,11 @@
 
 		$('#myModal').modal('show');
 		
+		if(showFeedbackModal){
+			
+			$('#feedbackModal').modal('show');
+		}
+
 		<c:choose>
 			<c:when test="${board.isClockStarting() || board.isClockRunning() || board.clockStopped}">
 
@@ -102,7 +107,7 @@
 		$(document).ready(function() {
 
 			$('#promoteModal').modal('show');
-			
+
 		});
 
 	</script>
@@ -221,7 +226,7 @@
 						removed<br /> from the game...
 					</p>
 
-					<p>${board.getRemainingStopSecs()}s remaining...</p>
+					<p>${board.getRemainingStopSecs()}sremaining...</p>
 
 				</div>
 
@@ -277,6 +282,31 @@
 					1st: ${board.placesNames[0]}<br /> <br /> 2nd:
 					${board.placesNames[1]}<br /> <br /> 3rd: ${board.placesNames[2]}<br />
 					<br /> 4th: ${board.placesNames[3]}<br /> <br />
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- The Waiting Modal -->
+	<div class="modal" id="feedbackModal">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">We value your opinion!</h4>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+						<textarea id="good" name="good" placeholder="What was good?"
+							rows="10" cols="50">
+						</textarea>
+						<textarea id="bad" name="bad"
+							placeholder="What can we do to improve?" rows="10" cols="50">
+						</textarea>
+						<br /> <br /> <input type="submit" onclick='send();' value="Send">
+					</form>
 				</div>
 			</div>
 		</div>

@@ -54,6 +54,8 @@
 	var finished = false;
 
 	var waitingCounter = 7;
+	
+	var showFeedbackModal = false;
 
 	$(document).ready(function() {
 		myId = $('form').attr('myattribute');
@@ -87,6 +89,8 @@
 		$('#promoteModal').modal('hide');
 
 		$('#finishModal').modal('hide');
+		
+		$('#feedbackModal').modal('hide');
 
 		$
 				.ajax({
@@ -232,11 +236,11 @@
 
 							if (confirm("You resigned...\nDo you want to stick around?\nClick 'ok' to stay,\nclick 'cancel' to leave.") != true) {
 
-								window.location.assign("https://www.google.be");
+								window.location.assign("https://chess4four.org${board.PHPPath}/pagez/lobby.php");
 								
 							} else {
 								
-								//TODO: feedback modal
+								showFeedbackModal = true;
 							}
 						}
 					});
