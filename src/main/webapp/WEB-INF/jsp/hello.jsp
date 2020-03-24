@@ -279,11 +279,15 @@
 
 				<!-- Modal body -->
 				<div class="modal-body">
-					<textarea id="good" name="good" placeholder="What was good?"
-						rows="5" cols="50">
+
+					What was good?
+
+					<textarea id="good" name="good" rows="3" cols="50">
 						</textarea>
-					<textarea id="bad" name="bad"
-						placeholder="What can we do to improve?" rows="5" cols="50">
+
+					What can we do to improve?
+
+					<textarea id="bad" name="bad" rows="3" cols="50">
 						</textarea>
 					<br /> <br /> <input type="submit" onclick='send();' value="Send">
 					</form>
