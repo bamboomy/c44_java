@@ -54,8 +54,6 @@
 	var finished = false;
 
 	var waitingCounter = 7;
-	
-	var showFeedbackModal = false;
 
 	$(document).ready(function() {
 		myId = $('form').attr('myattribute');
@@ -89,8 +87,6 @@
 		$('#promoteModal').modal('hide');
 
 		$('#finishModal').modal('hide');
-		
-		$('#feedbackModal').modal('hide');
 
 		$
 				.ajax({
@@ -224,8 +220,7 @@
 
 	function resign() {
 
-		if (window
-				.confirm("Are you sure?")) {
+		if (window.confirm("Are you sure?")) {
 
 			$
 					.ajax({
@@ -236,11 +231,12 @@
 
 							if (confirm("You resigned...\nDo you want to stick around?\nClick 'ok' to stay,\nclick 'cancel' to leave.") != true) {
 
-								window.location.assign("https://chess4four.org${board.PHPPath}/pagez/lobby.php");
-								
+								window.location
+										.assign("https://chess4four.org${board.PHPPath}/pagez/lobby.php");
+
 							} else {
-								
-								showFeedbackModal = true;
+
+								$('#feedbackModal').modal('show');
 							}
 						}
 					});
@@ -271,6 +267,31 @@
 
 	<div id="judge"></div>
 
+	<!-- The Waiting Modal -->
+	<div class="modal" id="feedbackModal">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">We value your opinion!</h4>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<textarea id="good" name="good" placeholder="What was good?"
+						rows="5" cols="50">
+						</textarea>
+					<textarea id="bad" name="bad"
+						placeholder="What can we do to improve?" rows="5" cols="50">
+						</textarea>
+					<br /> <br /> <input type="submit" onclick='send();' value="Send">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div class="outer">
 		<div class="middle">
 			<div class="inner center">
@@ -299,9 +320,9 @@
 		<div id="chatText"></div>
 
 		<div class="bottom">
-				 <input id="chatField${board.chatId}"
-					type="text" class="fill" autocomplete="false" /><input type="button" value="Send"
-					onclick="sendMessage();" />
+			<input id="chatField${board.chatId}" type="text" class="fill"
+				autocomplete="false" /><input type="button" value="Send"
+				onclick="sendMessage();" />
 		</div>
 
 	</div>
