@@ -154,10 +154,8 @@
 						
 						if(text != 'fail'){
 							
-							//badSaved();
-							
-							alert('bad saved...');
-							
+							$('#feedbackModal').modal('hide');					
+
 						} else {
 							
 							alert('we couldnt save your wows...');
@@ -312,7 +310,7 @@
 
 					<br /> <br /> What can we do to improve the app?
 
-					<textarea id="bad" name="bad" rows="3" cols="50"></textarea>
+					<textarea id="bad" name="bad" rows="5" cols="50"></textarea>
 
 					<br /> <br /> <input type="submit" onclick='sendFeedback();'
 						value="Send">
