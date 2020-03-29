@@ -144,31 +144,6 @@
 					xhrFields : {
 						withCredentials : true
 					},
-					url : "https://chess4four.org/${board.javaPath}/good.php?user=${user.javaHash}",
-					data : {
-						good : $('#good').val()
-					},
-					success : function(text) {
-						
-						if(text != 'fail'){
-							
-							//goodSaved();
-							
-							alert('good saved...');
-							
-						} else {
-							
-							alert('we couldnt save the complimentz');
-						}
-					}
-				});
-
-		$
-				.ajax({
-					type : "POST",
-					xhrFields : {
-						withCredentials : true
-					},
 					url : "https://chess4four.org/${board.javaPath}/bad.php?user=${user.javaHash}",
 					data : {
 						bad : $('#bad').val()
@@ -333,11 +308,7 @@
 				<!-- Modal body -->
 				<div class="modal-body">
 
-					What was good?
-
-					<textarea id="good" name="good" rows="3" cols="50"></textarea>
-
-					<br /> <br /> What can we do to improve?
+					<br /> <br /> What can we do to improve the app?
 
 					<textarea id="bad" name="bad" rows="3" cols="50"></textarea>
 
