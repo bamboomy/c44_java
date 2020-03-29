@@ -105,8 +105,7 @@ public class Player {
 			 * this)); }
 			 */
 
-			// piecez.add(new Pawn(board.getPlacez()[1][i + 2], color.getSeq(), 1, 0,
-			// this));
+			piecez.add(new Pawn(board.getPlacez()[1][i + 2], color.getSeq(), 1, 0, this));
 
 			// en passant debug
 
@@ -116,18 +115,18 @@ public class Player {
 			 */
 		}
 
-		// piecez.add(new Tower(board.getPlacez()[0][2], color.getSeq(), this));
-		// piecez.add(new Horse(board.getPlacez()[0][3], color.getSeq(), this));
-		// piecez.add(new Bisshop(board.getPlacez()[0][4], color.getSeq(), this));
+		piecez.add(new Tower(board.getPlacez()[0][2], color.getSeq(), this));
+		piecez.add(new Horse(board.getPlacez()[0][3], color.getSeq(), this));
+		piecez.add(new Bisshop(board.getPlacez()[0][4], color.getSeq(), this));
 
 		king = new King(board.getPlacez()[0][5], color.getSeq(), 1, 0, this);
 
 		piecez.add(king);
-		// piecez.add(new Queen(board.getPlacez()[0][6], color.getSeq(), this));
+		piecez.add(new Queen(board.getPlacez()[0][6], color.getSeq(), this));
 
-		// piecez.add(new Bisshop(board.getPlacez()[0][7], color.getSeq(), this));
-		// piecez.add(new Horse(board.getPlacez()[0][8], color.getSeq(), this));
-		// piecez.add(new Tower(board.getPlacez()[0][9], color.getSeq(), this));
+		piecez.add(new Bisshop(board.getPlacez()[0][7], color.getSeq(), this));
+		piecez.add(new Horse(board.getPlacez()[0][8], color.getSeq(), this));
+		piecez.add(new Tower(board.getPlacez()[0][9], color.getSeq(), this));
 	}
 
 	private void initYellow(Board board) {
@@ -136,13 +135,16 @@ public class Player {
 
 			// endgame debug
 
-			if (i >= 3 && i <= 4) {
+			/*
+			 * 
+			 * if (i >= 3 && i <= 4) {
+			 * 
+			 * piecez.add(new Pawn(board.getPlacez()[i + 2][10], color.getSeq(), 0, -1,
+			 * this)); }
+			 * 
+			 */
 
-				piecez.add(new Pawn(board.getPlacez()[i + 2][10], color.getSeq(), 0, -1, this));
-			}
-
-			// piecez.add(new Pawn(board.getPlacez()[i + 2][10], color.getSeq(), 0, -1,
-			// this));
+			piecez.add(new Pawn(board.getPlacez()[i + 2][10], color.getSeq(), 0, -1, this));
 
 			// en passant debug
 			/*
@@ -155,18 +157,18 @@ public class Player {
 			 */
 		}
 
-		// piecez.add(new Tower(board.getPlacez()[2][11], color.getSeq(), this));
-		// piecez.add(new Horse(board.getPlacez()[3][11], color.getSeq(), this));
-		// piecez.add(new Bisshop(board.getPlacez()[4][11], color.getSeq(), this));
+		piecez.add(new Tower(board.getPlacez()[2][11], color.getSeq(), this));
+		piecez.add(new Horse(board.getPlacez()[3][11], color.getSeq(), this));
+		piecez.add(new Bisshop(board.getPlacez()[4][11], color.getSeq(), this));
 
 		king = new King(board.getPlacez()[5][11], color.getSeq(), 0, -1, this);
 
 		piecez.add(king);
 		piecez.add(new Queen(board.getPlacez()[6][11], color.getSeq(), this));
 
-		// piecez.add(new Bisshop(board.getPlacez()[7][11], color.getSeq(), this));
-		// piecez.add(new Horse(board.getPlacez()[8][11], color.getSeq(), this));
-		// piecez.add(new Tower(board.getPlacez()[9][11], color.getSeq(), this));
+		piecez.add(new Bisshop(board.getPlacez()[7][11], color.getSeq(), this));
+		piecez.add(new Horse(board.getPlacez()[8][11], color.getSeq(), this));
+		piecez.add(new Tower(board.getPlacez()[9][11], color.getSeq(), this));
 	}
 
 	private void initGreen(Board board) {
@@ -175,13 +177,16 @@ public class Player {
 
 			// endgame debug
 
-			if (i == 5 || i == 3) {
+			/*
+			 * 
+			 * if (i == 5 || i == 3) {
+			 * 
+			 * piecez.add(new Pawn(board.getPlacez()[10][i + 2], color.getSeq(), -1, 0,
+			 * this)); }
+			 * 
+			 */
 
-				piecez.add(new Pawn(board.getPlacez()[10][i + 2], color.getSeq(), -1, 0, this));
-			}
-
-			// piecez.add(new Pawn(board.getPlacez()[10][i + 2], color.getSeq(), -1, 0,
-			// this));
+			piecez.add(new Pawn(board.getPlacez()[10][i + 2], color.getSeq(), -1, 0, this));
 
 			// en passant debug
 
@@ -194,18 +199,18 @@ public class Player {
 			 */
 		}
 
-		// piecez.add(new Tower(board.getPlacez()[11][2], color.getSeq(), this));
-		// piecez.add(new Horse(board.getPlacez()[11][3], color.getSeq(), this));
-		// piecez.add(new Bisshop(board.getPlacez()[11][4], color.getSeq(), this));
+		piecez.add(new Tower(board.getPlacez()[11][2], color.getSeq(), this));
+		piecez.add(new Horse(board.getPlacez()[11][3], color.getSeq(), this));
+		piecez.add(new Bisshop(board.getPlacez()[11][4], color.getSeq(), this));
 
 		king = new King(board.getPlacez()[11][6], color.getSeq(), -1, 0, this);
 
 		piecez.add(new Queen(board.getPlacez()[11][5], color.getSeq(), this));
 		piecez.add(king);
 
-		// piecez.add(new Bisshop(board.getPlacez()[11][7], color.getSeq(), this));
-		// piecez.add(new Horse(board.getPlacez()[11][8], color.getSeq(), this));
-		// piecez.add(new Tower(board.getPlacez()[11][9], color.getSeq(), this));
+		piecez.add(new Bisshop(board.getPlacez()[11][7], color.getSeq(), this));
+		piecez.add(new Horse(board.getPlacez()[11][8], color.getSeq(), this));
+		piecez.add(new Tower(board.getPlacez()[11][9], color.getSeq(), this));
 	}
 
 	private void initBlue(Board board) {
@@ -234,18 +239,18 @@ public class Player {
 
 		}
 
-		// piecez.add(new Tower(board.getPlacez()[2][0], color.getSeq(), this));
-		// piecez.add(new Horse(board.getPlacez()[3][0], color.getSeq(), this));
-		// piecez.add(new Bisshop(board.getPlacez()[4][0], color.getSeq(), this));
+		piecez.add(new Tower(board.getPlacez()[2][0], color.getSeq(), this));
+		piecez.add(new Horse(board.getPlacez()[3][0], color.getSeq(), this));
+		piecez.add(new Bisshop(board.getPlacez()[4][0], color.getSeq(), this));
 
 		king = new King(board.getPlacez()[6][0], color.getSeq(), 0, 1, this);
 
 		piecez.add(new Queen(board.getPlacez()[5][0], color.getSeq(), this));
 		piecez.add(king);
 
-		// piecez.add(new Bisshop(board.getPlacez()[7][0], color.getSeq(), this));
-		// piecez.add(new Horse(board.getPlacez()[8][0], color.getSeq(), this));
-		// piecez.add(new Tower(board.getPlacez()[9][0], color.getSeq(), this));
+		piecez.add(new Bisshop(board.getPlacez()[7][0], color.getSeq(), this));
+		piecez.add(new Horse(board.getPlacez()[8][0], color.getSeq(), this));
+		piecez.add(new Tower(board.getPlacez()[9][0], color.getSeq(), this));
 	}
 
 	boolean click(String md5) {
