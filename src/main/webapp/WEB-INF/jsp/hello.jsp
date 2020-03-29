@@ -149,12 +149,10 @@
 						bad : $('#bad').val()
 					},
 					success : function(text) {
-						
-						alert(text);
-						
+
 						if(text != 'fail'){
 							
-							$('#feedbackModal').modal('hide');					
+							hideModal();			
 
 						} else {
 							
@@ -162,6 +160,12 @@
 						}
 					}
 				});
+	}
+	
+	function hideModal(){
+	    $("#feedbackModal").removeClass("in");
+	    $(".modal-backdrop").remove();
+	    $("#feedbackModal").hide();
 	}
 
 	function sendMessage() {
@@ -308,7 +312,7 @@
 				<!-- Modal body -->
 				<div class="modal-body">
 
-					<br /> <br /> What can we do to improve the app?
+					What can we do to improve the app?
 
 					<textarea id="bad" name="bad" rows="5" cols="50"></textarea>
 
