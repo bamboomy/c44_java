@@ -150,6 +150,8 @@
 					},
 					success : function(text) {
 						
+						alert(text);
+						
 						if(text != 'fail'){
 							
 							//badSaved();
