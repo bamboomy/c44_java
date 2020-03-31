@@ -55,11 +55,20 @@
 
 	var waitingCounter = 7;
 
+	var listen = true;
+
 	$(document).ready(function() {
 		myId = $('form').attr('myattribute');
 	});
 
 	function clickToServer(md5, userHash) {
+
+		if (!listen) {
+
+			return;
+		}
+
+		listen = false;
 
 		$.ajax({
 			type : "GET",
@@ -74,6 +83,12 @@
 				cantPreventShown = false;
 			}
 		});
+		
+		setTimeout(function() {
+
+			listen = true;
+
+		}, 2000);
 	}
 
 	function fill() {
@@ -150,22 +165,22 @@
 					},
 					success : function(text) {
 
-						if(text != 'fail'){
-							
-							hideModal();			
+						if (text != 'fail') {
+
+							hideModal();
 
 						} else {
-							
+
 							alert('we couldnt save your wows...');
 						}
 					}
 				});
 	}
-	
-	function hideModal(){
-	    $("#feedbackModal").removeClass("in");
-	    $(".modal-backdrop").remove();
-	    $("#feedbackModal").hide();
+
+	function hideModal() {
+		$("#feedbackModal").removeClass("in");
+		$(".modal-backdrop").remove();
+		$("#feedbackModal").hide();
 	}
 
 	function sendMessage() {
