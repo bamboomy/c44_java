@@ -42,6 +42,8 @@
 
 <script type="text/javascript">
 
+	var listen = true;
+
 	$(document).ready(function() {
 		
 		myId = $('form').attr('myattribute');
@@ -52,6 +54,13 @@
 	function clickToServer(md5, userHash) {
 		
 		$('#promoteModal').modal('hide');
+		
+		if (!listen) {
+
+			return;
+		}
+
+		listen = false;
 
 		$.ajax({
 			type : "GET",
@@ -61,6 +70,12 @@
 				fill();
 			}
 		});
+		
+		setTimeout(function() {
+
+			listen = true;
+
+		}, 2000);
 	}
 
 	function fill() {
