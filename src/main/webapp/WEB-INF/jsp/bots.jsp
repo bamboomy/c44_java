@@ -43,8 +43,6 @@
 <script type="text/javascript">
 
 	var listen = true;
-	
-	var oldMd5 = "";
 
 	$(document).ready(function() {
 		
@@ -57,14 +55,12 @@
 		
 		$('#promoteModal').modal('hide');
 		
-		if (!listen && md5 == oldMd5) {
+		if (!listen) {
 
 			return;
 		}
 
 		listen = false;
-		
-		oldMd5 = md5;
 
 		$.ajax({
 			type : "GET",
@@ -79,7 +75,7 @@
 
 			listen = true;
 
-		}, 2000);
+		}, 1000);
 	}
 
 	function fill() {
