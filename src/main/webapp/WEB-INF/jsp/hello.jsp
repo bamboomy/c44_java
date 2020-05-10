@@ -88,7 +88,7 @@
 
 			listen = true;
 
-		}, 2000);
+		}, 1000);
 	}
 
 	function fill() {

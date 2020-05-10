@@ -7,10 +7,13 @@ import java.util.Map;
 
 import org.bamboomy.c44.board.Board;
 
+import lombok.Getter;
+
 public class BoardController {
 
 	private static BoardController single_instance = null;
 
+	@Getter
 	static final Map<String, Board> GAMEZ;
 
 	private static final int MAX_ENTRIES = 7 * 1000;

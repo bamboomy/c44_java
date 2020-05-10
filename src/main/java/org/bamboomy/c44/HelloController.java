@@ -294,4 +294,12 @@ public class HelloController {
 			throw new RuntimeException(e);
 		}
 	}
+
+	@GetMapping({ "/stats/" })
+	public String stats(Model model) {
+
+		model.addAttribute("GAMEZ", BoardController.GAMEZ);
+
+		return "stats";
+	}
 }
