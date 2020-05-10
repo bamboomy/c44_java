@@ -92,9 +92,10 @@
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-gcp-starter-sql</artifactId>
-			<version>1.0.0.M1</version>
+			<artifactId>spring-cloud-gcp-starter-sql-mysql</artifactId>
+			<version>1.0.0.M2</version>
 		</dependency>
+
 
 	</dependencies>
 	<build>
