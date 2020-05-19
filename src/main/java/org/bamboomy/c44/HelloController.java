@@ -46,7 +46,7 @@ public class HelloController {
 
 		String gameHash = user.getGame();
 
-		return new RedirectView("/game/" + hash + "/" + gameHash);
+		return new RedirectView("/game/" + gameHash + "/" + hash);
 	}
 
 	@GetMapping({ "/game/{hash}/{userHash}" })
