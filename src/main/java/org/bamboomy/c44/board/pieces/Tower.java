@@ -20,19 +20,19 @@ public class Tower extends Piece {
 		
 		case RED:
 			
-			return "img/tower_red.png";
+			return "/" + getCurrentPlace().getBoard().getTomcatPath() + "/img/tower_red.png";
 			
 		case YELLOW:
 			
-			return "img/tower_yellow.png";
+			return "/" + getCurrentPlace().getBoard().getTomcatPath() + "/img/tower_yellow.png";
 			
 		case GREEN:
 			
-			return "img/tower_green.png";
+			return "/" + getCurrentPlace().getBoard().getTomcatPath() + "/img/tower_green.png";
 			
 		case BLUE:
 			
-			return "img/tower_blue.png";
+			return "/" + getCurrentPlace().getBoard().getTomcatPath() + "/img/tower_blue.png";
 		}
 
 		throw new RuntimeException("invalid color in tower");

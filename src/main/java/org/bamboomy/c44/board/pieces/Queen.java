@@ -20,19 +20,19 @@ public class Queen extends Piece {
 		
 		case RED:
 			
-			return "img/queen_red.png";
+			return "/" + getCurrentPlace().getBoard().getTomcatPath() + "/img/queen_red.png";
 			
 		case YELLOW:
 			
-			return "img/queen_yellow.png";
+			return "/" + getCurrentPlace().getBoard().getTomcatPath() + "/img/queen_yellow.png";
 			
 		case GREEN:
 			
-			return "img/queen_green.png";
+			return "/" + getCurrentPlace().getBoard().getTomcatPath() + "/img/queen_green.png";
 			
 		case BLUE:
 			
-			return "img/queen_blue.png";
+			return "/" + getCurrentPlace().getBoard().getTomcatPath() + "/img/queen_blue.png";
 		}
 
 		throw new RuntimeException("invalid color in queen");
