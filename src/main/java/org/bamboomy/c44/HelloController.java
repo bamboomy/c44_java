@@ -13,7 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 public class HelloController {
@@ -29,22 +32,36 @@ public class HelloController {
 
 	private static SecureRandom secureRandom = new SecureRandom("50DE8CAA507BA8E8953CEEEC9570F88D".getBytes());
 
-	@GetMapping({ "/" })
-	public String hello(Model model,
-			@RequestParam(value = "id", required = true, defaultValue = "World") final String hash) {
+	@GetMapping("/hello/{hash}")
+	public RedirectView redirectWithUsingRedirectView(@PathVariable("hash") String hash) {
 
-		System.out.println(hash);
-		
 		Board.gameResultRepository = gameResultRepository;
 
 		ColorsTaken user = colorsTakenRepository.findByHash(hash);
 
 		if (user == null) {
 
-			return "negative";
+			return new RedirectView("negative");
 		}
 
 		String gameHash = user.getGame();
+
+		return new RedirectView("/game/" + hash + "/" + gameHash);
+	}
+
+	@GetMapping({ "/game/{hash}/{userHash}" })
+	public String hello(Model model, @PathVariable("hash") String hash, @PathVariable("userHash") String userHash) {
+
+		Board.gameResultRepository = gameResultRepository;
+
+		ColorsTaken user = colorsTakenRepository.findByHash(userHash);
+
+		if (user == null) {
+
+			return "negative";
+		}
+
+		String gameHash = hash;
 
 		Board board = BoardController.getInstance().getBoard(gameHash);
 

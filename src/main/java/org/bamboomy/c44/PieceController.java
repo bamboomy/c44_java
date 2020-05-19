@@ -14,13 +14,9 @@ public class PieceController {
 	@Autowired 
 	private ColorsTakenRepository colorsTakenRepository;
 
-	@RequestMapping(value = "/{md5}/{hash}/{userHash}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{hash}/{userHash}/{md5}", method = RequestMethod.GET)
 	public synchronized String getData(@PathVariable("md5") String md5, @PathVariable("hash") String hash,
 			@PathVariable("userHash") String userHash) {
-
-		System.out.println(md5);
-
-		System.out.println(hash);
 
 		Board board = BoardController.getInstance().getBoard(hash);
 		
