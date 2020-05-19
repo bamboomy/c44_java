@@ -33,7 +33,7 @@ public class Board {
 
 	public static String staticPiecePath = "/peace/";
 
-	public static String staticTomcatPath = "/tomcat/";
+	public static String staticTomcatPath = "tomcat";
 
 	public static String staticJavaPath = "java";
 	
