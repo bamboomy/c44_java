@@ -15,23 +15,23 @@ public class Bisshop extends Piece {
 
 	@Override
 	public String getPieceName() {
-		
-		switch(Color.getBySeq(color)) {
-		
+
+		switch (Color.getBySeq(color)) {
+
 		case RED:
-			
-			return "img/bisshop_red.png";
-			
+
+			return "/" + getCurrentPlace().getBoard().getTomcatPath() + "/img/bisshop_red.png";
+
 		case YELLOW:
-			
+
 			return "img/bisshop_yellow.png";
-			
+
 		case GREEN:
-			
+
 			return "img/bisshop_green.png";
-			
+
 		case BLUE:
-			
+
 			return "img/bisshop_blue.png";
 		}
 
