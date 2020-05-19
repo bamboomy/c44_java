@@ -77,6 +77,18 @@ public class HelloController {
 
 		board.setColorsTaken(userIterable);
 
+		detectBot(userIterable, board, dubiousIterable);
+
+		model.addAttribute("board", board);
+		model.addAttribute("user", user);
+
+		board.syncNames();
+
+		return "hello";
+	}
+
+	private void detectBot(Iterable<ColorsTaken> userIterable, Board board, Iterable<ColorsTaken> dubiousIterable) {
+
 		for (ColorsTaken userColor : userIterable) {
 
 			if (userColor.getColor().equalsIgnoreCase("red")) {
@@ -96,13 +108,6 @@ public class HelloController {
 				board.setYellowName(detectBot(userColor.getName(), board, dubiousIterable, userColor));
 			}
 		}
-
-		model.addAttribute("board", board);
-		model.addAttribute("user", user);
-
-		board.syncNames();
-
-		return "hello";
 	}
 
 	@GetMapping({ "/bots/" })
@@ -318,5 +323,11 @@ public class HelloController {
 		model.addAttribute("GAMEZ", BoardController.GAMEZ);
 
 		return "stats";
+	}
+
+	@GetMapping({ "/negative" })
+	public String negative(Model model) {
+
+		return "negative";
 	}
 }
