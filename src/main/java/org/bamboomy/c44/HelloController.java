@@ -41,7 +41,7 @@ public class HelloController {
 
 		if (user == null) {
 
-			return new RedirectView("negative");
+			return new RedirectView("/negative");
 		}
 
 		String gameHash = user.getGame();
