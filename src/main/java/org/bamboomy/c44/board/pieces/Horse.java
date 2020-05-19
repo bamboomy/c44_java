@@ -20,19 +20,19 @@ public class Horse extends Piece {
 		
 		case RED:
 			
-			return "img/horse_red.png";
+			return "/" + getCurrentPlace().getBoard().getTomcatPath() + "/img/horse_red.png";
 			
 		case YELLOW:
 			
-			return "img/horse_yellow.png";
+			return "/" + getCurrentPlace().getBoard().getTomcatPath() + "/img/horse_yellow.png";
 			
 		case GREEN:
 			
-			return "img/horse_green.png";
+			return "/" + getCurrentPlace().getBoard().getTomcatPath() + "/img/horse_green.png";
 			
 		case BLUE:
 			
-			return "img/horse_blue.png";
+			return "/" + getCurrentPlace().getBoard().getTomcatPath() + "/img/horse_blue.png";
 		}
 
 		throw new RuntimeException("invalid color in horse");

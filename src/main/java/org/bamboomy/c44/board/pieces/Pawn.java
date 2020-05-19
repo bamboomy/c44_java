@@ -26,19 +26,19 @@ public class Pawn extends Piece {
 
 		case RED:
 
-			return "img/pawn_red.png";
+			return "/" + getCurrentPlace().getBoard().getTomcatPath() + "/img/pawn_red.png";
 
 		case YELLOW:
 
-			return "img/pawn_yellow.png";
+			return "/" + getCurrentPlace().getBoard().getTomcatPath() + "/img/pawn_yellow.png";
 
 		case GREEN:
 
-			return "img/pawn_green.png";
+			return "/" + getCurrentPlace().getBoard().getTomcatPath() + "/img/pawn_green.png";
 
 		case BLUE:
 
-			return "img/pawn_blue.png";
+			return "/" + getCurrentPlace().getBoard().getTomcatPath() + "/img/pawn_blue.png";
 		}
 
 		throw new RuntimeException("invalid color in pawn");

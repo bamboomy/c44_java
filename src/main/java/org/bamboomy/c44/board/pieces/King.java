@@ -28,19 +28,19 @@ public class King extends Piece {
 		
 		case RED:
 			
-			return "img/king_red.png";
+			return "/" + getCurrentPlace().getBoard().getTomcatPath() + "/img/king_red.png";
 			
 		case YELLOW:
 			
-			return "img/king_yellow.png";
+			return "/" + getCurrentPlace().getBoard().getTomcatPath() + "/img/king_yellow.png";
 			
 		case GREEN:
 			
-			return "img/king_green.png";
+			return "/" + getCurrentPlace().getBoard().getTomcatPath() + "/img/king_green.png";
 			
 		case BLUE:
 			
-			return "img/king_blue.png";
+			return "/" + getCurrentPlace().getBoard().getTomcatPath() + "/img/king_blue.png";
 		}
 
 		throw new RuntimeException("invalid color in king");

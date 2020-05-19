@@ -24,15 +24,15 @@ public class Bisshop extends Piece {
 
 		case YELLOW:
 
-			return "img/bisshop_yellow.png";
+			return "/" + getCurrentPlace().getBoard().getTomcatPath() + "/img/bisshop_yellow.png";
 
 		case GREEN:
 
-			return "img/bisshop_green.png";
+			return "/" + getCurrentPlace().getBoard().getTomcatPath() + "/img/bisshop_green.png";
 
 		case BLUE:
 
-			return "img/bisshop_blue.png";
+			return "/" + getCurrentPlace().getBoard().getTomcatPath() + "/img/bisshop_blue.png";
 		}
 
 		throw new RuntimeException("invalid color in bishop");
