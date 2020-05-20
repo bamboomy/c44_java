@@ -129,20 +129,17 @@ public class HelloController {
 		return "bots";
 	}
 
-	@GetMapping({ "/board/" })
-	public String board(Model model,
-			@RequestParam(value = "id", required = true, defaultValue = "World") final String hash) {
+	@GetMapping({ "/board/{gameHash}/{userHash}" })
+	public String board(Model model, @PathVariable("hash") String gameHash, @PathVariable("userHash") String userHash) {
 
-		System.out.println(hash);
-
-		Board board = BoardController.getInstance().getBoardByPlayerHash(hash);
+		Board board = BoardController.getInstance().getBoard(gameHash);
 
 		if (board == null) {
 
 			return "negative";
 		}
 
-		ColorsTaken user = board.getColorsTaken(hash);
+		ColorsTaken user = board.getColorsTaken(userHash);
 
 		ColorsTaken mutated = board.getUserColor(user, colorsTakenRepository.findByGameHash(user.getGame()));
 

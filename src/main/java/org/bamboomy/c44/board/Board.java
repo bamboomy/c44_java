@@ -266,6 +266,7 @@ public class Board {
 			}
 		}
 
+		/*
 		playerz[0] = new Player(0, this, false);
 
 		playerz[1] = new Player(1, this, false);
@@ -273,6 +274,7 @@ public class Board {
 		playerz[2] = new Player(2, this, false);
 
 		playerz[3] = new Player(3, this, false);
+		*/
 
 		this.hash = hash;
 
@@ -306,7 +308,7 @@ public class Board {
 
 		beginTurn[turn] = true;
 
-		currentPlayer = playerz[turn];
+		//currentPlayer = playerz[turn];
 	}
 
 	private int getCurrentTimeOfCurrentPlayer() {
